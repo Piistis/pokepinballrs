@@ -7,28 +7,24 @@ export DEVKITARM="${DEVKITPRO}/devkitARM"
 export PATH="${DEVKITARM}/bin:${DEVKITPRO}/tools/bin:${PATH}"
 
 echo "==> Installing Linux packages"
-sudo apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
-  build-essential \
-  ca-certificates \
-  git \
-  jq \
-  libpng-dev \
-  make \
-  pkg-config \
-  wget
-
-echo "==> Installing devkitPro pacman/devkitARM"
-if ! command -v dkp-pacman >/dev/null 2>&1; then
-  tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' EXIT
-  wget -q -O "${tmpdir}/install-devkitpro-pacman" https://apt.devkitpro.org/install-devkitpro-pacman
-  chmod +x "${tmpdir}/install-devkitpro-pacman"
-  sudo "${tmpdir}/install-devkitpro-pacman"
+if command -v apt-get >/dev/null 2>&1; then
+  sudo apt-get update
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    build-essential \
+    ca-certificates \
+    git \
+    jq \
+    libpng-dev \
+    make \
+    pkg-config \
+    wget
 fi
 
-sudo dkp-pacman -Sy --noconfirm
-sudo dkp-pacman -S --needed --noconfirm gba-dev
+echo "==> Checking devkitARM"
+if ! command -v arm-none-eabi-cpp >/dev/null 2>&1; then
+  echo "arm-none-eabi-cpp was not found. Rebuild the Codespace so it uses .devcontainer/Dockerfile."
+  exit 1
+fi
 
 echo "==> Building and installing pret/agbcc"
 if [ ! -x "${repo_root}/tools/agbcc/bin/agbcc" ]; then

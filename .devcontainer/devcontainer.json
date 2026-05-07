@@ -1,6 +1,8 @@
 {
   "name": "pokepinballrs",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "postCreateCommand": "bash .devcontainer/setup_codespaces.sh",
   "customizations": {
     "vscode": {
