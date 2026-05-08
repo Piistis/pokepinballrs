@@ -9,6 +9,15 @@
 extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gEggLocations[MAIN_FIELD_COUNT][26];
 
+static u8 GetSavedPokedexFlag(s16 species)
+{
+    if (species >= 0 && species < NUM_SAVE_SPECIES)
+        return gMain_saveData.pokedexFlags[species];
+    if (species >= NUM_SAVE_SPECIES && species < NUM_SPECIES)
+        return gExtraPokedexFlags[species - NUM_SAVE_SPECIES];
+    return SPECIES_UNSEEN;
+}
+
 /**
  *   0 if captured via ball
  *   1 if evolved
@@ -185,14 +194,14 @@ void BuildSpeciesWeightsForCatchEmMode(void)
             case SPECIES_WOBBUFFET:
                 if (gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD])
                 {
-                    if (gMain_saveData.pokedexFlags[currentSpecies] < SPECIES_SHARED)
+                    if (GetSavedPokedexFlag(currentSpecies) < SPECIES_SHARED)
                         weight = 2;
                     else
                         weight = 4;
                 }
                 else
                 {
-                    if (gMain_saveData.pokedexFlags[currentSpecies] < SPECIES_SHARED)
+                    if (GetSavedPokedexFlag(currentSpecies) < SPECIES_SHARED)
                         weight = 1;
                     else
                         weight = 2;
@@ -215,13 +224,13 @@ void BuildSpeciesWeightsForCatchEmMode(void)
                 weight = 0;
                 break;
             default:
-                weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
+                weight = gCommonAndEggWeights[GetSavedPokedexFlag(currentSpecies)];
                 for (j = 0; j < 2; j++)
                 {
                     currentSpecies = gSpeciesInfo[currentSpecies].evolutionTarget;
                     if (currentSpecies < SPECIES_NONE)
                     {
-                        evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
+                        evolutionWeight = gCommonAndEggWeights[GetSavedPokedexFlag(currentSpecies)];
                         if (weight < evolutionWeight)
                         {
                             weight = evolutionWeight;
@@ -373,14 +382,14 @@ void BuildSpeciesWeightsForEggMode(void)
         }
         else
         {
-            weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
+            weight = gCommonAndEggWeights[GetSavedPokedexFlag(currentSpecies)];
 
             for (j = 0; j < 2; j++)
             {
                 currentSpecies = gSpeciesInfo[currentSpecies].evolutionTarget;
                 if (currentSpecies < SPECIES_NONE)
                 {
-                    evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
+                    evolutionWeight = gCommonAndEggWeights[GetSavedPokedexFlag(currentSpecies)];
                     if (weight < evolutionWeight)
                         weight = evolutionWeight;
                 }

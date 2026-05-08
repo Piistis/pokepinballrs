@@ -305,6 +305,8 @@ extern s8 gPokedexSpriteIndexBase;
 extern s16 gPokedexFlags[];
 extern s16 gPokedexFlagExchangeBuffer[];
 extern s16 gPokedexListEntryCount;
+extern u8 gUnknown_03006C00[];
+#define gExtraPokedexFlags gUnknown_03006C00
 
 extern u32 gMergedSapphireScoreIndex;
 extern u32 gMergedRubyScoreIndex;

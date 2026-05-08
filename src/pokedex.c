@@ -206,18 +206,7 @@ void InitPokedexState(void)
         gPokedexFlagExchangeBuffer[i] = gPokedexFlags[i];
     }
 
-    if (gPokedexFlags[SPECIES_AERODACTYL])
-        gPokedexListEntryCount = SPECIES_AERODACTYL + 1;
-    else if (gPokedexFlags[SPECIES_TOTODILE])
-        gPokedexListEntryCount = SPECIES_TOTODILE + 1;
-    else if (gPokedexFlags[SPECIES_CYNDAQUIL])
-        gPokedexListEntryCount = SPECIES_CYNDAQUIL + 1;
-    else if (gPokedexFlags[SPECIES_CHIKORITA])
-        gPokedexListEntryCount = SPECIES_CHIKORITA + 1;
-    else if (gPokedexFlags[SPECIES_JIRACHI])
-        gPokedexListEntryCount = SPECIES_JIRACHI + 1;
-    else
-        gPokedexListEntryCount = SPECIES_RAYQUAZA + 1;
+    gPokedexListEntryCount = NUM_SPECIES;
 }
 
 void Pokedex_HandleListInput(void)
@@ -703,7 +692,7 @@ void Pokedex_LinkSuccessSequence(void)
             {
                 gPokedexFlags[index] = gPokedexFlagExchangeBuffer[index];
             }
-            for(index = 0; index < NUM_SPECIES; index++)
+            for(index = 0; index < NUM_SAVE_SPECIES; index++)
             {
                 gMain_saveData.pokedexFlags[index] = gPokedexFlags[index];
             }
@@ -731,7 +720,7 @@ void Pokedex_DeleteConfirmation(void)
             gPokedexFlagExchangeBuffer[i] = 0;
             gPokedexFlags[i] = 0;
         }
-        for (i = 0; i < NUM_SPECIES; i++)
+        for (i = 0; i < NUM_SAVE_SPECIES; i++)
         {
             gMain_saveData.pokedexFlags[i] = gPokedexFlags[i];
         }
@@ -2360,8 +2349,11 @@ void LoadPokedexFlagsFromSave(void)
 {
     int i;
 
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (i = 0; i < NUM_SAVE_SPECIES; i++)
         gPokedexFlags[i] = gMain_saveData.pokedexFlags[i];
+
+    for (i = NUM_SAVE_SPECIES; i < NUM_SPECIES; i++)
+        gPokedexFlags[i] = gExtraPokedexFlags[i - NUM_SAVE_SPECIES];
 
 	// It's unclear what these trailing 20 entries are...
     for (i = NUM_SPECIES; i < NUM_SPECIES + 20; i++)
@@ -2431,6 +2423,9 @@ void ResetPokedex(void)
 {
     int i;
 
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (i = 0; i < NUM_SAVE_SPECIES; i++)
         gMain_saveData.pokedexFlags[i] = SPECIES_UNSEEN;
+
+    for (i = NUM_SAVE_SPECIES; i < NUM_SPECIES; i++)
+        gExtraPokedexFlags[i - NUM_SAVE_SPECIES] = SPECIES_UNSEEN;
 }

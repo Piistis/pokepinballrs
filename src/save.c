@@ -101,6 +101,16 @@ void SaveFile_SetPokedexFlags(s16 species, u8 flag)
     size_t size = sizeof(gMain_saveData);
     u32 checksum;
 
+    if (species >= NUM_SAVE_SPECIES && species < NUM_SPECIES)
+    {
+        if (gExtraPokedexFlags[species - NUM_SAVE_SPECIES] < flag)
+            gExtraPokedexFlags[species - NUM_SAVE_SPECIES] = flag;
+        return;
+    }
+
+    if (species < 0)
+        return;
+
     if (gMain_saveData.pokedexFlags[species] < flag)
     {
         gMain_saveData.saveChangeCounter++;

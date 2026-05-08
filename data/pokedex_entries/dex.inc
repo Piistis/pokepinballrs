@@ -2420,8 +2420,6 @@ dexEntry202::
     .dexText ""
     .dexText ""
     .dexText ""
-    .dexText ""
-    .dexText ""
 
     .align 2, 0
 dexEntry203::

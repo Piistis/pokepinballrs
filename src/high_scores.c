@@ -2379,7 +2379,7 @@ s8 CheckAllPokemonCaught(void)
     int i;
     s16 sp0[NUM_SPECIES];
 
-    for(i = 0; i < NUM_SPECIES; i++)
+    for(i = 0; i < NUM_SAVE_SPECIES; i++)
         sp0[i] = gMain_saveData.pokedexFlags[i];
 
     for(i = 0; i < BONUS_SPECIES_START; i++) // TODO: add a proper count for non bonus
@@ -2389,4 +2389,3 @@ s8 CheckAllPokemonCaught(void)
     }
     return 1;
 }
-

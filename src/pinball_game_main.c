@@ -139,7 +139,7 @@ void PinballGame_State0_49ED4(void)
     }
 
     gBoardConfig.caughtSpeciesCount = 0;
-    for (j = 0; j < NUM_SPECIES; j++)
+    for (j = 0; j < NUM_SAVE_SPECIES; j++)
     {
         if (gMain_saveData.pokedexFlags[j] > SPECIES_SHARED_AND_SEEN)
             gBoardConfig.caughtSpeciesCount++;
