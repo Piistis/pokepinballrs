@@ -15,6 +15,7 @@
 #define AREA_WILDERNESS         11
 #define AREA_RUIN_RUBY         12
 #define AREA_RUIN_SAPPHIRE     13
-#define AREA_COUNT              14
+#define AREA_TEST              14
+#define AREA_COUNT              15
 
 #endif // GUARD_CONSTANTS_AREAS_H

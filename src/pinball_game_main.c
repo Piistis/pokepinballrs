@@ -2,6 +2,7 @@
 #include "main.h"
 #include "m4a.h"
 #include "constants/ereader.h"
+#include "constants/areas.h"
 #include "constants/fields.h"
 #include "constants/ruby_states.h"
 
@@ -275,6 +276,9 @@ void InitPinballGameState(void)
     if (gMain.tempField == gMain.selectedField)
     {
         DmaFill16(3, 0, gCurrentPinballGame, sizeof(struct PinballGame));
+        if (gMain.selectedField == FIELD_RUBY)
+            gCurrentPinballGame->area = AREA_TEST;
+
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
         {
             gCurrentPinballGame->pikaChargeTarget = 168;

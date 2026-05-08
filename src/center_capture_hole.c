@@ -114,7 +114,8 @@ void InitRouletteWheel(void)
         gCurrentPinballGame->rouletteLevel++;
 
     gCurrentPinballGame->rouletteSlotCount = 5;
-    if ((gCurrentPinballGame->jirachiActivationFlags & 0xF0) == 0 && gCurrentPinballGame->area > AREA_WILDERNESS)
+    if ((gCurrentPinballGame->jirachiActivationFlags & 0xF0) == 0
+     && (gCurrentPinballGame->area == AREA_RUIN_RUBY || gCurrentPinballGame->area == AREA_RUIN_SAPPHIRE))
         gCurrentPinballGame->rouletteSlotCount++;
 
     gCurrentPinballGame->rouletteSlotCursor = 1;

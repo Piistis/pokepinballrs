@@ -9,12 +9,12 @@
 	.include "asm/macros.inc"
 
 gAreaRouletteTable:: @ 0x08055A68
-	.2byte AREA_FOREST_RUBY
-	.2byte AREA_VOLCANO
-	.2byte AREA_PLAINS_RUBY
-	.2byte AREA_OCEAN_RUBY
-	.2byte AREA_SAFARI_ZONE
-	.2byte AREA_CAVE_RUBY
+	.2byte AREA_TEST
+	.2byte AREA_TEST
+	.2byte AREA_TEST
+	.2byte AREA_TEST
+	.2byte AREA_TEST
+	.2byte AREA_TEST
 	.2byte AREA_RUIN_RUBY
 	.2byte AREA_FOREST_SAPPHIRE
 	.2byte AREA_LAKE
@@ -623,6 +623,7 @@ gAreaPortraitIndexes:: @ 0x08137928
 	.2byte 0, 1, 2, 3, 4
 	.2byte 5, 6, 7, 8, 9
 	.2byte 10, 11, 12, 12
+	.2byte 13
 
 gPondBumperRetractFrames:: @ 0x08137944
 	.2byte 10, 7,6,5,4,3,2,1,0,1,0,1,0,1,0,1,0,1
@@ -986,7 +987,22 @@ gDefaultBallPalette:: @ 0x081C0064
 	.incbin "baserom.gba", 0x1C0064, 0x80
 
 gPortraitGenericPalettes:: @ 0x081C00E4
-	.incbin "baserom.gba", 0x1C00E4, 0x200
+	.incbin "graphics/area_portraits/forest_ruby.gbapal.bin"
+	.incbin "graphics/area_portraits/forest_sapphire.gbapal.bin"
+	.incbin "graphics/area_portraits/plains_ruby.gbapal.bin"
+	.incbin "graphics/area_portraits/plains_sapphire.gbapal.bin"
+	.incbin "graphics/area_portraits/ocean_ruby.gbapal.bin"
+	.incbin "graphics/area_portraits/ocean_sapphire.gbapal.bin"
+	.incbin "graphics/area_portraits/cave_ruby.gbapal.bin"
+	.incbin "graphics/area_portraits/cave_sapphire.gbapal.bin"
+	.incbin "graphics/area_portraits/safari_zone.gbapal.bin"
+	.incbin "graphics/area_portraits/volcano.gbapal.bin"
+	.incbin "graphics/area_portraits/lake.gbapal.bin"
+	.incbin "graphics/area_portraits/wilderness.gbapal.bin"
+	.incbin "graphics/area_portraits/ruin.gbapal.bin"
+	.incbin "graphics/area_portraits/test_area.gbapal.bin"
+	.incbin "graphics/area_portraits/unused_14.gbapal.bin"
+	.incbin "graphics/area_portraits/unused_15.gbapal.bin"
 
 gPortraitAnimPalettes:: @ 0x081C02E4
 	.incbin "baserom.gba", 0x1C02E4, 0x600
@@ -1341,7 +1357,20 @@ gSapphireTravelIllumise_Gfx:: @ 0x08488A0C
 	.incbin "baserom.gba", 0x488A0C, 0x4C80
 
 gPortraitGenericGraphics:: @ 0x0848D68C
-	.incbin "baserom.gba", 0x48D68C, 0x2700
+	.incbin "graphics/area_portraits/forest_ruby.4bpp"
+	.incbin "graphics/area_portraits/forest_sapphire.4bpp"
+	.incbin "graphics/area_portraits/plains_ruby.4bpp"
+	.incbin "graphics/area_portraits/plains_sapphire.4bpp"
+	.incbin "graphics/area_portraits/ocean_ruby.4bpp"
+	.incbin "graphics/area_portraits/ocean_sapphire.4bpp"
+	.incbin "graphics/area_portraits/cave_ruby.4bpp"
+	.incbin "graphics/area_portraits/cave_sapphire.4bpp"
+	.incbin "graphics/area_portraits/safari_zone.4bpp"
+	.incbin "graphics/area_portraits/volcano.4bpp"
+	.incbin "graphics/area_portraits/lake.4bpp"
+	.incbin "graphics/area_portraits/wilderness.4bpp"
+	.incbin "graphics/area_portraits/ruin.4bpp"
+	.incbin "graphics/area_portraits/test_area.4bpp"
 
 gCaptureModeTilesGfx:: @ 0x0848FD8C
 	.incbin "baserom.gba", 0x48FD8C, 0xCC0

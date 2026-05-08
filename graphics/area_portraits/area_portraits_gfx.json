@@ -1,0 +1,53 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 2,
+    "mheight": 2,
+    "width": 6
+  },
+  "files": [
+    {
+      "gfx_filename": "forest_ruby"
+    },
+    {
+      "gfx_filename": "forest_sapphire"
+    },
+    {
+      "gfx_filename": "plains_ruby"
+    },
+    {
+      "gfx_filename": "plains_sapphire"
+    },
+    {
+      "gfx_filename": "ocean_ruby"
+    },
+    {
+      "gfx_filename": "ocean_sapphire"
+    },
+    {
+      "gfx_filename": "cave_ruby"
+    },
+    {
+      "gfx_filename": "cave_sapphire"
+    },
+    {
+      "gfx_filename": "safari_zone"
+    },
+    {
+      "gfx_filename": "volcano"
+    },
+    {
+      "gfx_filename": "lake"
+    },
+    {
+      "gfx_filename": "wilderness"
+    },
+    {
+      "gfx_filename": "ruin"
+    },
+    {
+      "gfx_filename": "test_area"
+    }
+  ]
+}
