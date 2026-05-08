@@ -8,4 +8,7 @@ It builds the following rom:
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
+For notes about adding new species in this mod branch, see
+[MODDING_ADD_SPECIES.md](MODDING_ADD_SPECIES.md).
+
 For contacts and other pret projects, see [pret.github.io](https://pret.github.io/).
