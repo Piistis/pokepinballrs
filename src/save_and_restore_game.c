@@ -505,7 +505,12 @@ void RestoreMainFieldDynamicGraphics(void)
         case 9:
             if (gCurrentPinballGame->evoChainPosition > 0)
             {
-                if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] == 0)
+                if (gCurrentPinballGame->evoTargetSpecies >= NUM_SAVE_SPECIES)
+                {
+                    gCurrentPinballGame->portraitGfxIndex[i] = gCurrentPinballGame->evoTargetSpecies;
+                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15] + (gCurrentPinballGame->portraitGfxIndex[i] % 15) * 0x20, 0x050003A0, 0x20);
+                }
+                else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] == 0)
                 {
                     gCurrentPinballGame->portraitGfxIndex[i] = 205;
                     DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15] + (gCurrentPinballGame->portraitGfxIndex[i] % 15) * 0x20, 0x050003A0, 0x20);

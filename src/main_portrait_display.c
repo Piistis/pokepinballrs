@@ -64,7 +64,16 @@ void LoadPortraitGraphics(s16 arg0, s16 arg1)
     case 9:
         if (gCurrentPinballGame->evoChainPosition > 0)
         {
-            if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] == SPECIES_UNSEEN)
+            if (gCurrentPinballGame->evoTargetSpecies >= NUM_SAVE_SPECIES)
+            {
+                gCurrentPinballGame->portraitGfxIndex[arg1] = gCurrentPinballGame->evoTargetSpecies;
+                DmaCopy16(
+                    3,
+                    gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[arg1] / 15] + (gCurrentPinballGame->portraitGfxIndex[arg1] % 15) * 0x20,
+                    (void *)0x050003A0,
+                    0x20);
+            }
+            else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] == SPECIES_UNSEEN)
             {
                 gCurrentPinballGame->portraitGfxIndex[arg1] = SPECIES_NONE;
                 DmaCopy16(

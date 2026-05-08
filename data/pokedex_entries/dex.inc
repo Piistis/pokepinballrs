@@ -2473,7 +2473,7 @@ dexEntry206::
 
     .align 2, 0
 dexEntry207::
-    .2byte 3, 0, 2, 0xA, 0, 0, 1, 0xA, 1, 9, 5, 0
+    .2byte 2, 0, 7, 0xA, 0, 0, 1, 0xA, 1, 9, 5, 0
     .dexName "ZEBSTRIKA"
     .dexCategory "THUNDERBOLT"
     .dexText "ZEBSTRIKA runs like lightning"
