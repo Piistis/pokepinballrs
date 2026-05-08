@@ -620,6 +620,7 @@ gDexAnimationIx:: @ 0x086A61BC
     .2byte  77,  78,  -1,  -1,  -1
 
     .2byte  79,  80,  81,  82,  83
+    .2byte  84
 
 gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -647,6 +648,7 @@ gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
     .2byte 0, 0, 0, 0, 0
+    .2byte 0
 
 gPokedexListNameVramOffsets:: @ 0x086A64F0
     .2byte 0x4E20, 0x5400, 0x5500, 0x5600, 0x5700

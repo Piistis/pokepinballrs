@@ -230,7 +230,7 @@ gMonPortraitsGroup13_Gfx:: @ 0x084EA26C
 	.incbin "graphics/mon_portraits/cyndaquil_portrait.4bpp"
 	.incbin "graphics/mon_portraits/totodile_portrait.4bpp"
 	.incbin "graphics/mon_portraits/aerodactyl_portrait.4bpp"
-	.incbin "graphics/mon_portraits/question_mark_portrait.4bpp"
+	.incbin "graphics/mon_portraits/blitzle_portrait.4bpp"
 	.incbin "graphics/mon_portraits/207_portrait.4bpp"
 	.incbin "graphics/mon_portraits/208_portrait.4bpp"
 	.incbin "graphics/mon_portraits/209_portrait.4bpp"

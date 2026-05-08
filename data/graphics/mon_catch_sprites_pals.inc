@@ -147,3 +147,4 @@ gMonCatchSpriteGroup16_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_82_cyndaquil.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_83_totodile.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_84_aerodactyl.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_85_blitzle.gbapal"

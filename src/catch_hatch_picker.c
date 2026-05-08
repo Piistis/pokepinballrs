@@ -242,7 +242,9 @@ void BuildSpeciesWeightsForCatchEmMode(void)
                     }
                 }
                 currentSpecies = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
-                if (gCurrentPinballGame->caughtMonCount == 0 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                if (gCurrentPinballGame->caughtMonCount == 0
+                 && currentSpecies != SPECIES_TEST_EXTRA
+                 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
                     weight = 0;
                 }

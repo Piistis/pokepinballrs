@@ -2049,4 +2049,14 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
+    [SPECIES_TEST_EXTRA] = {
+        .speciesIdRS = 310,
+        .nameJapanese = {0},
+        .name = "BLITZLE   ",
+        .catchIndex = 84,
+        .eggIndex = 0,
+        .specialEggFlag = 0,
+        .evolutionMethod = 0,
+        .evolutionTarget = SPECIES_NONE
+    },
 };

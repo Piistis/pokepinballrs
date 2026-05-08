@@ -115,3 +115,4 @@ gMonCatchSpriteGroup16_Gfx::
 	.incbin "graphics/mon_catch_sprites/catch_mon_82_cyndaquil.4bpp"
 	.incbin "graphics/mon_catch_sprites/catch_mon_83_totodile.4bpp"
 	.incbin "graphics/mon_catch_sprites/catch_mon_84_aerodactyl.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_85_blitzle.4bpp"

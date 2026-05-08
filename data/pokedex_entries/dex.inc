@@ -2420,6 +2420,8 @@ dexEntry202::
     .dexText ""
     .dexText ""
     .dexText ""
+    .dexText ""
+    .dexText ""
 
     .align 2, 0
 dexEntry203::
@@ -2454,5 +2456,17 @@ dexEntry205::
     .dexText ""
     .dexText ""
     .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry206::
+    .2byte 2, 0, 6, 0xA, 0, 0, 8, 0xA, 2, 9, 8, 0
+    .dexName "BLITZLE"
+    .dexCategory "ELECTRIC"
+    .dexText "BLITZLE stores electricity in the"
+    .dexText "white stripes on its body."
+    .dexText "When startled, it releases sparks"
+    .dexText "that flash like lightning."
     .dexText ""
     .dexText ""

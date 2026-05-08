@@ -344,6 +344,10 @@
     {
       "gfx_filename": "catch_mon_84_aerodactyl",
       "palette": "catch_mon_84_aerodactyl.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_85_blitzle",
+      "palette": "catch_mon_85_blitzle.gbapal"
     }
   ]
 }

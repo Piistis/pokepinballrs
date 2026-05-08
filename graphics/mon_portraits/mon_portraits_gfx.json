@@ -101,6 +101,10 @@
       "palette": "blaziken_portrait.gbapal"
     },
     {
+      "gfx_filename": "blitzle_portrait",
+      "palette": "blitzle_portrait.gbapal"
+    },
+    {
       "gfx_filename": "breloom_portrait",
       "palette": "breloom_portrait.gbapal"
     },

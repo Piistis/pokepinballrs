@@ -1909,6 +1909,7 @@ void LoadMonPortrait(s16 species)
     s16 state = gPokedexFlags[gPokedexSelectedMon];
     s16 var1 = species / 15;
     s16 var2 = species % 15;
+
     switch (state)
     {
         case SPECIES_UNSEEN:
@@ -2353,7 +2354,11 @@ void LoadPokedexFlagsFromSave(void)
         gPokedexFlags[i] = gMain_saveData.pokedexFlags[i];
 
     for (i = NUM_SAVE_SPECIES; i < NUM_SPECIES; i++)
+    {
         gPokedexFlags[i] = gExtraPokedexFlags[i - NUM_SAVE_SPECIES];
+        if (gPokedexFlags[i] == SPECIES_UNSEEN)
+            gPokedexFlags[i] = SPECIES_SEEN;
+    }
 
 	// It's unclear what these trailing 20 entries are...
     for (i = NUM_SPECIES; i < NUM_SPECIES + 20; i++)
@@ -2385,6 +2390,9 @@ void LoadMonAnimationSprite(s16 species)
     s16 remainder;
     s16 var1;
 
+    if (species >= NUM_SPECIES)
+        return;
+
     var0 = gDexAnimationIx[species];
     if (var0 == -1)
         return;
@@ -2411,6 +2419,12 @@ void LoadMonAnimationSprite(s16 species)
 
 s16 CheckMonHasAnimation(s16 species)
 {
+    if (species >= NUM_SPECIES)
+    {
+        gPokedexShowAnimSprite = 0;
+        return gPokedexShowAnimSprite;
+    }
+
     if (gPokedexFlags[species] == 4 && gDexAnimationIx[species] != -1)
         gPokedexShowAnimSprite = 1;
     else
