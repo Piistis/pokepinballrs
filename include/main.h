@@ -22,7 +22,7 @@ struct HighScoreEntry
 // This is probably permanently saved data like pokedex and high scores.
 struct SaveData
 {
-    /*0x74*/ u8 pokedexFlags[NUM_SPECIES];
+    /*0x74*/ u8 pokedexFlags[NUM_SAVE_SPECIES];
     /*0x141*/ bool8 rumbleEnabled;
     /*0x142*/ u8 ballSpeed;
     /*0x143*/ u8 buttonConfigType;
