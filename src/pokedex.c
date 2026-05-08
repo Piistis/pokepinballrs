@@ -206,7 +206,9 @@ void InitPokedexState(void)
         gPokedexFlagExchangeBuffer[i] = gPokedexFlags[i];
     }
 
-    if (gPokedexFlags[SPECIES_AERODACTYL])
+    if (gPokedexFlags[SPECIES_BLITZLE])
+        gPokedexListEntryCount = SPECIES_BLITZLE + 1;
+    else if (gPokedexFlags[SPECIES_AERODACTYL])
         gPokedexListEntryCount = SPECIES_AERODACTYL + 1;
     else if (gPokedexFlags[SPECIES_TOTODILE])
         gPokedexListEntryCount = SPECIES_TOTODILE + 1;

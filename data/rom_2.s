@@ -620,6 +620,7 @@ gDexAnimationIx:: @ 0x086A61BC
     .2byte  77,  78,  -1,  -1,  -1
 
     .2byte  79,  80,  81,  82,  83
+    .2byte   4
 
 gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -13977,4 +13978,3 @@ gUnknown_086BBC44:: @ 0x086BBC44
 .align 2
 
 @ rom end 0x6BBFD0
-

@@ -2458,3 +2458,15 @@ dexEntry205::
     .dexText ""
     .dexText ""
     .dexText ""
+
+    .align 2, 0
+dexEntry206::
+    .2byte 5, 2, 2, 0xA, 0, 8, 0, 0xA, 2, 9, 8, 0
+    .dexName "BLITZLE"
+    .dexCategory "ELECTRIFIED"
+    .dexText "Its mane shines when it discharges"
+    .dexText "electricity. They use their flashing"
+    .dexText "manes to communicate with one another."
+    .dexText ""
+    .dexText ""
+    .dexText ""
