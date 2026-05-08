@@ -1,8 +1,9 @@
 # Guia para anadir una especie nueva
 
-Esta rama ya tiene una primera especie extra funcionando: `SPECIES_TEST_EXTRA`,
-usada como Blitzle. La idea de esta guia es dejar una receta repetible para
-anadir mas Pokemon sin romper la ROM ni el guardado.
+Esta rama ya tiene especies extra funcionando: Blitzle como
+`SPECIES_TEST_EXTRA` y Zebstrika como `SPECIES_ZEBSTRIKA`. La idea de esta guia
+es dejar una receta repetible para anadir mas Pokemon sin romper la ROM ni el
+guardado.
 
 ## Estado actual
 
@@ -11,7 +12,8 @@ anadir mas Pokemon sin romper la ROM ni el guardado.
 - Las especies nuevas viven por encima de `NUM_SAVE_SPECIES` y usan flags extra
   en RAM para pruebas.
 - Blitzle usa el indice interno `SPECIES_TEST_EXTRA`, que actualmente vale `205`.
-- `SPECIES_NONE` vale `206`, asi que `NUM_SPECIES` tambien es `206`.
+- Zebstrika usa el indice interno `SPECIES_ZEBSTRIKA`, que actualmente vale `206`.
+- `SPECIES_NONE` vale `207`, asi que `NUM_SPECIES` tambien es `207`.
 
 El punto importante: no subas el tamano de `pokedexFlags` dentro de `SaveData`
 si no quieres cambiar el layout del save y arriesgar corrupciones/crashes.
@@ -43,7 +45,8 @@ Ejemplo actual:
 ```c
 #define SPECIES_AERODACTYL      204
 #define SPECIES_TEST_EXTRA      205
-#define SPECIES_NONE            206
+#define SPECIES_ZEBSTRIKA       206
+#define SPECIES_NONE            207
 
 #define BONUS_SPECIES_START SPECIES_CHIKORITA
 #define NUM_BONUS_SPECIES (SPECIES_TEST_EXTRA - SPECIES_CHIKORITA)
@@ -51,13 +54,14 @@ Ejemplo actual:
 #define NUM_SAVE_SPECIES 205
 ```
 
-Para anadir otra especie despues de Blitzle, el patron seria:
+Para anadir otra especie despues de Zebstrika, el patron seria:
 
 ```c
 #define SPECIES_AERODACTYL      204
 #define SPECIES_BLITZLE         205
-#define SPECIES_NUEVO_MON       206
-#define SPECIES_NONE            207
+#define SPECIES_ZEBSTRIKA       206
+#define SPECIES_NUEVO_MON       207
+#define SPECIES_NONE            208
 
 #define NUM_SPECIES SPECIES_NONE
 #define NUM_SAVE_SPECIES 205
@@ -290,16 +294,19 @@ Blitzle usa una entrada nueva al final:
 ```asm
 gDexAnimationIx:
     ...
-    .2byte  84
+    .2byte  84,  -1
 
 gPokedexCatchAnimIndices:
     ...
-    .2byte 0
+    .2byte 0, -1
 ```
+
+En este ejemplo Blitzle usa animacion de captura (`84`) y Zebstrika no tiene
+sprite de captura, asi que usa `-1`.
 
 Si al crecer estas tablas la ROM crashea, el plan conservador es no crecerlas y
 meter un caso especial en `src/pokedex.c` para devolver los indices de la especie
-nueva. De momento Blitzle funciona con tabla extendida.
+nueva. De momento Blitzle y Zebstrika funcionan con tabla extendida.
 
 ## 8. No romper el guardado
 
@@ -424,4 +431,3 @@ evoluciones, secretos o especies sin evolucion.
 
 Solucion: revisar los pesos y los filtros antes de culpar a
 `data/mon_locations.inc`.
-

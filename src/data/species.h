@@ -2056,6 +2056,16 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .catchIndex = 84,
         .eggIndex = 0,
         .specialEggFlag = 0,
+        .evolutionMethod = 1,
+        .evolutionTarget = SPECIES_ZEBSTRIKA
+    },
+    [SPECIES_ZEBSTRIKA] = {
+        .speciesIdRS = 310,
+        .nameJapanese = {0},
+        .name = "ZEBSTRIKA ",
+        .catchIndex = 0,
+        .eggIndex = 0,
+        .specialEggFlag = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },

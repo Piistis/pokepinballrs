@@ -2470,3 +2470,15 @@ dexEntry206::
     .dexText "that flash like lightning."
     .dexText ""
     .dexText ""
+
+    .align 2, 0
+dexEntry207::
+    .2byte 3, 0, 2, 0xA, 0, 0, 1, 0xA, 1, 9, 5, 0
+    .dexName "ZEBSTRIKA"
+    .dexCategory "THUNDERBOLT"
+    .dexText "ZEBSTRIKA runs like lightning"
+    .dexText "across open grasslands."
+    .dexText "Its mane crackles with electricity"
+    .dexText "when it charges into battle."
+    .dexText ""
+    .dexText ""

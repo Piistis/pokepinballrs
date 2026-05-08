@@ -845,6 +845,10 @@
       "palette": "zangoose_portrait.gbapal"
     },
     {
+      "gfx_filename": "zebstrika_portrait",
+      "palette": "zebstrika_portrait.gbapal"
+    },
+    {
       "gfx_filename": "zigzagoon_portrait",
       "palette": "zigzagoon_portrait.gbapal"
     },
