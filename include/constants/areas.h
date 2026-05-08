@@ -18,4 +18,8 @@
 #define AREA_TEST              14
 #define AREA_COUNT              15
 
+#define AREA_ROULETTE_SLOT_COUNT       7
+#define AREA_ROULETTE_RUIN_SLOT        7
+#define AREA_ROULETTE_TOTAL_SLOT_COUNT 8
+
 #endif // GUARD_CONSTANTS_AREAS_H

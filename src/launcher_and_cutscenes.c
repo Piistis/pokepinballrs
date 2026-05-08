@@ -1,6 +1,7 @@
 #include "global.h"
 #include "m4a.h"
 #include "main.h"
+#include "constants/areas.h"
 #include "constants/bg_music.h"
 
 extern const u8 gRubyTravelVolbeat_Gfx[][0x480];
@@ -11,7 +12,7 @@ extern const u8 gSapphireTravelPaint_Gfx[];
 extern const u8 gSapphirePainterPalette[];
 extern const s16 gTravelEventAnimData[][3];
 extern const s16 gAreaPortraitIndexes[];
-extern const s16 gAreaRouletteTable[][7];
+extern const s16 gAreaRouletteTable[][AREA_ROULETTE_TOTAL_SLOT_COUNT];
 extern u16 gTravelEventSpritesheetOam[][18];
 extern const s16 gHatchRevealFinalTimings[];
 extern const u16 gHatchSequentialOamFramesets[22][12];
@@ -859,4 +860,3 @@ void RunTravelEventCutscene(void)
         gCurrentPinballGame->activePortraitType = 0;
     }
 }
-

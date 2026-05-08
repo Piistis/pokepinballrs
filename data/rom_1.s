@@ -9,11 +9,12 @@
 	.include "asm/macros.inc"
 
 gAreaRouletteTable:: @ 0x08055A68
-	.2byte AREA_TEST
-	.2byte AREA_TEST
-	.2byte AREA_TEST
-	.2byte AREA_TEST
-	.2byte AREA_TEST
+	.2byte AREA_FOREST_RUBY
+	.2byte AREA_VOLCANO
+	.2byte AREA_PLAINS_RUBY
+	.2byte AREA_OCEAN_RUBY
+	.2byte AREA_SAFARI_ZONE
+	.2byte AREA_CAVE_RUBY
 	.2byte AREA_TEST
 	.2byte AREA_RUIN_RUBY
 	.2byte AREA_FOREST_SAPPHIRE
@@ -22,6 +23,7 @@ gAreaRouletteTable:: @ 0x08055A68
 	.2byte AREA_WILDERNESS
 	.2byte AREA_OCEAN_SAPPHIRE
 	.2byte AREA_CAVE_SAPPHIRE
+	.2byte AREA_TEST
 	.2byte AREA_RUIN_SAPPHIRE
 
 .include "data/mon_locations.inc"

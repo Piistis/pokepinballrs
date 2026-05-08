@@ -2,9 +2,10 @@
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "constants/areas.h"
 #include "constants/ruby_states.h"
 
-extern const s16 gAreaRouletteTable[][7];
+extern const s16 gAreaRouletteTable[][AREA_ROULETTE_TOTAL_SLOT_COUNT];
 extern const s16 gAreaPortraitIndexes[];
 extern const u16 gAreaRouletteOamFramesets[18][27];
 
@@ -24,10 +25,12 @@ void InitAreaRoulette(void)
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->creatureOamPriority = 3;
     gCurrentPinballGame->areaVisitCount = 0;
-    gCurrentPinballGame->areaRouletteSlotIndex = (Random() + gMain.systemFrameCount) % 6;
+    gCurrentPinballGame->areaRouletteSlotIndex =
+        (Random() + gMain.systemFrameCount) % AREA_ROULETTE_SLOT_COUNT;
     gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
     gCurrentPinballGame->roulettePortraitIndexes[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
-    gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][(gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6];
+    gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][
+        (gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_ROULETTE_SLOT_COUNT];
     gCurrentPinballGame->roulettePortraitIndexes[0] = gAreaPortraitIndexes[gCurrentPinballGame->area];
     LoadPortraitGraphics(0, 0);
     LoadPortraitGraphics(0, 1);
@@ -153,7 +156,7 @@ void UpdateAreaRoulette(void)
                     if (gCurrentPinballGame->rouletteSpinSpeed < 24)
                     {
                         gCurrentPinballGame->rouletteSpinSpeed = 24;
-                        if (gCurrentPinballGame->areaRouletteSlotIndex == 6)
+                        if (gCurrentPinballGame->areaRouletteSlotIndex == AREA_ROULETTE_RUIN_SLOT)
                             gCurrentPinballGame->rouletteSpinSpeed = 0;
                     }
                 }
@@ -201,15 +204,19 @@ void UpdateAreaRoulette(void)
         {
             if (gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
             {
-                gCurrentPinballGame->areaRouletteSlotIndex = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % 7;
+                gCurrentPinballGame->areaRouletteSlotIndex =
+                    (gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_ROULETTE_TOTAL_SLOT_COUNT;
                 gCurrentPinballGame->areaRouletteNextSlot = 0;
                 gCurrentPinballGame->areaRouletteFarSlot = 1;
             }
             else
             {
-                gCurrentPinballGame->areaRouletteSlotIndex = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6;
-                gCurrentPinballGame->areaRouletteNextSlot = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6;
-                gCurrentPinballGame->areaRouletteFarSlot = (gCurrentPinballGame->areaRouletteSlotIndex + 2) % 6;
+                gCurrentPinballGame->areaRouletteSlotIndex =
+                    (gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_ROULETTE_SLOT_COUNT;
+                gCurrentPinballGame->areaRouletteNextSlot =
+                    (gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_ROULETTE_SLOT_COUNT;
+                gCurrentPinballGame->areaRouletteFarSlot =
+                    (gCurrentPinballGame->areaRouletteSlotIndex + 2) % AREA_ROULETTE_SLOT_COUNT;
             }
 
             gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
@@ -453,7 +460,7 @@ void UpdateTravelMode(void)
                 gCurrentPinballGame->modeAnimTimer = 144;
                 m4aMPlayAllStop();
                 LoadPortraitGraphics(0, 0);
-                if (gCurrentPinballGame->areaVisitCount < 5)
+                if (gCurrentPinballGame->areaVisitCount < AREA_ROULETTE_SLOT_COUNT - 1)
                 {
                     var0 = gCurrentPinballGame->areaRouletteFarSlot;
                     if (gCurrentPinballGame->travelRouletteSlotHitType == 1)
@@ -461,13 +468,13 @@ void UpdateTravelMode(void)
                     else
                         gCurrentPinballGame->areaRouletteSlotIndex = gCurrentPinballGame->areaRouletteFarSlot;
 
-                    gCurrentPinballGame->areaRouletteNextSlot = (var0 + 1) % 6;
-                    gCurrentPinballGame->areaRouletteFarSlot = (var0 + 2) % 6;
+                    gCurrentPinballGame->areaRouletteNextSlot = (var0 + 1) % AREA_ROULETTE_SLOT_COUNT;
+                    gCurrentPinballGame->areaRouletteFarSlot = (var0 + 2) % AREA_ROULETTE_SLOT_COUNT;
                     gCurrentPinballGame->areaVisitCount++;
                 }
                 else
                 {
-                    gCurrentPinballGame->areaRouletteSlotIndex = 6;
+                    gCurrentPinballGame->areaRouletteSlotIndex = AREA_ROULETTE_RUIN_SLOT;
                     gCurrentPinballGame->areaVisitCount = 0;
                 }
             }
