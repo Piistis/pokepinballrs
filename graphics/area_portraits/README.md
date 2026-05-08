@@ -1,6 +1,6 @@
 # Area portraits
 
-These are the travel roulette area portraits extracted from:
+These are the travel roulette area portraits used by:
 
 ```asm
 gPortraitGenericGraphics:: @ 0x0848D68C
@@ -8,9 +8,14 @@ gPortraitGenericPalettes:: @ 0x081C00E4
 ```
 
 Each portrait is `48x32` and occupies `0x300` bytes as 4bpp tiled graphics.
-They use the same layout as Pokemon portraits: `width = 6`, `mwidth = 2`,
-`mheight = 2`.
-The order matches `gAreaPortraitIndexes` in `data/rom_1.s`:
+Mod-added portraits use the same layout as Pokemon portraits: `width = 6`,
+`mwidth = 2`, `mheight = 2`.
+
+The original 13 portraits are intentionally still included from `baserom.gba`.
+The extracted PNGs for those originals look like noise and are not used by
+the build. Mod-added portraits are appended after the original block.
+
+The runtime order matches `gAreaPortraitIndexes` in `data/rom_1.s`:
 
 1. `forest_ruby`
 2. `forest_sapphire`
@@ -28,9 +33,8 @@ The order matches `gAreaPortraitIndexes` in `data/rom_1.s`:
 14. `test_area`
 
 Ruby and Sapphire ruins share the same portrait index.
-`test_area` is a mod-added portrait used by `AREA_TEST`.
+`test_area` is the first mod-added portrait and is used by `AREA_TEST`.
 
-The palette files used by the build are `.gbapal.bin` because some original
-palette colors have the unused high bit set. Regular `.pal -> .gbapal`
-conversion would drop that bit and stop this extraction from being byte-exact.
-The `.pal` files are provided as editable JASC references.
+Mod-added palettes can be referenced as `.gbapal`; `make` generates them from
+the indexed PNG using the generic `%.gbapal: %.png` rule. Use `.gbapal.bin`
+only for byte-exact original palettes that must preserve unusual bits.
