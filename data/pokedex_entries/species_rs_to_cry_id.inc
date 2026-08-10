@@ -245,5 +245,5 @@ gSpeciesRSToCryId:: @ 0x08527F18
 	.2byte 0x01F0   @AMAURA
 	.2byte 0x01F1   @ROWLET
 	.2byte 0x01F2   @APPLIN
-	.2byte 0x00C8   @FUECOCO
+	.2byte 0x01F3   @FUECOCO
 	.align 2,0

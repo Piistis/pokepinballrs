@@ -2295,7 +2295,7 @@ gPokemonCryToneBank3:: @ 0x08533F60
 	voice_directsound_compressed gDirectSound_Cry_698
 	voice_directsound_compressed gDirectSound_Cry_722
 	voice_directsound_compressed gDirectSound_Cry_840
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound_compressed gDirectSound_Cry_909
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -3664,6 +3664,10 @@ gDirectSound_Cry_722::
 	.align 2
 gDirectSound_Cry_840::
 	.incbin "sound/direct_sound_samples/cries/cry_840_applin.bin"
+
+	.align 2
+gDirectSound_Cry_909::
+	.incbin "sound/direct_sound_samples/cries/cry_909_fuecoco.bin"
 
 	.align 2
 gDirectSound_08535870:: @ 0x08535870
