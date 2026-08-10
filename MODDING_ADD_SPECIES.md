@@ -18,14 +18,18 @@ si no quieres cambiar el layout del save y arriesgar corrupciones/crashes.
 Para anadir una especie nueva hay que tocar, como minimo:
 
 1. `include/constants/species.h`
-2. `src/data/species.h`
-3. `data/pokedex_entries/dex.inc`
-4. `data/mon_locations.inc`
-5. Graficos de retrato en `graphics/mon_portraits`
-6. Graficos de captura en `graphics/mon_catch_sprites`
-7. Includes de graficos/paletas en `data/graphics`
-8. Tablas de animacion de Pokedex en `data/rom_2.s`
-9. Compilar y probar en ROM
+2. `include/constants/species_rs.h`
+3. `src/data/species.h`
+4. `data/pokedex_entries/dex.inc`
+5. `data/pokedex_entries/pokedex_order.inc`
+6. `data/pokedex_entries/species_rs_to_cry_id.inc`
+7. `data/sound_data.s` y el WAV del grito en `sound/direct_sound_samples/cries`
+8. `data/mon_locations.inc` si la especie debe aparecer en encuentros
+9. Graficos de retrato en `graphics/mon_portraits`
+10. Graficos de captura/huevo en `graphics/mon_catch_sprites` o `graphics/mon_hatch_sprites`
+11. Includes de graficos/paletas en `data/graphics`
+12. Tablas de animacion de Pokedex en `data/rom_2.s`
+13. Compilar y probar en ROM
 
 ## 1. Crear la constante de especie
 
@@ -71,6 +75,18 @@ Notas:
 
 ## 2. Anadir datos base de especie
 
+Antes de rellenar `src/data/species.h`, crea tambien un ID en:
+
+```c
+include/constants/species_rs.h
+```
+
+Las especies que no existen en Ruby/Sapphire no deben reutilizar un
+`.speciesIdRS` de otra especie salvo como placeholder temporal muy claro. Ese
+ID se usa para buscar el grito, y si el rango o la tabla quedan incompletos la
+Pokedex puede reproducir tonos incorrectos o reiniciar la ROM al abrir el
+detalle.
+
 Archivo:
 
 ```c
@@ -97,8 +113,9 @@ Campos importantes:
 - `.name`: nombre mostrado por el juego. Debe respetar el ancho usado por el
   resto de entradas; normalmente se rellena con espacios.
 - `.speciesIdRS`: se usa para datos relacionados con especies de Ruby/Sapphire,
-  como gritos. Si no existe la especie en Gen 3, hay que reutilizar un grito
-  existente o ampliar tambien el sistema de cries.
+  como gritos. Si no existe la especie en Gen 3, crea un `SPECIES_RS_*` nuevo,
+  anade su fila en `species_rs_to_cry_id.inc`, su entrada en `gPokemonCryToneBank*`
+  y el `.incbin` de su WAV convertido en `data/sound_data.s`.
 - `.catchIndex`: indice del sprite de captura. Blitzle usa `84` porque queda
   despues de Aerodactyl en el grupo de sprites de captura.
 - `.evolutionTarget`: si no evoluciona dentro de este mod, usa `SPECIES_NONE`.
@@ -137,10 +154,17 @@ Avisos:
 
 - Usa texto ASCII. Evita acentos, simbolos raros y caracteres copiados de
   editores modernos.
+- Usa mayusculas normales en `.dexText`, no todo en mayusculas. Los nombres de
+  especie pueden mantenerse como en las entradas oficiales, pero las frases
+  deben leerse en formato normal.
+- `.dexCategory` debe contener solo el genero, sin `Pokemon`/`POKEMON`; la UI
+  anade la palabra Pokemon por su cuenta.
 - No dejes entradas con menos de 6 `.dexText`; eso descoloca los datos de las
   especies siguientes.
 - El numero de la etiqueta `dexEntry206` es el numero mostrado en Pokedex, no
   necesariamente el indice interno C.
+- `pokedex_order.inc` controla el orden visible. Coloca especies sueltas por
+  numero nacional para que no queden escondidas entre generaciones.
 
 ## 4. Colocar la especie en encuentros
 

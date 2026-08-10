@@ -11,6 +11,8 @@ Each entry lives in `data/pokedex_entries/dex.inc` and must include:
 - `.dexName` using the in-game species name.
 - `.dexCategory` with the official genus minus the word `Pokemon`, capped at 11 characters.
 - Exactly six `.dexText` lines.
+- `.dexText` in normal sentence case, not full uppercase.
+- `data/pokedex_entries/pokedex_order.inc` sorted by National Dex number for the visible list.
 
 ## Text Limits
 
@@ -34,6 +36,7 @@ Use official game Pokedex entries. Prefer Gen 3 text when available because this
 Do not invent descriptions. Only adapt official entries for formatting:
 
 - Rewrap lines to 42 characters or less.
+- Use regular capitalization instead of all-caps text.
 - Convert apostrophes to the existing in-game backtick style.
 - Remove invisible soft hyphens.
 - Avoid unsupported smart quotes.
@@ -48,6 +51,8 @@ Before committing, validate every newly added entry:
 - It has exactly six `.dexText` lines.
 - No `.dexText` line is longer than 42 characters.
 - No `Temporary National Dex entry.`, `placeholder graphics`, or `.dexCategory "TEMP"` remains for inserted Pokemon.
+- No category ends with `Pokemon`, `POKEMON`, or a truncated `POK...` suffix, because the UI appends Pokemon itself.
+- Any species with a new `SPECIES_RS_*` has a matching cry row, tone-bank entry, and direct-sound sample.
 
 ## Debug Review
 
