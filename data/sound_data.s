@@ -3665,6 +3665,7 @@ gDirectSound_Cry_722::
 gDirectSound_Cry_840::
 	.incbin "sound/direct_sound_samples/cries/cry_840_applin.bin"
 
+	.align 2
 gDirectSound_08535870:: @ 0x08535870
 	.incbin "sound/direct_sound_samples/gDirectSound_08535870.bin"
 

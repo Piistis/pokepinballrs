@@ -2027,6 +2027,9 @@ void BlitGlyphToTileBuffer(s32 arg0, s32 arg1, s32 arg2) {
     int i;
     s32 temp_r2;
 
+    if (arg1 >= 248)
+        return;
+
     temp_r2 = ((arg1 / 8) * 0x10) + (arg2 * 0x400);
 
     switch (arg0) {
