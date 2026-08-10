@@ -4654,3 +4654,1347 @@ dexEntry388::
     .dexText "when it charges into battle."
     .dexText ""
     .dexText ""
+
+    .align 2, 0
+dexEntry389::
+    .2byte 3, 8, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 2, 2
+    .dexName "TURTWIG"
+    .dexCategory "TINY LEAF P"
+    .dexText "MADE FROM SOIL, THE SHELL ON ITS BACK"
+    .dexText "HARDENS WHEN IT DRINKS WATER. IT LIVES"
+    .dexText "ALONG LAKES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry390::
+    .2byte 3, 8, 8, 0xA, 3, 0, 7, 0xA, 0xA, 2, 1, 4
+    .dexName "GROTLE"
+    .dexCategory "GROVE POKÉM"
+    .dexText "IT LIVES ALONG WATER IN FORESTS. IN THE"
+    .dexText "DAYTIME, IT LEAVES THE FOREST TO SUNBATHE"
+    .dexText "ITS TREED SHELL."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry391::
+    .2byte 3, 8, 9, 0xA, 7, 0, 3, 0xA, 0xA, 6, 8, 3
+    .dexName "TORTERRA"
+    .dexCategory "CONTINENT P"
+    .dexText "SMALL POKÉMON OCCASIONALLY GATHER ON ITS"
+    .dexText "UNMOVING BACK TO BEGIN BUILDING THEIR"
+    .dexText "NESTS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry392::
+    .2byte 3, 9, 0, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 1, 4
+    .dexName "CHIMCHAR"
+    .dexCategory "CHIMP POKÉM"
+    .dexText "IT AGILELY SCALES SHEER CLIFFS TO LIVE"
+    .dexText "ATOP CRAGGY MOUNTAINS. ITS FIRE IS PUT OUT"
+    .dexText "WHEN IT SLEEPS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry393::
+    .2byte 3, 9, 1, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 4, 9
+    .dexName "MONFERNO"
+    .dexCategory "PLAYFUL POK"
+    .dexText "TO INTIMIDATE ATTACKERS, IT STRETCHES THE"
+    .dexText "FIRE ON ITS TAIL TO MAKE ITSELF APPEAR"
+    .dexText "BIGGER."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry394::
+    .2byte 3, 9, 2, 0xA, 3, 1, 1, 0xA, 0xA, 1, 2, 1
+    .dexName "INFERNAPE"
+    .dexCategory "FLAME POKÉM"
+    .dexText "IT USES A SPECIAL KIND OF MARTIAL ARTS"
+    .dexText "INVOLVING ALL ITS LIMBS. ITS FIRE NEVER"
+    .dexText "GOES OUT."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry395::
+    .2byte 3, 9, 3, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 1, 1
+    .dexName "PIPLUP"
+    .dexCategory "PENGUIN POK"
+    .dexText "BECAUSE IT IS VERY PROUD, IT HATES"
+    .dexText "ACCEPTING FOOD FROM PEOPLE. ITS THICK DOWN"
+    .dexText "GUARDS IT FROM COLD."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry396::
+    .2byte 3, 9, 4, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 5, 1
+    .dexName "PRINPLUP"
+    .dexCategory "PENGUIN POK"
+    .dexText "IT LIVES ALONE, AWAY FROM OTHERS."
+    .dexText "APPARENTLY, EVERY ONE OF THEM BELIEVES IT"
+    .dexText "IS THE MOST IMPORTANT."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry397::
+    .2byte 3, 9, 5, 0xA, 5, 0, 7, 0xA, 0xA, 1, 8, 6
+    .dexName "EMPOLEON"
+    .dexCategory "EMPEROR POK"
+    .dexText "THE THREE HORNS THAT EXTEND FROM ITS BEAK"
+    .dexText "ATTEST TO ITS POWER. THE LEADER HAS THE"
+    .dexText "BIGGEST HORNS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry398::
+    .2byte 3, 9, 6, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 4
+    .dexName "STARLY"
+    .dexCategory "STARLING PO"
+    .dexText "THEY FLOCK IN GREAT NUMBERS. THOUGH SMALL,"
+    .dexText "THEY FLAP THEIR WINGS WITH GREAT POWER."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry399::
+    .2byte 3, 9, 7, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 3, 4
+    .dexName "STARAVIA"
+    .dexCategory "STARLING PO"
+    .dexText "IT FLIES AROUND FORESTS AND FIELDS IN"
+    .dexText "SEARCH OF BUG POKÉMON. IT STAYS WITHIN A"
+    .dexText "HUGE FLOCK."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry400::
+    .2byte 3, 9, 8, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 5, 5
+    .dexName "STARAPTOR"
+    .dexCategory "PREDATOR PO"
+    .dexText "IT HAS A SAVAGE NATURE. IT WILL"
+    .dexText "COURAGEOUSLY CHALLENGE FOES THAT ARE MUCH"
+    .dexText "LARGER."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry401::
+    .2byte 3, 9, 9, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 4, 4
+    .dexName "BIDOOF"
+    .dexCategory "PLUMP MOUSE"
+    .dexText "WITH NERVES OF STEEL, NOTHING CAN PERTURB"
+    .dexText "IT. IT IS MORE AGILE AND ACTIVE THAN IT"
+    .dexText "APPEARS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry402::
+    .2byte 4, 0, 0, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 6, 9
+    .dexName "BIBAREL"
+    .dexCategory "BEAVER POKÉ"
+    .dexText "IT MAKES ITS NEST BY DAMMING STREAMS WITH"
+    .dexText "BARK AND MUD. IT IS KNOWN AS AN"
+    .dexText "INDUSTRIOUS WORKER."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry403::
+    .2byte 4, 0, 1, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 5
+    .dexName "KRICKETOT"
+    .dexCategory "CRICKET POK"
+    .dexText "IT SHAKES ITS HEAD BACK TO FRONT, CAUSING"
+    .dexText "ITS ANTENNAE TO HIT EACH OTHER AND SOUND"
+    .dexText "LIKE A XYLOPHONE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry404::
+    .2byte 4, 0, 2, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 5, 6
+    .dexName "KRICKETUNE"
+    .dexCategory "CRICKET POK"
+    .dexText "IT CROSSES ITS KNIFELIKE ARMS IN FRONT OF"
+    .dexText "ITS CHEST WHEN IT CRIES. IT CAN COMPOSE"
+    .dexText "MELODIES AD LIB."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry405::
+    .2byte 4, 0, 3, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 2, 1
+    .dexName "SHINX"
+    .dexCategory "FLASH POKÉM"
+    .dexText "ALL OF ITS FUR DAZZLES IF DANGER IS"
+    .dexText "SENSED. IT FLEES WHILE THE FOE IS"
+    .dexText "MOMENTARILY BLINDED."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry406::
+    .2byte 4, 0, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 7
+    .dexName "LUXIO"
+    .dexCategory "SPARK POKÉM"
+    .dexText "ITS CLAWS LOOSE ELECTRICITY WITH ENOUGH"
+    .dexText "AMPERAGE TO CAUSE FAINTING. THEY LIVE IN"
+    .dexText "SMALL GROUPS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry407::
+    .2byte 4, 0, 5, 0xA, 4, 0, 7, 0xA, 0xA, 0xA, 9, 3
+    .dexName "LUXRAY"
+    .dexCategory "GLEAM EYES "
+    .dexText "IT HAS EYES THAT CAN SEE THROUGH ANYTHING."
+    .dexText "IT SPOTS AND CAPTURES PREY HIDING BEHIND"
+    .dexText "OBJECTS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry408::
+    .2byte 4, 0, 6, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 3
+    .dexName "BUDEW"
+    .dexCategory "BUD POKÉMON"
+    .dexText "OVER THE WINTER, IT CLOSES ITS BUD AND"
+    .dexText "ENDURES THE COLD. IN SPRING, THE BUD OPENS"
+    .dexText "AND RELEASES POLLEN."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry409::
+    .2byte 4, 0, 7, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 3, 2
+    .dexName "ROSERADE"
+    .dexCategory "BOUQUET POK"
+    .dexText "IT ATTRACTS PREY WITH A SWEET AROMA, THEN"
+    .dexText "DOWNS IT WITH THORNY WHIPS HIDDEN IN ITS"
+    .dexText "ARMS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry410::
+    .2byte 4, 0, 8, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 9
+    .dexName "CRANIDOS"
+    .dexCategory "HEAD BUTT P"
+    .dexText "IT LIVED IN JUNGLES AROUND 100 MILLION"
+    .dexText "YEARS AGO. ITS SKULL IS AS HARD AS IRON."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry411::
+    .2byte 4, 0, 9, 0xA, 5, 0, 3, 0xA, 0xA, 2, 2, 6
+    .dexName "RAMPARDOS"
+    .dexCategory "HEAD BUTT P"
+    .dexText "ITS POWERFUL HEAD BUTT HAS ENOUGH POWER TO"
+    .dexText "SHATTER EVEN THE MOST DURABLE THINGS UPON"
+    .dexText "IMPACT."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry412::
+    .2byte 4, 1, 0, 0xA, 1, 0, 8, 0xA, 0xA, 1, 2, 6
+    .dexName "SHIELDON"
+    .dexCategory "SHIELD POKÉ"
+    .dexText "A POKÉMON THAT LIVED IN JUNGLES AROUND 100"
+    .dexText "MILLION YEARS AGO. ITS FACIAL HIDE IS"
+    .dexText "EXTREMELY HARD."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry413::
+    .2byte 4, 1, 1, 0xA, 4, 0, 3, 0xA, 0xA, 3, 3, 0
+    .dexName "BASTIODON"
+    .dexCategory "SHIELD POKÉ"
+    .dexText "ANY FRONTAL ATTACK IS REPULSED. IT IS A"
+    .dexText "DOCILE POKÉMON THAT FEEDS ON GRASS AND"
+    .dexText "BERRIES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry414::
+    .2byte 4, 1, 2, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 7
+    .dexName "BURMY"
+    .dexCategory "BAGWORM POK"
+    .dexText "TO SHELTER ITSELF FROM COLD, WINTRY WINDS,"
+    .dexText "IT COVERS ITSELF WITH A CLOAK MADE OF"
+    .dexText "TWIGS AND LEAVES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry415::
+    .2byte 4, 1, 3, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 1, 4
+    .dexName "WORMADAM"
+    .dexCategory "BAGWORM POK"
+    .dexText "WHEN BURMY EVOLVED, ITS CLOAK BECAME A"
+    .dexText "PART OF THIS POKÉMON’S BODY. THE CLOAK IS"
+    .dexText "NEVER SHED."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry416::
+    .2byte 4, 1, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 5, 1
+    .dexName "MOTHIM"
+    .dexCategory "MOTH POKÉMO"
+    .dexText "IT LOVES THE HONEY OF FLOWERS AND STEALS"
+    .dexText "HONEY COLLECTED BY COMBEE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry417::
+    .2byte 4, 1, 5, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 1, 2
+    .dexName "COMBEE"
+    .dexCategory "TINY BEE PO"
+    .dexText "A POKÉMON FORMED BY THREE OTHERS. IT"
+    .dexText "BUSILY CARRIES SWEET FLORAL HONEY TO"
+    .dexText "VESPIQUEN."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry418::
+    .2byte 4, 1, 6, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 8, 5
+    .dexName "VESPIQUEN"
+    .dexCategory "BEEHIVE POK"
+    .dexText "ITS ABDOMEN IS A HONEYCOMB FOR GRUBS. IT"
+    .dexText "RAISES ITS GRUBS ON HONEY COLLECTED BY"
+    .dexText "COMBEE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry419::
+    .2byte 4, 1, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 9
+    .dexName "PACHIRISU"
+    .dexCategory "ELESQUIRREL"
+    .dexText "IT MAKES FUR BALLS THAT CRACKLE WITH"
+    .dexText "STATIC ELECTRICITY. IT STORES THEM WITH"
+    .dexText "BERRIES IN TREE HOLES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry420::
+    .2byte 4, 1, 8, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 6, 5
+    .dexName "BUIZEL"
+    .dexCategory "SEA WEASEL "
+    .dexText "IT HAS A FLOTATION SAC THAT IS LIKE AN"
+    .dexText "INFLATABLE COLLAR. IT FLOATS ON WATER WITH"
+    .dexText "ITS HEAD OUT."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry421::
+    .2byte 4, 1, 9, 0xA, 3, 0, 7, 0xA, 0xA, 0xA, 7, 4
+    .dexName "FLOATZEL"
+    .dexCategory "SEA WEASEL "
+    .dexText "IT FLOATS USING ITS WELL-DEVELOPED"
+    .dexText "FLOTATION SAC. IT ASSISTS IN THE RESCUES"
+    .dexText "OF DROWNING PEOPLE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry422::
+    .2byte 4, 2, 0, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 7
+    .dexName "CHERUBI"
+    .dexCategory "CHERRY POKÉ"
+    .dexText "THE SMALL BALL HOLDS THE NUTRIENTS NEEDED"
+    .dexText "FOR EVOLUTION. APPARENTLY, IT IS VERY"
+    .dexText "SWEET AND TASTY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry423::
+    .2byte 4, 2, 1, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 2, 1
+    .dexName "CHERRIM"
+    .dexCategory "BLOSSOM POK"
+    .dexText "IT BLOOMS DURING TIMES OF STRONG SUNLIGHT."
+    .dexText "IT TRIES TO MAKE UP FOR EVERYTHING IT"
+    .dexText "ENDURED AS A BUD."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry424::
+    .2byte 4, 2, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 1, 4
+    .dexName "SHELLOS"
+    .dexCategory "SEA SLUG PO"
+    .dexText "ITS COLORS AND SHAPES DIFFER FROM REGION"
+    .dexText "TO REGION. IN THE SINNOH REGION, TWO TYPES"
+    .dexText "ARE CONFIRMED."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry425::
+    .2byte 4, 2, 3, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 6
+    .dexName "GASTRODON"
+    .dexCategory "SEA SLUG PO"
+    .dexText "IT HAS A PLIABLE BODY WITHOUT ANY BONES."
+    .dexText "IF ANY PART OF ITS BODY IS TORN OFF, IT"
+    .dexText "GROWS RIGHT BACK."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry426::
+    .2byte 4, 2, 4, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 4, 5
+    .dexName "AMBIPOM"
+    .dexCategory "LONG TAIL P"
+    .dexText "TO EAT, IT DEFTLY SHUCKS NUTS WITH ITS TWO"
+    .dexText "TAILS. IT RARELY USES ITS ARMS NOW."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry427::
+    .2byte 4, 2, 5, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 3
+    .dexName "DRIFLOON"
+    .dexCategory "BALLOON POK"
+    .dexText "A POKÉMON FORMED BY THE SPIRITS OF PEOPLE"
+    .dexText "AND POKÉMON. IT LOVES DAMP, HUMID SEASONS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry428::
+    .2byte 4, 2, 6, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 3, 3
+    .dexName "DRIFBLIM"
+    .dexCategory "BLIMP POKÉM"
+    .dexText "IT’S DROWZY IN DAYTIME, BUT FLIES OFF IN"
+    .dexText "THE EVENING IN BIG GROUPS. NO ONE KNOWS"
+    .dexText "WHERE THEY GO."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry429::
+    .2byte 4, 2, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 1, 2
+    .dexName "BUNEARY"
+    .dexCategory "RABBIT POKÉ"
+    .dexText "IT SLAMS FOES BY SHARPLY UNCOILING ITS"
+    .dexText "ROLLED EARS. IT STINGS ENOUGH TO MAKE A"
+    .dexText "GROWN-UP CRY IN PAIN."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry430::
+    .2byte 4, 2, 8, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 7, 3
+    .dexName "LOPUNNY"
+    .dexCategory "RABBIT POKÉ"
+    .dexText "AN EXTREMELY CAUTIOUS POKÉMON. IT CLOAKS"
+    .dexText "ITS BODY WITH ITS FLUFFY EAR FUR WHEN IT"
+    .dexText "SENSES DANGER."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry431::
+    .2byte 4, 2, 9, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 1, 0
+    .dexName "MISMAGIUS"
+    .dexCategory "MAGICAL POK"
+    .dexText "ITS CRIES SOUND LIKE INCANTATIONS. THOSE"
+    .dexText "HEARING IT ARE TORMENTED BY HEADACHES AND"
+    .dexText "HALLUCINATIONS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry432::
+    .2byte 4, 3, 0, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 0
+    .dexName "HONCHKROW"
+    .dexCategory "BIG BOSS PO"
+    .dexText "BECOMING ACTIVE AT NIGHT, IT IS KNOWN TO"
+    .dexText "SWARM WITH NUMEROUS MURKROW IN TOW."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry433::
+    .2byte 4, 3, 1, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 0xA, 9
+    .dexName "GLAMEOW"
+    .dexCategory "CATTY POKÉM"
+    .dexText "IT CLAWS IF DISPLEASED AND PURRS WHEN"
+    .dexText "AFFECTIONATE. ITS FICKLENESS IS VERY"
+    .dexText "POPULAR AMONG SOME."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry434::
+    .2byte 4, 3, 2, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 9, 7
+    .dexName "PURUGLY"
+    .dexCategory "TIGER CAT P"
+    .dexText "IT IS A BRAZEN BRUTE THAT BARGES ITS WAY"
+    .dexText "INTO ANOTHER POKÉMON’S NEST AND CLAIMS IT"
+    .dexText "AS ITS OWN."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry435::
+    .2byte 4, 3, 3, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 1
+    .dexName "CHINGLING"
+    .dexCategory "BELL POKÉMO"
+    .dexText "IT EMITS CRIES BY AGITATING AN ORB AT THE"
+    .dexText "BACK OF ITS THROAT. IT MOVES WITH"
+    .dexText "FLOUNCING HOPS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry436::
+    .2byte 4, 3, 4, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 4, 2
+    .dexName "STUNKY"
+    .dexCategory "SKUNK POKÉM"
+    .dexText "IT PROTECTS ITSELF BY SPRAYING A NOXIOUS"
+    .dexText "FLUID FROM ITS REAR. THE STENCH LINGERS"
+    .dexText "FOR 24 HOURS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry437::
+    .2byte 4, 3, 5, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 8, 4
+    .dexName "SKUNTANK"
+    .dexCategory "SKUNK POKÉM"
+    .dexText "IT SPRAYS A VILE-SMELLING FLUID FROM THE"
+    .dexText "TIP OF ITS TAIL TO ATTACK. ITS RANGE IS"
+    .dexText "OVER 160 FEET."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry438::
+    .2byte 4, 3, 6, 0xA, 1, 0, 8, 0xA, 0xA, 1, 3, 3
+    .dexName "BRONZOR"
+    .dexCategory "BRONZE POKÉ"
+    .dexText "IMPLEMENTS SHAPED LIKE IT WERE DISCOVERED"
+    .dexText "IN ANCIENT TOMBS. IT IS UNKNOWN IF THEY"
+    .dexText "ARE RELATED."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry439::
+    .2byte 4, 3, 7, 0xA, 4, 0, 3, 0xA, 0xA, 4, 1, 2
+    .dexName "BRONZONG"
+    .dexCategory "BRONZE BELL"
+    .dexText "ONE CAUSED A NEWS SENSATION WHEN IT WAS"
+    .dexText "DUG UP AT A CONSTRUCTION SITE AFTER A"
+    .dexText "2,000-YEAR SLEEP."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry440::
+    .2byte 4, 3, 8, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 3, 3
+    .dexName "BONSLY"
+    .dexCategory "BONSAI POKÉ"
+    .dexText "IT LOOKS AS IF IT IS ALWAYS CRYING. IT IS"
+    .dexText "ACTUALLY ADJUSTING ITS BODY’S FLUID LEVELS"
+    .dexText "BY ELIMINATING EXCESS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry441::
+    .2byte 4, 3, 9, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 2, 9
+    .dexName "MIME JR."
+    .dexCategory "MIME POKÉMO"
+    .dexText "IT HABITUALLY MIMICS FOES. ONCE MIMICKED,"
+    .dexText "THE FOE CANNOT TAKE ITS EYES OFF THIS"
+    .dexText "POKÉMON."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry442::
+    .2byte 4, 4, 0, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 5, 4
+    .dexName "HAPPINY"
+    .dexCategory "PLAYHOUSE P"
+    .dexText "IT LOVES ROUND WHITE THINGS. IT CARRIES AN"
+    .dexText "EGG-SHAPED ROCK IN IMITATION OF CHANSEY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry443::
+    .2byte 4, 4, 1, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 0xA, 4
+    .dexName "CHATOT"
+    .dexCategory "MUSIC NOTE "
+    .dexText "IT CAN LEARN AND SPEAK HUMAN WORDS. IF"
+    .dexText "THEY GATHER, THEY ALL LEARN THE SAME"
+    .dexText "SAYING."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry444::
+    .2byte 4, 4, 2, 0xA, 3, 0, 3, 0xA, 0xA, 2, 3, 8
+    .dexName "SPIRITOMB"
+    .dexCategory "FORBIDDEN P"
+    .dexText "A POKÉMON THAT WAS FORMED BY 108 SPIRITS."
+    .dexText "IT IS BOUND TO A FISSURE IN AN ODD"
+    .dexText "KEYSTONE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry445::
+    .2byte 4, 4, 3, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 4, 5
+    .dexName "GIBLE"
+    .dexCategory "LAND SHARK "
+    .dexText "IT NESTS IN SMALL, HORIZONTAL HOLES IN"
+    .dexText "CAVE WALLS. IT POUNCES TO CATCH PREY THAT"
+    .dexText "STRAY TOO CLOSE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry446::
+    .2byte 4, 4, 4, 0xA, 4, 0, 7, 0xA, 0xA, 1, 2, 3
+    .dexName "GABITE"
+    .dexCategory "CAVE POKÉMO"
+    .dexText "THERE IS A LONG-HELD BELIEF THAT MEDICINE"
+    .dexText "MADE FROM ITS SCALES WILL HEAL EVEN"
+    .dexText "INCURABLE ILLNESSES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry447::
+    .2byte 4, 4, 5, 0xA, 6, 0, 3, 0xA, 0xA, 2, 0, 9
+    .dexName "GARCHOMP"
+    .dexCategory "MACH POKÉMO"
+    .dexText "WHEN IT FOLDS UP ITS BODY AND EXTENDS ITS"
+    .dexText "WINGS, IT LOOKS LIKE A JET PLANE. IT FLIES"
+    .dexText "AT SONIC SPEED."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry448::
+    .2byte 4, 4, 6, 0xA, 2, 0, 0, 0xA, 0xA, 2, 3, 1
+    .dexName "MUNCHLAX"
+    .dexCategory "BIG EATER P"
+    .dexText "IT WOLFS DOWN ITS WEIGHT IN FOOD ONCE A"
+    .dexText "DAY, SWALLOWING FOOD WHOLE WITH ALMOST NO"
+    .dexText "CHEWING."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry449::
+    .2byte 4, 4, 7, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 4, 5
+    .dexName "RIOLU"
+    .dexCategory "EMANATION P"
+    .dexText "THE AURA THAT EMANATES FROM ITS BODY"
+    .dexText "INTENSIFIES TO ALERT OTHERS IF IT IS"
+    .dexText "AFRAID OR SAD."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry450::
+    .2byte 4, 4, 8, 0xA, 3, 1, 1, 0xA, 0xA, 1, 1, 9
+    .dexName "LUCARIO"
+    .dexCategory "AURA POKÉMO"
+    .dexText "IT HAS THE ABILITY TO SENSE THE AURAS OF"
+    .dexText "ALL THINGS. IT UNDERSTANDS HUMAN SPEECH."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry451::
+    .2byte 4, 4, 9, 0xA, 2, 0, 7, 0xA, 0xA, 1, 0, 9
+    .dexName "HIPPOPOTAS"
+    .dexCategory "HIPPO POKÉM"
+    .dexText "IT LIVES IN ARID PLACES. INSTEAD OF"
+    .dexText "PERSPIRATION, IT EXPELS GRAINY SAND FROM"
+    .dexText "ITS BODY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry452::
+    .2byte 4, 5, 0, 0xA, 6, 0, 7, 0xA, 0xA, 6, 6, 1
+    .dexName "HIPPOWDON"
+    .dexCategory "HEAVYWEIGHT"
+    .dexText "IT BLASTS INTERNALLY STORED SAND FROM"
+    .dexText "PORTS ON ITS BODY TO CREATE A TOWERING"
+    .dexText "TWISTER FOR ATTACK."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry453::
+    .2byte 4, 5, 1, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 2, 6
+    .dexName "SKORUPI"
+    .dexCategory "SCORPION PO"
+    .dexText "IT GRIPS PREY WITH ITS TAIL CLAWS AND"
+    .dexText "INJECTS POISON. IT TENACIOUSLY HANGS ON"
+    .dexText "UNTIL THE POISON TAKES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry454::
+    .2byte 4, 5, 2, 0xA, 4, 0, 3, 0xA, 0xA, 1, 3, 6
+    .dexName "DRAPION"
+    .dexCategory "OGRE SCORPI"
+    .dexText "IT HAS THE POWER IN ITS CLAWED ARMS TO"
+    .dexText "MAKE SCRAP OF A CAR. THE TIPS OF ITS CLAWS"
+    .dexText "RELEASE POISON."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry455::
+    .2byte 4, 5, 3, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 5, 1
+    .dexName "CROAGUNK"
+    .dexCategory "TOXIC MOUTH"
+    .dexText "ITS CHEEKS HOLD POISON SACS. IT TRIES TO"
+    .dexText "CATCH FOES OFF GUARD TO JAB THEM WITH"
+    .dexText "TOXIC FINGERS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry456::
+    .2byte 4, 5, 4, 0xA, 4, 0, 3, 0xA, 0xA, 0xA, 9, 8
+    .dexName "TOXICROAK"
+    .dexCategory "TOXIC MOUTH"
+    .dexText "ITS KNUCKLE CLAWS SECRETE A TOXIN SO VILE"
+    .dexText "THAT EVEN A SCRATCH COULD PROVE FATAL."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry457::
+    .2byte 4, 5, 5, 0xA, 4, 0, 7, 0xA, 0xA, 0xA, 6, 0
+    .dexName "CARNIVINE"
+    .dexCategory "BUG CATCHER"
+    .dexText "IT ATTRACTS PREY WITH ITS SWEET- SMELLING"
+    .dexText "SALIVA, THEN CHOMPS DOWN. IT TAKES A WHOLE"
+    .dexText "DAY TO EAT PREY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry458::
+    .2byte 4, 5, 6, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 1, 5
+    .dexName "FINNEON"
+    .dexCategory "WING FISH P"
+    .dexText "AFTER LONG EXPOSURE TO SUNLIGHT, THE"
+    .dexText "PATTERNS ON ITS TAIL FINS SHINE VIVIDLY"
+    .dexText "WHEN DARKNESS ARRIVES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry459::
+    .2byte 4, 5, 7, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 5, 3
+    .dexName "LUMINEON"
+    .dexCategory "NEON POKÉMO"
+    .dexText "IT LIVES ON THE DEEP-SEA FLOOR. IT"
+    .dexText "ATTRACTS PREY BY FLASHING THE PATTERNS ON"
+    .dexText "ITS FOUR TAIL FINS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry460::
+    .2byte 4, 5, 8, 0xA, 3, 0, 3, 0xA, 0xA, 1, 4, 3
+    .dexName "MANTYKE"
+    .dexCategory "KITE POKÉMO"
+    .dexText "A FRIENDLY POKÉMON THAT CAPTURES THE"
+    .dexText "SUBTLE FLOWS OF SEAWATER USING ITS TWO"
+    .dexText "ANTENNAE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry461::
+    .2byte 4, 5, 9, 0xA, 3, 0, 3, 0xA, 0xA, 1, 1, 1
+    .dexName "SNOVER"
+    .dexCategory "FROST TREE "
+    .dexText "IT LIVES ON SNOWY MOUNTAINS. HAVING HAD"
+    .dexText "LITTLE CONTACT WITH HUMANS, IT IS BOLDLY"
+    .dexText "INQUISITIVE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry462::
+    .2byte 4, 6, 0, 0xA, 7, 0, 3, 0xA, 0xA, 2, 9, 9
+    .dexName "ABOMASNOW"
+    .dexCategory "FROST TREE "
+    .dexText "IT WHIPS UP BLIZZARDS IN MOUNTAINS THAT"
+    .dexText "ARE ALWAYS BURIED IN SNOW. IT IS THE"
+    .dexText "ABOMINABLE SNOWMAN."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry463::
+    .2byte 4, 6, 1, 0xA, 3, 0, 7, 0xA, 0xA, 0xA, 7, 5
+    .dexName "WEAVILE"
+    .dexCategory "SHARP CLAW "
+    .dexText "THEY LIVE IN COLD REGIONS, FORMING GROUPS"
+    .dexText "OF FOUR OR FIVE THAT HUNT PREY WITH"
+    .dexText "IMPRESSIVE COORDINATION."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry464::
+    .2byte 4, 6, 2, 0xA, 3, 1, 1, 0xA, 0xA, 3, 9, 7
+    .dexName "MAGNEZONE"
+    .dexCategory "MAGNET AREA"
+    .dexText "IT EVOLVED FROM EXPOSURE TO A SPECIAL"
+    .dexText "MAGNETIC FIELD. THREE UNITS GENERATE"
+    .dexText "MAGNETISM."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry465::
+    .2byte 4, 6, 3, 0xA, 5, 0, 7, 0xA, 0xA, 3, 0, 9
+    .dexName "LICKILICKY"
+    .dexCategory "LICKING POK"
+    .dexText "IT WRAPS THINGS WITH ITS EXTENSIBLE"
+    .dexText "TONGUE. GETTING TOO CLOSE TO IT WILL LEAVE"
+    .dexText "YOU SOAKED WITH DROOL."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry466::
+    .2byte 4, 6, 4, 0xA, 7, 1, 0, 0xA, 0xA, 6, 2, 3
+    .dexName "RHYPERIOR"
+    .dexCategory "DRILL POKÉM"
+    .dexText "IT PUTS ROCKS IN HOLES IN ITS PALMS AND"
+    .dexText "USES ITS MUSCLES TO SHOOT THEM. GEODUDE"
+    .dexText "ARE SHOT AT RARE TIMES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry467::
+    .2byte 4, 6, 5, 0xA, 6, 0, 7, 0xA, 0xA, 2, 8, 4
+    .dexName "TANGROWTH"
+    .dexCategory "VINE POKÉMO"
+    .dexText "IT ENSNARES PREY BY EXTENDING ARMS MADE OF"
+    .dexText "VINES. LOSING ARMS TO PREDATORS DOES NOT"
+    .dexText "TROUBLE IT."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry468::
+    .2byte 4, 6, 6, 0xA, 5, 1, 1, 0xA, 0xA, 3, 0, 6
+    .dexName "ELECTIVIRE"
+    .dexCategory "THUNDERBOLT"
+    .dexText "IT PUSHES THE TIPS OF ITS TWO TAILS"
+    .dexText "AGAINST THE FOE, THEN LETS LOOSE WITH OVER"
+    .dexText "20,000 VOLTS OF POWER."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry469::
+    .2byte 4, 6, 7, 0xA, 5, 0, 3, 0xA, 0xA, 1, 5, 0
+    .dexName "MAGMORTAR"
+    .dexCategory "BLAST POKÉM"
+    .dexText "IT BLASTS FIREBALLS OF OVER 3,600 DEGREES"
+    .dexText "F FROM THE ENDS OF ITS ARMS. IT LIVES IN"
+    .dexText "VOLCANIC CRATERS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry470::
+    .2byte 4, 6, 8, 0xA, 4, 1, 1, 0xA, 0xA, 0xA, 8, 4
+    .dexName "TOGEKISS"
+    .dexCategory "JUBILEE POK"
+    .dexText "IT WILL NEVER APPEAR WHERE THERE IS"
+    .dexText "STRIFE. ITS SIGHTINGS HAVE BECOME RARE"
+    .dexText "RECENTLY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry471::
+    .2byte 4, 6, 9, 0xA, 6, 0, 3, 0xA, 0xA, 1, 1, 4
+    .dexName "YANMEGA"
+    .dexCategory "OGRE DARNER"
+    .dexText "BY CHURNING ITS WINGS, IT CREATES SHOCK"
+    .dexText "WAVES THAT INFLICT CRITICAL INTERNAL"
+    .dexText "INJURIES TO FOES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry472::
+    .2byte 4, 7, 0, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 5, 6
+    .dexName "LEAFEON"
+    .dexCategory "VERDANT POK"
+    .dexText "JUST LIKE A PLANT, IT USES PHOTOSYNTHESIS."
+    .dexText "AS A RESULT, IT IS ALWAYS ENVELOPED IN"
+    .dexText "CLEAR AIR."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry473::
+    .2byte 4, 7, 1, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 5, 7
+    .dexName "GLACEON"
+    .dexCategory "FRESH SNOW "
+    .dexText "AS A PROTECTIVE TECHNIQUE, IT CAN"
+    .dexText "COMPLETELY FREEZE ITS FUR TO MAKE ITS"
+    .dexText "HAIRS STAND LIKE NEEDLES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry474::
+    .2byte 4, 7, 2, 0xA, 6, 0, 7, 0xA, 0xA, 0xA, 9, 4
+    .dexName "GLISCOR"
+    .dexCategory "FANG SCORPI"
+    .dexText "IT OBSERVES PREY WHILE HANGING INVERTED"
+    .dexText "FROM BRANCHES. WHEN THE CHANCE PRESENTS"
+    .dexText "ITSELF, IT SWOOPS!"
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry475::
+    .2byte 4, 7, 3, 0xA, 8, 0, 2, 0xA, 0xA, 6, 4, 2
+    .dexName "MAMOSWINE"
+    .dexCategory "TWIN TUSK P"
+    .dexText "ITS IMPRESSIVE TUSKS ARE MADE OF ICE. THE"
+    .dexText "POPULATION THINNED WHEN IT TURNED WARM"
+    .dexText "AFTER THE ICE AGE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry476::
+    .2byte 4, 7, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 7, 5
+    .dexName "PORYGON-Z"
+    .dexCategory "VIRTUAL POK"
+    .dexText "ADDITIONAL SOFTWARE WAS INSTALLED TO MAKE"
+    .dexText "IT A BETTER POKÉMON. IT BEGAN ACTING"
+    .dexText "ODDLY, HOWEVER."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry477::
+    .2byte 4, 7, 5, 0xA, 5, 0, 3, 0xA, 0xA, 1, 1, 5
+    .dexName "GALLADE"
+    .dexCategory "BLADE POKÉM"
+    .dexText "A MASTER OF COURTESY AND SWORDSMANSHIP, IT"
+    .dexText "FIGHTS USING EXTENDING SWORDS ON ITS"
+    .dexText "ELBOWS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry478::
+    .2byte 4, 7, 6, 0xA, 4, 0, 7, 0xA, 0xA, 7, 5, 0
+    .dexName "PROBOPASS"
+    .dexCategory "COMPASS POK"
+    .dexText "IT EXUDES STRONG MAGNETISM FROM ALL OVER."
+    .dexText "IT CONTROLS THREE SMALL UNITS CALLED"
+    .dexText "MINI-NOSES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry479::
+    .2byte 4, 7, 7, 0xA, 7, 0, 3, 0xA, 0xA, 2, 3, 5
+    .dexName "DUSKNOIR"
+    .dexCategory "GRIPPER POK"
+    .dexText "THE ANTENNA ON ITS HEAD CAPTURES RADIO"
+    .dexText "WAVES FROM THE WORLD OF SPIRITS THAT"
+    .dexText "COMMAND IT TO TAKE PEOPLE THERE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry480::
+    .2byte 4, 7, 8, 0xA, 4, 0, 3, 0xA, 0xA, 0xA, 5, 9
+    .dexName "FROSLASS"
+    .dexCategory "SNOW LAND P"
+    .dexText "IT FREEZES FOES WITH AN ICY BREATH NEARLY"
+    .dexText "-60 DEGREES F. WHAT SEEMS TO BE ITS BODY"
+    .dexText "IS ACTUALLY HOLLOW."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry481::
+    .2byte 4, 7, 9, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .dexName "ROTOM"
+    .dexCategory "PLASMA POKÉ"
+    .dexText "ITS BODY IS COMPOSED OF PLASMA. IT IS"
+    .dexText "KNOWN TO INFILTRATE ELECTRONIC DEVICES AND"
+    .dexText "WREAK HAVOC."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry482::
+    .2byte 4, 8, 0, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .dexName "UXIE"
+    .dexCategory "KNOWLEDGE P"
+    .dexText "KNOWN AS “THE BEING OF KNOWLEDGE.” IT IS"
+    .dexText "SAID THAT IT CAN WIPE OUT THE MEMORY OF"
+    .dexText "THOSE WHO SEE ITS EYES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry483::
+    .2byte 4, 8, 1, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .dexName "MESPRIT"
+    .dexCategory "EMOTION POK"
+    .dexText "KNOWN AS “THE BEING OF EMOTION.” IT TAUGHT"
+    .dexText "HUMANS THE NOBILITY OF SORROW, PAIN, AND"
+    .dexText "JOY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry484::
+    .2byte 4, 8, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .dexName "AZELF"
+    .dexCategory "WILLPOWER P"
+    .dexText "KNOWN AS “THE BEING OF WILLPOWER.” IT"
+    .dexText "SLEEPS AT THE BOTTOM OF A LAKE TO KEEP THE"
+    .dexText "WORLD IN BALANCE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry485::
+    .2byte 4, 8, 3, 1, 7, 0, 9, 0xA, 1, 5, 0, 6
+    .dexName "DIALGA"
+    .dexCategory "TEMPORAL PO"
+    .dexText "IT HAS THE POWER TO CONTROL TIME. IT"
+    .dexText "APPEARS IN SINNOH-REGION MYTHS AS AN"
+    .dexText "ANCIENT DEITY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry486::
+    .2byte 4, 8, 4, 1, 3, 0, 9, 0xA, 0xA, 7, 4, 1
+    .dexName "PALKIA"
+    .dexCategory "SPATIAL POK"
+    .dexText "IT HAS THE ABILITY TO DISTORT SPACE. IT IS"
+    .dexText "DESCRIBED AS A DEITY IN SINNOH-REGION"
+    .dexText "MYTHOLOGY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry487::
+    .2byte 4, 8, 5, 0xA, 5, 0, 7, 0xA, 0xA, 9, 4, 8
+    .dexName "HEATRAN"
+    .dexCategory "LAVA DOME P"
+    .dexText "IT DWELLS IN VOLCANIC CAVES. IT DIGS IN"
+    .dexText "WITH ITS CROSS-SHAPED FEET TO CRAWL ON"
+    .dexText "CEILINGS AND WALLS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry488::
+    .2byte 4, 8, 6, 1, 2, 0, 2, 0xA, 0xA, 9, 2, 6
+    .dexName "REGIGIGAS"
+    .dexCategory "COLOSSAL PO"
+    .dexText "THERE IS AN ENDURING LEGEND THAT STATES"
+    .dexText "THIS POKÉMON TOWED CONTINENTS WITH ROPES."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry489::
+    .2byte 4, 8, 7, 1, 4, 0, 9, 0xA, 1, 6, 5, 3
+    .dexName "GIRATINA"
+    .dexCategory "RENEGADE PO"
+    .dexText "A POKÉMON THAT IS SAID TO LIVE IN A WORLD"
+    .dexText "ON THE REVERSE SIDE OF OURS. IT APPEARS IN"
+    .dexText "AN ANCIENT CEMETERY."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry490::
+    .2byte 4, 8, 8, 0xA, 4, 1, 1, 0xA, 0xA, 1, 8, 9
+    .dexName "CRESSELIA"
+    .dexCategory "LUNAR POKÉM"
+    .dexText "SHINY PARTICLES ARE RELEASED FROM ITS"
+    .dexText "WINGS LIKE A VEIL. IT IS SAID TO REPRESENT"
+    .dexText "THE CRESCENT MOON."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry491::
+    .2byte 4, 8, 9, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 7
+    .dexName "PHIONE"
+    .dexCategory "SEA DRIFTER"
+    .dexText "A POKÉMON THAT LIVES IN WARM SEAS. IT"
+    .dexText "INFLATES THE FLOTATION SAC ON ITS HEAD TO"
+    .dexText "DRIFT AND SEARCH FOR FOOD."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry492::
+    .2byte 4, 9, 0, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 3
+    .dexName "MANAPHY"
+    .dexCategory "SEAFARING P"
+    .dexText "BORN ON A COLD SEAFLOOR, IT WILL SWIM"
+    .dexText "GREAT DISTANCES TO RETURN TO ITS"
+    .dexText "BIRTHPLACE."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry493::
+    .2byte 4, 9, 1, 0xA, 4, 1, 1, 0xA, 0xA, 1, 1, 1
+    .dexName "DARKRAI"
+    .dexCategory "PITCH-BLACK"
+    .dexText "IT CAN LULL PEOPLE TO SLEEP AND MAKE THEM"
+    .dexText "DREAM. IT IS ACTIVE DURING NIGHTS OF THE"
+    .dexText "NEW MOON."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry494::
+    .2byte 4, 9, 2, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 5
+    .dexName "SHAYMIN"
+    .dexCategory "GRATITUDE P"
+    .dexText "IT LIVES IN FLOWER PATCHES AND AVOIDS"
+    .dexText "DETECTION BY CURLING UP TO LOOK LIKE A"
+    .dexText "FLOWERING PLANT."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry495::
+    .2byte 4, 9, 3, 1, 0, 0, 6, 0xA, 0xA, 7, 0, 5
+    .dexName "ARCEUS"
+    .dexCategory "ALPHA POKÉM"
+    .dexText "IT IS DESCRIBED IN MYTHOLOGY AS THE"
+    .dexText "POKÉMON THAT SHAPED THE UNIVERSE WITH ITS"
+    .dexText "1,000 ARMS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry496::
+    .2byte 6, 1, 0, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 4, 0
+    .dexName "AXEW"
+    .dexCategory "TUSK POKÉMO"
+    .dexText "THEY USE THEIR TUSKS TO CRUSH THE BERRIES"
+    .dexText "THEY EAT. REPEATED REGROWTH MAKES THEIR"
+    .dexText "TUSKS STRONG AND SHARP."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry497::
+    .2byte 6, 9, 8, 0xA, 4, 0, 3, 0xA, 0xA, 0xA, 5, 6
+    .dexName "AMAURA"
+    .dexCategory "TUNDRA POKÉ"
+    .dexText "THIS ANCIENT POKÉMON WAS RESTORED FROM"
+    .dexText "PART OF ITS BODY THAT HAD BEEN FROZEN IN"
+    .dexText "ICE FOR OVER 100 MILLION YEARS."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry498::
+    .2byte 7, 2, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 3
+    .dexName "ROWLET"
+    .dexCategory "GRASS QUILL"
+    .dexText "THIS WARY POKÉMON USES PHOTOSYNTHESIS TO"
+    .dexText "STORE UP ENERGY DURING THE DAY, WHILE"
+    .dexText "BECOMING ACTIVE AT NIGHT."
+    .dexText ""
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry499::
+    .2byte 8, 4, 0, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 1
+    .dexName "APPLIN"
+    .dexCategory "APPLE CORE "
+    .dexText "IT SPENDS ITS ENTIRE LIFE INSIDE AN APPLE."
+    .dexText "IT HIDES FROM ITS NATURAL ENEMIES, BIRD"
+    .dexText "POKÉMON, BY PRETENDING IT’S JUST AN APPLE"
+    .dexText "AND NOTHING MORE."
+    .dexText ""
+    .dexText ""
+
+    .align 2, 0
+dexEntry500::
+    .2byte 9, 0, 9, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 2, 2
+    .dexName "FUECOCO"
+    .dexCategory "FIRE CROC P"
+    .dexText "IT LIES ON WARM ROCKS AND USES THE HEAT"
+    .dexText "ABSORBED BY ITS SQUARE-SHAPED SCALES TO"
+    .dexText "CREATE FIRE ENERGY."
+    .dexText ""
+    .dexText ""
+    .dexText ""

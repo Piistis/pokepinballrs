@@ -15,6 +15,7 @@ gMonPortraitsGroup0_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/265_wurmple_portrait.gbapal"
 	.incbin "graphics/mon_portraits/266_silcoon_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup1_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/267_beautifly_portrait.gbapal"
 	.incbin "graphics/mon_portraits/268_cascoon_portrait.gbapal"
@@ -32,6 +33,7 @@ gMonPortraitsGroup1_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/280_ralts_portrait.gbapal"
 	.incbin "graphics/mon_portraits/281_kirlia_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup2_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/282_gardevoir_portrait.gbapal"
 	.incbin "graphics/mon_portraits/283_surskit_portrait.gbapal"
@@ -49,6 +51,7 @@ gMonPortraitsGroup2_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/292_shedinja_portrait.gbapal"
 	.incbin "graphics/mon_portraits/293_whismur_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup3_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/294_loudred_portrait.gbapal"
 	.incbin "graphics/mon_portraits/295_exploud_portrait.gbapal"
@@ -66,6 +69,7 @@ gMonPortraitsGroup3_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/76_golem_portrait.gbapal"
 	.incbin "graphics/mon_portraits/299_nosepass_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup4_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/300_skitty_portrait.gbapal"
 	.incbin "graphics/mon_portraits/301_delcatty_portrait.gbapal"
@@ -83,6 +87,7 @@ gMonPortraitsGroup4_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/67_machoke_portrait.gbapal"
 	.incbin "graphics/mon_portraits/68_machamp_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup5_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/307_meditite_portrait.gbapal"
 	.incbin "graphics/mon_portraits/308_medicham_portrait.gbapal"
@@ -100,6 +105,7 @@ gMonPortraitsGroup5_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/44_gloom_portrait.gbapal"
 	.incbin "graphics/mon_portraits/45_vileplume_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup6_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/182_bellossom_portrait.gbapal"
 	.incbin "graphics/mon_portraits/84_doduo_portrait.gbapal"
@@ -117,6 +123,7 @@ gMonPortraitsGroup6_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/219_magcargo_portrait.gbapal"
 	.incbin "graphics/mon_portraits/324_torkoal_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup7_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/88_grimer_portrait.gbapal"
 	.incbin "graphics/mon_portraits/89_muk_portrait.gbapal"
@@ -134,6 +141,7 @@ gMonPortraitsGroup7_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/331_cacnea_portrait.gbapal"
 	.incbin "graphics/mon_portraits/332_cacturne_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup8_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/333_swablu_portrait.gbapal"
 	.incbin "graphics/mon_portraits/334_altaria_portrait.gbapal"
@@ -151,6 +159,7 @@ gMonPortraitsGroup8_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/346_cradily_portrait.gbapal"
 	.incbin "graphics/mon_portraits/347_anorith_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup9_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/348_armaldo_portrait.gbapal"
 	.incbin "graphics/mon_portraits/174_igglybuff_portrait.gbapal"
@@ -168,6 +177,7 @@ gMonPortraitsGroup9_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/356_dusclops_portrait.gbapal"
 	.incbin "graphics/mon_portraits/357_tropius_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup10_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/358_chimecho_portrait.gbapal"
 	.incbin "graphics/mon_portraits/359_absol_portrait.gbapal"
@@ -185,6 +195,7 @@ gMonPortraitsGroup10_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/203_girafarig_portrait.gbapal"
 	.incbin "graphics/mon_portraits/231_phanpy_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup11_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/232_donphan_portrait.gbapal"
 	.incbin "graphics/mon_portraits/127_pinsir_portrait.gbapal"
@@ -202,6 +213,7 @@ gMonPortraitsGroup11_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/369_relicanth_portrait.gbapal"
 	.incbin "graphics/mon_portraits/222_corsola_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup12_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/170_chinchou_portrait.gbapal"
 	.incbin "graphics/mon_portraits/171_lanturn_portrait.gbapal"
@@ -219,6 +231,7 @@ gMonPortraitsGroup12_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/378_regice_portrait.gbapal"
 	.incbin "graphics/mon_portraits/379_registeel_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup13_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/380_latias_portrait.gbapal"
 	.incbin "graphics/mon_portraits/381_latios_portrait.gbapal"
@@ -236,6 +249,7 @@ gMonPortraitsGroup13_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/2_ivysaur_portrait.gbapal"
 	.incbin "graphics/mon_portraits/3_venusaur_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup14_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/4_charmander_portrait.gbapal"
 	.incbin "graphics/mon_portraits/5_charmeleon_portrait.gbapal"
@@ -253,6 +267,7 @@ gMonPortraitsGroup14_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/17_pidgeotto_portrait.gbapal"
 	.incbin "graphics/mon_portraits/18_pidgeot_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup15_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/19_rattata_portrait.gbapal"
 	.incbin "graphics/mon_portraits/20_raticate_portrait.gbapal"
@@ -270,6 +285,7 @@ gMonPortraitsGroup15_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/36_clefable_portrait.gbapal"
 	.incbin "graphics/mon_portraits/46_paras_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup16_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/47_parasect_portrait.gbapal"
 	.incbin "graphics/mon_portraits/48_venonat_portrait.gbapal"
@@ -287,6 +303,7 @@ gMonPortraitsGroup16_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/62_poliwrath_portrait.gbapal"
 	.incbin "graphics/mon_portraits/69_bellsprout_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup17_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/70_weepinbell_portrait.gbapal"
 	.incbin "graphics/mon_portraits/71_victreebell_portrait.gbapal"
@@ -304,6 +321,7 @@ gMonPortraitsGroup17_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/94_gengar_portrait.gbapal"
 	.incbin "graphics/mon_portraits/95_onix_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup18_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/96_drowzee_portrait.gbapal"
 	.incbin "graphics/mon_portraits/97_hypno_portrait.gbapal"
@@ -321,6 +339,7 @@ gMonPortraitsGroup18_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/115_kangaskhan_portrait.gbapal"
 	.incbin "graphics/mon_portraits/122_mrmime_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup19_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/123_scyther_portrait.gbapal"
 	.incbin "graphics/mon_portraits/124_jynx_portrait.gbapal"
@@ -338,6 +357,7 @@ gMonPortraitsGroup19_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/139_omastar_portrait.gbapal"
 	.incbin "graphics/mon_portraits/140_kabuto_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup20_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/141_kabutops_portrait.gbapal"
 	.incbin "graphics/mon_portraits/143_snorlax_portrait.gbapal"
@@ -355,6 +375,7 @@ gMonPortraitsGroup20_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/157_typhlosion_portrait.gbapal"
 	.incbin "graphics/mon_portraits/159_croconaw_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup21_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/160_feraligatr_portrait.gbapal"
 	.incbin "graphics/mon_portraits/161_sentret_portrait.gbapal"
@@ -372,6 +393,7 @@ gMonPortraitsGroup21_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/180_flaaffy_portrait.gbapal"
 	.incbin "graphics/mon_portraits/181_ampharos_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup22_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/185_sudowoodo_portrait.gbapal"
 	.incbin "graphics/mon_portraits/186_politoed_portrait.gbapal"
@@ -389,6 +411,7 @@ gMonPortraitsGroup22_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/198_murkrow_portrait.gbapal"
 	.incbin "graphics/mon_portraits/199_slowking_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup23_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/200_misdreavus_portrait.gbapal"
 	.incbin "graphics/mon_portraits/201_unown_portrait.gbapal"
@@ -406,6 +429,7 @@ gMonPortraitsGroup23_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/216_teddiursa_portrait.gbapal"
 	.incbin "graphics/mon_portraits/217_ursaring_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup24_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/220_swinub_portrait.gbapal"
 	.incbin "graphics/mon_portraits/221_piloswine_portrait.gbapal"
@@ -423,6 +447,7 @@ gMonPortraitsGroup24_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/238_smoochum_portrait.gbapal"
 	.incbin "graphics/mon_portraits/239_elekid_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
 gMonPortraitsGroup25_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/240_magby_portrait.gbapal"
 	.incbin "graphics/mon_portraits/241_miltank_portrait.gbapal"
@@ -437,4 +462,140 @@ gMonPortraitsGroup25_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/250_ho-oh_portrait.gbapal"
 	.incbin "graphics/mon_portraits/251_celebi_portrait.gbapal"
 	.incbin "graphics/mon_portraits/523_zebstrika_portrait.gbapal"
+	.incbin "graphics/mon_portraits/387_turtwig_portrait.gbapal"
+	.incbin "graphics/mon_portraits/388_grotle_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup26_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/389_torterra_portrait.gbapal"
+	.incbin "graphics/mon_portraits/390_chimchar_portrait.gbapal"
+	.incbin "graphics/mon_portraits/391_monferno_portrait.gbapal"
+	.incbin "graphics/mon_portraits/392_infernape_portrait.gbapal"
+	.incbin "graphics/mon_portraits/393_piplup_portrait.gbapal"
+	.incbin "graphics/mon_portraits/394_prinplup_portrait.gbapal"
+	.incbin "graphics/mon_portraits/395_empoleon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/396_starly_portrait.gbapal"
+	.incbin "graphics/mon_portraits/397_staravia_portrait.gbapal"
+	.incbin "graphics/mon_portraits/398_staraptor_portrait.gbapal"
+	.incbin "graphics/mon_portraits/399_bidoof_portrait.gbapal"
+	.incbin "graphics/mon_portraits/400_bibarel_portrait.gbapal"
+	.incbin "graphics/mon_portraits/401_kricketot_portrait.gbapal"
+	.incbin "graphics/mon_portraits/402_kricketune_portrait.gbapal"
+	.incbin "graphics/mon_portraits/403_shinx_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup27_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/404_luxio_portrait.gbapal"
+	.incbin "graphics/mon_portraits/405_luxray_portrait.gbapal"
+	.incbin "graphics/mon_portraits/406_budew_portrait.gbapal"
+	.incbin "graphics/mon_portraits/407_roserade_portrait.gbapal"
+	.incbin "graphics/mon_portraits/408_cranidos_portrait.gbapal"
+	.incbin "graphics/mon_portraits/409_rampardos_portrait.gbapal"
+	.incbin "graphics/mon_portraits/410_shieldon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/411_bastiodon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/412_burmy_portrait.gbapal"
+	.incbin "graphics/mon_portraits/413_wormadam_portrait.gbapal"
+	.incbin "graphics/mon_portraits/414_mothim_portrait.gbapal"
+	.incbin "graphics/mon_portraits/415_combee_portrait.gbapal"
+	.incbin "graphics/mon_portraits/416_vespiquen_portrait.gbapal"
+	.incbin "graphics/mon_portraits/417_pachirisu_portrait.gbapal"
+	.incbin "graphics/mon_portraits/418_buizel_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup28_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/419_floatzel_portrait.gbapal"
+	.incbin "graphics/mon_portraits/420_cherubi_portrait.gbapal"
+	.incbin "graphics/mon_portraits/421_cherrim_portrait.gbapal"
+	.incbin "graphics/mon_portraits/422_shellos_portrait.gbapal"
+	.incbin "graphics/mon_portraits/423_gastrodon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/424_ambipom_portrait.gbapal"
+	.incbin "graphics/mon_portraits/425_drifloon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/426_drifblim_portrait.gbapal"
+	.incbin "graphics/mon_portraits/427_buneary_portrait.gbapal"
+	.incbin "graphics/mon_portraits/428_lopunny_portrait.gbapal"
+	.incbin "graphics/mon_portraits/429_mismagius_portrait.gbapal"
+	.incbin "graphics/mon_portraits/430_honchkrow_portrait.gbapal"
+	.incbin "graphics/mon_portraits/431_glameow_portrait.gbapal"
+	.incbin "graphics/mon_portraits/432_purugly_portrait.gbapal"
+	.incbin "graphics/mon_portraits/433_chingling_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup29_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/434_stunky_portrait.gbapal"
+	.incbin "graphics/mon_portraits/435_skuntank_portrait.gbapal"
+	.incbin "graphics/mon_portraits/436_bronzor_portrait.gbapal"
+	.incbin "graphics/mon_portraits/437_bronzong_portrait.gbapal"
+	.incbin "graphics/mon_portraits/438_bonsly_portrait.gbapal"
+	.incbin "graphics/mon_portraits/439_mimejr_portrait.gbapal"
+	.incbin "graphics/mon_portraits/440_happiny_portrait.gbapal"
+	.incbin "graphics/mon_portraits/441_chatot_portrait.gbapal"
+	.incbin "graphics/mon_portraits/442_spiritomb_portrait.gbapal"
+	.incbin "graphics/mon_portraits/443_gible_portrait.gbapal"
+	.incbin "graphics/mon_portraits/444_gabite_portrait.gbapal"
+	.incbin "graphics/mon_portraits/445_garchomp_portrait.gbapal"
+	.incbin "graphics/mon_portraits/446_munchlax_portrait.gbapal"
+	.incbin "graphics/mon_portraits/447_riolu_portrait.gbapal"
+	.incbin "graphics/mon_portraits/448_lucario_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup30_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/449_hippopotas_portrait.gbapal"
+	.incbin "graphics/mon_portraits/450_hippowdon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/451_skorupi_portrait.gbapal"
+	.incbin "graphics/mon_portraits/452_drapion_portrait.gbapal"
+	.incbin "graphics/mon_portraits/453_croagunk_portrait.gbapal"
+	.incbin "graphics/mon_portraits/454_toxicroak_portrait.gbapal"
+	.incbin "graphics/mon_portraits/455_carnivine_portrait.gbapal"
+	.incbin "graphics/mon_portraits/456_finneon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/457_lumineon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/458_mantyke_portrait.gbapal"
+	.incbin "graphics/mon_portraits/459_snover_portrait.gbapal"
+	.incbin "graphics/mon_portraits/460_abomasnow_portrait.gbapal"
+	.incbin "graphics/mon_portraits/461_weavile_portrait.gbapal"
+	.incbin "graphics/mon_portraits/462_magnezone_portrait.gbapal"
+	.incbin "graphics/mon_portraits/463_lickilicky_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup31_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/464_rhyperior_portrait.gbapal"
+	.incbin "graphics/mon_portraits/465_tangrowth_portrait.gbapal"
+	.incbin "graphics/mon_portraits/466_electivire_portrait.gbapal"
+	.incbin "graphics/mon_portraits/467_magmortar_portrait.gbapal"
+	.incbin "graphics/mon_portraits/468_togekiss_portrait.gbapal"
+	.incbin "graphics/mon_portraits/469_yanmega_portrait.gbapal"
+	.incbin "graphics/mon_portraits/470_leafeon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/471_glaceon_portrait.gbapal"
+	.incbin "graphics/mon_portraits/472_gliscor_portrait.gbapal"
+	.incbin "graphics/mon_portraits/473_mamoswine_portrait.gbapal"
+	.incbin "graphics/mon_portraits/474_porygon-z_portrait.gbapal"
+	.incbin "graphics/mon_portraits/475_gallade_portrait.gbapal"
+	.incbin "graphics/mon_portraits/476_probopass_portrait.gbapal"
+	.incbin "graphics/mon_portraits/477_dusknoir_portrait.gbapal"
+	.incbin "graphics/mon_portraits/478_froslass_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup32_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/479_rotom_portrait.gbapal"
+	.incbin "graphics/mon_portraits/480_uxie_portrait.gbapal"
+	.incbin "graphics/mon_portraits/481_mesprit_portrait.gbapal"
+	.incbin "graphics/mon_portraits/482_azelf_portrait.gbapal"
+	.incbin "graphics/mon_portraits/483_dialga_portrait.gbapal"
+	.incbin "graphics/mon_portraits/484_palkia_portrait.gbapal"
+	.incbin "graphics/mon_portraits/485_heatran_portrait.gbapal"
+	.incbin "graphics/mon_portraits/486_regigigas_portrait.gbapal"
+	.incbin "graphics/mon_portraits/487_giratina_portrait.gbapal"
+	.incbin "graphics/mon_portraits/488_cresselia_portrait.gbapal"
+	.incbin "graphics/mon_portraits/489_phione_portrait.gbapal"
+	.incbin "graphics/mon_portraits/490_manaphy_portrait.gbapal"
+	.incbin "graphics/mon_portraits/491_darkrai_portrait.gbapal"
+	.incbin "graphics/mon_portraits/492_shaymin_portrait.gbapal"
+	.incbin "graphics/mon_portraits/493_arceus_portrait.gbapal"
+	.incbin "graphics/mon_portraits/silhouette.gbapal"
+
+gMonPortraitsGroup33_Pals:: @ 0x0
+	.incbin "graphics/mon_portraits/610_axew_portrait.gbapal"
+	.incbin "graphics/mon_portraits/698_amaura_portrait.gbapal"
+	.incbin "graphics/mon_portraits/722_rowlet_portrait.gbapal"
+	.incbin "graphics/mon_portraits/840_applin_portrait.gbapal"
+	.incbin "graphics/mon_portraits/909_fuecoco_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"

@@ -167,6 +167,42 @@
     {
       "gfx_filename": "tyrogue_hatch",
       "palette": "tyrogue_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "bonsly_hatch",
+      "palette": "bonsly_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "budew_hatch",
+      "palette": "budew_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "chingling_hatch",
+      "palette": "chingling_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "happiny_hatch",
+      "palette": "happiny_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "manaphy_hatch",
+      "palette": "manaphy_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "mantyke_hatch",
+      "palette": "mantyke_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "mimejr_hatch",
+      "palette": "mimejr_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "munchlax_hatch",
+      "palette": "munchlax_hatch.gbapal"
+    },
+    {
+      "gfx_filename": "riolu_hatch",
+      "palette": "riolu_hatch.gbapal"
     }
   ]
 }

@@ -716,6 +716,54 @@
     {
       "gfx_filename": "catch_mon_386_deoxys",
       "palette": "catch_mon_386_deoxys.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_387_turtwig",
+      "palette": "catch_mon_387_turtwig.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_390_chimchar",
+      "palette": "catch_mon_390_chimchar.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_393_piplup",
+      "palette": "catch_mon_393_piplup.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_396_starly",
+      "palette": "catch_mon_396_starly.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_399_bidoof",
+      "palette": "catch_mon_399_bidoof.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_401_kricketot",
+      "palette": "catch_mon_401_kricketot.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_403_shinx",
+      "palette": "catch_mon_403_shinx.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_610_axew",
+      "palette": "catch_mon_610_axew.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_698_amaura",
+      "palette": "catch_mon_698_amaura.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_722_rowlet",
+      "palette": "catch_mon_722_rowlet.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_840_applin",
+      "palette": "catch_mon_840_applin.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_909_fuecoco",
+      "palette": "catch_mon_909_fuecoco.gbapal"
     }
   ]
 }

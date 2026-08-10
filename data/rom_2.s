@@ -640,45 +640,56 @@ gPokedexSpriteSets:: @ 0x086A6148
 gDexAnimationIx:: @ 0x086A61BC
     @ marks which anim to show with the 'select' button in pokedex
     @ -1 = none, <200 = catch mon, >=200 = hatch mon
-    .2byte    0,   -1,   -1,    1,   -1,   -1,    2,   -1,   -1,    3
-    .2byte   -1,    4,   -1,  200,    5,   -1,    6,   -1,  201,    7
-    .2byte   -1,  202,    8,   -1,    9,   -1,   10,   -1,  203,   -1
-    .2byte   -1,  204,   -1,  205,   -1,   11,   -1,   -1,   12,   -1
-    .2byte   -1,   13,   -1,   -1,  206,   14,   -1,   15,   -1,   16
-    .2byte   -1,   17,   -1,  207,   18,   -1,   19,   -1,   -1,   20
-    .2byte  208,   -1,  209,   -1,   -1,   21,   -1,   22,   23,  210
-    .2byte   -1,   -1,   24,   -1,   -1,   25,   -1,   26,   -1,  211
-    .2byte  212,   27,   -1,   28,   -1,   29,   30,  213,   -1,   -1
-    .2byte   -1,   31,   -1,   32,  214,   -1,   33,   -1,   34,   -1
-    .2byte   35,   -1,   36,   -1,   37,   38,   -1,   39,   -1,  215
-    .2byte   -1,  216,   -1,  217,   40,  218,   41,   -1,   42,   -1
-    .2byte   43,   -1,   44,   45,   46,   47,   48,   -1,   49,   -1
-    .2byte   50,   -1,   51,   -1,   52,   -1,  219,   53,   -1,   54
-    .2byte   -1,   55,   56,   -1,   57,  220,   -1,   58,   -1,   59
-    .2byte  221,   60,   61,   -1,  222,   62,   -1,   63,   -1,  223
-    .2byte   64,  224,   -1,   65,  225,   -1,   66,   67,   68,   -1
-    .2byte  226,   -1,  227,   -1,   -1,   69,   -1,   -1,   70,  228
-    .2byte  229,   -1,   71,  230,   -1,   -1,  231,   72,   -1,   73
-    .2byte   -1,   -1,   74,   75,   76,   77,   78,   -1,   -1,   -1
-    .2byte   79,   80,   81,   82,   83,  176,   84,   85,   -1,   -1
-    .2byte   86,   -1,   -1,   87,   -1,   -1,   88,   -1,   -1,   89
-    .2byte   -1,   -1,   90,   -1,   -1,   91,   -1,   92,   -1,   93
-    .2byte   -1,   94,   -1,   -1,   95,   -1,   -1,   96,   -1,   97
-    .2byte   -1,   98,   -1,   99,   -1,  100,   -1,  101,   -1,  102
-    .2byte   -1,  103,   -1,   -1,  104,   -1,   -1,  105,   -1,  106
-    .2byte   -1,  107,  108,   -1,  109,   -1,  110,   -1,   -1,  111
-    .2byte  112,   -1,  113,   -1,  114,   -1,  115,   -1,  116,  117
-    .2byte  118,  119,  120,  121,  122,  123,  124,  125,  126,  127
-    .2byte  128,  129,  130,   -1,   -1,   -1,  131,  132,   -1,  133
-    .2byte   -1,  134,  135,  136,  137,  138,   -1,   -1,  139,  140
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,  141,   -1,  142,   -1
-    .2byte  143,   -1,  144,   -1,  233,  238,   -1,  145,   -1,   -1
-    .2byte  146,   -1,  147,   -1,   -1,  148,  149,   -1,  150,  151
-    .2byte   -1,   -1,   -1,  152,   -1,  153,  154,  155,   -1,  156
-    .2byte  157,   -1,  158,   -1,  159,   -1,  160,  161,  162,   -1
-    .2byte  237,   -1,  163,   -1,  164,   -1,  165,   -1,   -1,  166
-    .2byte  167,  239,   -1,  236,  234,  235,  168,   -1,  169,  170
-    .2byte  171,  172,   -1,   -1,  173,  174,  175,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   81,   -1,   68,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   80,   -1,  131,  132
+    .2byte  208,   12,  212,   38,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   82,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   53,   -1,   21,   -1,   19,   -1,   -1
+    .2byte   -1,   -1,   24,  101,   -1,  102,   -1,   -1,   -1,   -1
+    .2byte   27,   -1,   -1,   -1,  110,   -1,   -1,   -1,  116,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,  107
+    .2byte   31,   -1,   -1,   -1,   -1,   -1,   -1,   -1,  117,  118
+    .2byte   -1,   -1,   -1,   -1,   -1,   18,   -1,   -1,   99,   83
+    .2byte  134,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,  100
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,  155,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,  154,   -1,   -1,   64,   -1,   -1,   65,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,  228
+    .2byte   -1,  221,   -1,  218,   -1,   -1,  141,   -1,   -1,   -1
+    .2byte   -1,  109,   63,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,  142,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,  144,   -1,   -1,   -1,  114,   -1,   -1
+    .2byte   -1,  145,   -1,   -1,   -1,   -1,  120,   -1,   -1,  146
+    .2byte  224,  143,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   85,   -1,   -1,   86,   -1,   -1,   87,   -1
+    .2byte   -1,   88,   -1,   -1,   89,   -1,   -1,   90,   -1,  200
+    .2byte   91,   -1,   92,   -1,   93,   -1,   62,   -1,   -1,  202
+    .2byte   94,   -1,  203,   95,  204,   -1,   96,   -1,   61,   -1
+    .2byte   -1,   -1,  205,   -1,   97,   -1,   98,  206,   -1,  103
+    .2byte   -1,   -1,   -1,  104,   -1,   -1,   -1,   -1,  105,   -1
+    .2byte  106,  211,   -1,  108,   -1,  213,  111,  112,   -1,  113
+    .2byte   -1,   28,   -1,  115,   39,   -1,  119,  121,   -1,   -1
+    .2byte   16,   -1,   56,   -1,  122,  123,  124,  125,  126,   66
+    .2byte  127,   17,   -1,  128,  129,  130,   -1,   -1,   -1,  133
+    .2byte   -1,  135,  136,  137,  138,   -1,   -1,  139,  140,  222
+    .2byte  225,   -1,  226,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte  230,  147,   -1,   -1,  148,  149,   -1,  150,  151,   -1
+    .2byte   -1,   -1,  152,   -1,  153,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
+    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
 gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
@@ -6111,44 +6122,47 @@ gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup4_Pals
 	.4byte gMonHatchSpriteGroup5_Pals
 	.4byte gMonHatchSpriteGroup6_Pals
-
+	.4byte gMonHatchSpriteGroup7_Pals
+	.4byte gMonHatchSpriteGroup8_Pals
 gMonIconPalettes::
-    .4byte gMonCatchSpriteGroup0_Pal
-    .4byte gMonCatchSpriteGroup1_Pal
-    .4byte gMonCatchSpriteGroup2_Pal
-    .4byte gMonCatchSpriteGroup3_Pal
-    .4byte gMonCatchSpriteGroup4_Pal
-    .4byte gMonCatchSpriteGroup5_Pal
-    .4byte gMonCatchSpriteGroup6_Pal
-    .4byte gMonCatchSpriteGroup7_Pal
-    .4byte gMonCatchSpriteGroup8_Pal
-    .4byte gMonCatchSpriteGroup9_Pal
-    .4byte gMonCatchSpriteGroup10_Pal
-    .4byte gMonCatchSpriteGroup11_Pal
-    .4byte gMonCatchSpriteGroup12_Pal
-    .4byte gMonCatchSpriteGroup13_Pal
-    .4byte gMonCatchSpriteGroup14_Pal
-    .4byte gMonCatchSpriteGroup15_Pal
-    .4byte gMonCatchSpriteGroup16_Pal
-    .4byte gMonCatchSpriteGroup17_Pal
-    .4byte gMonCatchSpriteGroup18_Pal
-    .4byte gMonCatchSpriteGroup19_Pal
-    .4byte gMonCatchSpriteGroup20_Pal
-    .4byte gMonCatchSpriteGroup21_Pal
-    .4byte gMonCatchSpriteGroup22_Pal
-    .4byte gMonCatchSpriteGroup23_Pal
-    .4byte gMonCatchSpriteGroup24_Pal
-    .4byte gMonCatchSpriteGroup25_Pal
-    .4byte gMonCatchSpriteGroup26_Pal
-    .4byte gMonCatchSpriteGroup27_Pal
-    .4byte gMonCatchSpriteGroup28_Pal
-    .4byte gMonCatchSpriteGroup29_Pal
-    .4byte gMonCatchSpriteGroup30_Pal
-    .4byte gMonCatchSpriteGroup31_Pal
-    .4byte gMonCatchSpriteGroup32_Pal
-    .4byte gMonCatchSpriteGroup33_Pal
-    .4byte gMonCatchSpriteGroup34_Pal
-    .4byte gMonCatchSpriteGroup35_Pal
+	.4byte gMonCatchSpriteGroup0_Pals
+	.4byte gMonCatchSpriteGroup1_Pals
+	.4byte gMonCatchSpriteGroup2_Pals
+	.4byte gMonCatchSpriteGroup3_Pals
+	.4byte gMonCatchSpriteGroup4_Pals
+	.4byte gMonCatchSpriteGroup5_Pals
+	.4byte gMonCatchSpriteGroup6_Pals
+	.4byte gMonCatchSpriteGroup7_Pals
+	.4byte gMonCatchSpriteGroup8_Pals
+	.4byte gMonCatchSpriteGroup9_Pals
+	.4byte gMonCatchSpriteGroup10_Pals
+	.4byte gMonCatchSpriteGroup11_Pals
+	.4byte gMonCatchSpriteGroup12_Pals
+	.4byte gMonCatchSpriteGroup13_Pals
+	.4byte gMonCatchSpriteGroup14_Pals
+	.4byte gMonCatchSpriteGroup15_Pals
+	.4byte gMonCatchSpriteGroup16_Pals
+	.4byte gMonCatchSpriteGroup17_Pals
+	.4byte gMonCatchSpriteGroup18_Pals
+	.4byte gMonCatchSpriteGroup19_Pals
+	.4byte gMonCatchSpriteGroup20_Pals
+	.4byte gMonCatchSpriteGroup21_Pals
+	.4byte gMonCatchSpriteGroup22_Pals
+	.4byte gMonCatchSpriteGroup23_Pals
+	.4byte gMonCatchSpriteGroup24_Pals
+	.4byte gMonCatchSpriteGroup25_Pals
+	.4byte gMonCatchSpriteGroup26_Pals
+	.4byte gMonCatchSpriteGroup27_Pals
+	.4byte gMonCatchSpriteGroup28_Pals
+	.4byte gMonCatchSpriteGroup29_Pals
+	.4byte gMonCatchSpriteGroup30_Pals
+	.4byte gMonCatchSpriteGroup31_Pals
+	.4byte gMonCatchSpriteGroup32_Pals
+	.4byte gMonCatchSpriteGroup33_Pals
+	.4byte gMonCatchSpriteGroup34_Pals
+	.4byte gMonCatchSpriteGroup35_Pals
+	.4byte gMonCatchSpriteGroup36_Pals
+	.4byte gMonCatchSpriteGroup37_Pals
 gMainLeftFlipperSpriteSet:: @ 0x086B15F8
 .2byte 1
     packed_sprite_oaml x=-0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x0, priority=0x2, paletteNum=0x0
@@ -13539,7 +13553,14 @@ gMonPortraitGroupPals:: @ 0x086BB6A4
 	.4byte gMonPortraitsGroup23_Pals
 	.4byte gMonPortraitsGroup24_Pals
 	.4byte gMonPortraitsGroup25_Pals
-
+	.4byte gMonPortraitsGroup26_Pals
+	.4byte gMonPortraitsGroup27_Pals
+	.4byte gMonPortraitsGroup28_Pals
+	.4byte gMonPortraitsGroup29_Pals
+	.4byte gMonPortraitsGroup30_Pals
+	.4byte gMonPortraitsGroup31_Pals
+	.4byte gMonPortraitsGroup32_Pals
+	.4byte gMonPortraitsGroup33_Pals
 gMonHatchSpriteGroupGfx:: @ 0x086BB6DC
 	.4byte gMonHatchSpriteGroup0_Gfx
 	.4byte gMonHatchSpriteGroup1_Gfx
@@ -13548,44 +13569,47 @@ gMonHatchSpriteGroupGfx:: @ 0x086BB6DC
 	.4byte gMonHatchSpriteGroup4_Gfx
 	.4byte gMonHatchSpriteGroup5_Gfx
 	.4byte gMonHatchSpriteGroup6_Gfx
-
+	.4byte gMonHatchSpriteGroup7_Gfx
+	.4byte gMonHatchSpriteGroup8_Gfx
 gCatchSpriteGfxPtrs:: @ 0x086BB6F4
-    .4byte gMonCatchSpriteGroup0_Gfx
-    .4byte gMonCatchSpriteGroup1_Gfx
-    .4byte gMonCatchSpriteGroup2_Gfx
-    .4byte gMonCatchSpriteGroup3_Gfx
-    .4byte gMonCatchSpriteGroup4_Gfx
-    .4byte gMonCatchSpriteGroup5_Gfx
-    .4byte gMonCatchSpriteGroup6_Gfx
-    .4byte gMonCatchSpriteGroup7_Gfx
-    .4byte gMonCatchSpriteGroup8_Gfx
-    .4byte gMonCatchSpriteGroup9_Gfx
-    .4byte gMonCatchSpriteGroup10_Gfx
-    .4byte gMonCatchSpriteGroup11_Gfx
-    .4byte gMonCatchSpriteGroup12_Gfx
-    .4byte gMonCatchSpriteGroup13_Gfx
-    .4byte gMonCatchSpriteGroup14_Gfx
-    .4byte gMonCatchSpriteGroup15_Gfx
-    .4byte gMonCatchSpriteGroup16_Gfx
-    .4byte gMonCatchSpriteGroup17_Gfx
-    .4byte gMonCatchSpriteGroup18_Gfx
-    .4byte gMonCatchSpriteGroup19_Gfx
-    .4byte gMonCatchSpriteGroup20_Gfx
-    .4byte gMonCatchSpriteGroup21_Gfx
-    .4byte gMonCatchSpriteGroup22_Gfx
-    .4byte gMonCatchSpriteGroup23_Gfx
-    .4byte gMonCatchSpriteGroup24_Gfx
-    .4byte gMonCatchSpriteGroup25_Gfx
-    .4byte gMonCatchSpriteGroup26_Gfx
-    .4byte gMonCatchSpriteGroup27_Gfx
-    .4byte gMonCatchSpriteGroup28_Gfx
-    .4byte gMonCatchSpriteGroup29_Gfx
-    .4byte gMonCatchSpriteGroup30_Gfx
-    .4byte gMonCatchSpriteGroup31_Gfx
-    .4byte gMonCatchSpriteGroup32_Gfx
-    .4byte gMonCatchSpriteGroup33_Gfx
-    .4byte gMonCatchSpriteGroup34_Gfx
-    .4byte gMonCatchSpriteGroup35_Gfx
+	.4byte gMonCatchSpriteGroup0_Gfx
+	.4byte gMonCatchSpriteGroup1_Gfx
+	.4byte gMonCatchSpriteGroup2_Gfx
+	.4byte gMonCatchSpriteGroup3_Gfx
+	.4byte gMonCatchSpriteGroup4_Gfx
+	.4byte gMonCatchSpriteGroup5_Gfx
+	.4byte gMonCatchSpriteGroup6_Gfx
+	.4byte gMonCatchSpriteGroup7_Gfx
+	.4byte gMonCatchSpriteGroup8_Gfx
+	.4byte gMonCatchSpriteGroup9_Gfx
+	.4byte gMonCatchSpriteGroup10_Gfx
+	.4byte gMonCatchSpriteGroup11_Gfx
+	.4byte gMonCatchSpriteGroup12_Gfx
+	.4byte gMonCatchSpriteGroup13_Gfx
+	.4byte gMonCatchSpriteGroup14_Gfx
+	.4byte gMonCatchSpriteGroup15_Gfx
+	.4byte gMonCatchSpriteGroup16_Gfx
+	.4byte gMonCatchSpriteGroup17_Gfx
+	.4byte gMonCatchSpriteGroup18_Gfx
+	.4byte gMonCatchSpriteGroup19_Gfx
+	.4byte gMonCatchSpriteGroup20_Gfx
+	.4byte gMonCatchSpriteGroup21_Gfx
+	.4byte gMonCatchSpriteGroup22_Gfx
+	.4byte gMonCatchSpriteGroup23_Gfx
+	.4byte gMonCatchSpriteGroup24_Gfx
+	.4byte gMonCatchSpriteGroup25_Gfx
+	.4byte gMonCatchSpriteGroup26_Gfx
+	.4byte gMonCatchSpriteGroup27_Gfx
+	.4byte gMonCatchSpriteGroup28_Gfx
+	.4byte gMonCatchSpriteGroup29_Gfx
+	.4byte gMonCatchSpriteGroup30_Gfx
+	.4byte gMonCatchSpriteGroup31_Gfx
+	.4byte gMonCatchSpriteGroup32_Gfx
+	.4byte gMonCatchSpriteGroup33_Gfx
+	.4byte gMonCatchSpriteGroup34_Gfx
+	.4byte gMonCatchSpriteGroup35_Gfx
+	.4byte gMonCatchSpriteGroup36_Gfx
+	.4byte gMonCatchSpriteGroup37_Gfx
 gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup0_Gfx
 	.4byte gMonPortraitsGroup1_Gfx
@@ -13613,7 +13637,14 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup23_Gfx
 	.4byte gMonPortraitsGroup24_Gfx
 	.4byte gMonPortraitsGroup25_Gfx
-
+	.4byte gMonPortraitsGroup26_Gfx
+	.4byte gMonPortraitsGroup27_Gfx
+	.4byte gMonPortraitsGroup28_Gfx
+	.4byte gMonPortraitsGroup29_Gfx
+	.4byte gMonPortraitsGroup30_Gfx
+	.4byte gMonPortraitsGroup31_Gfx
+	.4byte gMonPortraitsGroup32_Gfx
+	.4byte gMonPortraitsGroup33_Gfx
 gOptionsSoundDigitSpriteSet:: @ 0x086BB770
 .2byte 1
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16, paletteNum=0x0
