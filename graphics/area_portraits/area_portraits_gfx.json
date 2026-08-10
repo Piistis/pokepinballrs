@@ -47,7 +47,10 @@
       "gfx_filename": "ruin"
     },
     {
-      "gfx_filename": "test_area"
+      "gfx_filename": "ciudad"
+    },
+    {
+      "gfx_filename": "cueva_helada"
     }
   ]
 }

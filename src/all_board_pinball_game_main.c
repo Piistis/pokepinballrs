@@ -296,7 +296,7 @@ void InitPinballGameState(void)
         gCurrentPinballGame->debugForcedEggSpecies = SPECIES_NONE;
         gCurrentPinballGame->debugForcedCatchSpecies = SPECIES_NONE;
         if (gMain.selectedField == FIELD_RUBY)
-            gCurrentPinballGame->area = AREA_TEST;
+            gCurrentPinballGame->area = AREA_CITY;
 
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
         {

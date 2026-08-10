@@ -30,10 +30,13 @@ The runtime order matches `gAreaPortraitIndexes` in `data/rom_1.s`:
 11. `lake`
 12. `wilderness`
 13. `ruin`
-14. `test_area`
+14. `ciudad`
+15. `cueva_helada`
 
 Ruby and Sapphire ruins share the same portrait index.
-`test_area` is the first mod-added portrait and is used by `AREA_TEST`.
+`ciudad` and `cueva_helada` are mod-added roulette portraits. The old
+`AREA_TEST` portrait slot was removed when those two areas replaced the test
+area in the roulette.
 
 Mod-added palettes can be referenced as `.gbapal`; `make` generates them from
 the indexed PNG using the generic `%.gbapal: %.png` rule. Use `.gbapal.bin`

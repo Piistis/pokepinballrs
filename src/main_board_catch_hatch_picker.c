@@ -11,11 +11,12 @@
 extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gWildMonLocationsGen1[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gWildMonLocationsGen2[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
+extern const u16 gWildMonLocationsGen4[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gEggLocations[MAIN_FIELD_COUNT][26];
 extern const u16 gEggLocationsGen2[MAIN_FIELD_COUNT][26];
 
 #define EVOLVABLE_PARTY_SPECIES_STORAGE_MAGIC 0x504B4556
-#define RANDOM_WILD_MON_SOURCE_TABLE_COUNT 3
+#define RANDOM_WILD_MON_SOURCE_TABLE_COUNT 4
 #define RANDOM_WILD_MON_POOL_CAPACITY (RANDOM_WILD_MON_SOURCE_TABLE_COUNT * 2 * WILD_MON_LOCATION_COUNT)
 
 static EWRAM_DATA u16 sRandomWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
@@ -78,6 +79,8 @@ static u16 GetWildMonFromGenerationTable(s16 generationTable, s16 area, s16 thre
         return gWildMonLocationsGen1[area][threeArrows][index];
     case GENERATION_2:
         return gWildMonLocationsGen2[area][threeArrows][index];
+    case GENERATION_4:
+        return gWildMonLocationsGen4[area][threeArrows][index];
     default:
         return gWildMonLocations[area][threeArrows][index];
     }
@@ -268,6 +271,8 @@ static u16 GetWildMonForSelectedGeneration(s16 area, s16 threeArrows, s16 index)
         return gWildMonLocationsGen1[area][threeArrows][index];
     case GENERATION_2:
         return gWildMonLocationsGen2[area][threeArrows][index];
+    case GENERATION_4:
+        return gWildMonLocationsGen4[area][threeArrows][index];
     case GENERATION_RANDOM:
         if (!sRandomWildMonLocationsGenerated)
             BuildRandomWildMonLocations();

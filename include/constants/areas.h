@@ -15,8 +15,9 @@
 #define AREA_WILDERNESS         11
 #define AREA_RUIN_RUBY         12
 #define AREA_RUIN_SAPPHIRE     13
-#define AREA_TEST              14
-#define AREA_COUNT              15
+#define AREA_CITY              14
+#define AREA_ICE_CAVE          15
+#define AREA_COUNT              16
 
 // number of slots used by the area roulette wheel at ball launch
 #define AREA_ROULETTE_SLOT_COUNT       7

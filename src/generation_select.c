@@ -34,7 +34,6 @@ extern const u8 gGenerationSelectBackground_Gfx[];
 extern const u16 gGenerationSelectBackground_Pals[];
 
 static const u8 sDisabledGenerationOptions[] = {
-    GENERATION_4,
     GENERATION_5,
     GENERATION_6,
     GENERATION_7,

@@ -15,7 +15,7 @@ gAreaRouletteTable:: @ 0x08055A68
 	.2byte AREA_OCEAN_RUBY
 	.2byte AREA_SAFARI_ZONE
 	.2byte AREA_CAVE_RUBY
-	.2byte AREA_TEST
+	.2byte AREA_CITY
 	.2byte AREA_RUIN_RUBY
 	.2byte AREA_FOREST_SAPPHIRE
 	.2byte AREA_LAKE
@@ -23,7 +23,7 @@ gAreaRouletteTable:: @ 0x08055A68
 	.2byte AREA_WILDERNESS
 	.2byte AREA_OCEAN_SAPPHIRE
 	.2byte AREA_CAVE_SAPPHIRE
-	.2byte AREA_TEST
+	.2byte AREA_ICE_CAVE
 	.2byte AREA_RUIN_SAPPHIRE
 
 .include "data/mon_locations.inc"
@@ -633,7 +633,7 @@ gAreaPortraitIndexes:: @ 0x08137928
 	.2byte 0, 1, 2, 3, 4
 	.2byte 5, 6, 7, 8, 9
 	.2byte 10, 11, 12, 12
-	.2byte 13
+	.2byte 13, 14
 
 gPondBumperRetractFrames:: @ 0x08137944
 	.2byte 10, 7,6,5,4,3,2,1,0,1,0,1,0,1,0,1,0,1
@@ -1029,8 +1029,9 @@ gLocationPalettes:: @ 0x081C00E4
 	.incbin "graphics/area_portraits/loc11_sapphire_desert.gbapal"
 	.incbin "graphics/area_portraits/loc12_ruins.gbapal"
 
-	.incbin "graphics/area_portraits/test_area.gbapal"
-	.incbin "baserom.gba", 0x1C02A4, 0x40
+	.incbin "graphics/area_portraits/ciudad.gbapal"
+	.incbin "graphics/area_portraits/cueva_helada.gbapal"
+	.incbin "baserom.gba", 0x1C02C4, 0x20
 
 gPortraitAnimPalettes:: @ 0x081C02E4
 	.incbin "graphics/slot_options/slot_options_1.gbapal"
@@ -1445,7 +1446,8 @@ gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "graphics/area_portraits/loc10_sapphire_lake.4bpp"
 	.incbin "graphics/area_portraits/loc11_sapphire_desert.4bpp"
 	.incbin "graphics/area_portraits/loc12_ruins.4bpp"
-	.incbin "graphics/area_portraits/test_area.4bpp"
+	.incbin "graphics/area_portraits/ciudad.4bpp"
+	.incbin "graphics/area_portraits/cueva_helada.4bpp"
 
 gCaptureModeTilesGfx:: @ 0x0848FD8C
 	.incbin "baserom.gba", 0x48FD8C, 0xCC0
