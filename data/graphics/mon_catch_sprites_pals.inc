@@ -262,3 +262,9 @@ gMonCatchSpriteGroup37_Pals:: @ 0x0
 	.incbin "graphics/mon_catch_sprites/catch_mon_722_rowlet.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_840_applin.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_909_fuecoco.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_27_sandshrew.gbapal"
+
+gMonCatchSpriteGroup38_Pals:: @ 0x0
+	.incbin "graphics/mon_catch_sprites/catch_mon_41_zubat.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_43_oddish.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_116_horsea.gbapal"

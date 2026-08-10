@@ -262,3 +262,9 @@ gMonCatchSpriteGroup37_Gfx:: @ 0x0
 	.incbin "graphics/mon_catch_sprites/catch_mon_722_rowlet.4bpp"
 	.incbin "graphics/mon_catch_sprites/catch_mon_840_applin.4bpp"
 	.incbin "graphics/mon_catch_sprites/catch_mon_909_fuecoco.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_27_sandshrew.4bpp"
+
+gMonCatchSpriteGroup38_Gfx:: @ 0x0
+	.incbin "graphics/mon_catch_sprites/catch_mon_41_zubat.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_43_oddish.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_116_horsea.4bpp"

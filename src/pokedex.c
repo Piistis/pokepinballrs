@@ -2517,8 +2517,7 @@ s16 CheckMonHasAnimation(s16 species)
     }
 
     if (GetPokedexFlag(species) == SPECIES_CAUGHT
-     && gDexAnimationIx[species] != -1
-     && IsSpeciesCatchableInAnyGeneration(species))
+     && gDexAnimationIx[species] != -1)
         gPokedexShowAnimSprite = TRUE;
     else
         gPokedexShowAnimSprite = FALSE;

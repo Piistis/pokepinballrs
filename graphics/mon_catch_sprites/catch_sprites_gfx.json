@@ -764,6 +764,22 @@
     {
       "gfx_filename": "catch_mon_909_fuecoco",
       "palette": "catch_mon_909_fuecoco.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_27_sandshrew",
+      "palette": "catch_mon_27_sandshrew.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_41_zubat",
+      "palette": "catch_mon_41_zubat.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_43_oddish",
+      "palette": "catch_mon_43_oddish.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_116_horsea",
+      "palette": "catch_mon_116_horsea.gbapal"
     }
   ]
 }
