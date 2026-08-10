@@ -2,6 +2,7 @@
 #include "functions.h"
 #include "main.h"
 #include "m4a.h"
+#include "variables.h"
 #include "constants/ereader.h"
 #include "constants/areas.h"
 #include "constants/fields.h"
@@ -39,6 +40,17 @@ void InitPinballGameState(void);
 void ConfigureBoardProcessesForField(void);
 void UpdateButtonActionsFromJoy(void);
 void ReplayButtonActionsFromRecording(void);
+
+static s16 GetBoardPokedexFlag(s16 species)
+{
+    if (species < 0 || species >= NUM_SPECIES)
+        return SPECIES_UNSEEN;
+
+    if (species >= NUM_SAVE_SPECIES && species < NUM_SPECIES)
+        return gExtraPokedexFlags[species - NUM_SAVE_SPECIES];
+
+    return gMain_saveData.pokedexFlags[species];
+}
 
 void PinballGameMain(void)
 {
@@ -145,9 +157,9 @@ void PinballGame_State0_49ED4(void)
         InitRandomWildMonLocationsForNewGame();
 
     gBoardConfig.caughtSpeciesCount = 0;
-    for (j = 0; j < NUM_SAVE_SPECIES; j++)
+    for (j = 0; j < NUM_SPECIES; j++)
     {
-        if (gMain_saveData.pokedexFlags[j] > SPECIES_SHARED_AND_SEEN)
+        if (GetBoardPokedexFlag(j) > SPECIES_SHARED_AND_SEEN)
             gBoardConfig.caughtSpeciesCount++;
     }
 

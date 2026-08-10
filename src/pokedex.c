@@ -40,6 +40,8 @@ static void PokedexListScrollUp(void);
 static void PokedexListScrollDown(void);
 static void PokedexListScrollUpFast(void);
 static void PokedexListScrollDownFast(void);
+static s16 PokedexMaxListPosition(void);
+static bool8 PokedexSpeciesHasSecondDescriptionPage(s16);
 void Pokedex_CheckDeleteKeyComboPressed(void);
 static bool8 Pokedex_CheckDebugCompleteComboPressed(void);
 static void CompletePokedexForDebug(void);
@@ -127,6 +129,9 @@ static s16 PokedexListPositionToSpecies(s16 listPosition)
 
 static s16 GetPokedexFlag(s16 species)
 {
+    if (species < 0 || species >= NUM_SPECIES)
+        return SPECIES_UNSEEN;
+
     if (species >= NUM_SAVE_SPECIES && species < NUM_SPECIES)
         return gExtraPokedexFlags[species - NUM_SAVE_SPECIES];
 
@@ -136,6 +141,16 @@ static s16 GetPokedexFlag(s16 species)
 static void UpdateSelectedMonFromListPosition(void)
 {
     gPokedexSelectedMon = PokedexListPositionToSpecies(gPokedexListPosition + gPokedexCursorOffset);
+}
+
+static s16 PokedexMaxListPosition(void)
+{
+    return gPokedexListEntryCount - ENTRIES_SHOWN_COUNT;
+}
+
+static bool8 PokedexSpeciesHasSecondDescriptionPage(s16 species)
+{
+    return species >= 0 && species < NUM_SPECIES;
 }
 
 void PokedexMain(void)
@@ -422,7 +437,7 @@ void Pokedex_InfoWindowSlideIn(void)
         gPokedexSpriteIndexBase = 0;
         gPokedexPageIndicatorBlink = 0;
 
-        if (gPokedexSelectedMon < BONUS_SPECIES_START)
+        if (PokedexSpeciesHasSecondDescriptionPage(gPokedexSelectedMon))
             gPokedexShowPageIndicator = 1;
 
         DmaCopy16(3, gPokedexInfoWindowTiles, (void *)0x6000280, 2*0xE0);
@@ -459,7 +474,7 @@ void Pokedex_DetailViewInput(void)
 
     if (JOY_NEW(DPAD_UP))
     {
-        if ((gPokedexSelectedMon < BONUS_SPECIES_START) && (gPokedexDescriptionPage == 1))
+        if (PokedexSpeciesHasSecondDescriptionPage(gPokedexSelectedMon) && gPokedexDescriptionPage == 1)
         {
             m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
             gPokedexDescriptionPage = 0;
@@ -469,7 +484,7 @@ void Pokedex_DetailViewInput(void)
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if ((gPokedexSelectedMon < BONUS_SPECIES_START) && (gPokedexDescriptionPage == 0))
+        if (PokedexSpeciesHasSecondDescriptionPage(gPokedexSelectedMon) && gPokedexDescriptionPage == 0)
         {
             m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
             gPokedexDescriptionPage = 1;
@@ -480,7 +495,7 @@ void Pokedex_DetailViewInput(void)
 
     if (JOY_NEW(A_BUTTON))
     {
-        if (gPokedexSelectedMon < BONUS_SPECIES_START)
+        if (PokedexSpeciesHasSecondDescriptionPage(gPokedexSelectedMon))
         {
             if (!gPokedexDescriptionPage)
             {
@@ -814,7 +829,7 @@ static void PokedexListScrollUp(void)
         {
             if (!gPokedexScrollActive)
             {
-                gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
+                gPokedexListPosition = PokedexMaxListPosition();
                 gPokedexCursorOffset = 4;
                 m4aSongNumStart(SE_MENU_MOVE);
             }
@@ -848,7 +863,7 @@ static void PokedexListScrollDown(void)
     gPokedexSpriteAnimFrame = 0;
     if (gPokedexCursorOffset == 4)
     {
-        if (gPokedexListPosition == gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
+        if (gPokedexListPosition == PokedexMaxListPosition())
         {
             if (!gPokedexScrollActive)
             {
@@ -902,13 +917,13 @@ static void PokedexListScrollDownFast(void)
 
     gPokedexSpriteAnimTimer = 0;
     gPokedexSpriteAnimFrame = 0;
-    if (gPokedexListPosition == gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
+    if (gPokedexListPosition == PokedexMaxListPosition())
         return;
 
     m4aSongNumStart(SE_MENU_MOVE);
     gPokedexListPosition += ENTRIES_SHOWN_COUNT;
-    if (gPokedexListPosition > gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
-        gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
+    if (gPokedexListPosition > PokedexMaxListPosition())
+        gPokedexListPosition = PokedexMaxListPosition();
 
     UpdateSelectedMonFromListPosition();
     gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;

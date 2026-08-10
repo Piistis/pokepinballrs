@@ -14,7 +14,7 @@ int SpeciesRSToCryId(u16 speciesRS)
         return speciesRS;
     if (speciesRS < SPECIES_RS_TREECKO - 1)
         return SPECIES_RS_UNOWN - 1;
-    if (speciesRS > SPECIES_RS_FUECOCO - 1)
+    if (speciesRS > SPECIES_RS_ZEBSTRIKA - 1)
         return SPECIES_RS_UNOWN - 1;
     return gSpeciesRSToCryId[speciesRS - (SPECIES_RS_TREECKO - 1)];
 }
@@ -73,6 +73,9 @@ static void PlayCryInternal(u16 speciesRS, s8 pan, s8 volume, u8 priority, int u
         break;
     case 3:
         SetPokemonCryTone(&gPokemonCryToneBank3[index]);
+        break;
+    default:
+        SetPokemonCryTone(&gPokemonCryToneBank1[(SPECIES_RS_UNOWN - 1) & 0x7F]);
         break;
     }
 }

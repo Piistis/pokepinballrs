@@ -2064,7 +2064,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BLITZLE] = {
-        .speciesIdRS = 310,
+        .speciesIdRS = SPECIES_RS_BLITZLE,
         .nameJapanese = {0},
         .name = "BLITZLE   ",
         .catchIndex = 84,
@@ -3874,7 +3874,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_ZEBSTRIKA] = {
-        .speciesIdRS = 310,
+        .speciesIdRS = SPECIES_RS_ZEBSTRIKA,
         .nameJapanese = {0},
         .name = "ZEBSTRIKA ",
         .catchIndex = 0,

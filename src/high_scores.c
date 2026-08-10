@@ -98,6 +98,17 @@ enum HighScorePopupType {
     HIGH_SCORE_POPUP_DELETE_CONFIRMATION_PROMPT = 4
 };
 
+static s16 GetHighScorePokedexFlag(s16 species)
+{
+    if (species < 0 || species >= NUM_SPECIES)
+        return SPECIES_UNSEEN;
+
+    if (species >= NUM_SAVE_SPECIES && species < NUM_SPECIES)
+        return gExtraPokedexFlags[species - NUM_SAVE_SPECIES];
+
+    return gMain_saveData.pokedexFlags[species];
+}
+
 void HighScoresMain(void)
 {
     gHighScoresStateFuncs[gMain.subState]();
@@ -2394,14 +2405,10 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
 s8 CheckAllPokemonCaught(void)
 {
     int i;
-    s16 sp0[NUM_SPECIES];
 
-    for(i = 0; i < NUM_SAVE_SPECIES; i++)
-        sp0[i] = gMain_saveData.pokedexFlags[i];
-
-    for(i = 0; i < BONUS_SPECIES_START; i++) // TODO: add a proper count for non bonus
+    for(i = 0; i < NUM_SPECIES; i++)
     {
-        if(sp0[i] != 4)
+        if(GetHighScorePokedexFlag(i) != SPECIES_CAUGHT)
             return 0;
     }
     return 1;

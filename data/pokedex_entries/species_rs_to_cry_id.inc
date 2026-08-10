@@ -246,4 +246,6 @@ gSpeciesRSToCryId:: @ 0x08527F18
 	.2byte 0x01F1   @ROWLET
 	.2byte 0x01F2   @APPLIN
 	.2byte 0x01F3   @FUECOCO
+	.2byte 0x01F4   @BLITZLE
+	.2byte 0x01F5   @ZEBSTRIKA
 	.align 2,0
