@@ -5776,7 +5776,7 @@ dexEntry482::
     .2byte 4, 8, 0, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "UXIE"
     .dexCategory "KNOWLEDGE P"
-    .dexText "KNOWN AS "THE BEING OF KNOWLEDGE." IT IS"
+    .dexText "KNOWN AS THE BEING OF KNOWLEDGE. IT IS"
     .dexText "SAID THAT IT CAN WIPE OUT THE MEMORY OF"
     .dexText "THOSE WHO SEE ITS EYES."
     .dexText ""
@@ -5788,7 +5788,7 @@ dexEntry483::
     .2byte 4, 8, 1, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "MESPRIT"
     .dexCategory "EMOTION POK"
-    .dexText "KNOWN AS "THE BEING OF EMOTION." IT TAUGHT"
+    .dexText "KNOWN AS THE BEING OF EMOTION. IT TAUGHT"
     .dexText "HUMANS THE NOBILITY OF SORROW, PAIN, AND"
     .dexText "JOY."
     .dexText ""
@@ -5800,7 +5800,7 @@ dexEntry484::
     .2byte 4, 8, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "AZELF"
     .dexCategory "WILLPOWER P"
-    .dexText "KNOWN AS "THE BEING OF WILLPOWER." IT"
+    .dexText "KNOWN AS THE BEING OF WILLPOWER. IT"
     .dexText "SLEEPS AT THE BOTTOM OF A LAKE TO KEEP THE"
     .dexText "WORLD IN BALANCE."
     .dexText ""
