@@ -4671,7 +4671,7 @@ dexEntry389::
 dexEntry390::
     .2byte 3, 8, 8, 0xA, 3, 0, 7, 0xA, 0xA, 2, 1, 4
     .dexName "GROTLE"
-    .dexCategory "GROVE POKÉM"
+    .dexCategory "GROVE POKeM"
     .dexText "IT LIVES ALONG WATER IN FORESTS. IN THE"
     .dexText "DAYTIME, IT LEAVES THE FOREST TO SUNBATHE"
     .dexText "ITS TREED SHELL."
@@ -4684,7 +4684,7 @@ dexEntry391::
     .2byte 3, 8, 9, 0xA, 7, 0, 3, 0xA, 0xA, 6, 8, 3
     .dexName "TORTERRA"
     .dexCategory "CONTINENT P"
-    .dexText "SMALL POKÉMON OCCASIONALLY GATHER ON ITS"
+    .dexText "SMALL POKeMON OCCASIONALLY GATHER ON ITS"
     .dexText "UNMOVING BACK TO BEGIN BUILDING THEIR"
     .dexText "NESTS."
     .dexText ""
@@ -4695,7 +4695,7 @@ dexEntry391::
 dexEntry392::
     .2byte 3, 9, 0, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 1, 4
     .dexName "CHIMCHAR"
-    .dexCategory "CHIMP POKÉM"
+    .dexCategory "CHIMP POKeM"
     .dexText "IT AGILELY SCALES SHEER CLIFFS TO LIVE"
     .dexText "ATOP CRAGGY MOUNTAINS. ITS FIRE IS PUT OUT"
     .dexText "WHEN IT SLEEPS."
@@ -4719,7 +4719,7 @@ dexEntry393::
 dexEntry394::
     .2byte 3, 9, 2, 0xA, 3, 1, 1, 0xA, 0xA, 1, 2, 1
     .dexName "INFERNAPE"
-    .dexCategory "FLAME POKÉM"
+    .dexCategory "FLAME POKeM"
     .dexText "IT USES A SPECIAL KIND OF MARTIAL ARTS"
     .dexText "INVOLVING ALL ITS LIMBS. ITS FIRE NEVER"
     .dexText "GOES OUT."
@@ -4781,7 +4781,7 @@ dexEntry399::
     .dexName "STARAVIA"
     .dexCategory "STARLING PO"
     .dexText "IT FLIES AROUND FORESTS AND FIELDS IN"
-    .dexText "SEARCH OF BUG POKÉMON. IT STAYS WITHIN A"
+    .dexText "SEARCH OF BUG POKeMON. IT STAYS WITHIN A"
     .dexText "HUGE FLOCK."
     .dexText ""
     .dexText ""
@@ -4815,7 +4815,7 @@ dexEntry401::
 dexEntry402::
     .2byte 4, 0, 0, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 6, 9
     .dexName "BIBAREL"
-    .dexCategory "BEAVER POKÉ"
+    .dexCategory "BEAVER POKe"
     .dexText "IT MAKES ITS NEST BY DAMMING STREAMS WITH"
     .dexText "BARK AND MUD. IT IS KNOWN AS AN"
     .dexText "INDUSTRIOUS WORKER."
@@ -4851,7 +4851,7 @@ dexEntry404::
 dexEntry405::
     .2byte 4, 0, 3, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 2, 1
     .dexName "SHINX"
-    .dexCategory "FLASH POKÉM"
+    .dexCategory "FLASH POKeM"
     .dexText "ALL OF ITS FUR DAZZLES IF DANGER IS"
     .dexText "SENSED. IT FLEES WHILE THE FOE IS"
     .dexText "MOMENTARILY BLINDED."
@@ -4863,7 +4863,7 @@ dexEntry405::
 dexEntry406::
     .2byte 4, 0, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 7
     .dexName "LUXIO"
-    .dexCategory "SPARK POKÉM"
+    .dexCategory "SPARK POKeM"
     .dexText "ITS CLAWS LOOSE ELECTRICITY WITH ENOUGH"
     .dexText "AMPERAGE TO CAUSE FAINTING. THEY LIVE IN"
     .dexText "SMALL GROUPS."
@@ -4887,7 +4887,7 @@ dexEntry407::
 dexEntry408::
     .2byte 4, 0, 6, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 3
     .dexName "BUDEW"
-    .dexCategory "BUD POKÉMON"
+    .dexCategory "BUD POKeMON"
     .dexText "OVER THE WINTER, IT CLOSES ITS BUD AND"
     .dexText "ENDURES THE COLD. IN SPRING, THE BUD OPENS"
     .dexText "AND RELEASES POLLEN."
@@ -4935,8 +4935,8 @@ dexEntry411::
 dexEntry412::
     .2byte 4, 1, 0, 0xA, 1, 0, 8, 0xA, 0xA, 1, 2, 6
     .dexName "SHIELDON"
-    .dexCategory "SHIELD POKÉ"
-    .dexText "A POKÉMON THAT LIVED IN JUNGLES AROUND 100"
+    .dexCategory "SHIELD POKe"
+    .dexText "A POKeMON THAT LIVED IN JUNGLES AROUND 100"
     .dexText "MILLION YEARS AGO. ITS FACIAL HIDE IS"
     .dexText "EXTREMELY HARD."
     .dexText ""
@@ -4947,9 +4947,9 @@ dexEntry412::
 dexEntry413::
     .2byte 4, 1, 1, 0xA, 4, 0, 3, 0xA, 0xA, 3, 3, 0
     .dexName "BASTIODON"
-    .dexCategory "SHIELD POKÉ"
+    .dexCategory "SHIELD POKe"
     .dexText "ANY FRONTAL ATTACK IS REPULSED. IT IS A"
-    .dexText "DOCILE POKÉMON THAT FEEDS ON GRASS AND"
+    .dexText "DOCILE POKeMON THAT FEEDS ON GRASS AND"
     .dexText "BERRIES."
     .dexText ""
     .dexText ""
@@ -4973,7 +4973,7 @@ dexEntry415::
     .dexName "WORMADAM"
     .dexCategory "BAGWORM POK"
     .dexText "WHEN BURMY EVOLVED, ITS CLOAK BECAME A"
-    .dexText "PART OF THIS POKÉMON’S BODY. THE CLOAK IS"
+    .dexText "PART OF THIS POKeMON`S BODY. THE CLOAK IS"
     .dexText "NEVER SHED."
     .dexText ""
     .dexText ""
@@ -4983,7 +4983,7 @@ dexEntry415::
 dexEntry416::
     .2byte 4, 1, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 5, 1
     .dexName "MOTHIM"
-    .dexCategory "MOTH POKÉMO"
+    .dexCategory "MOTH POKeMO"
     .dexText "IT LOVES THE HONEY OF FLOWERS AND STEALS"
     .dexText "HONEY COLLECTED BY COMBEE."
     .dexText ""
@@ -4996,7 +4996,7 @@ dexEntry417::
     .2byte 4, 1, 5, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 1, 2
     .dexName "COMBEE"
     .dexCategory "TINY BEE PO"
-    .dexText "A POKÉMON FORMED BY THREE OTHERS. IT"
+    .dexText "A POKeMON FORMED BY THREE OTHERS. IT"
     .dexText "BUSILY CARRIES SWEET FLORAL HONEY TO"
     .dexText "VESPIQUEN."
     .dexText ""
@@ -5055,7 +5055,7 @@ dexEntry421::
 dexEntry422::
     .2byte 4, 2, 0, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 7
     .dexName "CHERUBI"
-    .dexCategory "CHERRY POKÉ"
+    .dexCategory "CHERRY POKe"
     .dexText "THE SMALL BALL HOLDS THE NUTRIENTS NEEDED"
     .dexText "FOR EVOLUTION. APPARENTLY, IT IS VERY"
     .dexText "SWEET AND TASTY."
@@ -5116,8 +5116,8 @@ dexEntry427::
     .2byte 4, 2, 5, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 3
     .dexName "DRIFLOON"
     .dexCategory "BALLOON POK"
-    .dexText "A POKÉMON FORMED BY THE SPIRITS OF PEOPLE"
-    .dexText "AND POKÉMON. IT LOVES DAMP, HUMID SEASONS."
+    .dexText "A POKeMON FORMED BY THE SPIRITS OF PEOPLE"
+    .dexText "AND POKeMON. IT LOVES DAMP, HUMID SEASONS."
     .dexText ""
     .dexText ""
     .dexText ""
@@ -5127,8 +5127,8 @@ dexEntry427::
 dexEntry428::
     .2byte 4, 2, 6, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 3, 3
     .dexName "DRIFBLIM"
-    .dexCategory "BLIMP POKÉM"
-    .dexText "IT’S DROWZY IN DAYTIME, BUT FLIES OFF IN"
+    .dexCategory "BLIMP POKeM"
+    .dexText "IT`S DROWZY IN DAYTIME, BUT FLIES OFF IN"
     .dexText "THE EVENING IN BIG GROUPS. NO ONE KNOWS"
     .dexText "WHERE THEY GO."
     .dexText ""
@@ -5139,7 +5139,7 @@ dexEntry428::
 dexEntry429::
     .2byte 4, 2, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 1, 2
     .dexName "BUNEARY"
-    .dexCategory "RABBIT POKÉ"
+    .dexCategory "RABBIT POKe"
     .dexText "IT SLAMS FOES BY SHARPLY UNCOILING ITS"
     .dexText "ROLLED EARS. IT STINGS ENOUGH TO MAKE A"
     .dexText "GROWN-UP CRY IN PAIN."
@@ -5151,8 +5151,8 @@ dexEntry429::
 dexEntry430::
     .2byte 4, 2, 8, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 7, 3
     .dexName "LOPUNNY"
-    .dexCategory "RABBIT POKÉ"
-    .dexText "AN EXTREMELY CAUTIOUS POKÉMON. IT CLOAKS"
+    .dexCategory "RABBIT POKe"
+    .dexText "AN EXTREMELY CAUTIOUS POKeMON. IT CLOAKS"
     .dexText "ITS BODY WITH ITS FLUFFY EAR FUR WHEN IT"
     .dexText "SENSES DANGER."
     .dexText ""
@@ -5187,7 +5187,7 @@ dexEntry432::
 dexEntry433::
     .2byte 4, 3, 1, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 0xA, 9
     .dexName "GLAMEOW"
-    .dexCategory "CATTY POKÉM"
+    .dexCategory "CATTY POKeM"
     .dexText "IT CLAWS IF DISPLEASED AND PURRS WHEN"
     .dexText "AFFECTIONATE. ITS FICKLENESS IS VERY"
     .dexText "POPULAR AMONG SOME."
@@ -5201,7 +5201,7 @@ dexEntry434::
     .dexName "PURUGLY"
     .dexCategory "TIGER CAT P"
     .dexText "IT IS A BRAZEN BRUTE THAT BARGES ITS WAY"
-    .dexText "INTO ANOTHER POKÉMON’S NEST AND CLAIMS IT"
+    .dexText "INTO ANOTHER POKeMON`S NEST AND CLAIMS IT"
     .dexText "AS ITS OWN."
     .dexText ""
     .dexText ""
@@ -5211,7 +5211,7 @@ dexEntry434::
 dexEntry435::
     .2byte 4, 3, 3, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "CHINGLING"
-    .dexCategory "BELL POKÉMO"
+    .dexCategory "BELL POKeMO"
     .dexText "IT EMITS CRIES BY AGITATING AN ORB AT THE"
     .dexText "BACK OF ITS THROAT. IT MOVES WITH"
     .dexText "FLOUNCING HOPS."
@@ -5223,7 +5223,7 @@ dexEntry435::
 dexEntry436::
     .2byte 4, 3, 4, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 4, 2
     .dexName "STUNKY"
-    .dexCategory "SKUNK POKÉM"
+    .dexCategory "SKUNK POKeM"
     .dexText "IT PROTECTS ITSELF BY SPRAYING A NOXIOUS"
     .dexText "FLUID FROM ITS REAR. THE STENCH LINGERS"
     .dexText "FOR 24 HOURS."
@@ -5235,7 +5235,7 @@ dexEntry436::
 dexEntry437::
     .2byte 4, 3, 5, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 8, 4
     .dexName "SKUNTANK"
-    .dexCategory "SKUNK POKÉM"
+    .dexCategory "SKUNK POKeM"
     .dexText "IT SPRAYS A VILE-SMELLING FLUID FROM THE"
     .dexText "TIP OF ITS TAIL TO ATTACK. ITS RANGE IS"
     .dexText "OVER 160 FEET."
@@ -5247,7 +5247,7 @@ dexEntry437::
 dexEntry438::
     .2byte 4, 3, 6, 0xA, 1, 0, 8, 0xA, 0xA, 1, 3, 3
     .dexName "BRONZOR"
-    .dexCategory "BRONZE POKÉ"
+    .dexCategory "BRONZE POKe"
     .dexText "IMPLEMENTS SHAPED LIKE IT WERE DISCOVERED"
     .dexText "IN ANCIENT TOMBS. IT IS UNKNOWN IF THEY"
     .dexText "ARE RELATED."
@@ -5271,9 +5271,9 @@ dexEntry439::
 dexEntry440::
     .2byte 4, 3, 8, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 3, 3
     .dexName "BONSLY"
-    .dexCategory "BONSAI POKÉ"
+    .dexCategory "BONSAI POKe"
     .dexText "IT LOOKS AS IF IT IS ALWAYS CRYING. IT IS"
-    .dexText "ACTUALLY ADJUSTING ITS BODY’S FLUID LEVELS"
+    .dexText "ACTUALLY ADJUSTING ITS BODY`S FLUID LEVELS"
     .dexText "BY ELIMINATING EXCESS."
     .dexText ""
     .dexText ""
@@ -5283,10 +5283,10 @@ dexEntry440::
 dexEntry441::
     .2byte 4, 3, 9, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 2, 9
     .dexName "MIME JR."
-    .dexCategory "MIME POKÉMO"
+    .dexCategory "MIME POKeMO"
     .dexText "IT HABITUALLY MIMICS FOES. ONCE MIMICKED,"
     .dexText "THE FOE CANNOT TAKE ITS EYES OFF THIS"
-    .dexText "POKÉMON."
+    .dexText "POKeMON."
     .dexText ""
     .dexText ""
     .dexText ""
@@ -5320,7 +5320,7 @@ dexEntry444::
     .2byte 4, 4, 2, 0xA, 3, 0, 3, 0xA, 0xA, 2, 3, 8
     .dexName "SPIRITOMB"
     .dexCategory "FORBIDDEN P"
-    .dexText "A POKÉMON THAT WAS FORMED BY 108 SPIRITS."
+    .dexText "A POKeMON THAT WAS FORMED BY 108 SPIRITS."
     .dexText "IT IS BOUND TO A FISSURE IN AN ODD"
     .dexText "KEYSTONE."
     .dexText ""
@@ -5343,7 +5343,7 @@ dexEntry445::
 dexEntry446::
     .2byte 4, 4, 4, 0xA, 4, 0, 7, 0xA, 0xA, 1, 2, 3
     .dexName "GABITE"
-    .dexCategory "CAVE POKÉMO"
+    .dexCategory "CAVE POKeMO"
     .dexText "THERE IS A LONG-HELD BELIEF THAT MEDICINE"
     .dexText "MADE FROM ITS SCALES WILL HEAL EVEN"
     .dexText "INCURABLE ILLNESSES."
@@ -5355,7 +5355,7 @@ dexEntry446::
 dexEntry447::
     .2byte 4, 4, 5, 0xA, 6, 0, 3, 0xA, 0xA, 2, 0, 9
     .dexName "GARCHOMP"
-    .dexCategory "MACH POKÉMO"
+    .dexCategory "MACH POKeMO"
     .dexText "WHEN IT FOLDS UP ITS BODY AND EXTENDS ITS"
     .dexText "WINGS, IT LOOKS LIKE A JET PLANE. IT FLIES"
     .dexText "AT SONIC SPEED."
@@ -5391,7 +5391,7 @@ dexEntry449::
 dexEntry450::
     .2byte 4, 4, 8, 0xA, 3, 1, 1, 0xA, 0xA, 1, 1, 9
     .dexName "LUCARIO"
-    .dexCategory "AURA POKÉMO"
+    .dexCategory "AURA POKeMO"
     .dexText "IT HAS THE ABILITY TO SENSE THE AURAS OF"
     .dexText "ALL THINGS. IT UNDERSTANDS HUMAN SPEECH."
     .dexText ""
@@ -5403,7 +5403,7 @@ dexEntry450::
 dexEntry451::
     .2byte 4, 4, 9, 0xA, 2, 0, 7, 0xA, 0xA, 1, 0, 9
     .dexName "HIPPOPOTAS"
-    .dexCategory "HIPPO POKÉM"
+    .dexCategory "HIPPO POKeM"
     .dexText "IT LIVES IN ARID PLACES. INSTEAD OF"
     .dexText "PERSPIRATION, IT EXPELS GRAINY SAND FROM"
     .dexText "ITS BODY."
@@ -5499,7 +5499,7 @@ dexEntry458::
 dexEntry459::
     .2byte 4, 5, 7, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 5, 3
     .dexName "LUMINEON"
-    .dexCategory "NEON POKÉMO"
+    .dexCategory "NEON POKeMO"
     .dexText "IT LIVES ON THE DEEP-SEA FLOOR. IT"
     .dexText "ATTRACTS PREY BY FLASHING THE PATTERNS ON"
     .dexText "ITS FOUR TAIL FINS."
@@ -5511,8 +5511,8 @@ dexEntry459::
 dexEntry460::
     .2byte 4, 5, 8, 0xA, 3, 0, 3, 0xA, 0xA, 1, 4, 3
     .dexName "MANTYKE"
-    .dexCategory "KITE POKÉMO"
-    .dexText "A FRIENDLY POKÉMON THAT CAPTURES THE"
+    .dexCategory "KITE POKeMO"
+    .dexText "A FRIENDLY POKeMON THAT CAPTURES THE"
     .dexText "SUBTLE FLOWS OF SEAWATER USING ITS TWO"
     .dexText "ANTENNAE."
     .dexText ""
@@ -5583,7 +5583,7 @@ dexEntry465::
 dexEntry466::
     .2byte 4, 6, 4, 0xA, 7, 1, 0, 0xA, 0xA, 6, 2, 3
     .dexName "RHYPERIOR"
-    .dexCategory "DRILL POKÉM"
+    .dexCategory "DRILL POKeM"
     .dexText "IT PUTS ROCKS IN HOLES IN ITS PALMS AND"
     .dexText "USES ITS MUSCLES TO SHOOT THEM. GEODUDE"
     .dexText "ARE SHOT AT RARE TIMES."
@@ -5595,7 +5595,7 @@ dexEntry466::
 dexEntry467::
     .2byte 4, 6, 5, 0xA, 6, 0, 7, 0xA, 0xA, 2, 8, 4
     .dexName "TANGROWTH"
-    .dexCategory "VINE POKÉMO"
+    .dexCategory "VINE POKeMO"
     .dexText "IT ENSNARES PREY BY EXTENDING ARMS MADE OF"
     .dexText "VINES. LOSING ARMS TO PREDATORS DOES NOT"
     .dexText "TROUBLE IT."
@@ -5619,7 +5619,7 @@ dexEntry468::
 dexEntry469::
     .2byte 4, 6, 7, 0xA, 5, 0, 3, 0xA, 0xA, 1, 5, 0
     .dexName "MAGMORTAR"
-    .dexCategory "BLAST POKÉM"
+    .dexCategory "BLAST POKeM"
     .dexText "IT BLASTS FIREBALLS OF OVER 3,600 DEGREES"
     .dexText "F FROM THE ENDS OF ITS ARMS. IT LIVES IN"
     .dexText "VOLCANIC CRATERS."
@@ -5705,7 +5705,7 @@ dexEntry476::
     .dexName "PORYGON-Z"
     .dexCategory "VIRTUAL POK"
     .dexText "ADDITIONAL SOFTWARE WAS INSTALLED TO MAKE"
-    .dexText "IT A BETTER POKÉMON. IT BEGAN ACTING"
+    .dexText "IT A BETTER POKeMON. IT BEGAN ACTING"
     .dexText "ODDLY, HOWEVER."
     .dexText ""
     .dexText ""
@@ -5715,7 +5715,7 @@ dexEntry476::
 dexEntry477::
     .2byte 4, 7, 5, 0xA, 5, 0, 3, 0xA, 0xA, 1, 1, 5
     .dexName "GALLADE"
-    .dexCategory "BLADE POKÉM"
+    .dexCategory "BLADE POKeM"
     .dexText "A MASTER OF COURTESY AND SWORDSMANSHIP, IT"
     .dexText "FIGHTS USING EXTENDING SWORDS ON ITS"
     .dexText "ELBOWS."
@@ -5763,7 +5763,7 @@ dexEntry480::
 dexEntry481::
     .2byte 4, 7, 9, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "ROTOM"
-    .dexCategory "PLASMA POKÉ"
+    .dexCategory "PLASMA POKe"
     .dexText "ITS BODY IS COMPOSED OF PLASMA. IT IS"
     .dexText "KNOWN TO INFILTRATE ELECTRONIC DEVICES AND"
     .dexText "WREAK HAVOC."
@@ -5776,7 +5776,7 @@ dexEntry482::
     .2byte 4, 8, 0, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "UXIE"
     .dexCategory "KNOWLEDGE P"
-    .dexText "KNOWN AS “THE BEING OF KNOWLEDGE.” IT IS"
+    .dexText "KNOWN AS "THE BEING OF KNOWLEDGE." IT IS"
     .dexText "SAID THAT IT CAN WIPE OUT THE MEMORY OF"
     .dexText "THOSE WHO SEE ITS EYES."
     .dexText ""
@@ -5788,7 +5788,7 @@ dexEntry483::
     .2byte 4, 8, 1, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "MESPRIT"
     .dexCategory "EMOTION POK"
-    .dexText "KNOWN AS “THE BEING OF EMOTION.” IT TAUGHT"
+    .dexText "KNOWN AS "THE BEING OF EMOTION." IT TAUGHT"
     .dexText "HUMANS THE NOBILITY OF SORROW, PAIN, AND"
     .dexText "JOY."
     .dexText ""
@@ -5800,7 +5800,7 @@ dexEntry484::
     .2byte 4, 8, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
     .dexName "AZELF"
     .dexCategory "WILLPOWER P"
-    .dexText "KNOWN AS “THE BEING OF WILLPOWER.” IT"
+    .dexText "KNOWN AS "THE BEING OF WILLPOWER." IT"
     .dexText "SLEEPS AT THE BOTTOM OF A LAKE TO KEEP THE"
     .dexText "WORLD IN BALANCE."
     .dexText ""
@@ -5849,7 +5849,7 @@ dexEntry488::
     .dexName "REGIGIGAS"
     .dexCategory "COLOSSAL PO"
     .dexText "THERE IS AN ENDURING LEGEND THAT STATES"
-    .dexText "THIS POKÉMON TOWED CONTINENTS WITH ROPES."
+    .dexText "THIS POKeMON TOWED CONTINENTS WITH ROPES."
     .dexText ""
     .dexText ""
     .dexText ""
@@ -5860,7 +5860,7 @@ dexEntry489::
     .2byte 4, 8, 7, 1, 4, 0, 9, 0xA, 1, 6, 5, 3
     .dexName "GIRATINA"
     .dexCategory "RENEGADE PO"
-    .dexText "A POKÉMON THAT IS SAID TO LIVE IN A WORLD"
+    .dexText "A POKeMON THAT IS SAID TO LIVE IN A WORLD"
     .dexText "ON THE REVERSE SIDE OF OURS. IT APPEARS IN"
     .dexText "AN ANCIENT CEMETERY."
     .dexText ""
@@ -5871,7 +5871,7 @@ dexEntry489::
 dexEntry490::
     .2byte 4, 8, 8, 0xA, 4, 1, 1, 0xA, 0xA, 1, 8, 9
     .dexName "CRESSELIA"
-    .dexCategory "LUNAR POKÉM"
+    .dexCategory "LUNAR POKeM"
     .dexText "SHINY PARTICLES ARE RELEASED FROM ITS"
     .dexText "WINGS LIKE A VEIL. IT IS SAID TO REPRESENT"
     .dexText "THE CRESCENT MOON."
@@ -5884,7 +5884,7 @@ dexEntry491::
     .2byte 4, 8, 9, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 7
     .dexName "PHIONE"
     .dexCategory "SEA DRIFTER"
-    .dexText "A POKÉMON THAT LIVES IN WARM SEAS. IT"
+    .dexText "A POKeMON THAT LIVES IN WARM SEAS. IT"
     .dexText "INFLATES THE FLOTATION SAC ON ITS HEAD TO"
     .dexText "DRIFT AND SEARCH FOR FOOD."
     .dexText ""
@@ -5931,9 +5931,9 @@ dexEntry494::
 dexEntry495::
     .2byte 4, 9, 3, 1, 0, 0, 6, 0xA, 0xA, 7, 0, 5
     .dexName "ARCEUS"
-    .dexCategory "ALPHA POKÉM"
+    .dexCategory "ALPHA POKeM"
     .dexText "IT IS DESCRIBED IN MYTHOLOGY AS THE"
-    .dexText "POKÉMON THAT SHAPED THE UNIVERSE WITH ITS"
+    .dexText "POKeMON THAT SHAPED THE UNIVERSE WITH ITS"
     .dexText "1,000 ARMS."
     .dexText ""
     .dexText ""
@@ -5943,7 +5943,7 @@ dexEntry495::
 dexEntry496::
     .2byte 6, 1, 0, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 4, 0
     .dexName "AXEW"
-    .dexCategory "TUSK POKÉMO"
+    .dexCategory "TUSK POKeMO"
     .dexText "THEY USE THEIR TUSKS TO CRUSH THE BERRIES"
     .dexText "THEY EAT. REPEATED REGROWTH MAKES THEIR"
     .dexText "TUSKS STRONG AND SHARP."
@@ -5955,8 +5955,8 @@ dexEntry496::
 dexEntry497::
     .2byte 6, 9, 8, 0xA, 4, 0, 3, 0xA, 0xA, 0xA, 5, 6
     .dexName "AMAURA"
-    .dexCategory "TUNDRA POKÉ"
-    .dexText "THIS ANCIENT POKÉMON WAS RESTORED FROM"
+    .dexCategory "TUNDRA POKe"
+    .dexText "THIS ANCIENT POKeMON WAS RESTORED FROM"
     .dexText "PART OF ITS BODY THAT HAD BEEN FROZEN IN"
     .dexText "ICE FOR OVER 100 MILLION YEARS."
     .dexText ""
@@ -5968,7 +5968,7 @@ dexEntry498::
     .2byte 7, 2, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 3
     .dexName "ROWLET"
     .dexCategory "GRASS QUILL"
-    .dexText "THIS WARY POKÉMON USES PHOTOSYNTHESIS TO"
+    .dexText "THIS WARY POKeMON USES PHOTOSYNTHESIS TO"
     .dexText "STORE UP ENERGY DURING THE DAY, WHILE"
     .dexText "BECOMING ACTIVE AT NIGHT."
     .dexText ""
@@ -5982,7 +5982,7 @@ dexEntry499::
     .dexCategory "APPLE CORE "
     .dexText "IT SPENDS ITS ENTIRE LIFE INSIDE AN APPLE."
     .dexText "IT HIDES FROM ITS NATURAL ENEMIES, BIRD"
-    .dexText "POKÉMON, BY PRETENDING IT’S JUST AN APPLE"
+    .dexText "POKeMON, BY PRETENDING IT`S JUST AN APPLE"
     .dexText "AND NOTHING MORE."
     .dexText ""
     .dexText ""
