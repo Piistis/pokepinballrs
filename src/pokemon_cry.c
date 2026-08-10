@@ -14,7 +14,7 @@ int SpeciesRSToCryId(u16 speciesRS)
         return speciesRS;
     if (speciesRS < SPECIES_RS_TREECKO - 1)
         return SPECIES_RS_UNOWN - 1;
-    if (speciesRS > SPECIES_RS_CHIMECHO - 1)
+    if (speciesRS > SPECIES_RS_FUECOCO - 1)
         return SPECIES_RS_UNOWN - 1;
     return gSpeciesRSToCryId[speciesRS - (SPECIES_RS_TREECKO - 1)];
 }

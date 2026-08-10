@@ -1,4 +1,5 @@
 #include "constants/species.h"
+#include "constants/species_rs.h"
 #include "types.h"
 
 const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
@@ -3883,7 +3884,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_TURTWIG] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_TURTWIG,
         .nameJapanese = {0},
         .name = "TURTWIG   ",
         .catchIndex = 177,
@@ -3893,7 +3894,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_GROTLE
     },
     [SPECIES_GROTLE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GROTLE,
         .nameJapanese = {0},
         .name = "GROTLE    ",
         .catchIndex = 0,
@@ -3903,7 +3904,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_TORTERRA
     },
     [SPECIES_TORTERRA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_TORTERRA,
         .nameJapanese = {0},
         .name = "TORTERRA  ",
         .catchIndex = 0,
@@ -3913,7 +3914,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_CHIMCHAR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CHIMCHAR,
         .nameJapanese = {0},
         .name = "CHIMCHAR  ",
         .catchIndex = 178,
@@ -3923,7 +3924,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_MONFERNO
     },
     [SPECIES_MONFERNO] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MONFERNO,
         .nameJapanese = {0},
         .name = "MONFERNO  ",
         .catchIndex = 0,
@@ -3933,7 +3934,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_INFERNAPE
     },
     [SPECIES_INFERNAPE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_INFERNAPE,
         .nameJapanese = {0},
         .name = "INFERNAPE ",
         .catchIndex = 0,
@@ -3943,7 +3944,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_PIPLUP] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PIPLUP,
         .nameJapanese = {0},
         .name = "PIPLUP    ",
         .catchIndex = 179,
@@ -3953,7 +3954,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_PRINPLUP
     },
     [SPECIES_PRINPLUP] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PRINPLUP,
         .nameJapanese = {0},
         .name = "PRINPLUP  ",
         .catchIndex = 0,
@@ -3963,7 +3964,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_EMPOLEON
     },
     [SPECIES_EMPOLEON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_EMPOLEON,
         .nameJapanese = {0},
         .name = "EMPOLEON  ",
         .catchIndex = 0,
@@ -3973,7 +3974,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_STARLY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_STARLY,
         .nameJapanese = {0},
         .name = "STARLY    ",
         .catchIndex = 180,
@@ -3983,7 +3984,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_STARAVIA
     },
     [SPECIES_STARAVIA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_STARAVIA,
         .nameJapanese = {0},
         .name = "STARAVIA  ",
         .catchIndex = 0,
@@ -3993,7 +3994,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_STARAPTOR
     },
     [SPECIES_STARAPTOR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_STARAPTOR,
         .nameJapanese = {0},
         .name = "STARAPTOR ",
         .catchIndex = 0,
@@ -4003,7 +4004,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BIDOOF] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BIDOOF,
         .nameJapanese = {0},
         .name = "BIDOOF    ",
         .catchIndex = 181,
@@ -4013,7 +4014,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_BIBAREL
     },
     [SPECIES_BIBAREL] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BIBAREL,
         .nameJapanese = {0},
         .name = "BIBAREL   ",
         .catchIndex = 0,
@@ -4023,7 +4024,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_KRICKETOT] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_KRICKETOT,
         .nameJapanese = {0},
         .name = "KRICKETOT ",
         .catchIndex = 182,
@@ -4033,7 +4034,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_KRICKETUNE
     },
     [SPECIES_KRICKETUNE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_KRICKETUNE,
         .nameJapanese = {0},
         .name = "KRICKETUNE",
         .catchIndex = 0,
@@ -4043,7 +4044,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_SHINX] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SHINX,
         .nameJapanese = {0},
         .name = "SHINX     ",
         .catchIndex = 183,
@@ -4053,7 +4054,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_LUXIO
     },
     [SPECIES_LUXIO] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_LUXIO,
         .nameJapanese = {0},
         .name = "LUXIO     ",
         .catchIndex = 0,
@@ -4063,7 +4064,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_LUXRAY
     },
     [SPECIES_LUXRAY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_LUXRAY,
         .nameJapanese = {0},
         .name = "LUXRAY    ",
         .catchIndex = 0,
@@ -4073,7 +4074,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BUDEW] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BUDEW,
         .nameJapanese = {0},
         .name = "BUDEW     ",
         .catchIndex = 0,
@@ -4083,7 +4084,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_ROSELIA
     },
     [SPECIES_ROSERADE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_ROSERADE,
         .nameJapanese = {0},
         .name = "ROSERADE  ",
         .catchIndex = 0,
@@ -4093,7 +4094,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_CRANIDOS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CRANIDOS,
         .nameJapanese = {0},
         .name = "CRANIDOS  ",
         .catchIndex = 0,
@@ -4103,7 +4104,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_RAMPARDOS
     },
     [SPECIES_RAMPARDOS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_RAMPARDOS,
         .nameJapanese = {0},
         .name = "RAMPARDOS ",
         .catchIndex = 0,
@@ -4113,7 +4114,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_SHIELDON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SHIELDON,
         .nameJapanese = {0},
         .name = "SHIELDON  ",
         .catchIndex = 0,
@@ -4123,7 +4124,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_BASTIODON
     },
     [SPECIES_BASTIODON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BASTIODON,
         .nameJapanese = {0},
         .name = "BASTIODON ",
         .catchIndex = 0,
@@ -4133,7 +4134,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BURMY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BURMY,
         .nameJapanese = {0},
         .name = "BURMY     ",
         .catchIndex = 0,
@@ -4143,7 +4144,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_WORMADAM
     },
     [SPECIES_WORMADAM] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_WORMADAM,
         .nameJapanese = {0},
         .name = "WORMADAM  ",
         .catchIndex = 0,
@@ -4153,7 +4154,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MOTHIM] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MOTHIM,
         .nameJapanese = {0},
         .name = "MOTHIM    ",
         .catchIndex = 0,
@@ -4163,7 +4164,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_COMBEE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_COMBEE,
         .nameJapanese = {0},
         .name = "COMBEE    ",
         .catchIndex = 0,
@@ -4173,7 +4174,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_VESPIQUEN
     },
     [SPECIES_VESPIQUEN] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_VESPIQUEN,
         .nameJapanese = {0},
         .name = "VESPIQUEN ",
         .catchIndex = 0,
@@ -4183,7 +4184,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_PACHIRISU] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PACHIRISU,
         .nameJapanese = {0},
         .name = "PACHIRISU ",
         .catchIndex = 0,
@@ -4193,7 +4194,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BUIZEL] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BUIZEL,
         .nameJapanese = {0},
         .name = "BUIZEL    ",
         .catchIndex = 0,
@@ -4203,7 +4204,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_FLOATZEL
     },
     [SPECIES_FLOATZEL] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_FLOATZEL,
         .nameJapanese = {0},
         .name = "FLOATZEL  ",
         .catchIndex = 0,
@@ -4213,7 +4214,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_CHERUBI] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CHERUBI,
         .nameJapanese = {0},
         .name = "CHERUBI   ",
         .catchIndex = 0,
@@ -4223,7 +4224,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_CHERRIM
     },
     [SPECIES_CHERRIM] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CHERRIM,
         .nameJapanese = {0},
         .name = "CHERRIM   ",
         .catchIndex = 0,
@@ -4233,7 +4234,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_SHELLOS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SHELLOS,
         .nameJapanese = {0},
         .name = "SHELLOS   ",
         .catchIndex = 0,
@@ -4243,7 +4244,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_GASTRODON
     },
     [SPECIES_GASTRODON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GASTRODON,
         .nameJapanese = {0},
         .name = "GASTRODON ",
         .catchIndex = 0,
@@ -4253,7 +4254,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_AMBIPOM] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_AMBIPOM,
         .nameJapanese = {0},
         .name = "AMBIPOM   ",
         .catchIndex = 0,
@@ -4263,7 +4264,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_DRIFLOON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_DRIFLOON,
         .nameJapanese = {0},
         .name = "DRIFLOON  ",
         .catchIndex = 0,
@@ -4273,7 +4274,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_DRIFBLIM
     },
     [SPECIES_DRIFBLIM] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_DRIFBLIM,
         .nameJapanese = {0},
         .name = "DRIFBLIM  ",
         .catchIndex = 0,
@@ -4283,7 +4284,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BUNEARY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BUNEARY,
         .nameJapanese = {0},
         .name = "BUNEARY   ",
         .catchIndex = 0,
@@ -4293,7 +4294,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_LOPUNNY
     },
     [SPECIES_LOPUNNY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_LOPUNNY,
         .nameJapanese = {0},
         .name = "LOPUNNY   ",
         .catchIndex = 0,
@@ -4303,7 +4304,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MISMAGIUS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MISMAGIUS,
         .nameJapanese = {0},
         .name = "MISMAGIUS ",
         .catchIndex = 0,
@@ -4313,7 +4314,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_HONCHKROW] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_HONCHKROW,
         .nameJapanese = {0},
         .name = "HONCHKROW ",
         .catchIndex = 0,
@@ -4323,7 +4324,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_GLAMEOW] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GLAMEOW,
         .nameJapanese = {0},
         .name = "GLAMEOW   ",
         .catchIndex = 0,
@@ -4333,7 +4334,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_PURUGLY
     },
     [SPECIES_PURUGLY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PURUGLY,
         .nameJapanese = {0},
         .name = "PURUGLY   ",
         .catchIndex = 0,
@@ -4343,7 +4344,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_CHINGLING] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CHINGLING,
         .nameJapanese = {0},
         .name = "CHINGLING ",
         .catchIndex = 0,
@@ -4353,7 +4354,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_CHIMECHO
     },
     [SPECIES_STUNKY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_STUNKY,
         .nameJapanese = {0},
         .name = "STUNKY    ",
         .catchIndex = 0,
@@ -4363,7 +4364,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_SKUNTANK
     },
     [SPECIES_SKUNTANK] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SKUNTANK,
         .nameJapanese = {0},
         .name = "SKUNTANK  ",
         .catchIndex = 0,
@@ -4373,7 +4374,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BRONZOR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BRONZOR,
         .nameJapanese = {0},
         .name = "BRONZOR   ",
         .catchIndex = 0,
@@ -4383,7 +4384,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_BRONZONG
     },
     [SPECIES_BRONZONG] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BRONZONG,
         .nameJapanese = {0},
         .name = "BRONZONG  ",
         .catchIndex = 0,
@@ -4393,7 +4394,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_BONSLY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_BONSLY,
         .nameJapanese = {0},
         .name = "BONSLY    ",
         .catchIndex = 0,
@@ -4403,7 +4404,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_SUDOWOODO
     },
     [SPECIES_MIME_JR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MIME_JR,
         .nameJapanese = {0},
         .name = "MIME JR.  ",
         .catchIndex = 0,
@@ -4413,7 +4414,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_MR_MIME
     },
     [SPECIES_HAPPINY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_HAPPINY,
         .nameJapanese = {0},
         .name = "HAPPINY   ",
         .catchIndex = 0,
@@ -4423,7 +4424,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_CHANSEY
     },
     [SPECIES_CHATOT] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CHATOT,
         .nameJapanese = {0},
         .name = "CHATOT    ",
         .catchIndex = 0,
@@ -4433,7 +4434,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_SPIRITOMB] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SPIRITOMB,
         .nameJapanese = {0},
         .name = "SPIRITOMB ",
         .catchIndex = 0,
@@ -4443,7 +4444,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_GIBLE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GIBLE,
         .nameJapanese = {0},
         .name = "GIBLE     ",
         .catchIndex = 0,
@@ -4453,7 +4454,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_GABITE
     },
     [SPECIES_GABITE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GABITE,
         .nameJapanese = {0},
         .name = "GABITE    ",
         .catchIndex = 0,
@@ -4463,7 +4464,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_GARCHOMP
     },
     [SPECIES_GARCHOMP] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GARCHOMP,
         .nameJapanese = {0},
         .name = "GARCHOMP  ",
         .catchIndex = 0,
@@ -4473,7 +4474,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MUNCHLAX] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MUNCHLAX,
         .nameJapanese = {0},
         .name = "MUNCHLAX  ",
         .catchIndex = 0,
@@ -4483,7 +4484,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_SNORLAX
     },
     [SPECIES_RIOLU] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_RIOLU,
         .nameJapanese = {0},
         .name = "RIOLU     ",
         .catchIndex = 0,
@@ -4493,7 +4494,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_LUCARIO
     },
     [SPECIES_LUCARIO] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_LUCARIO,
         .nameJapanese = {0},
         .name = "LUCARIO   ",
         .catchIndex = 0,
@@ -4503,7 +4504,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_HIPPOPOTAS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_HIPPOPOTAS,
         .nameJapanese = {0},
         .name = "HIPPOPOTAS",
         .catchIndex = 0,
@@ -4513,7 +4514,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_HIPPOWDON
     },
     [SPECIES_HIPPOWDON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_HIPPOWDON,
         .nameJapanese = {0},
         .name = "HIPPOWDON ",
         .catchIndex = 0,
@@ -4523,7 +4524,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_SKORUPI] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SKORUPI,
         .nameJapanese = {0},
         .name = "SKORUPI   ",
         .catchIndex = 0,
@@ -4533,7 +4534,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_DRAPION
     },
     [SPECIES_DRAPION] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_DRAPION,
         .nameJapanese = {0},
         .name = "DRAPION   ",
         .catchIndex = 0,
@@ -4543,7 +4544,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_CROAGUNK] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CROAGUNK,
         .nameJapanese = {0},
         .name = "CROAGUNK  ",
         .catchIndex = 0,
@@ -4553,7 +4554,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_TOXICROAK
     },
     [SPECIES_TOXICROAK] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_TOXICROAK,
         .nameJapanese = {0},
         .name = "TOXICROAK ",
         .catchIndex = 0,
@@ -4563,7 +4564,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_CARNIVINE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CARNIVINE,
         .nameJapanese = {0},
         .name = "CARNIVINE ",
         .catchIndex = 0,
@@ -4573,7 +4574,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_FINNEON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_FINNEON,
         .nameJapanese = {0},
         .name = "FINNEON   ",
         .catchIndex = 0,
@@ -4583,7 +4584,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_LUMINEON
     },
     [SPECIES_LUMINEON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_LUMINEON,
         .nameJapanese = {0},
         .name = "LUMINEON  ",
         .catchIndex = 0,
@@ -4593,7 +4594,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MANTYKE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MANTYKE,
         .nameJapanese = {0},
         .name = "MANTYKE   ",
         .catchIndex = 0,
@@ -4603,7 +4604,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_MANTINE
     },
     [SPECIES_SNOVER] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SNOVER,
         .nameJapanese = {0},
         .name = "SNOVER    ",
         .catchIndex = 0,
@@ -4613,7 +4614,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_ABOMASNOW
     },
     [SPECIES_ABOMASNOW] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_ABOMASNOW,
         .nameJapanese = {0},
         .name = "ABOMASNOW ",
         .catchIndex = 0,
@@ -4623,7 +4624,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_WEAVILE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_WEAVILE,
         .nameJapanese = {0},
         .name = "WEAVILE   ",
         .catchIndex = 0,
@@ -4633,7 +4634,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MAGNEZONE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MAGNEZONE,
         .nameJapanese = {0},
         .name = "MAGNEZONE ",
         .catchIndex = 0,
@@ -4643,7 +4644,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_LICKILICKY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_LICKILICKY,
         .nameJapanese = {0},
         .name = "LICKILICKY",
         .catchIndex = 0,
@@ -4653,7 +4654,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_RHYPERIOR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_RHYPERIOR,
         .nameJapanese = {0},
         .name = "RHYPERIOR ",
         .catchIndex = 0,
@@ -4663,7 +4664,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_TANGROWTH] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_TANGROWTH,
         .nameJapanese = {0},
         .name = "TANGROWTH ",
         .catchIndex = 0,
@@ -4673,7 +4674,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_ELECTIVIRE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_ELECTIVIRE,
         .nameJapanese = {0},
         .name = "ELECTIVIRE",
         .catchIndex = 0,
@@ -4683,7 +4684,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MAGMORTAR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MAGMORTAR,
         .nameJapanese = {0},
         .name = "MAGMORTAR ",
         .catchIndex = 0,
@@ -4693,7 +4694,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_TOGEKISS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_TOGEKISS,
         .nameJapanese = {0},
         .name = "TOGEKISS  ",
         .catchIndex = 0,
@@ -4703,7 +4704,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_YANMEGA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_YANMEGA,
         .nameJapanese = {0},
         .name = "YANMEGA   ",
         .catchIndex = 0,
@@ -4713,7 +4714,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_LEAFEON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_LEAFEON,
         .nameJapanese = {0},
         .name = "LEAFEON   ",
         .catchIndex = 0,
@@ -4723,7 +4724,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_GLACEON] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GLACEON,
         .nameJapanese = {0},
         .name = "GLACEON   ",
         .catchIndex = 0,
@@ -4733,7 +4734,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_GLISCOR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GLISCOR,
         .nameJapanese = {0},
         .name = "GLISCOR   ",
         .catchIndex = 0,
@@ -4743,7 +4744,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MAMOSWINE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MAMOSWINE,
         .nameJapanese = {0},
         .name = "MAMOSWINE ",
         .catchIndex = 0,
@@ -4753,7 +4754,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_PORYGON_Z] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PORYGON_Z,
         .nameJapanese = {0},
         .name = "PORYGON-Z ",
         .catchIndex = 0,
@@ -4763,7 +4764,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_GALLADE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GALLADE,
         .nameJapanese = {0},
         .name = "GALLADE   ",
         .catchIndex = 0,
@@ -4773,7 +4774,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_PROBOPASS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PROBOPASS,
         .nameJapanese = {0},
         .name = "PROBOPASS ",
         .catchIndex = 0,
@@ -4783,7 +4784,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_DUSKNOIR] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_DUSKNOIR,
         .nameJapanese = {0},
         .name = "DUSKNOIR  ",
         .catchIndex = 0,
@@ -4793,7 +4794,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_FROSLASS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_FROSLASS,
         .nameJapanese = {0},
         .name = "FROSLASS  ",
         .catchIndex = 0,
@@ -4803,7 +4804,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_ROTOM] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_ROTOM,
         .nameJapanese = {0},
         .name = "ROTOM     ",
         .catchIndex = 0,
@@ -4813,7 +4814,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_UXIE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_UXIE,
         .nameJapanese = {0},
         .name = "UXIE      ",
         .catchIndex = 0,
@@ -4823,7 +4824,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MESPRIT] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MESPRIT,
         .nameJapanese = {0},
         .name = "MESPRIT   ",
         .catchIndex = 0,
@@ -4833,7 +4834,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_AZELF] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_AZELF,
         .nameJapanese = {0},
         .name = "AZELF     ",
         .catchIndex = 0,
@@ -4843,7 +4844,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_DIALGA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_DIALGA,
         .nameJapanese = {0},
         .name = "DIALGA    ",
         .catchIndex = 0,
@@ -4853,7 +4854,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_PALKIA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PALKIA,
         .nameJapanese = {0},
         .name = "PALKIA    ",
         .catchIndex = 0,
@@ -4863,7 +4864,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_HEATRAN] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_HEATRAN,
         .nameJapanese = {0},
         .name = "HEATRAN   ",
         .catchIndex = 0,
@@ -4873,7 +4874,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_REGIGIGAS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_REGIGIGAS,
         .nameJapanese = {0},
         .name = "REGIGIGAS ",
         .catchIndex = 0,
@@ -4883,7 +4884,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_GIRATINA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_GIRATINA,
         .nameJapanese = {0},
         .name = "GIRATINA  ",
         .catchIndex = 0,
@@ -4893,7 +4894,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_CRESSELIA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_CRESSELIA,
         .nameJapanese = {0},
         .name = "CRESSELIA ",
         .catchIndex = 0,
@@ -4903,7 +4904,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_PHIONE] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_PHIONE,
         .nameJapanese = {0},
         .name = "PHIONE    ",
         .catchIndex = 0,
@@ -4913,7 +4914,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_MANAPHY] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_MANAPHY,
         .nameJapanese = {0},
         .name = "MANAPHY   ",
         .catchIndex = 0,
@@ -4923,7 +4924,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_DARKRAI] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_DARKRAI,
         .nameJapanese = {0},
         .name = "DARKRAI   ",
         .catchIndex = 0,
@@ -4933,7 +4934,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_SHAYMIN] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_SHAYMIN,
         .nameJapanese = {0},
         .name = "SHAYMIN   ",
         .catchIndex = 0,
@@ -4943,7 +4944,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_ARCEUS] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_ARCEUS,
         .nameJapanese = {0},
         .name = "ARCEUS    ",
         .catchIndex = 0,
@@ -4953,7 +4954,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_AXEW] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_AXEW,
         .nameJapanese = {0},
         .name = "AXEW      ",
         .catchIndex = 184,
@@ -4963,7 +4964,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_AMAURA] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_AMAURA,
         .nameJapanese = {0},
         .name = "AMAURA    ",
         .catchIndex = 185,
@@ -4973,7 +4974,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_ROWLET] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_ROWLET,
         .nameJapanese = {0},
         .name = "ROWLET    ",
         .catchIndex = 186,
@@ -4983,7 +4984,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_APPLIN] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_APPLIN,
         .nameJapanese = {0},
         .name = "APPLIN    ",
         .catchIndex = 187,
@@ -4993,7 +4994,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
     [SPECIES_FUECOCO] = {
-        .speciesIdRS = 201,
+        .speciesIdRS = SPECIES_RS_FUECOCO,
         .nameJapanese = {0},
         .name = "FUECOCO   ",
         .catchIndex = 188,
