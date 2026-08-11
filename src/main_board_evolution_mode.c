@@ -4,6 +4,9 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+#define EVO_MODE_TIME TICKS_FOR_TIME(2,0)
+#define EVO_SAVER_TIME TICKS_FOR_TIME(1,0)
+
 extern struct SongHeader se_evo_item_appear;
 extern struct SongHeader se_evo_item_finish_appear;
 extern struct SongHeader se_evo_item_collected;
@@ -73,9 +76,9 @@ void InitEvolutionMode(void)
     gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_SHUFFLE_EVO_ITEM_PLACEMENTS;
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + EVO_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->saverTimeRemaining = 3600;
+    gCurrentPinballGame->saverTimeRemaining = EVO_SAVER_TIME;
     gCurrentPinballGame->evoItemGfxIndex = GetEvolutionMethodForCurrentContext(gCurrentPinballGame->currentSpecies) - 1;
     if (gCurrentPinballGame->evoItemGfxIndex < 0)
         gCurrentPinballGame->evoItemGfxIndex = 0;
@@ -256,7 +259,7 @@ void UpdateEvolutionMode(void)
 
                     if (gCurrentPinballGame->stageTimer == 180) {
                         gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                        gCurrentPinballGame->scoreAddedInFrame = 5000000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_EVO_COMPLETED;
                     }
                 }
 
@@ -321,8 +324,8 @@ void UpdateEvolutionMode(void)
             if (gCurrentPinballGame->currentSpecies == SPECIES_NINJASK)
             {
                 gCurrentPinballGame->caughtMonCount++;
-                if (gCurrentPinballGame->bonusMonCatchCount < 99)
-                    gCurrentPinballGame->bonusMonCatchCount++;
+                if (gCurrentPinballGame->bonusMonEvoCount < 99)
+                    gCurrentPinballGame->bonusMonEvoCount++;
 
                 if (gCurrentPinballGame->caughtMonCount == 15)
                     gCurrentPinballGame->oneUpAnimTimer = 92;
@@ -332,8 +335,8 @@ void UpdateEvolutionMode(void)
             if (gCurrentPinballGame->caughtMonCount == 15)
                 gCurrentPinballGame->oneUpAnimTimer = 92;
 
-            if (gCurrentPinballGame->bonusMonCatchCount < 99)
-                gCurrentPinballGame->bonusMonCatchCount++;
+            if (gCurrentPinballGame->bonusMonEvoCount < 99)
+                gCurrentPinballGame->bonusMonEvoCount++;
 
             gCurrentPinballGame->boardSubState++;
             gCurrentPinballGame->stageTimer = 0;
@@ -460,7 +463,7 @@ void UpdateEvolutionItemAnimation(void)
             ((gCurrentPinballGame->boardLayerDepth == 0 && gCurrentPinballGame->evoItemSlotIndex <= 5) || (gCurrentPinballGame->boardLayerDepth == 2 && gCurrentPinballGame->evoItemSlotIndex > 5)) &&
             gCurrentPinballGame->evoItemsCaught < 3)
         {
-            gCurrentPinballGame->scoreAddedInFrame = 10000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_EVO_ITEM_COLLECTED;
             MPlayStart(&gMPlayInfo_SE1, &se_evo_item_collected);
             gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_PREP_SPAWN_EVO_ITEM;
             gCurrentPinballGame->catchLights[gCurrentPinballGame->evoItemsCaught] = 5;
