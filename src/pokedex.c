@@ -9,11 +9,16 @@
 #include "constants/bg_music.h"
 #include "constants/characters.h"
 #include "constants/pinball_game.h"
+#include "constants/global.h"
 
 #define DEX_NUM_DIGITS      3
 #define SCROLL_WAIT_FRAMES  9
 #define ENTRIES_SHOWN_COUNT 5
 #define HATCH_DEX_ANIM_OFFSET 200
+
+#define DEX_TEXT_PAGES 2
+#define DEX_TEXT_ROWS 3
+#define DEX_TEXT_CHARS_PER_PAGE (DEX_TEXT_ROWS * POKEMON_DEX_LINE_LENGTH)
 
 enum PokedexStates
 {
@@ -65,7 +70,7 @@ void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
 void LoadMonPortrait(s16);
 
-extern u8 *gMonIconPalettes[];
+extern Palette *gCatchMonPaletteGroups[];
 extern u8 *gCatchSpriteGfxPtrs[];
 
 extern u16 gPokedexLinkSendCounter;
@@ -173,11 +178,11 @@ void LoadPokedexGraphics(void)
 
     DmaCopy16(3, gPokedexBgText_Gfx, (void *)BG_CHAR_ADDR(1), 0x4400);
     DmaCopy16(3, gPokedexBg_Gfx, (void *)BG_CHAR_ADDR(3), 0x1400);
-    DmaCopy16(3, gPokedexBackground_Pals, (void *)BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gPokedexBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gPokedexBg1_Tilemap, gBG0TilemapBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexVramBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexBg3_Tilemap, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx, (void *)OBJ_VRAM0, 0x6C20);
 
     InitPokedexState();
@@ -439,7 +444,7 @@ void Pokedex_InfoWindowSlideIn(void)
         if (PokedexSpeciesHasSecondDescriptionPage(gPokedexSelectedMon))
             gPokedexShowPageIndicator = 1;
 
-        DmaCopy16(3, gPokedexInfoWindowTiles, (void *)0x6000280, 2*0xE0);
+        DmaCopy16(3, gPokedexInfoWindowTilemap, (void *)0x6000280, 2*0xE0);
         PrintDexDescription(gPokedexSelectedMon, gPokedexDescriptionPage);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
         PlayCry_NormalNoDucking(gSpeciesInfo[gPokedexSelectedMon].speciesIdRS, 0, 127, 10);
@@ -1983,20 +1988,20 @@ void LoadMonPortrait(s16 species)
     {
         case SPECIES_UNSEEN:
             CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void *)0x06013400, 24, 1);
-            DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             break;
         case SPECIES_SEEN:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
-            DmaCopy16(3, gMonPortraitGroupPals[0] + 0x1E0, (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gMonPortraitGroupPals[0][15], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             break;
         case SPECIES_SHARED:
         case SPECIES_SHARED_AND_SEEN:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
-            DarkenPalette(gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20, 0xE);
+            DarkenPalette(&gMonPortraitGroupPals[var1][var2], (void*)OBJ_PLTT_SLOT(1), 0x20, 0xE);
             break;
         case SPECIES_CAUGHT:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
-            DmaCopy16(3, gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gMonPortraitGroupPals[var1][var2], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             break;
     }
 }
@@ -2013,12 +2018,14 @@ void PrintDexDescription(s16 species, u32 page)
 
     var0 = 0;
     DmaFill16(3, 0, gTempGfxBuffer, 0x1800);
-    for (i = 0; i < 3; i++)
+
+    //2 pages, 3 rows, 42 chars
+    for (i = 0; i < DEX_TEXT_ROWS; i++)
     {
-        for (j = 0; j < 42; j++)
+        for (j = 0; j < POKEMON_DEX_LINE_LENGTH; j++)
         {
-            var1 = gPokedexEntries[species].description[page * 126 + i * 42 + j] & ~0xF;
-            var2 = gPokedexEntries[species].description[page * 126 + i * 42 + j] & 0xF;
+            var1 = gPokedexEntries[species].description[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & ~0xF;
+            var2 = gPokedexEntries[species].description[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & 0xF;
             if (var2 == 0)
                 var2 = 4;
 
@@ -2031,7 +2038,7 @@ void PrintDexDescription(s16 species, u32 page)
         var0 = 0;
     }
 
-    DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x5C00, 0x1800);
+    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_SCREEN_ADDR(1,3) + 0x400 , 3*BG_SCREEN_SIZE);
 }
 
 void BlitGlyphToTileBuffer(s32 arg0, s32 arg1, s32 arg2) {
@@ -2472,7 +2479,7 @@ void LoadMonAnimationSprite(s16 species)
         remainder = var0 % 5;
 
         CopyBgTilesRect(gCatchSpriteGfxPtrs[quotient] + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 108, 1);
-        DmaCopy16(3, gMonIconPalettes[quotient] + remainder * 0x20, (void *)OBJ_PLTT + 0x40, 0x20);
+        DmaCopy16(3, gCatchMonPaletteGroups[quotient][remainder], OBJ_PLTT_SLOT(2), PLTT_SLOT_SIZE);
     }
     else
     {
@@ -2481,7 +2488,7 @@ void LoadMonAnimationSprite(s16 species)
         remainder = (var0 - HATCH_DEX_ANIM_OFFSET) % 6;
 
         CopyBgTilesRect(gMonHatchSpriteGroupGfx[quotient][remainder], (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
-        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], (void *)OBJ_PLTT + 0x60, 0x20);
+        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], OBJ_PLTT_SLOT(3), PLTT_SLOT_SIZE);
     }
 }
 

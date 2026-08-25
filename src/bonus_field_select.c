@@ -42,7 +42,7 @@ extern const u8 gBonusFieldMenuSelectionToField[];
 extern const u8 gBonusFieldSelectBg0_Tilemap[];
 extern const u8 gBonusFieldSelectBg1_Tilemap[];
 extern const u8 gBonusFieldSelectBg2_Tilemap[];
-extern const u16 gBonusFieldSelectStages_Pals[];
+extern const Palette gBonusFieldSelectStages_Pals[];
 extern const u8 gBonusFieldSelectStages_Gfx[];
 
 void InitBonusFieldSelectState(void);
@@ -67,14 +67,14 @@ void LoadBonusFieldSelectGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gBonusFieldSelectStages_Pals, (void *)PLTT, 0x200);
-    DmaCopy16(3, gFieldSelectWindow_Gfx, (void *)(VRAM + 0x4000), 0x4000);
-    DmaCopy16(3, gBonusFieldSelectStages_Gfx, (void *)(VRAM + 0x8000), 0x1800);
-    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, (void *)VRAM, 0x800);
-    DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, (void *)(VRAM + 0x800), 0x800);
-    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, (void *)(VRAM + 0x1000), 0x800);
-    DmaCopy16(3, gFieldSelectSpritePals, (void *)(PLTT + 0x200), 0x60);
-    DmaCopy16(3, gFieldSelectSpriteGfx, (void *)(VRAM + 0x10000), 0x4020);
+    DmaCopy16(3, gBonusFieldSelectStages_Pals, BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gFieldSelectWindow_Gfx, BG_CHAR_ADDR(1), BG_CHAR_SIZE);
+    DmaCopy16(3, gBonusFieldSelectStages_Gfx, BG_CHAR_ADDR(2), 3*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, BG_CHAR_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, BG_CHAR_SCREEN_ADDR(0,2), BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(0), 3*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gFieldSelectSpriteGfx, OBJ_VRAM0, 0x4020);
 
     EnableVBlankInterrupts();
     InitBonusFieldSelectState();
@@ -97,7 +97,7 @@ void InitBonusFieldSelectState(void)
     gSelectedBallSpeed = gMain_saveData.ballSpeed;
 }
 
-void BonusFieldSelect_State1_2768(void)
+void BonusFieldSelect_Menu(void)
 {
     RenderBonusFieldSelectSprites();
     switch (gBonusFieldSelectState)
@@ -197,7 +197,7 @@ void BonusFieldSelect_State1_2768(void)
     }
 }
 
-void BonusFieldSelect_State2_2990(void)
+void BonusFieldSelect_FadeToSelection(void)
 {
     FadeOutToWhite(RenderBonusFieldSelectSprites);
     m4aMPlayAllStop();
@@ -208,9 +208,9 @@ void BonusFieldSelect_State2_2990(void)
 
 void RenderBonusFieldSelectSprites(void)
 {
-    struct SpriteGroup * sgptrs[6];
-    struct SpriteGroup * r8;
-    struct SpriteGroup * r10;
+    struct SpriteGroup * boardDimmerPaneSGs[6];
+    struct SpriteGroup * ballSpeedSG;
+    struct SpriteGroup * boardTitleSG;
     struct OamDataSimple * simple;
     s32 i;
     s32 j;
@@ -221,59 +221,60 @@ void RenderBonusFieldSelectSprites(void)
     REG_BLDALPHA = gMain.blendAlpha;
     for (i = 0; i < 6; i++)
     {
-        sgptrs[i] = &gMain.spriteGroups[i];
+        boardDimmerPaneSGs[i] = &gMain.spriteGroups[i];
     }
-    r10 = &gMain.spriteGroups[SG_6 + gSelectedBonusField];
-    r8 = &gMain.spriteGroups[SG_12 + gSelectedBallSpeed * 2 + gBallSpeedDisplayToggle];
+
+    boardTitleSG = &gMain.spriteGroups[SG_BONUS_FIELD_SELECT_BOARD_TITLE_BASE + gSelectedBonusField];
+    ballSpeedSG = &gMain.spriteGroups[SG_FIELD_SELECT_BALL_SPEED_SELECT_BASE + gSelectedBallSpeed * 2 + gBallSpeedDisplayToggle];
     for (j = 0; j < 6; j++)
     {
-        sgptrs[j]->active = TRUE;
+        boardDimmerPaneSGs[j]->active = TRUE;
     }
-    sgptrs[gSelectedBonusField]->active = FALSE;
-    r10->active = TRUE;
-    r8->active = gBallSpeedSubmenuVisible;
+    boardDimmerPaneSGs[gSelectedBonusField]->active = FALSE;
+    boardTitleSG->active = TRUE;
+    ballSpeedSG->active = gBallSpeedSubmenuVisible;
     LoadSpriteSets(gBonusFieldSelectSpriteSets, 16, gMain.spriteGroups);
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < 6; i++) // bonus field count
     {
-        if (sgptrs[i]->active == TRUE)
+        if (boardDimmerPaneSGs[i]->active == TRUE)
         {
-            sgptrs[i]->baseX = gBonusFieldStageIconPositions[i].x;
-            sgptrs[i]->baseY = gBonusFieldStageIconPositions[i].y;
+            boardDimmerPaneSGs[i]->baseX = gBonusFieldStageIconPositions[i].x;
+            boardDimmerPaneSGs[i]->baseY = gBonusFieldStageIconPositions[i].y;
             for (j = 0; j < 4; j++)
             {
-                simple = &sgptrs[i]->oam[j];
+                simple = &boardDimmerPaneSGs[i]->oam[j];
                 gOamBuffer[simple->oamId].objMode = ST_OAM_OBJ_BLEND;
-                gOamBuffer[simple->oamId].x = simple->xOffset + sgptrs[i]->baseX;
-                gOamBuffer[simple->oamId].y = simple->yOffset + sgptrs[i]->baseY;
+                gOamBuffer[simple->oamId].x = simple->xOffset + boardDimmerPaneSGs[i]->baseX;
+                gOamBuffer[simple->oamId].y = simple->yOffset + boardDimmerPaneSGs[i]->baseY;
             }
         }
     }
-    r10->baseX = 0x58;
-    r10->baseY = 0x85;
+    boardTitleSG->baseX = 0x58;
+    boardTitleSG->baseY = 0x85;
     for (j = 0; j < 2; j++)
     {
-        simple = &r10->oam[j];
+        simple = &boardTitleSG->oam[j];
         gOamBuffer[simple->oamId].objMode = ST_OAM_OBJ_NORMAL;
         gOamBuffer[simple->oamId].paletteNum = gBonusFieldHighlightPalette;
-        gOamBuffer[simple->oamId].x = simple->xOffset + r10->baseX;
-        gOamBuffer[simple->oamId].y = simple->yOffset + r10->baseY;
+        gOamBuffer[simple->oamId].x = simple->xOffset + boardTitleSG->baseX;
+        gOamBuffer[simple->oamId].y = simple->yOffset + boardTitleSG->baseY;
     }
-    if (r8->active == TRUE)
+    if (ballSpeedSG->active == TRUE)
     {
-        r8->baseX = gBonusFieldSpeedIndicatorPositions[gSelectedBonusField].x;
-        r8->baseY = gBonusFieldSpeedIndicatorPositions[gSelectedBonusField].y;
+        ballSpeedSG->baseX = gBonusFieldSpeedIndicatorPositions[gSelectedBonusField].x;
+        ballSpeedSG->baseY = gBonusFieldSpeedIndicatorPositions[gSelectedBonusField].y;
         for (j = 0; j < 5; j++)
         {
-            simple = &r8->oam[j];
+            simple = &ballSpeedSG->oam[j];
             gOamBuffer[simple->oamId].objMode = ST_OAM_OBJ_NORMAL;
-            gOamBuffer[simple->oamId].x = simple->xOffset + r8->baseX;
-            gOamBuffer[simple->oamId].y = simple->yOffset + r8->baseY;
+            gOamBuffer[simple->oamId].x = simple->xOffset + ballSpeedSG->baseX;
+            gOamBuffer[simple->oamId].y = simple->yOffset + ballSpeedSG->baseY;
         }
     }
     for (j = 0; j < 6; j++)
     {
-        sgptrs[j]->active = FALSE;
+        boardDimmerPaneSGs[j]->active = FALSE;
     }
-    r10->active = FALSE;
-    r8->active = FALSE;
+    boardTitleSG->active = FALSE;
+    ballSpeedSG->active = FALSE;
 }
