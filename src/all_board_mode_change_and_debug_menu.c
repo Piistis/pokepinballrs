@@ -19,6 +19,8 @@ extern s16 gGameOverLetterYOffsets[];
 extern const u8 gDebugTextStrings[];
 extern const u8 gDebugMenuValueTemplate[];
 extern u8 gDebugMenuCursorText[];
+extern const u16 gDebugSoundTestSongIds[];
+extern const u8 gDebugSoundTestNames[][32];
 extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardBallSaveLatios_Gfx[];
 extern const u8 gMainBoardBallSaveLatiosArm_Gfx[];
@@ -34,14 +36,19 @@ extern const s8 gBonusSummaryTextTemplates[][3][20];
 #define DEBUG_TOOL_STATE_MAIN_MENU 1
 #define DEBUG_TOOL_STATE_SPECIES_LIST 2
 #define DEBUG_TOOL_STATE_HATCH_LIST 3
+#define DEBUG_TOOL_STATE_SOUND_LIST 4
 #define DEBUG_TOOL_MENU_FORCE_CATCH 0
 #define DEBUG_TOOL_MENU_FORCE_EVOLUTION 1
 #define DEBUG_TOOL_MENU_FORCE_HATCH 2
-#define DEBUG_TOOL_MENU_COUNT 3
+#define DEBUG_TOOL_MENU_SOUND_TEST 3
+#define DEBUG_TOOL_MENU_COUNT 4
 #define DEBUG_TOOL_TEXT_FIRST_ROW 26
 #define DEBUG_TOOL_TEXT_ALT_FIRST_ROW 60
 #define DEBUG_TOOL_TEXT_ROW_COUNT 2
 #define DEBUG_TOOL_SPECIES_VISIBLE_ROWS 5
+#define DEBUG_TOOL_SOUND_TEST_COUNT 204
+#define DEBUG_TOOL_SOUND_TEST_VISIBLE_ROWS 16
+#define DEBUG_TOOL_SOUND_TEST_SCROLL_STEP 16
 
 static void DebugTools_RenderAndHandleInput(void);
 static void DebugTools_ClearLineText(u8 *text, s16 length);
@@ -49,10 +56,13 @@ static void DebugTools_RenderTextRow(u8 *text, s16 row);
 static void DebugTools_RenderMenuTitle(s16 row);
 static void DebugTools_RenderCatchTitle(s16 row);
 static void DebugTools_RenderHatchTitle(s16 row);
+static void DebugTools_RenderSoundTestTitle(s16 row);
 static void DebugTools_RenderForceCatchOption(bool8 selected, s16 row);
 static void DebugTools_RenderForceEvolutionOption(bool8 selected, s16 row);
 static void DebugTools_RenderForceHatchOption(bool8 selected, s16 row);
+static void DebugTools_RenderSoundTestOption(bool8 selected, s16 row);
 static void DebugTools_RenderPokemonName(u16 species, s16 row, bool8 selected);
+static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected);
 static void DebugTools_RenderMenuBackdrop(void);
 static void DebugTools_ClearTextRows(void);
 static void DebugTools_FillTextRows(s16 firstRow, u16 tile);
@@ -60,14 +70,17 @@ static void DebugTools_ApplyTextPalette(s16 firstRow);
 static void DebugTools_CloseMenu(bool8 playSound);
 static void DebugTools_OpenSpeciesList(void);
 static void DebugTools_OpenHatchList(void);
+static void DebugTools_OpenSoundList(void);
 static void DebugTools_StartForcedCatch(void);
 static void DebugTools_StartForcedEvolution(void);
 static void DebugTools_StartForcedHatch(void);
+static void DebugTools_PlaySelectedSound(void);
 static bool8 DebugTools_IsSpeciesSelectableForCatch(u16 species);
 static bool8 DebugTools_IsSpeciesSelectableForHatch(u16 species);
 static bool8 DebugTools_IsSpeciesSelectableForCurrentList(u16 species);
 static u16 DebugTools_FindNextSelectableSpecies(u16 species, s16 direction);
 static void DebugTools_MoveSpeciesCursor(s16 direction, s16 steps);
+static void DebugTools_MoveSoundCursor(s16 direction, s16 steps);
 
 // Handle debug system flags
 void BonusStage_HandleModeChangeFlags(void)
@@ -174,6 +187,35 @@ static void DebugTools_RenderAndHandleInput(void)
             m4aSongNumStart(SE_MENU_CANCEL);
         }
         break;
+    case DEBUG_TOOL_STATE_SOUND_LIST:
+        if (JOY_NEW(DPAD_UP))
+        {
+            DebugTools_MoveSoundCursor(-1, 1);
+        }
+        else if (JOY_NEW(DPAD_DOWN))
+        {
+            DebugTools_MoveSoundCursor(1, 1);
+        }
+        else if (JOY_NEW(DPAD_LEFT))
+        {
+            DebugTools_MoveSoundCursor(-1, DEBUG_TOOL_SOUND_TEST_SCROLL_STEP);
+        }
+        else if (JOY_NEW(DPAD_RIGHT))
+        {
+            DebugTools_MoveSoundCursor(1, DEBUG_TOOL_SOUND_TEST_SCROLL_STEP);
+        }
+        else if (JOY_NEW(A_BUTTON))
+        {
+            DebugTools_PlaySelectedSound();
+        }
+        else if (JOY_NEW(B_BUTTON | SELECT_BUTTON))
+        {
+            m4aMPlayAllStop();
+            gCurrentPinballGame->debugToolState = DEBUG_TOOL_STATE_MAIN_MENU;
+            gCurrentPinballGame->debugMenuSelection = 0;
+            gCurrentPinballGame->debugForcedEggSpecies = SPECIES_NONE;
+        }
+        break;
     default:
         gCurrentPinballGame->debugToolState = DEBUG_TOOL_STATE_MAIN_MENU;
         if (JOY_NEW(DPAD_UP))
@@ -206,10 +248,14 @@ static void DebugTools_RenderAndHandleInput(void)
                 DebugTools_StartForcedEvolution();
                 return;
             }
-            else
+            else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_FORCE_HATCH)
             {
                 DebugTools_OpenHatchList();
                 m4aSongNumStart(SE_MENU_SELECT);
+            }
+            else
+            {
+                DebugTools_OpenSoundList();
             }
         }
         else if (JOY_NEW(B_BUTTON | SELECT_BUTTON))
@@ -301,6 +347,25 @@ static void DebugTools_RenderHatchTitle(s16 row)
     DebugTools_RenderTextRow(text, row);
 }
 
+static void DebugTools_RenderSoundTestTitle(s16 row)
+{
+    u8 text[20];
+
+    DebugTools_ClearLineText(text, 20);
+    text[0] = 'D';
+    text[1] = 'E';
+    text[2] = 'B';
+    text[3] = 'U';
+    text[4] = 'G';
+    text[6] = 'S';
+    text[7] = 'E';
+    text[9] = 'T';
+    text[10] = 'E';
+    text[11] = 'S';
+    text[12] = 'T';
+    DebugTools_RenderTextRow(text, row);
+}
+
 static void DebugTools_RenderForceCatchOption(bool8 selected, s16 row)
 {
     u8 text[20];
@@ -362,6 +427,21 @@ static void DebugTools_RenderForceHatchOption(bool8 selected, s16 row)
     DebugTools_RenderTextRow(text, row);
 }
 
+static void DebugTools_RenderSoundTestOption(bool8 selected, s16 row)
+{
+    u8 text[20];
+
+    DebugTools_ClearLineText(text, 20);
+    text[0] = selected ? '>' : ' ';
+    text[2] = 'S';
+    text[3] = 'E';
+    text[5] = 'T';
+    text[6] = 'E';
+    text[7] = 'S';
+    text[8] = 'T';
+    DebugTools_RenderTextRow(text, row);
+}
+
 static void DebugTools_RenderPokemonName(u16 species, s16 row, bool8 selected)
 {
     s16 i;
@@ -373,6 +453,19 @@ static void DebugTools_RenderPokemonName(u16 species, s16 row, bool8 selected)
     FormatIntToString(species, &text[2], 3, TRUE);
     for (i = 0; i < 10; i++)
         text[6 + i] = gSpeciesInfo[species].name[i];
+
+    DebugTools_RenderTextRow(text, row);
+}
+
+static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected)
+{
+    s16 i;
+    u8 text[20];
+
+    DebugTools_ClearLineText(text, 20);
+    text[0] = selected ? '>' : ' ';
+    for (i = 0; i < 16 && gDebugSoundTestNames[soundIndex][i] != 0; i++)
+        text[2 + i] = gDebugSoundTestNames[soundIndex][i];
 
     DebugTools_RenderTextRow(text, row);
 }
@@ -391,6 +484,11 @@ static void DebugTools_RenderMenuBackdrop(void)
 
         DebugTools_RenderPokemonName(gCurrentPinballGame->currentSpecies, 1, TRUE);
     }
+    else if (gCurrentPinballGame->debugToolState == DEBUG_TOOL_STATE_SOUND_LIST)
+    {
+        DebugTools_RenderSoundTestTitle(0);
+        DebugTools_RenderSoundName(gCurrentPinballGame->debugMenuSelection, 1, TRUE);
+    }
     else
     {
         DebugTools_RenderMenuTitle(0);
@@ -398,8 +496,10 @@ static void DebugTools_RenderMenuBackdrop(void)
             DebugTools_RenderForceCatchOption(TRUE, 1);
         else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_FORCE_EVOLUTION)
             DebugTools_RenderForceEvolutionOption(TRUE, 1);
-        else
+        else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_FORCE_HATCH)
             DebugTools_RenderForceHatchOption(TRUE, 1);
+        else
+            DebugTools_RenderSoundTestOption(TRUE, 1);
     }
 
     DebugTools_ApplyTextPalette(DEBUG_TOOL_TEXT_FIRST_ROW);
@@ -463,6 +563,14 @@ static void DebugTools_OpenHatchList(void)
     gCurrentPinballGame->debugToolState = DEBUG_TOOL_STATE_HATCH_LIST;
 }
 
+static void DebugTools_OpenSoundList(void)
+{
+    m4aMPlayAllStop();
+    gCurrentPinballGame->debugMenuSelection = 0;
+    gCurrentPinballGame->debugForcedEggSpecies = 0;
+    gCurrentPinballGame->debugToolState = DEBUG_TOOL_STATE_SOUND_LIST;
+}
+
 static void DebugTools_StartForcedCatch(void)
 {
     gCurrentPinballGame->debugForcedCatchSpecies = gCurrentPinballGame->currentSpecies;
@@ -523,6 +631,12 @@ static void DebugTools_StartForcedHatch(void)
     m4aSongNumStart(SE_MENU_SELECT);
 }
 
+static void DebugTools_PlaySelectedSound(void)
+{
+    m4aMPlayAllStop();
+    m4aSongNumStart(gDebugSoundTestSongIds[gCurrentPinballGame->debugMenuSelection]);
+}
+
 static bool8 DebugTools_IsSpeciesSelectableForCatch(u16 species)
 {
     if (species >= SPECIES_NONE)
@@ -577,6 +691,42 @@ static void DebugTools_MoveSpeciesCursor(s16 direction, s16 steps)
             DebugTools_FindNextSelectableSpecies(gCurrentPinballGame->currentSpecies, direction);
         steps--;
     }
+}
+
+static void DebugTools_MoveSoundCursor(s16 direction, s16 steps)
+{
+    s16 cursor = gCurrentPinballGame->debugMenuSelection;
+    s16 top = gCurrentPinballGame->debugForcedEggSpecies;
+
+    while (steps > 0)
+    {
+        if (direction < 0)
+        {
+            if (cursor == 0)
+                cursor = DEBUG_TOOL_SOUND_TEST_COUNT - 1;
+            else
+                cursor--;
+        }
+        else
+        {
+            cursor++;
+            if (cursor >= DEBUG_TOOL_SOUND_TEST_COUNT)
+                cursor = 0;
+        }
+
+        steps--;
+    }
+
+    if (cursor < top)
+        top = cursor;
+    else if (cursor >= top + DEBUG_TOOL_SOUND_TEST_VISIBLE_ROWS)
+        top = cursor - DEBUG_TOOL_SOUND_TEST_VISIBLE_ROWS + 1;
+
+    if (top > DEBUG_TOOL_SOUND_TEST_COUNT - DEBUG_TOOL_SOUND_TEST_VISIBLE_ROWS)
+        top = DEBUG_TOOL_SOUND_TEST_COUNT - DEBUG_TOOL_SOUND_TEST_VISIBLE_ROWS;
+
+    gCurrentPinballGame->debugMenuSelection = cursor;
+    gCurrentPinballGame->debugForcedEggSpecies = top;
 }
 
 // Debug menu that lets you move the ball's position and change ball speed.
