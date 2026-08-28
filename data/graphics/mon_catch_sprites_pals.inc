@@ -1,3 +1,9 @@
+gCustomCatchSpriteRedFlash_Pal::
+	.incbin "baserom.gba", 0x1AEC84, 0x20
+
+gCustomCatchSpriteDarkFlash_Pal::
+	.incbin "baserom.gba", 0x1AED24, 0x20
+
 gMonCatchSpriteGroup0_Pals:: @ 0x0
 	.incbin "graphics/mon_catch_sprites/catch_mon_252_treecko.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_255_torchic.gbapal"

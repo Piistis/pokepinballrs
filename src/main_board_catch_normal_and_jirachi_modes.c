@@ -9,6 +9,7 @@
 #define CATCH_MODE_NORMAL_SAVER_TIME TICKS_FOR_TIME(1,10)
 #define JIRACHI_MODE_TIME TICKS_FOR_TIME(0,30)
 #define JIRACHI_MODE_SAVER_TIME TICKS_FOR_TIME(0,54)
+#define FIRST_CUSTOM_CATCH_SPRITE_INDEX 84
 
 extern u8 gCatchSpriteFrameBuffer[];
 
@@ -21,6 +22,8 @@ extern const Palette gCatchMonAppearFx_Pal;
 extern const Palette gTimer_Default_Pal;
 extern const u8 gJirachiFx_Gfx[][0x480];
 extern const Palette gCaptureHit_Pal;
+extern const Palette gCustomCatchSpriteRedFlash_Pal;
+extern const Palette gCustomCatchSpriteDarkFlash_Pal;
 extern const s16 gCatchMonRevealFrameData[8][2];
 extern const struct Vector16 gJirachiWaypoints[];
 extern const u16 gJirachiStarFrameIndices[][10];
@@ -574,10 +577,10 @@ void LoadCatchSpriteGraphics(void)
     s16 i;
     s16 catchIndex;
     const u8 *gfx[3];
-    const u16 *pal;
+    const u16 *basePal;
 
     catchIndex = gSpeciesInfo[gCurrentPinballGame->currentSpecies].catchIndex;
-    pal = gCatchMonPaletteGroups[catchIndex / 5][catchIndex % 5];
+    basePal = gCatchMonPaletteGroups[catchIndex / 5][catchIndex % 5];
 
     for (i = 0; i < 3; i++)
     {
@@ -589,9 +592,18 @@ void LoadCatchSpriteGraphics(void)
         DmaCopy16(3, gfx[i], &gCatchSpriteGfxBuffer[i * 0x480], 0x480);
     }
 
-    // Custom catch sprite groups only store a base palette per Pokemon.
-    for (i = 0; i < 4; i++)
-        DmaCopy16(3, pal, gCatchSpritePalettes[i], PLTT_SLOT_SIZE);
+    DmaCopy16(3, basePal, gCatchSpritePalettes[0], PLTT_SLOT_SIZE);
+    if (catchIndex >= FIRST_CUSTOM_CATCH_SPRITE_INDEX)
+    {
+        DmaCopy16(3, gCustomCatchSpriteRedFlash_Pal, gCatchSpritePalettes[1], PLTT_SLOT_SIZE);
+        DmaCopy16(3, gCustomCatchSpriteDarkFlash_Pal, gCatchSpritePalettes[2], PLTT_SLOT_SIZE);
+        DmaCopy16(3, gCustomCatchSpriteDarkFlash_Pal, gCatchSpritePalettes[3], PLTT_SLOT_SIZE);
+    }
+    else
+    {
+        for (i = 1; i < 4; i++)
+            DmaCopy16(3, basePal, gCatchSpritePalettes[i], PLTT_SLOT_SIZE);
+    }
 }
 
 void LoadMonFieldSpriteGraphics(void)
