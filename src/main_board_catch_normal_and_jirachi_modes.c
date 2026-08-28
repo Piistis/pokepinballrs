@@ -574,22 +574,24 @@ void LoadCatchSpriteGraphics(void)
     s16 i;
     s16 catchIndex;
     const u8 *gfx[3];
-    const u16 *pal[3];
+    const u16 *pal;
 
     catchIndex = gSpeciesInfo[gCurrentPinballGame->currentSpecies].catchIndex;
+    pal = gCatchMonPaletteGroups[catchIndex / 5][catchIndex % 5];
+
     for (i = 0; i < 3; i++)
     {
         gfx[i] = gCatchSpriteGfxPtrs[catchIndex / 5][(i + (catchIndex % 5) * 3)];
-        pal[i] = gCatchMonPaletteGroups[catchIndex / 5][i * 5 + catchIndex % 5];
     }
 
     for (i = 0; i < 3; i++)
     {
         DmaCopy16(3, gfx[i], &gCatchSpriteGfxBuffer[i * 0x480], 0x480);
-        DmaCopy16(3, pal[i], gCatchSpritePalettes[i], PLTT_SLOT_SIZE);
     }
 
-    DmaCopy16(3, gCatchMonPaletteGroups[0][15], gCatchSpritePalettes[3], PLTT_SLOT_SIZE);
+    // Custom catch sprite groups only store a base palette per Pokemon.
+    for (i = 0; i < 4; i++)
+        DmaCopy16(3, pal, gCatchSpritePalettes[i], PLTT_SLOT_SIZE);
 }
 
 void LoadMonFieldSpriteGraphics(void)
@@ -923,4 +925,3 @@ void ResetCatchFrameState(void)
     for (i = 0; i < 6; i++)
         gCurrentPinballGame->catchTilePalette[i] = 13;
 }
-
