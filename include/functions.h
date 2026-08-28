@@ -64,6 +64,7 @@ void TitleScreen8_ProcessMenuItemSelected_SavedGame(void);
 void TitleScreen6_AnimCloseMenu(void);
 void TitleScreen10_ExecMenuSelection(void);
 void TitleScreen11_FadeToAction(void);
+void TitleScreen12_DebugSoundTest(void);
 
 // src/util.c
 

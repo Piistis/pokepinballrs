@@ -9,12 +9,31 @@ static void TitleScreen_CheckDeleteKeyComboPressed(void);
 static bool8 TitleScreen_CheckDebugPokedexCompleteComboPressed(void);
 static void CheckEReaderAccessCombo(void);
 static void RenderTitlePressStartSprites(void);
+static void TitleScreen_OpenDebugSoundTest(void);
+static void LoadDebugSoundTestGraphics(void);
+static void RenderDebugSoundTest(void);
+static void DebugSoundTest_MoveCursor(s16 delta);
+static void DebugSoundTest_ClearText(u8 *text, s16 length);
+static void DebugSoundTest_CopyText(u8 *dest, const u8 *src, s16 maxLength);
 
 // If the user doesn't press any buttons at the title screen,
 // it will transition to a demo gameplay experience.
 #define NUM_IDLE_FRAMES 1800
 
 #define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
+#define DEBUG_SOUND_TEST_ENABLED TRUE
+#define DEBUG_SOUND_TEST_COUNT 204
+#define DEBUG_SOUND_TEST_VISIBLE_ROWS 16
+#define DEBUG_SOUND_TEST_NAME_LENGTH 32
+#define DEBUG_SOUND_TEST_TEXT_LENGTH 30
+#define DEBUG_SOUND_TEST_ROW_START 2
+#define DEBUG_SOUND_TEST_TEXT_COL 1
+
+extern const u8 gDebugAsciiFont[];
+extern const u16 gDebugSoundTestSongIds[];
+extern const u8 gDebugSoundTestNames[][DEBUG_SOUND_TEST_NAME_LENGTH];
+extern const u8 gDebugSoundTestHeaderText[];
+extern const u8 gDebugSoundTestHelpText[];
 
 enum
 {
@@ -30,6 +49,7 @@ enum
     SUBSTATE_DELETE_SAVE_GAME_CONFIRMATION,
     SUBSTATE_EXEC_MENU_SELECTION,
     SUBSTATE_FADE_TO_MENU_ACTION,
+    SUBSTATE_DEBUG_SOUND_TEST,
 };
 
 void ClearHighScoreNameEntry(void)
@@ -184,6 +204,11 @@ void TitleScreen1_WaitForStartButton(void)
             gTitlescreen.animTimer = 0;
             gTitlescreen.animPhase = 0;
             gMain.subState = SUBSTATE_ANIM_PRESS_START_SELECTED;
+        }
+        else if (DEBUG_SOUND_TEST_ENABLED && JOY_NEW(SELECT_BUTTON))
+        {
+            TitleScreen_OpenDebugSoundTest();
+            return;
         }
 
         TitleScreen_CheckDeleteKeyComboPressed();
@@ -364,6 +389,11 @@ void TitleScreen4_MenuInputNoSavedGame(void)
             gTitlescreen.animPhase = 0;
             gMain.subState = SUBSTATE_MENU_ITEM_SELECTED_NO_SAVED_GAME;
         }
+        else if (DEBUG_SOUND_TEST_ENABLED && JOY_NEW(SELECT_BUTTON))
+        {
+            TitleScreen_OpenDebugSoundTest();
+            return;
+        }
         else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_MENU_CANCEL);
@@ -463,6 +493,11 @@ void TitleScreen5_MenuInputSavedGame(void)
             gTitlescreen.animTimer = 0;
             gTitlescreen.animPhase = 0;
             gMain.subState = SUBSTATE_MENU_ITEM_SELECTED_SAVED_GAME;
+        }
+        else if (DEBUG_SOUND_TEST_ENABLED && JOY_NEW(SELECT_BUTTON))
+        {
+            TitleScreen_OpenDebugSoundTest();
+            return;
         }
         else if (JOY_NEW(B_BUTTON))
         {
@@ -611,6 +646,122 @@ void TitleScreen11_FadeToAction(void)
     gHighScoreEntrySource = 1;
     gAutoDisplayTitlescreenMenu = FALSE;
     SetMainGameState(gTitleMenuStateTable[gTitlescreen.menuAction]);
+}
+
+void TitleScreen12_DebugSoundTest(void)
+{
+    if (JOY_NEW(B_BUTTON | SELECT_BUTTON))
+    {
+        m4aMPlayAllStop();
+        DisableVBlankInterrupts();
+        gMain.subState = SUBSTATE_LOAD_GRAPHICS;
+        return;
+    }
+
+    if (JOY_NEW(DPAD_UP))
+        DebugSoundTest_MoveCursor(-1);
+    else if (JOY_NEW(DPAD_DOWN))
+        DebugSoundTest_MoveCursor(1);
+    else if (JOY_NEW(DPAD_LEFT | L_BUTTON))
+        DebugSoundTest_MoveCursor(-DEBUG_SOUND_TEST_VISIBLE_ROWS);
+    else if (JOY_NEW(DPAD_RIGHT | R_BUTTON))
+        DebugSoundTest_MoveCursor(DEBUG_SOUND_TEST_VISIBLE_ROWS);
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        m4aMPlayAllStop();
+        m4aSongNumStart(gDebugSoundTestSongIds[gTitlescreen.animPhase]);
+    }
+
+    RenderDebugSoundTest();
+}
+
+static void TitleScreen_OpenDebugSoundTest(void)
+{
+    m4aMPlayAllStop();
+    gTitlescreen.animPhase = 0;
+    gTitlescreen.animTimer = 0;
+    gMain.subState = SUBSTATE_DEBUG_SOUND_TEST;
+    LoadDebugSoundTestGraphics();
+}
+
+static void LoadDebugSoundTestGraphics(void)
+{
+    ResetDisplayState();
+    REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_FORCED_BLANK;
+    REG_BG0CNT = BGCNT_CHARBASE(1) | BGCNT_SCREENBASE(0) | BGCNT_PRIORITY(0) | BGCNT_TXT256x256;
+    REG_DISPCNT |= DISPCNT_BG0_ON;
+
+    DmaCopy16(3, gDebugAsciiFont, (void *)BG_CHAR_ADDR(1), 0x800);
+    DmaFill16(3, 0, (void *)BG_PLTT, BG_PLTT_SIZE);
+    ((u16 *)BG_PLTT)[1] = 0x7FFF;
+    ((u16 *)BG_PLTT)[2] = 0x4210;
+
+    RenderDebugSoundTest();
+    REG_DISPCNT &= ~DISPCNT_FORCED_BLANK;
+    gMain.dispcntBackup = REG_DISPCNT;
+    EnableVBlankInterrupts();
+}
+
+static void RenderDebugSoundTest(void)
+{
+    s16 row;
+    s16 entryIndex;
+    u8 text[DEBUG_SOUND_TEST_NAME_LENGTH];
+
+    DmaFill16(3, 0, gBG0TilemapBuffer, BG_SCREEN_SIZE);
+    DrawTextToTilemap((u8 *)gDebugSoundTestHeaderText, 0, 9);
+    DrawTextToTilemap((u8 *)gDebugSoundTestHelpText, 19, 2);
+
+    if (gTitlescreen.animTimer > DEBUG_SOUND_TEST_COUNT - DEBUG_SOUND_TEST_VISIBLE_ROWS)
+        gTitlescreen.animTimer = DEBUG_SOUND_TEST_COUNT - DEBUG_SOUND_TEST_VISIBLE_ROWS;
+
+    for (row = 0; row < DEBUG_SOUND_TEST_VISIBLE_ROWS; row++)
+    {
+        entryIndex = gTitlescreen.animTimer + row;
+        DebugSoundTest_ClearText(text, DEBUG_SOUND_TEST_TEXT_LENGTH);
+        text[0] = entryIndex == gTitlescreen.animPhase ? '>' : ' ';
+        text[1] = ' ';
+        DebugSoundTest_CopyText(&text[2], gDebugSoundTestNames[entryIndex], DEBUG_SOUND_TEST_TEXT_LENGTH - 2);
+        DrawTextToTilemap(text, DEBUG_SOUND_TEST_ROW_START + row, DEBUG_SOUND_TEST_TEXT_COL);
+    }
+
+    DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+}
+
+static void DebugSoundTest_MoveCursor(s16 delta)
+{
+    s16 cursor = gTitlescreen.animPhase + delta;
+
+    while (cursor < 0)
+        cursor += DEBUG_SOUND_TEST_COUNT;
+
+    while (cursor >= DEBUG_SOUND_TEST_COUNT)
+        cursor -= DEBUG_SOUND_TEST_COUNT;
+
+    gTitlescreen.animPhase = cursor;
+    if (gTitlescreen.animPhase < gTitlescreen.animTimer)
+        gTitlescreen.animTimer = gTitlescreen.animPhase;
+    else if (gTitlescreen.animPhase >= gTitlescreen.animTimer + DEBUG_SOUND_TEST_VISIBLE_ROWS)
+        gTitlescreen.animTimer = gTitlescreen.animPhase - DEBUG_SOUND_TEST_VISIBLE_ROWS + 1;
+}
+
+static void DebugSoundTest_ClearText(u8 *text, s16 length)
+{
+    s16 i;
+
+    for (i = 0; i < length; i++)
+        text[i] = ' ';
+
+    text[length] = 0;
+}
+
+static void DebugSoundTest_CopyText(u8 *dest, const u8 *src, s16 maxLength)
+{
+    s16 i;
+
+    for (i = 0; i < maxLength && src[i] != 0; i++)
+        dest[i] = src[i];
 }
 
 static void TitleScreen_CheckDeleteKeyComboPressed(void)
