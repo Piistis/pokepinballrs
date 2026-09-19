@@ -22,6 +22,8 @@ FIXTURE = r'''
 #include "constants/areas.h"
 #include "constants/fields.h"
 #include "constants/species.h"
+#include "gba/io_reg.h"
+#include "gba/macro.h"
 typedef unsigned char u8;
 typedef unsigned char bool8;
 typedef unsigned short u16;
@@ -63,7 +65,7 @@ u16 gManaphyEggPalette[16];
 const void *lastSource;
 void *lastDestination;
 int dmaCalls, lastSize;
-void DmaCopy16(int channel, const void *source, void *destination, int size)
+void HostDmaCopy16(int channel, const void *source, void *destination, int size)
 {
     int i;
     (void)channel;
@@ -74,6 +76,12 @@ void DmaCopy16(int channel, const void *source, void *destination, int size)
     if (destination != (void *)0x06011CE0)
         for (i = 0; i < size / 2; i++)
             ((u16 *)destination)[i] = ((const u16 *)source)[i];
+}
+/* Keep DmaSet's bare block: a function stub hides unbraced if/else errors. */
+#undef DmaSet
+#define DmaSet(channel, source, destination, control) \
+{ \
+    HostDmaCopy16(channel, source, destination, ((control) & 0xFFFF) * 2); \
 }
 u32 GetTimeAdjustedRandom(void) { return 7; }
 u16 GetEggMonForSelectedGeneration(int field, int index)

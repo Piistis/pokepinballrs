@@ -53,9 +53,13 @@ void LoadHatchEggFrame(s16 frame)
     if (frame < 0 || frame >= 7)
         frame = 0;
     if (gCurrentPinballGame->manaphyEggActive)
+    {
         DmaCopy16(3, gManaphyEggFrameTilesGfx[frame], (void *)0x06011CE0, 0x200);
+    }
     else
+    {
         DmaCopy16(3, gEggFrameTilesGfx[frame], (void *)0x06011CE0, 0x200);
+    }
 }
 
 static EWRAM_DATA u16 sManaphyBorrowedPalette[16];
