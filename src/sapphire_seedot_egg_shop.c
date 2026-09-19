@@ -1,4 +1,5 @@
 #include "global.h"
+#include "functions.h"
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
@@ -26,6 +27,9 @@ extern const u8 gSapphireShopSignTileGfx[][0x480];
 
 void InitSapphireEggHatchAnimation(void)
 {
+    NormalizeManaphyEggState();
+    gCurrentPinballGame->manaphyEggActive = FALSE;
+    LoadHatchEggFrame(0);
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->prevEggAnimFrame = 0;
     gCurrentPinballGame->eggAnimFrameIndex = 0;
@@ -83,7 +87,7 @@ void UpdateSapphireEggHatchAnimation(void)
     if (gCurrentPinballGame->prevEggAnimFrame != gCurrentPinballGame->eggAnimFrameIndex)
     {
         index = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3];
-        DmaCopy16(3, &gEggFrameTilesGfx[index], (void *)0x06011CE0, 0x200);
+        LoadHatchEggFrame(index);
         gCurrentPinballGame->prevEggAnimFrame = gCurrentPinballGame->eggAnimFrameIndex;
     }
 
@@ -165,6 +169,8 @@ void UpdateSapphireEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].x += group->baseX;
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
+
+    ApplyManaphyEggPalette(group);
 
     group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT];
     if (group->active)
@@ -631,6 +637,9 @@ void UpdateSapphireEggMachine(void)
 
         if (gCurrentPinballGame->holeAnimFrameCounter == 60)
         {
+            BeginManaphyEggAttempt();
+            LoadHatchEggFrame(0);
+            ApplyManaphyEggPalette(&gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG]);
             m4aSongNumStart(MUS_EGG_MODE_START);
             gCurrentPinballGame->catchArrowPaletteActive = FALSE;
             gCurrentPinballGame->eggAnimationPhase = 5;

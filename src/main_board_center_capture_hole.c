@@ -1319,6 +1319,9 @@ void RunMonCaptureSequence(void)
 
             gCurrentPinballGame->caughtMonCount++;
 
+            if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EGG_HATCH_MODE)
+                AddManaphyEggCapture();
+
             if (gCurrentPinballGame->caughtMonCount == 15)
                 gCurrentPinballGame->oneUpAnimTimer = 90;
 

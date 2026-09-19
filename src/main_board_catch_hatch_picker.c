@@ -7,6 +7,56 @@
 #include "constants/generations.h"
 #include "constants/species.h"
 #include "constants/pinball_game.h"
+#include "constants/areas.h"
+
+#define MANAPHY_EGG_STATE_MAGIC 0x4D414E41
+#define MANAPHY_EGG_REQUIRED_CAPTURES 5
+
+void NormalizeManaphyEggState(void)
+{
+    if (gCurrentPinballGame->manaphyEggStateMagic != MANAPHY_EGG_STATE_MAGIC
+     || gCurrentPinballGame->manaphyEggCatchCount > MANAPHY_EGG_REQUIRED_CAPTURES
+     || gCurrentPinballGame->manaphyEggActive > TRUE)
+    {
+        gCurrentPinballGame->manaphyEggStateMagic = MANAPHY_EGG_STATE_MAGIC;
+        gCurrentPinballGame->manaphyEggCatchCount = 0;
+        gCurrentPinballGame->manaphyEggActive = FALSE;
+    }
+}
+
+void AddManaphyEggCapture(void)
+{
+    NormalizeManaphyEggState();
+    if (!gCurrentPinballGame->manaphyEggActive
+     && gCurrentPinballGame->manaphyEggCatchCount < MANAPHY_EGG_REQUIRED_CAPTURES)
+        gCurrentPinballGame->manaphyEggCatchCount++;
+}
+
+void BeginManaphyEggAttempt(void)
+{
+    NormalizeManaphyEggState();
+    gCurrentPinballGame->manaphyEggActive = FALSE;
+    if (gMain.mainState == STATE_GAME_IDLE || gMain.selectedField >= MAIN_FIELD_COUNT)
+        return;
+
+    // Explicit debug species override the event, including a Manaphy preview.
+    if (gCurrentPinballGame->debugForcedEggSpecies < SPECIES_NONE)
+    {
+        gCurrentPinballGame->manaphyEggActive =
+            gCurrentPinballGame->debugForcedEggSpecies == SPECIES_MANAPHY;
+        return;
+    }
+
+    if ((gSelectedGeneration == GENERATION_4 || gSelectedGeneration == GENERATION_RANDOM)
+     && (gCurrentPinballGame->area == AREA_OCEAN_RUBY
+      || gCurrentPinballGame->area == AREA_OCEAN_SAPPHIRE)
+     && gCurrentPinballGame->manaphyEggCatchCount == MANAPHY_EGG_REQUIRED_CAPTURES)
+    {
+        // Spend the opportunity when opening, even if the capture later fails.
+        gCurrentPinballGame->manaphyEggCatchCount = 0;
+        gCurrentPinballGame->manaphyEggActive = TRUE;
+    }
+}
 
 extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gWildMonLocationsGen1[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
@@ -710,6 +760,13 @@ void PickSpeciesForEggMode(void)
         gCurrentPinballGame->currentSpecies = gCurrentPinballGame->debugForcedEggSpecies;
         gCurrentPinballGame->debugForcedEggSpecies = SPECIES_NONE;
         gCurrentPinballGame->lastEggSpecies = gCurrentPinballGame->currentSpecies;
+        return;
+    }
+
+    if (gCurrentPinballGame->manaphyEggActive)
+    {
+        gCurrentPinballGame->currentSpecies = SPECIES_MANAPHY;
+        gCurrentPinballGame->lastEggSpecies = SPECIES_MANAPHY;
         return;
     }
 

@@ -212,6 +212,7 @@ void RestoreGameState(u16 arg0)
         gCurrentPinballGame->debugToolState = 0;
         gCurrentPinballGame->debugForcedEggSpecies = SPECIES_NONE;
         gCurrentPinballGame->debugForcedCatchSpecies = SPECIES_NONE;
+        NormalizeManaphyEggState();
         for (i = 0; i < NUM_EREADER_CARDS; i++)
             gMain.eReaderBonuses[i] = gCurrentPinballGame->eReaderBonuses[i];
 
@@ -649,7 +650,7 @@ void RestoreMainFieldDynamicGraphics(void)
 
     DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], 0x060113C0, 0x300);
     DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] +  var0 * 0x200, 0x060116C0, 0x200);
-    DmaCopy16(3, gEggFrameTilesGfx[(s16)gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]], 0x06011CE0, 0x200);
+    LoadHatchEggFrame(gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]);
     DmaCopy16(3, gBallUpgradeFx_Gfx[gCurrentPinballGame->ballUpgradeFxTileIndex], 0x06011EE0, 0x200);
     return;
 }

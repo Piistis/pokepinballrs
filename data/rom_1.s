@@ -2559,6 +2559,12 @@ gRubyBoardHatchCave_Gfx:: @ 0x084FB68C
 gEggFrameTilesGfx:: @ 0x084FD18C
 	.incbin "graphics/stage/main/egg.4bpp";
 
+	.balign 4
+gManaphyEggFrameTilesGfx::
+	.incbin "graphics/stage/main/egg_manaphy.4bpp"
+gManaphyEggPalette::
+	.incbin "graphics/stage/main/egg_manaphy.gbapal"
+
 gSapphireBoardSeedot_Gfx:: @ 0x084FDF8C
 	.incbin "graphics/stage/sapphire/seedot.4bpp";
 

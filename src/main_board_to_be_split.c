@@ -1,4 +1,5 @@
 #include "global.h"
+#include "functions.h"
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
@@ -44,6 +45,40 @@ extern const Palette gRubyShopSign_Pal;
 extern const u16 gAngleToDirectionTable[];
 
 extern u8 gCatchSpritePaletteBuffer[];
+extern const u8 gManaphyEggFrameTilesGfx[][0x200];
+extern const u16 gManaphyEggPalette[16];
+
+void LoadHatchEggFrame(s16 frame)
+{
+    if (frame < 0 || frame >= 7)
+        frame = 0;
+    if (gCurrentPinballGame->manaphyEggActive)
+        DmaCopy16(3, gManaphyEggFrameTilesGfx[frame], (void *)0x06011CE0, 0x200);
+    else
+        DmaCopy16(3, gEggFrameTilesGfx[frame], (void *)0x06011CE0, 0x200);
+}
+
+void ApplyManaphyEggPalette(struct SpriteGroup *group)
+{
+    s16 i;
+
+    if (!gCurrentPinballGame->manaphyEggActive || !gCurrentPinballGame->eggAnimationPhase)
+        return;
+
+    // Bank 11 also colors the cave, elevator and launcher. During eclosion
+    // bank 14 is the unused mode-overlay bank; release it for capture/ball loss.
+    if (gCurrentPinballGame->captureState != MON_CAPTURE_SPECIAL_STATE_INACTIVE
+     || (gMain.modeChangeFlags & (MODE_CHANGE_END_OF_BALL | MODE_CHANGE_END_OF_GAME | MODE_CHANGE_BALL_SAVER)))
+    {
+        for (i = 0; i < 2; i++)
+            gOamBuffer[group->oam[i].oamId].y = 200;
+        return;
+    }
+
+    DmaCopy16(3, gManaphyEggPalette, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+    for (i = 0; i < 2; i++)
+        gOamBuffer[group->oam[i].oamId].paletteNum = 14;
+}
 
 // This is the 'Gravity Well' in the center of the board.
 // Used with travel confirmation, bonus board entry, roulette, etc
@@ -1272,6 +1307,9 @@ void AnimateWasCaughtBanner(void)
 
 void InitRubyEggHatchAnimation(void)
 {
+    NormalizeManaphyEggState();
+    gCurrentPinballGame->manaphyEggActive = FALSE;
+    LoadHatchEggFrame(0);
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->prevEggAnimFrame = 0;
     gCurrentPinballGame->eggAnimFrameIndex = 0;
@@ -1332,7 +1370,7 @@ void UpdateRubyEggHatchAnimation(void)
         index = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][2];
         DmaCopy16(3, gRubyBoardHatchCave_Gfx[index], (void *)0x060122A0, 0x480);
         index = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3];
-        DmaCopy16(3, gEggFrameTilesGfx[index], (void *)0x06011CE0, 0x200);
+        LoadHatchEggFrame(index);
         gCurrentPinballGame->prevEggAnimFrame = gCurrentPinballGame->eggAnimFrameIndex;
     }
 
@@ -1418,6 +1456,8 @@ void UpdateRubyEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
+    ApplyManaphyEggPalette(group);
+
     group = &gMain.spriteGroups[SG_RUBY_HATCH_CAVE];
     group->baseX = gCurrentPinballGame->eggBasePosX;
     group->baseY = gCurrentPinballGame->eggBasePosY;
@@ -1461,6 +1501,9 @@ void UpdateHatchCave(void)
         {
             if (gCurrentPinballGame->eggAnimationPhase == 1)
             {
+                BeginManaphyEggAttempt();
+                LoadHatchEggFrame(0);
+                ApplyManaphyEggPalette(&gMain.spriteGroups[SG_RUBY_HATCH_EGG]);
                 gCurrentPinballGame->eggAnimationPhase = 2;
                 gCurrentPinballGame->cyndaquilFrame = 1;
                 DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], (void *)0x06013300, 0x280);
@@ -1575,6 +1618,9 @@ void UpdateHatchCave(void)
 void CleanupEggModeState(void)
 {
     s16 i;
+
+    gCurrentPinballGame->manaphyEggActive = FALSE;
+    LoadHatchEggFrame(0);
 
     if (gMain.selectedField == FIELD_RUBY)
         gCurrentPinballGame->rubyEggDeliveryState = 1;

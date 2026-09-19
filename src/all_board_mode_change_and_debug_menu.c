@@ -41,7 +41,8 @@ extern const s8 gBonusSummaryTextTemplates[][3][20];
 #define DEBUG_TOOL_MENU_FORCE_EVOLUTION 1
 #define DEBUG_TOOL_MENU_FORCE_HATCH 2
 #define DEBUG_TOOL_MENU_SOUND_TEST 3
-#define DEBUG_TOOL_MENU_COUNT 4
+#define DEBUG_TOOL_MENU_EGG_COUNTER 4
+#define DEBUG_TOOL_MENU_COUNT 5
 #define DEBUG_TOOL_TEXT_FIRST_ROW 26
 #define DEBUG_TOOL_TEXT_ALT_FIRST_ROW 60
 #define DEBUG_TOOL_TEXT_ROW_COUNT 2
@@ -61,6 +62,7 @@ static void DebugTools_RenderForceCatchOption(bool8 selected, s16 row);
 static void DebugTools_RenderForceEvolutionOption(bool8 selected, s16 row);
 static void DebugTools_RenderForceHatchOption(bool8 selected, s16 row);
 static void DebugTools_RenderSoundTestOption(bool8 selected, s16 row);
+static void DebugTools_RenderEggCounterOption(s16 row);
 static void DebugTools_RenderPokemonName(u16 species, s16 row, bool8 selected);
 static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected);
 static void DebugTools_RenderMenuBackdrop(void);
@@ -251,6 +253,11 @@ static void DebugTools_RenderAndHandleInput(void)
             else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_FORCE_HATCH)
             {
                 DebugTools_OpenHatchList();
+                m4aSongNumStart(SE_MENU_SELECT);
+            }
+            else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_EGG_COUNTER)
+            {
+                AddManaphyEggCapture();
                 m4aSongNumStart(SE_MENU_SELECT);
             }
             else
@@ -457,6 +464,29 @@ static void DebugTools_RenderPokemonName(u16 species, s16 row, bool8 selected)
     DebugTools_RenderTextRow(text, row);
 }
 
+static void DebugTools_RenderEggCounterOption(s16 row)
+{
+    u8 text[20];
+
+    NormalizeManaphyEggState();
+    DebugTools_ClearLineText(text, 20);
+    text[0] = '>';
+    text[2] = 'E';
+    text[3] = 'G';
+    text[4] = 'G';
+    text[6] = 'C';
+    text[7] = 'O';
+    text[8] = 'U';
+    text[9] = 'N';
+    text[10] = 'T';
+    text[12] = '0' + gCurrentPinballGame->manaphyEggCatchCount;
+    text[13] = '/';
+    text[14] = '5';
+    text[16] = '+';
+    text[17] = '1';
+    DebugTools_RenderTextRow(text, row);
+}
+
 static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected)
 {
     s16 i;
@@ -498,6 +528,8 @@ static void DebugTools_RenderMenuBackdrop(void)
             DebugTools_RenderForceEvolutionOption(TRUE, 1);
         else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_FORCE_HATCH)
             DebugTools_RenderForceHatchOption(TRUE, 1);
+        else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_EGG_COUNTER)
+            DebugTools_RenderEggCounterOption(1);
         else
             DebugTools_RenderSoundTestOption(TRUE, 1);
     }
@@ -902,6 +934,11 @@ void EndOfBallSequence(void)
         ClearDebugTextDisplay();
         if (gCurrentPinballGame->numLives > 0)
         {
+            if (gCurrentPinballGame->manaphyEggActive)
+            {
+                gCurrentPinballGame->manaphyEggActive = FALSE;
+                gCurrentPinballGame->eggAnimationPhase = 0;
+            }
             gCurrentPinballGame->saverTimeRemaining = BALL_NORMAL_LAUNCH_SAVER_TIME;
             gCurrentPinballGame->numLives--;
             gCurrentPinballGame->collisionCooldownTimer = 60;
