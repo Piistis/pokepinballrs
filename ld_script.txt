@@ -10,6 +10,7 @@ SECTIONS
         src/main_board_catch_hatch_picker.o(ewram_data);
         src/main_board_catch_hatch_picker.o(.bss);
         src/main_board_to_be_split.o(ewram_data);
+        src/main_board_to_be_split.o(.bss);
         /* COMMON starts at ??? */
 <COMMON>
     }

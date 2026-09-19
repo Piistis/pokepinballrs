@@ -314,6 +314,13 @@ int main(void)
 
 
 def main():
+    linker = (ROOT / "ld_script.txt").read_text()
+    ewram = linker.split("ewram (NOLOAD) :", 1)[1].split("/* start of iwram */", 1)[0]
+    # agbcc can emit zero-initialized scratch data in .bss despite EWRAM_DATA.
+    for module in ("main_board_catch_hatch_picker", "main_board_to_be_split"):
+        for section in ("ewram_data", ".bss"):
+            selector = f"src/{module}.o({section});"
+            assert selector in ewram, f"Missing EWRAM linker entry: {selector}"
     png = (ROOT / "graphics/stage/main/egg_manaphy.png").read_bytes()
     assert png[:8] == b"\x89PNG\r\n\x1a\n"
     width, height, depth, color_type = struct.unpack(">IIBB", png[16:26])
@@ -355,7 +362,7 @@ def main():
             raise SystemExit(f"C regression check failed (source line/status {result.returncode})")
     print("PASS: delivery selection, travel, retry, save migration, debug override,")
     print("      all fields/generations/areas/counts, palette borrowing/restoration,")
-    print("      Totodile delivery, frame selection and indexed PNG layout.")
+    print("      Totodile delivery, frame selection, indexed PNG layout and RAM linker entries.")
 
 
 if __name__ == "__main__":

@@ -74,7 +74,12 @@ Selection is latched at delivery and checked before the
 ordinary Pichu/random egg selection. Only the successful egg-capture path adds
 progress; cleanup clears the active event without adding another capture.
 The prepared/started flags occupy 0xF56/0xF57 without changing the structure size.
-Palette scratch data uses an explicit `ewram_data` entry in `ld_script.txt`.
+Palette scratch data requires explicit `ewram_data` AND `.bss` entries for
+`src/main_board_to_be_split.o` in the EWRAM block of `ld_script.txt`. agbcc can
+emit zero-initialized static data in `.bss` despite the `EWRAM_DATA` annotation.
+The linker's final `/DISCARD/` rejects any section not explicitly included.
+Keep both entries, as for `src/main_board_catch_hatch_picker.o`; the host test
+checks their presence but does not run the ARM linker.
 
 Run the host regression checks with:
 
