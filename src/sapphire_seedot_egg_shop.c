@@ -28,7 +28,8 @@ extern const u8 gSapphireShopSignTileGfx[][0x480];
 void InitSapphireEggHatchAnimation(void)
 {
     NormalizeManaphyEggState();
-    gCurrentPinballGame->manaphyEggActive = FALSE;
+    if (!gCurrentPinballGame->manaphyEggPrepared)
+        PrepareManaphyEgg();
     LoadHatchEggFrame(0);
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->prevEggAnimFrame = 0;
@@ -169,8 +170,6 @@ void UpdateSapphireEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].x += group->baseX;
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
-
-    ApplyManaphyEggPalette(group);
 
     group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT];
     if (group->active)
@@ -639,7 +638,6 @@ void UpdateSapphireEggMachine(void)
         {
             BeginManaphyEggAttempt();
             LoadHatchEggFrame(0);
-            ApplyManaphyEggPalette(&gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG]);
             m4aSongNumStart(MUS_EGG_MODE_START);
             gCurrentPinballGame->catchArrowPaletteActive = FALSE;
             gCurrentPinballGame->eggAnimationPhase = 5;
@@ -682,6 +680,8 @@ void UpdateSapphireEggMachine(void)
     case 4:
         if (gCurrentPinballGame->sapphirerubyEggDeliveryState && gCurrentPinballGame->hatchMachineProgressTickSignaled)
         {
+            PrepareManaphyEgg();
+            LoadHatchEggFrame(0);
             gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
             gCurrentPinballGame->bannerDelayTimer = 0;
             gCurrentPinballGame->bannerDisplayTimer = 160;
@@ -696,6 +696,9 @@ void UpdateSapphireEggMachine(void)
             gCurrentPinballGame->sapphireHatchMachineFrameIx = 10;
             m4aSongNumStart(SE_HATCH_MACHINE_ELEVATOR);
             gCurrentPinballGame->eggAnimationPhase = 1;
+            gCurrentPinballGame->eggAnimFrameIndex = 0;
+            gCurrentPinballGame->prevEggAnimFrame = 0;
+            gCurrentPinballGame->eggFrameTimer = 0;
             gCurrentPinballGame->portraitOffsetX = 2080;
             gCurrentPinballGame->portraitOffsetY = 960;
         }

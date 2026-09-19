@@ -9,18 +9,29 @@
 #include "constants/pinball_game.h"
 #include "constants/areas.h"
 
-#define MANAPHY_EGG_STATE_MAGIC 0x4D414E41
+#define MANAPHY_EGG_STATE_MAGIC 0x4D414E42
 #define MANAPHY_EGG_REQUIRED_CAPTURES 5
 
 void NormalizeManaphyEggState(void)
 {
+    if (gCurrentPinballGame->manaphyEggStateMagic == 0x4D414E41)
+    {
+        // The previous version chose the egg at opening. Preserve that attempt.
+        gCurrentPinballGame->manaphyEggStateMagic = MANAPHY_EGG_STATE_MAGIC;
+        gCurrentPinballGame->manaphyEggPrepared = TRUE;
+        gCurrentPinballGame->manaphyEggStarted = gCurrentPinballGame->manaphyEggActive;
+    }
     if (gCurrentPinballGame->manaphyEggStateMagic != MANAPHY_EGG_STATE_MAGIC
      || gCurrentPinballGame->manaphyEggCatchCount > MANAPHY_EGG_REQUIRED_CAPTURES
-     || gCurrentPinballGame->manaphyEggActive > TRUE)
+     || gCurrentPinballGame->manaphyEggActive > TRUE
+     || gCurrentPinballGame->manaphyEggPrepared > TRUE
+     || gCurrentPinballGame->manaphyEggStarted > TRUE)
     {
         gCurrentPinballGame->manaphyEggStateMagic = MANAPHY_EGG_STATE_MAGIC;
         gCurrentPinballGame->manaphyEggCatchCount = 0;
         gCurrentPinballGame->manaphyEggActive = FALSE;
+        gCurrentPinballGame->manaphyEggPrepared = FALSE;
+        gCurrentPinballGame->manaphyEggStarted = FALSE;
     }
 }
 
@@ -32,9 +43,11 @@ void AddManaphyEggCapture(void)
         gCurrentPinballGame->manaphyEggCatchCount++;
 }
 
-void BeginManaphyEggAttempt(void)
+void PrepareManaphyEgg(void)
 {
     NormalizeManaphyEggState();
+    gCurrentPinballGame->manaphyEggPrepared = TRUE;
+    gCurrentPinballGame->manaphyEggStarted = FALSE;
     gCurrentPinballGame->manaphyEggActive = FALSE;
     if (gMain.mainState == STATE_GAME_IDLE || gMain.selectedField >= MAIN_FIELD_COUNT)
         return;
@@ -48,13 +61,26 @@ void BeginManaphyEggAttempt(void)
     }
 
     if ((gSelectedGeneration == GENERATION_4 || gSelectedGeneration == GENERATION_RANDOM)
-     && (gCurrentPinballGame->area == AREA_OCEAN_RUBY
-      || gCurrentPinballGame->area == AREA_OCEAN_SAPPHIRE)
+     && ((gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->area == AREA_OCEAN_RUBY)
+      || (gMain.selectedField == FIELD_SAPPHIRE && gCurrentPinballGame->area == AREA_OCEAN_SAPPHIRE))
      && gCurrentPinballGame->manaphyEggCatchCount == MANAPHY_EGG_REQUIRED_CAPTURES)
     {
-        // Spend the opportunity when opening, even if the capture later fails.
-        gCurrentPinballGame->manaphyEggCatchCount = 0;
         gCurrentPinballGame->manaphyEggActive = TRUE;
+    }
+}
+
+void BeginManaphyEggAttempt(void)
+{
+    NormalizeManaphyEggState();
+    if (!gCurrentPinballGame->manaphyEggPrepared)
+        PrepareManaphyEgg();
+
+    if (!gCurrentPinballGame->manaphyEggStarted)
+    {
+        if (gCurrentPinballGame->manaphyEggActive
+         && gCurrentPinballGame->debugForcedEggSpecies >= SPECIES_NONE)
+            gCurrentPinballGame->manaphyEggCatchCount = 0;
+        gCurrentPinballGame->manaphyEggStarted = TRUE;
     }
 }
 

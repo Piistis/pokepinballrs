@@ -54,7 +54,9 @@ static s16 GetBoardPokedexFlag(s16 species)
 
 void PinballGameMain(void)
 {
+    RestoreManaphyEggPalette();
     gPinballGameStateFuncs[gMain.subState]();
+    RenderManaphyEggPalette();
 }
 
 void PinballGame_State0_49ED4(void)

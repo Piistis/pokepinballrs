@@ -863,7 +863,8 @@ struct PinballGame
     /*0xF50*/ u32 manaphyEggStateMagic;
     /*0xF54*/ u8 manaphyEggCatchCount;
     /*0xF55*/ bool8 manaphyEggActive;
-    /*0xF56*/ u8 fillerF56[0x2];
+    /*0xF56*/ bool8 manaphyEggPrepared;
+    /*0xF57*/ bool8 manaphyEggStarted;
     /*0xF58*/ struct BgOffsets bgOffsets0;
     /*0xF5C*/ struct BgOffsets bgOffsets1;
     /*0xF60*/ struct BgOffsets bgOffsets2;

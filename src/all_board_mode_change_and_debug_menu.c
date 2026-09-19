@@ -640,6 +640,7 @@ static void DebugTools_StartForcedEvolution(void)
 static void DebugTools_StartForcedHatch(void)
 {
     gCurrentPinballGame->debugForcedEggSpecies = gCurrentPinballGame->currentSpecies;
+    PrepareManaphyEgg();
     DebugTools_CloseMenu(FALSE);
     gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     if (gMain.selectedField == FIELD_RUBY)
@@ -934,9 +935,11 @@ void EndOfBallSequence(void)
         ClearDebugTextDisplay();
         if (gCurrentPinballGame->numLives > 0)
         {
-            if (gCurrentPinballGame->manaphyEggActive)
+            if (gCurrentPinballGame->manaphyEggActive && gCurrentPinballGame->manaphyEggStarted)
             {
                 gCurrentPinballGame->manaphyEggActive = FALSE;
+                gCurrentPinballGame->manaphyEggPrepared = FALSE;
+                gCurrentPinballGame->manaphyEggStarted = FALSE;
                 gCurrentPinballGame->eggAnimationPhase = 0;
             }
             gCurrentPinballGame->saverTimeRemaining = BALL_NORMAL_LAUNCH_SAVER_TIME;

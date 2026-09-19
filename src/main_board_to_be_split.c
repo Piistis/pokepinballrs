@@ -58,26 +58,141 @@ void LoadHatchEggFrame(s16 frame)
         DmaCopy16(3, gEggFrameTilesGfx[frame], (void *)0x06011CE0, 0x200);
 }
 
-void ApplyManaphyEggPalette(struct SpriteGroup *group)
+static EWRAM_DATA u16 sManaphyBorrowedPalette[16];
+static EWRAM_DATA u8 sManaphyOriginalOamPalettes[128];
+static EWRAM_DATA u8 sManaphyPaletteSlotPlusOne = 0;
+
+void RestoreManaphyEggPalette(void)
 {
     s16 i;
 
-    if (!gCurrentPinballGame->manaphyEggActive || !gCurrentPinballGame->eggAnimationPhase)
+    if (!sManaphyPaletteSlotPlusOne)
         return;
 
-    // Bank 11 also colors the cave, elevator and launcher. During eclosion
-    // bank 14 is the unused mode-overlay bank; release it for capture/ball loss.
-    if (gCurrentPinballGame->captureState != MON_CAPTURE_SPECIAL_STATE_INACTIVE
-     || (gMain.modeChangeFlags & (MODE_CHANGE_END_OF_BALL | MODE_CHANGE_END_OF_GAME | MODE_CHANGE_BALL_SAVER)))
+    DmaCopy16(3, sManaphyBorrowedPalette, OBJ_PLTT_SLOT(sManaphyPaletteSlotPlusOne - 1), PLTT_SLOT_SIZE);
+    for (i = 0; i < 128; i++)
     {
-        for (i = 0; i < 2; i++)
-            gOamBuffer[group->oam[i].oamId].y = 200;
+        if (sManaphyOriginalOamPalettes[i] != 0xFF)
+            gOamBuffer[i].paletteNum = sManaphyOriginalOamPalettes[i];
+    }
+    sManaphyPaletteSlotPlusOne = 0;
+}
+
+static bool8 IsManaphyEggOam(const struct OamData *oam)
+{
+    return !oam->bpp && oam->tileNum >= 0xE7 && oam->tileNum < 0xF7;
+}
+
+static bool8 IsManaphyPaletteSpriteVisible(const struct OamData *oam)
+{
+    s16 width, height, swap, x, y;
+
+    if (oam->affineMode == 2 || oam->shape == 3)
+        return FALSE;
+
+    if (oam->shape == 0)
+        width = height = 8 << oam->size;
+    else
+    {
+        width = oam->size == 0 ? 16 : (oam->size == 3 ? 64 : 32);
+        height = oam->size < 2 ? 8 : (oam->size == 2 ? 16 : 32);
+        if (oam->shape == 2)
+        {
+            swap = width;
+            width = height;
+            height = swap;
+        }
+    }
+    if (oam->affineMode == 3)
+    {
+        width *= 2;
+        height *= 2;
+    }
+    x = oam->x;
+    y = oam->y;
+    if (x >= 240)
+        x -= 512;
+    if (y >= 160)
+        y -= 256;
+    return x < 240 && x + width > 0 && y < 160 && y + height > 0;
+}
+
+void RenderManaphyEggPalette(void)
+{
+    s16 i, bank;
+    u16 usedBanks = 0;
+    bool8 visibleEgg = FALSE;
+    struct OamData *oam;
+    struct SpriteGroup *group;
+
+    if (gMain.mainState != STATE_GAME_MAIN || gMain.selectedField >= MAIN_FIELD_COUNT
+     || !gCurrentPinballGame->manaphyEggActive || !gCurrentPinballGame->eggAnimationPhase
+     || gCurrentPinballGame->fadeSubState != 1 || gMain.gameExitState)
+        return;
+
+    // Totodile carries a separate 16x24 egg. Reuse the editable 32x32 frame
+    // at the same position, rather than leaving an ordinary egg in its hands.
+    group = &gMain.spriteGroups[SG_RUBY_TOTODILE_EGG_DELIVERY];
+    if (gMain.selectedField == FIELD_RUBY && group->active)
+    {
+        for (i = 0; i < 6; i++)
+        {
+            oam = &gOamBuffer[group->oam[i].oamId];
+            if (oam->tileNum == 0x308 || oam->tileNum == 0x31E)
+            {
+                oam->tileNum = 0xE7;
+                oam->x = (oam->x - 8) & 0x1FF;
+                oam->shape = 0;
+                oam->size = 2;
+            }
+            else if (oam->tileNum == 0x30C || oam->tileNum == 0x322)
+                oam->affineMode = 2;
+        }
+    }
+
+    // Reserve a bank only after all board sprites have been drawn. In
+    // particular, bank 14 may belong to a delivery animation or a mode banner.
+    for (i = 0; i < 128; i++)
+    {
+        oam = &gOamBuffer[i];
+        if (!IsManaphyPaletteSpriteVisible(oam))
+            continue;
+        if (IsManaphyEggOam(oam))
+            visibleEgg = TRUE;
+        else if (oam->bpp)
+            usedBanks = 0xFFFF;
+        else
+            usedBanks |= 1 << oam->paletteNum;
+    }
+    if (!visibleEgg)
+        return;
+
+    for (bank = 15; bank >= 0; bank--)
+    {
+        if (!(usedBanks & (1 << bank)))
+            break;
+    }
+    if (bank < 0)
+    {
+        // A fully occupied palette must not recolor another sprite.
+        for (i = 0; i < 128; i++)
+            if (IsManaphyEggOam(&gOamBuffer[i]))
+                gOamBuffer[i].y = 200;
         return;
     }
 
-    DmaCopy16(3, gManaphyEggPalette, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
-    for (i = 0; i < 2; i++)
-        gOamBuffer[group->oam[i].oamId].paletteNum = 14;
+    DmaCopy16(3, OBJ_PLTT_SLOT(bank), sManaphyBorrowedPalette, PLTT_SLOT_SIZE);
+    DmaCopy16(3, gManaphyEggPalette, OBJ_PLTT_SLOT(bank), PLTT_SLOT_SIZE);
+    for (i = 0; i < 128; i++)
+    {
+        sManaphyOriginalOamPalettes[i] = 0xFF;
+        if (IsManaphyEggOam(&gOamBuffer[i]))
+        {
+            sManaphyOriginalOamPalettes[i] = gOamBuffer[i].paletteNum;
+            gOamBuffer[i].paletteNum = bank;
+        }
+    }
+    sManaphyPaletteSlotPlusOne = bank + 1;
 }
 
 // This is the 'Gravity Well' in the center of the board.
@@ -883,6 +998,8 @@ void AnimateCoinReward(void)
 
 void InitTotodileEggDelivery(void)
 {
+    PrepareManaphyEgg();
+    LoadHatchEggFrame(0);
     gCurrentPinballGame->eggDeliveryX = 1600;
     gCurrentPinballGame->eggDeliveryY = 2080;
     gCurrentPinballGame->totodileDeliveryFrame = 0;
@@ -936,7 +1053,7 @@ void AnimateTotodileEggDelivery(void)
         {
             gCurrentPinballGame->portraitOffsetX = 0;
             gCurrentPinballGame->portraitOffsetY = 0;
-            DmaCopy16(3, gEggFrameTilesGfx[0], (void *)0x06011CE0, 0x200);
+            LoadHatchEggFrame(0);
         }
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 14)
@@ -965,6 +1082,8 @@ void AnimateTotodileEggDelivery(void)
 
 void InitAerodactylEggDelivery(void)
 {
+    PrepareManaphyEgg();
+    LoadHatchEggFrame(0);
     gCurrentPinballGame->eggDropTimer = 0;
     gCurrentPinballGame->eggDeliveryX = 3600;
     gCurrentPinballGame->eggDeliveryY = -40;
@@ -1014,7 +1133,7 @@ void AnimateAerodactylEggDelivery(void)
         if (gCurrentPinballGame->eggDropTimer == 78)
             gCurrentPinballGame->scoreAddedInFrame = SCORE_AERODACTYL_EGG_DELIVERY;
 
-        DmaCopy16(3, gEggFrameTilesGfx[0], (void *)0x06011CE0, 0x200);
+        LoadHatchEggFrame(0);
     }
     else
     {
@@ -1308,7 +1427,8 @@ void AnimateWasCaughtBanner(void)
 void InitRubyEggHatchAnimation(void)
 {
     NormalizeManaphyEggState();
-    gCurrentPinballGame->manaphyEggActive = FALSE;
+    if (!gCurrentPinballGame->manaphyEggPrepared)
+        PrepareManaphyEgg();
     LoadHatchEggFrame(0);
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->prevEggAnimFrame = 0;
@@ -1456,8 +1576,6 @@ void UpdateRubyEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
-    ApplyManaphyEggPalette(group);
-
     group = &gMain.spriteGroups[SG_RUBY_HATCH_CAVE];
     group->baseX = gCurrentPinballGame->eggBasePosX;
     group->baseY = gCurrentPinballGame->eggBasePosY;
@@ -1503,7 +1621,6 @@ void UpdateHatchCave(void)
             {
                 BeginManaphyEggAttempt();
                 LoadHatchEggFrame(0);
-                ApplyManaphyEggPalette(&gMain.spriteGroups[SG_RUBY_HATCH_EGG]);
                 gCurrentPinballGame->eggAnimationPhase = 2;
                 gCurrentPinballGame->cyndaquilFrame = 1;
                 DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], (void *)0x06013300, 0x280);
@@ -1620,6 +1737,8 @@ void CleanupEggModeState(void)
     s16 i;
 
     gCurrentPinballGame->manaphyEggActive = FALSE;
+    gCurrentPinballGame->manaphyEggPrepared = FALSE;
+    gCurrentPinballGame->manaphyEggStarted = FALSE;
     LoadHatchEggFrame(0);
 
     if (gMain.selectedField == FIELD_RUBY)

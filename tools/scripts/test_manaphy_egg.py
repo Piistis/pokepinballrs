@@ -30,28 +30,34 @@ typedef unsigned int u32;
 #define TRUE 1
 #define FALSE 0
 #define STATE_GAME_IDLE 99
+#define STATE_GAME_MAIN 1
+#define EWRAM_DATA
+#define SG_RUBY_TOTODILE_EGG_DELIVERY 0
 #define EREADER_ENCOUNTER_RATE_UP_CARD 0
 #define MON_CAPTURE_SPECIAL_STATE_INACTIVE 0
 #define MODE_CHANGE_END_OF_BALL 1
 #define MODE_CHANGE_END_OF_GAME 2
 #define MODE_CHANGE_BALL_SAVER 4
-#define OBJ_PLTT_SLOT(n) ((void *)(0x05000200 + (n) * 32))
+u16 paletteMemory[16][16];
+#define OBJ_PLTT_SLOT(n) ((void *)paletteMemory[n])
 #define PLTT_SLOT_SIZE 32
 struct Game {
     u32 manaphyEggStateMagic;
     u8 manaphyEggCatchCount, manaphyEggActive;
+    u8 manaphyEggPrepared, manaphyEggStarted, fadeSubState;
     u16 debugForcedEggSpecies, currentSpecies, lastEggSpecies;
     u16 caughtMonCount, totalWeight, speciesWeights[26];
     u8 forcePichuEgg, area, eggAnimationPhase, captureState;
 } game;
 struct Game *gCurrentPinballGame = &game;
+struct SpriteGroup { int active; struct { int oamId; } oam[6]; };
 struct Main {
-    int mainState, selectedField, modeChangeFlags;
+    int mainState, selectedField, modeChangeFlags, gameExitState;
     u8 eReaderBonuses[1];
+    struct SpriteGroup spriteGroups[1];
 } gMain;
 int gSelectedGeneration;
-struct SpriteGroup { struct { int oamId; } oam[2]; } group;
-struct { int y, paletteNum; } gOamBuffer[2];
+struct OamData { int x, y, paletteNum, tileNum, bpp, affineMode, shape, size; } gOamBuffer[128];
 u8 gEggFrameTilesGfx[7][0x200], gManaphyEggFrameTilesGfx[7][0x200];
 u16 gManaphyEggPalette[16];
 const void *lastSource;
@@ -59,11 +65,15 @@ void *lastDestination;
 int dmaCalls, lastSize;
 void DmaCopy16(int channel, const void *source, void *destination, int size)
 {
+    int i;
     (void)channel;
     lastSource = source;
     lastDestination = destination;
     lastSize = size;
     dmaCalls++;
+    if (destination != (void *)0x06011CE0)
+        for (i = 0; i < size / 2; i++)
+            ((u16 *)destination)[i] = ((const u16 *)source)[i];
 }
 u32 GetTimeAdjustedRandom(void) { return 7; }
 u16 GetEggMonForSelectedGeneration(int field, int index)
@@ -78,7 +88,8 @@ TESTS = r'''
 #define CHECK(expr) do { if (!(expr)) return __LINE__; } while (0)
 void Reset(void)
 {
-    int i;
+    int i, j;
+    RestoreManaphyEggPalette();
     game.manaphyEggStateMagic = 0;
     NormalizeManaphyEggState();
     game.debugForcedEggSpecies = SPECIES_NONE;
@@ -91,12 +102,26 @@ void Reset(void)
     game.area = AREA_OCEAN_RUBY;
     game.eggAnimationPhase = 2;
     game.captureState = 0;
+    game.fadeSubState = 1;
     gMain.mainState = 1;
     gMain.selectedField = FIELD_RUBY;
     gMain.modeChangeFlags = 0;
+    gMain.gameExitState = 0;
     gSelectedGeneration = GENERATION_4;
-    group.oam[0].oamId = 0;
-    group.oam[1].oamId = 1;
+    gMain.spriteGroups[0].active = FALSE;
+    for (i = 0; i < 6; i++) gMain.spriteGroups[0].oam[i].oamId = i;
+    for (i = 0; i < 128; i++)
+    {
+        gOamBuffer[i].x = gOamBuffer[i].y = 0;
+        gOamBuffer[i].bpp = gOamBuffer[i].shape = gOamBuffer[i].size = 0;
+        gOamBuffer[i].paletteNum = gOamBuffer[i].tileNum = 0;
+        gOamBuffer[i].affineMode = 2;
+    }
+    for (i = 0; i < 16; i++)
+    {
+        gManaphyEggPalette[i] = 1000 + i;
+        for (j = 0; j < 16; j++) paletteMemory[i][j] = i * 16 + j;
+    }
     dmaCalls = 0;
 }
 
@@ -117,7 +142,14 @@ int main(void)
         for (i = 0; i < count; i++) AddManaphyEggCapture();
         eligible = field < MAIN_FIELD_COUNT && count == 5
             && (generation == GENERATION_4 || generation == GENERATION_RANDOM)
-            && (area == AREA_OCEAN_RUBY || area == AREA_OCEAN_SAPPHIRE);
+            && ((field == FIELD_RUBY && area == AREA_OCEAN_RUBY)
+             || (field == FIELD_SAPPHIRE && area == AREA_OCEAN_SAPPHIRE));
+        PrepareManaphyEgg();
+        CHECK(game.manaphyEggActive == eligible);
+        CHECK(game.manaphyEggCatchCount == count && !game.manaphyEggStarted);
+        LoadHatchEggFrame(0);
+        CHECK(lastSource == (eligible ? gManaphyEggFrameTilesGfx[0] : gEggFrameTilesGfx[0]));
+        game.area = AREA_CITY; /* The delivery decision survives travel. */
         BeginManaphyEggAttempt();
         CHECK(game.manaphyEggActive == eligible);
         CHECK(game.manaphyEggCatchCount == (eligible ? 0 : count));
@@ -134,6 +166,10 @@ int main(void)
     AddManaphyEggCapture();
     CHECK(!game.manaphyEggActive && game.manaphyEggCatchCount == 5);
     game.area = AREA_OCEAN_RUBY;
+    BeginManaphyEggAttempt();
+    CHECK(!game.manaphyEggActive); /* An ordinary delivered egg cannot reroll. */
+    PrepareManaphyEgg(); /* Deliver the next egg in the ocean. */
+    CHECK(game.manaphyEggActive && game.manaphyEggCatchCount == 5);
     saved = game;
     Reset();
     game = saved;
@@ -153,9 +189,11 @@ int main(void)
     game.manaphyEggActive = FALSE; /* End of attempt, caught or escaped. */
     game.area = AREA_OCEAN_RUBY;
     for (i = 0; i < 4; i++) AddManaphyEggCapture();
+    PrepareManaphyEgg();
     BeginManaphyEggAttempt();
     CHECK(!game.manaphyEggActive && game.manaphyEggCatchCount == 4);
     AddManaphyEggCapture();
+    PrepareManaphyEgg();
     BeginManaphyEggAttempt();
     CHECK(game.manaphyEggActive && game.manaphyEggCatchCount == 0);
 
@@ -166,11 +204,13 @@ int main(void)
     CHECK(!game.manaphyEggActive && game.manaphyEggCatchCount == 5);
     gMain.mainState = 1;
     game.debugForcedEggSpecies = SPECIES_BUDEW;
+    PrepareManaphyEgg();
     BeginManaphyEggAttempt();
     PickSpeciesForEggMode();
     CHECK(game.currentSpecies == SPECIES_BUDEW && !game.manaphyEggActive);
     CHECK(game.manaphyEggCatchCount == 5 && game.debugForcedEggSpecies == SPECIES_NONE);
     game.debugForcedEggSpecies = SPECIES_MANAPHY;
+    PrepareManaphyEgg();
     BeginManaphyEggAttempt();
     PickSpeciesForEggMode();
     CHECK(game.currentSpecies == SPECIES_MANAPHY && game.manaphyEggActive);
@@ -182,6 +222,11 @@ int main(void)
     game.manaphyEggCatchCount = 255;
     NormalizeManaphyEggState();
     CHECK(game.manaphyEggCatchCount == 0);
+
+    game.manaphyEggStateMagic = 0x4D414E41;
+    game.manaphyEggActive = TRUE;
+    NormalizeManaphyEggState();
+    CHECK(game.manaphyEggActive && game.manaphyEggPrepared && game.manaphyEggStarted);
 
     Reset();
     for (i = 0; i < 7; i++)
@@ -198,17 +243,63 @@ int main(void)
     game.manaphyEggActive = TRUE;
     LoadHatchEggFrame(-1);
     CHECK(lastSource == gManaphyEggFrameTilesGfx[0]);
-    ApplyManaphyEggPalette(&group);
-    CHECK(lastSource == gManaphyEggPalette && lastDestination == OBJ_PLTT_SLOT(14));
-    CHECK(gOamBuffer[0].paletteNum == 14 && gOamBuffer[1].paletteNum == 14);
-    game.captureState = 1;
+    gOamBuffer[0].affineMode = 0;
+    gOamBuffer[0].tileNum = 0xE7;
+    gOamBuffer[0].paletteNum = 11;
+    gOamBuffer[0].size = 2;
+    /* Delivery art already uses bank 14; a second portrait uses bank 15. */
+    gOamBuffer[1].affineMode = gOamBuffer[2].affineMode = 0;
+    gOamBuffer[1].paletteNum = 14;
+    gOamBuffer[2].paletteNum = 15;
+    RenderManaphyEggPalette();
+    CHECK(lastSource == gManaphyEggPalette && lastDestination == OBJ_PLTT_SLOT(13));
+    CHECK(gOamBuffer[0].paletteNum == 13);
+    CHECK(paletteMemory[14][5] == 14 * 16 + 5 && paletteMemory[15][5] == 15 * 16 + 5);
+    CHECK(paletteMemory[13][5] == gManaphyEggPalette[5]);
+    RestoreManaphyEggPalette();
+    CHECK(gOamBuffer[0].paletteNum == 11 && paletteMemory[13][5] == 13 * 16 + 5);
+    /* Pause/unpause repeats must restore, then reacquire a bank. */
+    for (i = 0; i < 5; i++)
+    {
+        RenderManaphyEggPalette();
+        CHECK(gOamBuffer[0].paletteNum == 13);
+        RestoreManaphyEggPalette();
+    }
+    gOamBuffer[2].y = 200; /* Now bank 15 is offscreen and available. */
+    RenderManaphyEggPalette();
+    CHECK(gOamBuffer[0].paletteNum == 15);
+    RestoreManaphyEggPalette();
+    /* Wrapped sprites at y=250 are partly visible and must retain their bank. */
+    gOamBuffer[2].y = 250;
+    RenderManaphyEggPalette();
+    CHECK(gOamBuffer[0].paletteNum == 13);
+    RestoreManaphyEggPalette();
+    /* Totodile's split egg must use the custom frame too. */
+    gMain.spriteGroups[0].active = TRUE;
+    gOamBuffer[0].tileNum = 0x308;
+    gOamBuffer[0].x = 20;
+    gOamBuffer[1].tileNum = 0x30C;
+    RenderManaphyEggPalette();
+    CHECK(gOamBuffer[0].tileNum == 0xE7 && gOamBuffer[0].x == 12);
+    CHECK(gOamBuffer[0].shape == 0 && gOamBuffer[0].size == 2);
+    CHECK(gOamBuffer[1].affineMode == 2);
+    RestoreManaphyEggPalette();
+    gMain.spriteGroups[0].active = FALSE;
+    game.manaphyEggActive = FALSE;
     dmaCalls = 0;
-    ApplyManaphyEggPalette(&group);
-    CHECK(dmaCalls == 0 && gOamBuffer[0].y == 200 && gOamBuffer[1].y == 200);
-    game.captureState = 0;
-    gMain.modeChangeFlags = MODE_CHANGE_END_OF_BALL;
-    ApplyManaphyEggPalette(&group);
+    RenderManaphyEggPalette();
     CHECK(dmaCalls == 0);
+    /* Exhausted palettes hide the egg without modifying other sprites' colors. */
+    game.manaphyEggActive = TRUE;
+    for (i = 0; i < 16; i++)
+    {
+        gOamBuffer[i + 1].affineMode = 0;
+        gOamBuffer[i + 1].tileNum = 0;
+        gOamBuffer[i + 1].y = 0;
+        gOamBuffer[i + 1].paletteNum = i;
+    }
+    RenderManaphyEggPalette();
+    CHECK(dmaCalls == 0 && gOamBuffer[0].y == 200);
     return 0;
 }
 '''
@@ -218,7 +309,16 @@ def main():
     png = (ROOT / "graphics/stage/main/egg_manaphy.png").read_bytes()
     assert png[:8] == b"\x89PNG\r\n\x1a\n"
     width, height, depth, color_type = struct.unpack(">IIBB", png[16:26])
-    assert (width, height, depth, color_type) == (32, 224, 4, 3)
+    assert (width, height, color_type) == (32, 224, 3)
+    assert depth in (4, 8)  # gbagfx packs indexed 8-bit PNGs into 4bpp tiles.
+    offset = 8
+    palette_size = None
+    while offset < len(png):
+        length = struct.unpack(">I", png[offset:offset + 4])[0]
+        if png[offset + 4:offset + 8] == b"PLTE":
+            palette_size = length
+        offset += length + 12
+    assert palette_size == 16 * 3
     compiler = os.environ.get("CC") or shutil.which("cc") or shutil.which("cl")
     if not compiler and os.name == "nt":
         candidates = sorted(Path("C:/Program Files/Microsoft Visual Studio").glob(
@@ -245,8 +345,9 @@ def main():
         result = subprocess.run([str(executable)], cwd=work)
         if result.returncode:
             raise SystemExit(f"C regression check failed (source line/status {result.returncode})")
-    print("PASS: all fields/generations/areas/counts, retry, restore, debug override,")
-    print("      frame selection, palette isolation and indexed PNG layout.")
+    print("PASS: delivery selection, travel, retry, save migration, debug override,")
+    print("      all fields/generations/areas/counts, palette borrowing/restoration,")
+    print("      Totodile delivery, frame selection and indexed PNG layout.")
 
 
 if __name__ == "__main__":
