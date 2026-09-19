@@ -163,8 +163,8 @@ $(C_BUILDDIR)/agb_sram.o: CFLAGS := -mthumb-interwork -Wimplicit -Wparentheses -
 $(C_BUILDDIR)/agb_sram.o: CC1 := tools/agbcc/bin/old_agbcc
 
 ifeq ($(NODEP),)
-$(C_BUILDDIR)/%.o: c_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
-$(C_BUILDDIR)/%.o: c_asm_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
+$(C_BUILDDIR)/%.o: c_dep = $(if $(wildcard $(C_SUBDIR)/$*.c),$(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c))
+$(C_BUILDDIR)/%.o: c_asm_dep = $(if $(wildcard $(C_SUBDIR)/$*.s),$(shell $(SCANINC) -I include $(C_SUBDIR)/$*.s))
 else
 $(C_BUILDDIR)/%.o: c_dep :=
 $(C_BUILDDIR)/%.o: c_asm_dep :=
