@@ -16,6 +16,9 @@ event_code = picker[picker.index("#define MANAPHY_EGG_STATE_MAGIC"):
 pick_code = picker[picker.index("void PickSpeciesForEggMode(void)"):]
 graphics_code = graphics[graphics.index("void LoadHatchEggFrame(s16 frame)"):
                          graphics.index("// This is the 'Gravity Well'")]
+board = (ROOT / "src/all_board_pinball_game_main.c").read_text()
+board_code = board[board.index("void PinballGameMain(void)"):
+                   board.index("void PinballGame_State0_49ED4(void)")]
 
 FIXTURE = r'''
 #include "constants/generations.h"
@@ -40,6 +43,7 @@ typedef unsigned int u32;
 #define MODE_CHANGE_END_OF_BALL 1
 #define MODE_CHANGE_END_OF_GAME 2
 #define MODE_CHANGE_BALL_SAVER 4
+#define MODE_CHANGE_PAUSE 2
 u16 paletteMemory[16][16];
 #define OBJ_PLTT_SLOT(n) ((void *)paletteMemory[n])
 #define PLTT_SLOT_SIZE 32
@@ -54,7 +58,7 @@ struct Game {
 struct Game *gCurrentPinballGame = &game;
 struct SpriteGroup { int active; struct { int oamId; } oam[6]; };
 struct Main {
-    int mainState, selectedField, modeChangeFlags, gameExitState;
+    int mainState, subState, selectedField, modeChangeFlags, gameExitState;
     u8 eReaderBonuses[1];
     struct SpriteGroup spriteGroups[1];
 } gMain;
@@ -65,6 +69,9 @@ u16 gManaphyEggPalette[16];
 const void *lastSource;
 void *lastDestination;
 int dmaCalls, lastSize;
+u16 colorDuringUpdate;
+void ObserveBoardUpdate(void) { colorDuringUpdate = paletteMemory[13][5]; }
+void (*gPinballGameStateFuncs[])(void) = { ObserveBoardUpdate };
 void HostDmaCopy16(int channel, const void *source, void *destination, int size)
 {
     int i;
@@ -260,19 +267,31 @@ int main(void)
     gOamBuffer[1].paletteNum = 14;
     gOamBuffer[2].paletteNum = 15;
     RenderManaphyEggPalette();
-    CHECK(lastSource == gManaphyEggPalette && lastDestination == OBJ_PLTT_SLOT(13));
+    CHECK(lastDestination == OBJ_PLTT_SLOT(13));
     CHECK(gOamBuffer[0].paletteNum == 13);
     CHECK(paletteMemory[14][5] == 14 * 16 + 5 && paletteMemory[15][5] == 15 * 16 + 5);
     CHECK(paletteMemory[13][5] == gManaphyEggPalette[5]);
+    /* The displayed OAM still uses bank 13 while the next frame is updated. */
+    PinballGameMain();
+    CHECK(colorDuringUpdate == gManaphyEggPalette[5]);
+    RenderManaphyEggPalette(); /* Next VBlank, immediately before OAM upload. */
     RestoreManaphyEggPalette();
     CHECK(gOamBuffer[0].paletteNum == 11 && paletteMemory[13][5] == 13 * 16 + 5);
-    /* Pause/unpause repeats must restore, then reacquire a bank. */
+    /* Paused frames use the same 2/5 RGB brightness, without cumulative dimming. */
+    gManaphyEggPalette[5] = 0x7FFF;
+    gMain.modeChangeFlags = MODE_CHANGE_PAUSE;
     for (i = 0; i < 5; i++)
     {
         RenderManaphyEggPalette();
         CHECK(gOamBuffer[0].paletteNum == 13);
-        RestoreManaphyEggPalette();
+        CHECK(paletteMemory[13][5] == (12 | (12 << 5) | (12 << 10)));
+        PinballGameMain();
+        CHECK(colorDuringUpdate == (12 | (12 << 5) | (12 << 10)));
     }
+    gMain.modeChangeFlags = 0;
+    RenderManaphyEggPalette();
+    CHECK(paletteMemory[13][5] == 0x7FFF);
+    RestoreManaphyEggPalette();
     gOamBuffer[2].y = 200; /* Now bank 15 is offscreen and available. */
     RenderManaphyEggPalette();
     CHECK(gOamBuffer[0].paletteNum == 15);
@@ -281,6 +300,27 @@ int main(void)
     gOamBuffer[2].y = 250;
     RenderManaphyEggPalette();
     CHECK(gOamBuffer[0].paletteNum == 13);
+    RestoreManaphyEggPalette();
+    /* A new board palette must survive returning a bank that it overwrote. */
+    RenderManaphyEggPalette();
+    PinballGameMain();
+    for (i = 0; i < 16; i++) paletteMemory[13][i] = 2000 + i;
+    gOamBuffer[2].paletteNum = 13;
+    RenderManaphyEggPalette();
+    CHECK(gOamBuffer[0].paletteNum == 15 && paletteMemory[13][5] == 2005);
+    CHECK(paletteMemory[15][5] == 0x7FFF);
+    RestoreManaphyEggPalette();
+    CHECK(paletteMemory[15][5] == 15 * 16 + 5);
+    gOamBuffer[2].paletteNum = 15;
+    /* Repeated camera changes return the old bank and acquire the new one. */
+    for (i = 0; i < 10; i++)
+    {
+        PinballGameMain();
+        gOamBuffer[2].y = i % 2 ? 0 : 200;
+        RenderManaphyEggPalette();
+        CHECK(gOamBuffer[0].paletteNum == (i % 2 ? 13 : 15));
+        CHECK(paletteMemory[gOamBuffer[0].paletteNum][5] == 0x7FFF);
+    }
     RestoreManaphyEggPalette();
     /* Totodile's split egg must use the custom frame too. */
     gMain.spriteGroups[0].active = TRUE;
@@ -314,6 +354,13 @@ int main(void)
 
 
 def main():
+    callback = (ROOT / "src/main.c").read_text().split("void DefaultMainCallback(void)", 1)[1]
+    assert callback.index("VBlankIntrWait();") < callback.index("RenderManaphyEggPalette();")
+    assert callback.index("RenderManaphyEggPalette();") < callback.index("DmaCopy32(3, gOamBuffer,")
+    for filename, snapshot in (("all_board_pause_game.c", "DmaCopy16(3, OBJ_PLTT,"),
+                               ("save_and_restore_game.c", "DmaCopy16(3, (void *)OBJ_PLTT,")):
+        source = (ROOT / "src" / filename).read_text()
+        assert source.index("RestoreManaphyEggPalette();") < source.index(snapshot)
     linker = (ROOT / "ld_script.txt").read_text()
     ewram = linker.split("ewram (NOLOAD) :", 1)[1].split("/* start of iwram */", 1)[0]
     # agbcc can emit zero-initialized scratch data in .bss despite EWRAM_DATA.
@@ -345,7 +392,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix="manaphy-test-") as temporary:
         work = Path(temporary)
         source = work / "test.c"
-        source.write_text(FIXTURE + event_code + pick_code + graphics_code + TESTS)
+        source.write_text(FIXTURE + event_code + pick_code + graphics_code + board_code + TESTS)
         executable = work / ("test.exe" if os.name == "nt" else "test")
         env = os.environ.copy()
         if Path(compiler).name.lower() in ("cl", "cl.exe"):
@@ -363,6 +410,7 @@ def main():
     print("PASS: delivery selection, travel, retry, save migration, debug override,")
     print("      all fields/generations/areas/counts, palette borrowing/restoration,")
     print("      Totodile delivery, frame selection, indexed PNG layout and RAM linker entries.")
+    print("      Display palette lifetime, pause dimming, camera bank changes and VBlank ordering.")
 
 
 if __name__ == "__main__":

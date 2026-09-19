@@ -115,6 +115,7 @@ void SaveGameStateSnapshot(s16 arg0)
     for (i = 0; i < 100; i++)
         gCurrentPinballGame->savedSpriteAvailability[gMain.isBonusField][i] = gMain.spriteGroups[i].active;
 
+    RestoreManaphyEggPalette();
     DmaCopy16(3, (void *)OBJ_PLTT, gCurrentPinballGame->savedObjPalette[gMain.isBonusField], OBJ_PLTT_SIZE);
     DmaCopy16(3, (void *)BG_PLTT, gCurrentPinballGame->savedBgPalette[gMain.isBonusField], BG_PLTT_SIZE);
     if (!arg0)

@@ -45,6 +45,7 @@ void PauseGame(void)
     gCurrentPinballGame->pauseBlendBrightness = gMain.blendBrightness;
     gCurrentPinballGame->pauseScoreOverlayActive = gMain.scoreOverlayActive;
     gCurrentPinballGame->pauseVCount = gMain.vCount;
+    RestoreManaphyEggPalette();
     DmaCopy16(3, OBJ_PLTT, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT_SIZE);
     for (i = 0; i < 16; i++)
     {

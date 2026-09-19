@@ -31,8 +31,16 @@ add a separate `.pal` file: it would override palette generation from the PNG.
 
 The normal egg uses OBJ palette 11, shared with other board elements. The special
 egg borrows an OBJ palette bank unused by other visible sprites after the board
-has finished drawing. It restores the original bank and OAM palettes before the
-next update, including pause/save handling. This avoids recoloring delivery
+has finished drawing. Restore only the software OAM palette indices before the
+next board update; keep the displayed egg palette intact during that update.
+`DefaultMainCallback` calls `RenderManaphyEggPalette` after `VBlankIntrWait` and
+before uploading OAM, returning the previous bank and applying the next one
+together. Never restore the hardware palette at the start of every game frame:
+the displayed OAM still points to it, causing a black or flickering egg.
+If board code has already replaced a borrowed bank, retain those new colors
+instead of restoring stale backup data. Pause/save explicitly release the bank
+before their palette snapshots, and paused/debug rendering applies the same
+2/5 RGB darkening as `PauseGame`. This avoids recoloring delivery
 animations (bank 14), portraits, the cave, elevator or launcher. If every bank
 is occupied, the renderer hides the egg for that frame rather than corrupting
 another sprite's palette. Manaphy's Pokemon animation remains in

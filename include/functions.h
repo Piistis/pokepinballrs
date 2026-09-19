@@ -497,6 +497,7 @@ void BeginManaphyEggAttempt(void);
 void AddManaphyEggCapture(void);
 void LoadHatchEggFrame(s16 frame);
 void RestoreManaphyEggPalette(void);
+void RestoreManaphyEggOam(void);
 void RenderManaphyEggPalette(void);
 //extern ? InitEggMode();
 //extern ? UpdateEggMode();

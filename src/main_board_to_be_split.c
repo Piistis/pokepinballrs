@@ -63,21 +63,44 @@ void LoadHatchEggFrame(s16 frame)
 }
 
 static EWRAM_DATA u16 sManaphyBorrowedPalette[16];
+static EWRAM_DATA u16 sManaphyAppliedPalette[16];
 static EWRAM_DATA u8 sManaphyOriginalOamPalettes[128];
 static EWRAM_DATA u8 sManaphyPaletteSlotPlusOne = 0;
 
-void RestoreManaphyEggPalette(void)
+void RestoreManaphyEggOam(void)
 {
     s16 i;
 
     if (!sManaphyPaletteSlotPlusOne)
         return;
 
-    DmaCopy16(3, sManaphyBorrowedPalette, OBJ_PLTT_SLOT(sManaphyPaletteSlotPlusOne - 1), PLTT_SLOT_SIZE);
     for (i = 0; i < 128; i++)
     {
         if (sManaphyOriginalOamPalettes[i] != 0xFF)
+        {
             gOamBuffer[i].paletteNum = sManaphyOriginalOamPalettes[i];
+            sManaphyOriginalOamPalettes[i] = 0xFF;
+        }
+    }
+}
+
+void RestoreManaphyEggPalette(void)
+{
+    s16 i;
+    const volatile u16 *palette;
+
+    if (!sManaphyPaletteSlotPlusOne)
+        return;
+
+    RestoreManaphyEggOam();
+    palette = OBJ_PLTT_SLOT(sManaphyPaletteSlotPlusOne - 1);
+    // A board animation may already have replaced this bank with new colors.
+    for (i = 0; i < 16; i++)
+        if (palette[i] != sManaphyAppliedPalette[i])
+            break;
+    if (i == 16)
+    {
+        DmaCopy16(3, sManaphyBorrowedPalette, OBJ_PLTT_SLOT(sManaphyPaletteSlotPlusOne - 1), PLTT_SLOT_SIZE);
     }
     sManaphyPaletteSlotPlusOne = 0;
 }
@@ -124,11 +147,14 @@ static bool8 IsManaphyPaletteSpriteVisible(const struct OamData *oam)
 void RenderManaphyEggPalette(void)
 {
     s16 i, bank;
+    u16 color, red, green, blue;
     u16 usedBanks = 0;
     bool8 visibleEgg = FALSE;
     struct OamData *oam;
     struct SpriteGroup *group;
 
+    // Called in VBlank: palette ownership and OAM must change together.
+    RestoreManaphyEggPalette();
     if (gMain.mainState != STATE_GAME_MAIN || gMain.selectedField >= MAIN_FIELD_COUNT
      || !gCurrentPinballGame->manaphyEggActive || !gCurrentPinballGame->eggAnimationPhase
      || gCurrentPinballGame->fadeSubState != 1 || gMain.gameExitState)
@@ -186,7 +212,20 @@ void RenderManaphyEggPalette(void)
     }
 
     DmaCopy16(3, OBJ_PLTT_SLOT(bank), sManaphyBorrowedPalette, PLTT_SLOT_SIZE);
-    DmaCopy16(3, gManaphyEggPalette, OBJ_PLTT_SLOT(bank), PLTT_SLOT_SIZE);
+    for (i = 0; i < 16; i++)
+    {
+        color = gManaphyEggPalette[i];
+        if (gMain.modeChangeFlags & MODE_CHANGE_PAUSE)
+        {
+            // Match PauseGame's OBJ darkening, including the debug menu.
+            red = ((color & 0x1F) * 2) / 5;
+            green = (((color >> 5) & 0x1F) * 2) / 5;
+            blue = (((color >> 10) & 0x1F) * 2) / 5;
+            color = red | (green << 5) | (blue << 10);
+        }
+        sManaphyAppliedPalette[i] = color;
+    }
+    DmaCopy16(3, sManaphyAppliedPalette, OBJ_PLTT_SLOT(bank), PLTT_SLOT_SIZE);
     for (i = 0; i < 128; i++)
     {
         sManaphyOriginalOamPalettes[i] = 0xFF;
