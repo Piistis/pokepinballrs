@@ -45,7 +45,14 @@ typedef unsigned int u32;
 #define MODE_CHANGE_BALL_SAVER 4
 #define MODE_CHANGE_PAUSE 2
 u16 paletteMemory[16][16];
-#define OBJ_PLTT_SLOT(n) ((void *)paletteMemory[n])
+#ifdef _MSC_VER
+typedef unsigned __int64 HostAddress;
+#else
+#include <stdint.h>
+typedef uintptr_t HostAddress;
+#endif
+/* Hardware address macros return integers, not implicitly convertible void *. */
+#define OBJ_PLTT_SLOT(n) ((HostAddress)paletteMemory[n])
 #define PLTT_SLOT_SIZE 32
 struct Game {
     u32 manaphyEggStateMagic;
@@ -88,7 +95,7 @@ void HostDmaCopy16(int channel, const void *source, void *destination, int size)
 #undef DmaSet
 #define DmaSet(channel, source, destination, control) \
 { \
-    HostDmaCopy16(channel, source, destination, ((control) & 0xFFFF) * 2); \
+    HostDmaCopy16(channel, (const void *)(source), (void *)(destination), ((control) & 0xFFFF) * 2); \
 }
 u32 GetTimeAdjustedRandom(void) { return 7; }
 u16 GetEggMonForSelectedGeneration(int field, int index)
@@ -267,7 +274,7 @@ int main(void)
     gOamBuffer[1].paletteNum = 14;
     gOamBuffer[2].paletteNum = 15;
     RenderManaphyEggPalette();
-    CHECK(lastDestination == OBJ_PLTT_SLOT(13));
+    CHECK(lastDestination == (void *)OBJ_PLTT_SLOT(13));
     CHECK(gOamBuffer[0].paletteNum == 13);
     CHECK(paletteMemory[14][5] == 14 * 16 + 5 && paletteMemory[15][5] == 15 * 16 + 5);
     CHECK(paletteMemory[13][5] == gManaphyEggPalette[5]);

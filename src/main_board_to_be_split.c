@@ -93,7 +93,7 @@ void RestoreManaphyEggPalette(void)
         return;
 
     RestoreManaphyEggOam();
-    palette = OBJ_PLTT_SLOT(sManaphyPaletteSlotPlusOne - 1);
+    palette = (const volatile u16 *)OBJ_PLTT_SLOT(sManaphyPaletteSlotPlusOne - 1);
     // A board animation may already have replaced this bank with new colors.
     for (i = 0; i < 16; i++)
         if (palette[i] != sManaphyAppliedPalette[i])
