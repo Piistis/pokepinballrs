@@ -59,6 +59,68 @@ const u16 gEggLocations[MAIN_FIELD_COUNT][26] = {
     },
 };
 
+
+// Includes older egg species needed for fourth-generation evolutions.
+// Manaphy is reserved for its special egg event, never an ordinary roll.
+const u16 gEggLocationsGen4[MAIN_FIELD_COUNT][26] = {
+    { // FIELD_RUBY
+        SPECIES_BUDEW,
+        SPECIES_BONSLY,
+        SPECIES_CHINGLING,
+        SPECIES_HAPPINY,
+        SPECIES_MIME_JR,
+        SPECIES_MUNCHLAX,
+        SPECIES_RIOLU,
+        SPECIES_MANTYKE,
+        SPECIES_ELEKID,
+        SPECIES_MAGBY,
+        SPECIES_TOGEPI,
+        SPECIES_SWINUB,
+        SPECIES_RALTS,
+        SPECIES_SNORUNT,
+        SPECIES_BUDEW,
+        SPECIES_BONSLY,
+        SPECIES_CHINGLING,
+        SPECIES_HAPPINY,
+        SPECIES_MIME_JR,
+        SPECIES_MUNCHLAX,
+        SPECIES_RIOLU,
+        SPECIES_MANTYKE,
+        SPECIES_BUDEW,
+        SPECIES_RIOLU,
+        SPECIES_MANTYKE,
+        SPECIES_NONE, // Unreferenced, no special Pichu egg in Gen 4.
+    },
+    { // FIELD_SAPPHIRE
+        SPECIES_BUDEW,
+        SPECIES_BONSLY,
+        SPECIES_CHINGLING,
+        SPECIES_HAPPINY,
+        SPECIES_MIME_JR,
+        SPECIES_MUNCHLAX,
+        SPECIES_RIOLU,
+        SPECIES_MANTYKE,
+        SPECIES_ELEKID,
+        SPECIES_MAGBY,
+        SPECIES_TOGEPI,
+        SPECIES_SWINUB,
+        SPECIES_RALTS,
+        SPECIES_SNORUNT,
+        SPECIES_BUDEW,
+        SPECIES_BONSLY,
+        SPECIES_CHINGLING,
+        SPECIES_HAPPINY,
+        SPECIES_MIME_JR,
+        SPECIES_MUNCHLAX,
+        SPECIES_RIOLU,
+        SPECIES_MANTYKE,
+        SPECIES_BUDEW,
+        SPECIES_RIOLU,
+        SPECIES_MANTYKE,
+        SPECIES_NONE, // Unreferenced, no special Pichu egg in Gen 4.
+    },
+};
+
 const u16 gEggLocationsGen2[MAIN_FIELD_COUNT][26] = {
     {
         // FIELD_RUBY

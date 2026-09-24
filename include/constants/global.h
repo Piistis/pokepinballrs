@@ -1,6 +1,9 @@
 #ifndef GUARD_CONSTANTS_GLOBAL_H
 #define GUARD_CONSTANTS_GLOBAL_H
 
+// Separate the Pokedex's catch and hatch animation namespaces.
+#define HATCH_DEX_ANIM_OFFSET 512
+
 #define STATE_INTRO                 0
 #define STATE_TITLE                 1
 #define STATE_GAME_MAIN             2

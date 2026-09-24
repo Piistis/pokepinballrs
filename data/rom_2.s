@@ -716,58 +716,57 @@ gPokedexSpriteSets:: @ 0x086A6148
     .4byte gPokedexTextPageChangeArrowUp1SpriteSet
 
 gDexAnimationIx:: @ 0x086A61BC
-    @ marks which anim to show with the 'select' button in pokedex
-    @ -1 = none, <200 = catch mon, >=200 = hatch mon
-    .2byte    0,   -1,   -1,    1,   -1,   -1,    2,   -1,   -1,    3
-    .2byte   -1,    4,   -1,  200,    5,   -1,    6,   -1,  201,    7
-    .2byte   -1,  202,    8,   -1,    9,   -1,   10,   -1,  203,   -1
-    .2byte   -1,  204,   -1,  205,   -1,   11,   -1,   -1,   12,   -1
-    .2byte   -1,   13,   -1,   -1,  206,   14,   -1,   15,   -1,   16
-    .2byte   -1,   17,   -1,  207,   18,   -1,   19,   -1,   -1,   20
-    .2byte  208,   -1,  190,   -1,   -1,   21,   -1,   22,   23,  210
-    .2byte   -1,   -1,   24,   -1,   -1,   25,   -1,   26,   -1,  211
-    .2byte  212,   27,   -1,   28,   -1,   29,   30,  191,   -1,   -1
-    .2byte   -1,   31,   -1,   32,  214,   -1,   33,   -1,   34,   -1
-    .2byte   35,   -1,   36,   -1,   37,   38,   -1,   39,   -1,  215
-    .2byte   -1,  189,   -1,  217,   40,  218,   41,   -1,   42,   -1
-    .2byte   43,   -1,   44,   45,   46,   47,   48,   -1,   49,   -1
-    .2byte   50,   -1,   51,   -1,   52,   -1,  219,   53,   -1,   54
-    .2byte   -1,   55,   56,   -1,   57,  220,   -1,   58,   -1,   59
-    .2byte  221,   60,   61,   -1,  222,   62,   -1,   63,   -1,  223
-    .2byte   64,  224,   -1,   65,  225,   -1,   66,   67,   68,   -1
-    .2byte  226,   -1,  227,   -1,   -1,   69,   -1,   -1,   70,  228
-    .2byte  229,   -1,   71,  192,   -1,   -1,  231,   72,   -1,   73
-    .2byte   -1,   -1,   74,   75,   76,   77,   78,   -1,   -1,   -1
-    .2byte   79,   80,   81,   82,   83,  176,   84,   85,   -1,   -1
-    .2byte   86,   -1,   -1,   87,   -1,   -1,   88,   -1,   -1,   89
-    .2byte   -1,   -1,   90,   -1,   -1,   91,   -1,   92,   -1,   93
-    .2byte   -1,   94,   -1,   -1,   95,   -1,   -1,   96,   -1,   97
-    .2byte   -1,   98,   -1,   99,   -1,  100,   -1,  101,   -1,  102
-    .2byte   -1,  103,   -1,   -1,  104,   -1,   -1,  105,   -1,  106
-    .2byte   -1,  107,  108,   -1,  109,   -1,  110,   -1,   -1,  111
-    .2byte  112,   -1,  113,   -1,  114,   -1,  115,   -1,  116,  117
-    .2byte  118,  119,  120,  121,  122,  123,  124,  125,  126,  127
-    .2byte  128,  129,  130,   -1,   -1,   -1,  131,  132,   -1,  133
-    .2byte   -1,  134,  135,  136,  137,  138,   -1,   -1,  139,  140
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,  141,   -1,  142,   -1
-    .2byte  143,   -1,  144,   -1,  233,  238,   -1,  145,   -1,   -1
-    .2byte  146,   -1,  147,   -1,   -1,  148,  149,   -1,  150,  151
-    .2byte   -1,   -1,   -1,  152,   -1,  153,  154,  155,   -1,  156
-    .2byte  157,   -1,  158,   -1,  159,   -1,  160,  161,  162,   -1
-    .2byte  237,   -1,  163,   -1,  164,   -1,  165,   -1,   -1,  166
-    .2byte  167,  239,   -1,  236,  234,  235,  168,   -1,  169,  170
-    .2byte  171,  172,   -1,   -1,  173,  174,  175,   -1,  177,   -1
-    .2byte   -1,  178,   -1,   -1,  179,   -1,   -1,  180,   -1,   -1
-    .2byte  181,   -1,  182,   -1,  183,   -1,   -1,  241,   -1,   -1
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
-    .2byte   -1,   -1,   -1,   -1,  242,   -1,   -1,   -1,   -1,  240
-    .2byte  246,  243,   -1,   -1,   -1,   -1,   -1,  247,  248,   -1
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,  245
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
-    .2byte   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1
-    .2byte   -1,  244,   -1,   -1,   -1,  184,  185,  186,  187,  188
+    @ -1 = none; catch index or HATCH_DEX_ANIM_OFFSET + egg index.
+    .2byte 0, -1, -1, 1, -1, -1, 2, -1, -1, 3
+    .2byte -1, 4, -1, HATCH_DEX_ANIM_OFFSET + 0, 5, -1, 6, -1, HATCH_DEX_ANIM_OFFSET + 1, 7
+    .2byte -1, HATCH_DEX_ANIM_OFFSET + 2, 8, -1, 9, -1, 10, -1, HATCH_DEX_ANIM_OFFSET + 3, -1
+    .2byte -1, HATCH_DEX_ANIM_OFFSET + 4, -1, HATCH_DEX_ANIM_OFFSET + 5, -1, 11, -1, -1, 12, -1
+    .2byte -1, 13, -1, -1, HATCH_DEX_ANIM_OFFSET + 6, 14, -1, 15, -1, 16
+    .2byte -1, 17, -1, HATCH_DEX_ANIM_OFFSET + 7, 18, -1, 19, -1, -1, 20
+    .2byte HATCH_DEX_ANIM_OFFSET + 8, -1, 190, -1, -1, 21, -1, 22, 23, HATCH_DEX_ANIM_OFFSET + 10
+    .2byte -1, -1, 24, -1, -1, 25, -1, 26, -1, HATCH_DEX_ANIM_OFFSET + 11
+    .2byte HATCH_DEX_ANIM_OFFSET + 12, 27, -1, 28, -1, 29, 30, 191, -1, -1
+    .2byte -1, 31, -1, 32, HATCH_DEX_ANIM_OFFSET + 14, -1, 33, -1, 34, -1
+    .2byte 35, -1, 36, -1, 37, 38, -1, 39, -1, HATCH_DEX_ANIM_OFFSET + 15
+    .2byte -1, 189, -1, HATCH_DEX_ANIM_OFFSET + 17, 40, HATCH_DEX_ANIM_OFFSET + 18, 41, -1, 42, -1
+    .2byte 43, -1, 44, 45, 46, 47, 48, -1, 49, -1
+    .2byte 50, -1, 51, -1, 52, -1, HATCH_DEX_ANIM_OFFSET + 19, 53, -1, 54
+    .2byte -1, 55, 56, -1, 57, HATCH_DEX_ANIM_OFFSET + 20, -1, 58, -1, 59
+    .2byte HATCH_DEX_ANIM_OFFSET + 21, 60, 61, -1, HATCH_DEX_ANIM_OFFSET + 22, 62, -1, 63, -1, HATCH_DEX_ANIM_OFFSET + 23
+    .2byte 64, HATCH_DEX_ANIM_OFFSET + 24, -1, 65, HATCH_DEX_ANIM_OFFSET + 25, -1, 66, 67, 68, -1
+    .2byte HATCH_DEX_ANIM_OFFSET + 26, -1, HATCH_DEX_ANIM_OFFSET + 27, -1, -1, 69, -1, -1, 70, HATCH_DEX_ANIM_OFFSET + 28
+    .2byte HATCH_DEX_ANIM_OFFSET + 29, -1, 71, 192, -1, -1, HATCH_DEX_ANIM_OFFSET + 31, 72, -1, 73
+    .2byte -1, -1, 74, 75, 76, 77, 78, -1, -1, -1
+    .2byte 79, 80, 81, 82, 83, 176, 84, 85, -1, -1
+    .2byte 86, -1, -1, 87, -1, -1, 88, -1, -1, 89
+    .2byte -1, -1, 90, -1, -1, 91, -1, 92, -1, 93
+    .2byte -1, 94, -1, -1, 95, -1, -1, 96, -1, 97
+    .2byte -1, 98, -1, 99, -1, 100, -1, 101, -1, 102
+    .2byte -1, 103, -1, -1, 104, -1, -1, 105, -1, 106
+    .2byte -1, 107, 108, -1, 109, -1, 110, -1, -1, 111
+    .2byte 112, -1, 113, -1, 114, -1, 115, -1, 116, 117
+    .2byte 118, 119, 120, 121, 122, 123, 124, 125, 126, 127
+    .2byte 128, 129, 130, -1, -1, -1, 131, 132, -1, 133
+    .2byte -1, 134, 135, 136, 137, 138, -1, -1, 139, 140
+    .2byte -1, -1, -1, -1, -1, -1, 141, -1, 142, -1
+    .2byte 143, -1, 144, -1, HATCH_DEX_ANIM_OFFSET + 33, HATCH_DEX_ANIM_OFFSET + 38, -1, 145, -1, -1
+    .2byte 146, -1, 147, -1, -1, 148, 149, -1, 150, 151
+    .2byte -1, -1, -1, 152, -1, 153, 154, 155, -1, 156
+    .2byte 157, -1, 158, -1, 159, -1, 160, 161, 162, -1
+    .2byte HATCH_DEX_ANIM_OFFSET + 37, -1, 163, -1, 164, -1, 165, -1, -1, 166
+    .2byte 167, HATCH_DEX_ANIM_OFFSET + 39, -1, HATCH_DEX_ANIM_OFFSET + 36, HATCH_DEX_ANIM_OFFSET + 34, HATCH_DEX_ANIM_OFFSET + 35, 168, -1, 169, 170
+    .2byte 171, 172, -1, -1, 173, 174, 175, -1, 177, -1
+    .2byte -1, 178, -1, -1, 179, -1, -1, 180, -1, -1
+    .2byte 181, -1, 182, -1, 183, -1, -1, HATCH_DEX_ANIM_OFFSET + 41, -1, 193
+    .2byte -1, 194, -1, 195, -1, -1, 196, -1, 197, 198
+    .2byte -1, 199, -1, 200, -1, -1, 201, -1, 202, -1
+    .2byte -1, -1, 203, -1, HATCH_DEX_ANIM_OFFSET + 42, 204, -1, 205, -1, HATCH_DEX_ANIM_OFFSET + 40
+    .2byte HATCH_DEX_ANIM_OFFSET + 46, HATCH_DEX_ANIM_OFFSET + 43, 206, 207, 208, -1, -1, HATCH_DEX_ANIM_OFFSET + 47, HATCH_DEX_ANIM_OFFSET + 48, -1
+    .2byte 209, -1, 210, -1, 211, -1, 212, 213, -1, HATCH_DEX_ANIM_OFFSET + 45
+    .2byte 214, -1, -1, -1, -1, -1, -1, -1, -1, -1
+    .2byte -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+    .2byte 215, -1, -1, -1, -1, -1, -1, -1, -1, -1
+    .2byte -1, HATCH_DEX_ANIM_OFFSET + 44, -1, -1, -1, 184, 185, 186, 187, 188
 gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
@@ -9171,6 +9170,11 @@ gCatchMonPaletteGroups::
 	.4byte gMonCatchSpriteGroup36_Pals
 	.4byte gMonCatchSpriteGroup37_Pals
 	.4byte gMonCatchSpriteGroup38_Pals
+	.4byte gMonCatchSpriteGroup39_Pals
+	.4byte gMonCatchSpriteGroup40_Pals
+	.4byte gMonCatchSpriteGroup41_Pals
+	.4byte gMonCatchSpriteGroup42_Pals
+	.4byte gMonCatchSpriteGroup43_Pals
 gMainLeftFlipperSpriteSet:: @ 0x086B15F8
 .2byte 1
     packed_sprite_oaml x=-0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x0, priority=0x2, paletteNum=0x0
@@ -16625,6 +16629,11 @@ gCatchSpriteGfxPtrs:: @ 0x086BB6F4
 	.4byte gMonCatchSpriteGroup36_Gfx
 	.4byte gMonCatchSpriteGroup37_Gfx
 	.4byte gMonCatchSpriteGroup38_Gfx
+	.4byte gMonCatchSpriteGroup39_Gfx
+	.4byte gMonCatchSpriteGroup40_Gfx
+	.4byte gMonCatchSpriteGroup41_Gfx
+	.4byte gMonCatchSpriteGroup42_Gfx
+	.4byte gMonCatchSpriteGroup43_Gfx
 gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup0_Gfx
 	.4byte gMonPortraitsGroup1_Gfx

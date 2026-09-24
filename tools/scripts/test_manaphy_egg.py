@@ -98,6 +98,9 @@ void HostDmaCopy16(int channel, const void *source, void *destination, int size)
     HostDmaCopy16(channel, (const void *)(source), (void *)(destination), ((control) & 0xFFFF) * 2); \
 }
 u32 GetTimeAdjustedRandom(void) { return 7; }
+void BuildSpeciesWeightsForEggMode(void) { game.totalWeight = 25; }
+s16 GetEggEncounterCount(void) { return 25; }
+s16 GetEggEncounterWeight(u16 species) { (void)species; return 1; }
 u16 GetEggMonForSelectedGeneration(int field, int index)
 {
     (void)field;

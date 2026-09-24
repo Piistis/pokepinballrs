@@ -3,6 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
+#include "constants/generations.h"
 
 #define EVO_MODE_TIME TICKS_FOR_TIME(2,0)
 #define EVO_SAVER_TIME TICKS_FOR_TIME(1,0)
@@ -33,6 +34,12 @@ static s8 GetEvolutionMethodForCurrentContext(u16 species)
     case SPECIES_SLOWPOKE:
         return gMain.selectedField == FIELD_RUBY ? 1 : 4;
     case SPECIES_EEVEE:
+        if ((gSelectedGeneration == GENERATION_4 || gSelectedGeneration == GENERATION_RANDOM)
+         && (gCurrentPinballGame->area == AREA_FOREST_RUBY
+          || gCurrentPinballGame->area == AREA_FOREST_SAPPHIRE
+          || gCurrentPinballGame->area == AREA_ICE_CAVE
+          || (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->area == AREA_CAVE_RUBY)))
+            return 1;
         switch (gCurrentPinballGame->area)
         {
         case AREA_OCEAN_RUBY:

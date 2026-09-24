@@ -91,6 +91,7 @@ extern const u16 gWildMonLocationsGen2[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gWildMonLocationsGen4[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gEggLocations[MAIN_FIELD_COUNT][26];
 extern const u16 gEggLocationsGen2[MAIN_FIELD_COUNT][26];
+extern const u16 gEggLocationsGen4[MAIN_FIELD_COUNT][26];
 
 #define EVOLVABLE_PARTY_SPECIES_STORAGE_MAGIC 0x504B4556
 #define RANDOM_WILD_MON_SOURCE_TABLE_COUNT 4
@@ -375,6 +376,16 @@ static u16 GetWildMonForSelectedGeneration(s16 area, s16 threeArrows, s16 index)
 
 static u16 GetEggMonForSelectedGeneration(s16 field, s16 index)
 {
+    if (gSelectedGeneration == GENERATION_RANDOM)
+    {
+        if (index < 25)
+            return gEggLocations[field][index];
+        if (index < 50)
+            return gEggLocationsGen2[field][index - 25];
+        return gEggLocationsGen4[field][index - 50];
+    }
+    if (gSelectedGeneration == GENERATION_4)
+        return gEggLocationsGen4[field][index];
     if (gSelectedGeneration == GENERATION_2)
         return gEggLocationsGen2[field][index];
 
@@ -853,6 +864,25 @@ static u16 PickMissingTripleBranchEvolution(u16 target1, u16 target2, u16 target
 
 static u16 GetEvolutionTargetForCurrentContext(u16 species)
 {
+    if (gSelectedGeneration == GENERATION_4 || gSelectedGeneration == GENERATION_RANDOM)
+    {
+        switch (species)
+        {
+        case SPECIES_BURMY:
+            return PickMissingBranchEvolution(SPECIES_WORMADAM, SPECIES_MOTHIM);
+        case SPECIES_KIRLIA:
+            return PickMissingBranchEvolution(SPECIES_GARDEVOIR, SPECIES_GALLADE);
+        case SPECIES_SNORUNT:
+            return PickMissingBranchEvolution(SPECIES_GLALIE, SPECIES_FROSLASS);
+        case SPECIES_EEVEE:
+            if (IsLegendaryForest())
+                return SPECIES_LEAFEON;
+            if (gCurrentPinballGame->area == AREA_ICE_CAVE
+             || (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->area == AREA_CAVE_RUBY))
+                return SPECIES_GLACEON;
+            break;
+        }
+    }
     switch (species)
     {
     case SPECIES_WURMPLE:
@@ -1073,7 +1103,7 @@ void PickSpeciesForCatchEmMode(void)
         return;
     }
 
-    if (gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD])
+    if (gSelectedGeneration != GENERATION_4 && gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD])
     {
         gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD] = FALSE;
         rand = GetTimeAdjustedRandom();
@@ -1097,7 +1127,8 @@ void PickSpeciesForCatchEmMode(void)
         if (gBoardConfig.caughtSpeciesCount < 100)
             rand = 1;
 
-        if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forceSpecialMons)
+        if (gSelectedGeneration != GENERATION_4
+         && ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forceSpecialMons))
         {
             s16 numSpecialMons = 0;
             gCurrentPinballGame->currentSpecies = 0;
@@ -1168,67 +1199,54 @@ void PickSpeciesForCatchEmMode(void)
     gCurrentPinballGame->lastCatchSpecies = gCurrentPinballGame->currentSpecies;
 }
 
+static s16 GetEggEncounterCount(void)
+{
+    return gSelectedGeneration == GENERATION_RANDOM ? 75 : 25;
+}
+
+static s16 GetEggEncounterWeight(u16 species)
+{
+    s16 weight, evolutionWeight, j;
+    u16 target = species;
+
+    if (species >= SPECIES_NONE || species == gCurrentPinballGame->lastEggSpecies)
+        return 0;
+    if (species == SPECIES_ODDISH)
+        return gCommonAndEggWeights[GetSavedPokedexFlag(GetEvolutionTargetForCurrentContext(SPECIES_GLOOM))];
+
+    weight = gCommonAndEggWeights[GetSavedPokedexFlag(species)];
+    for (j = 0; j < 2; j++)
+    {
+        target = GetEvolutionTargetForCurrentContext(target);
+        if (target >= SPECIES_NONE)
+            break;
+        evolutionWeight = gCommonAndEggWeights[GetSavedPokedexFlag(target)];
+        if (weight < evolutionWeight)
+            weight = evolutionWeight;
+    }
+    if (gCurrentPinballGame->caughtMonCount == 0
+     && gSpeciesInfo[species].evolutionTarget >= SPECIES_NONE)
+        return 0;
+    return weight;
+}
+
 void BuildSpeciesWeightsForEggMode(void)
 {
     s16 i;
-    s16 currentSpecies;
-    s16 weight;
-    s16 j;
-    s16 evolutionWeight;
-
     gCurrentPinballGame->totalWeight = 0;
-
-    for (i = 0; i < 25; i++)
-    {
-        currentSpecies = GetEggMonForSelectedGeneration(gMain.selectedField, i);
-
-        if (currentSpecies == SPECIES_ODDISH)
-        {
-            weight = gCommonAndEggWeights[GetSavedPokedexFlag(GetEvolutionTargetForCurrentContext(SPECIES_GLOOM))];
-        }
-        else
-        {
-            weight = gCommonAndEggWeights[GetSavedPokedexFlag(currentSpecies)];
-
-            for (j = 0; j < 2; j++)
-            {
-                currentSpecies = GetEvolutionTargetForCurrentContext(currentSpecies);
-                if (currentSpecies < SPECIES_NONE)
-                {
-                    evolutionWeight = gCommonAndEggWeights[GetSavedPokedexFlag(currentSpecies)];
-                    if (weight < evolutionWeight)
-                        weight = evolutionWeight;
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            currentSpecies = GetEggMonForSelectedGeneration(gMain.selectedField, i);
-            if (gCurrentPinballGame->caughtMonCount == 0)
-            {
-                if (gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
-                {
-                    weight = 0;
-                }
-            }
-        }
-
-        if (gCurrentPinballGame->lastEggSpecies == currentSpecies)
-        {
-            weight = 0;
-        }
-
-        gCurrentPinballGame->totalWeight += weight;
-        gCurrentPinballGame->speciesWeights[i] = gCurrentPinballGame->totalWeight;
-    }
+    // RANDOM spans three tables. Walk weights instead of enlarging the saved
+    // 25-element catch/egg array and shifting the rest of PinballGame.
+    for (i = 0; i < GetEggEncounterCount(); i++)
+        gCurrentPinballGame->totalWeight += GetEggEncounterWeight(
+            GetEggMonForSelectedGeneration(gMain.selectedField, i));
 }
 
 void PickSpeciesForEggMode(void)
 {
     s16 i;
     u32 rand;
+    u16 species;
+    s16 weight;
 
     if (gCurrentPinballGame->debugForcedEggSpecies < SPECIES_NONE)
     {
@@ -1254,18 +1272,28 @@ void PickSpeciesForEggMode(void)
     if (gCurrentPinballGame->lastEggSpecies == SPECIES_PICHU)
         rand = 1;
 
-    if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forcePichuEgg)
+    if (gSelectedGeneration != GENERATION_4
+     && ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forcePichuEgg))
     {
         gCurrentPinballGame->currentSpecies = SPECIES_PICHU;
     }
     else
     {
-        rand = GetTimeAdjustedRandom();
-        rand %= gCurrentPinballGame->totalWeight;
-
-        for (i = 0; i < 25 && gCurrentPinballGame->speciesWeights[i] <= rand; i++);
-
-        gCurrentPinballGame->currentSpecies = GetEggMonForSelectedGeneration(gMain.selectedField, i);
+        BuildSpeciesWeightsForEggMode();
+        rand = gCurrentPinballGame->totalWeight
+             ? GetTimeAdjustedRandom() % gCurrentPinballGame->totalWeight : 0;
+        gCurrentPinballGame->currentSpecies = GetEggMonForSelectedGeneration(gMain.selectedField, 0);
+        for (i = 0; i < GetEggEncounterCount(); i++)
+        {
+            species = GetEggMonForSelectedGeneration(gMain.selectedField, i);
+            weight = GetEggEncounterWeight(species);
+            if (rand < (u32)weight)
+            {
+                gCurrentPinballGame->currentSpecies = species;
+                break;
+            }
+            rand -= weight;
+        }
     }
 
     gCurrentPinballGame->lastEggSpecies = gCurrentPinballGame->currentSpecies;

@@ -780,6 +780,98 @@
     {
       "gfx_filename": "catch_mon_116_horsea",
       "palette": "catch_mon_116_horsea.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_408_cranidos",
+      "palette": "catch_mon_408_cranidos.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_410_shieldon",
+      "palette": "catch_mon_410_shieldon.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_412_burmy",
+      "palette": "catch_mon_412_burmy.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_415_combee",
+      "palette": "catch_mon_415_combee.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_417_pachirisu",
+      "palette": "catch_mon_417_pachirisu.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_418_buizel",
+      "palette": "catch_mon_418_buizel.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_420_cherubi",
+      "palette": "catch_mon_420_cherubi.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_422_shellos",
+      "palette": "catch_mon_422_shellos.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_425_drifloon",
+      "palette": "catch_mon_425_drifloon.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_427_buneary",
+      "palette": "catch_mon_427_buneary.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_431_glameow",
+      "palette": "catch_mon_431_glameow.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_434_stunky",
+      "palette": "catch_mon_434_stunky.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_436_bronzor",
+      "palette": "catch_mon_436_bronzor.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_441_chatot",
+      "palette": "catch_mon_441_chatot.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_442_spiritomb",
+      "palette": "catch_mon_442_spiritomb.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_443_gible",
+      "palette": "catch_mon_443_gible.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_449_hippopotas",
+      "palette": "catch_mon_449_hippopotas.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_451_skorupi",
+      "palette": "catch_mon_451_skorupi.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_453_croagunk",
+      "palette": "catch_mon_453_croagunk.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_455_carnivine",
+      "palette": "catch_mon_455_carnivine.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_456_finneon",
+      "palette": "catch_mon_456_finneon.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_459_snover",
+      "palette": "catch_mon_459_snover.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_479_rotom",
+      "palette": "catch_mon_479_rotom.gbapal"
     }
   ]
 }

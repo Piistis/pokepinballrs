@@ -245,6 +245,11 @@ especie en la tabla.
 
 ## 6. Preparar el sprite de captura
 
+Antes de anadir otro grupo, revisar `MODDING_GEN4_ENCOUNTERS.md`: el umbral
+compartido `HATCH_DEX_ANIM_OFFSET` separa captura y huevo en la Pokedex; no usar
+el antiguo literal 200. `catchIndex` sigue limitado a 255. Ejecutar tambien
+`python tools/scripts/test_gen4_encounters.py` para validar indices y paletas.
+
 Carpeta:
 
 ```text

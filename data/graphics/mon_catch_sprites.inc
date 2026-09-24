@@ -268,3 +268,36 @@ gMonCatchSpriteGroup38_Gfx:: @ 0x0
 	.incbin "graphics/mon_catch_sprites/catch_mon_41_zubat.4bpp"
 	.incbin "graphics/mon_catch_sprites/catch_mon_43_oddish.4bpp"
 	.incbin "graphics/mon_catch_sprites/catch_mon_116_horsea.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_408_cranidos.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_410_shieldon.4bpp"
+
+gMonCatchSpriteGroup39_Gfx::
+	.incbin "graphics/mon_catch_sprites/catch_mon_412_burmy.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_415_combee.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_417_pachirisu.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_418_buizel.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_420_cherubi.4bpp"
+
+gMonCatchSpriteGroup40_Gfx::
+	.incbin "graphics/mon_catch_sprites/catch_mon_422_shellos.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_425_drifloon.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_427_buneary.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_431_glameow.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_434_stunky.4bpp"
+
+gMonCatchSpriteGroup41_Gfx::
+	.incbin "graphics/mon_catch_sprites/catch_mon_436_bronzor.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_441_chatot.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_442_spiritomb.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_443_gible.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_449_hippopotas.4bpp"
+
+gMonCatchSpriteGroup42_Gfx::
+	.incbin "graphics/mon_catch_sprites/catch_mon_451_skorupi.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_453_croagunk.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_455_carnivine.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_456_finneon.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_459_snover.4bpp"
+
+gMonCatchSpriteGroup43_Gfx::
+	.incbin "graphics/mon_catch_sprites/catch_mon_479_rotom.4bpp"

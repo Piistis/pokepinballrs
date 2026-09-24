@@ -14,7 +14,7 @@
 #define DEX_NUM_DIGITS      3
 #define SCROLL_WAIT_FRAMES  9
 #define ENTRIES_SHOWN_COUNT 5
-#define HATCH_DEX_ANIM_OFFSET 200
+
 
 #define DEX_TEXT_PAGES 2
 #define DEX_TEXT_ROWS 3

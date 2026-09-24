@@ -274,3 +274,36 @@ gMonCatchSpriteGroup38_Pals:: @ 0x0
 	.incbin "graphics/mon_catch_sprites/catch_mon_41_zubat.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_43_oddish.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_116_horsea.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_408_cranidos.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_410_shieldon.gbapal"
+
+gMonCatchSpriteGroup39_Pals::
+	.incbin "graphics/mon_catch_sprites/catch_mon_412_burmy.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_415_combee.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_417_pachirisu.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_418_buizel.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_420_cherubi.gbapal"
+
+gMonCatchSpriteGroup40_Pals::
+	.incbin "graphics/mon_catch_sprites/catch_mon_422_shellos.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_425_drifloon.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_427_buneary.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_431_glameow.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_434_stunky.gbapal"
+
+gMonCatchSpriteGroup41_Pals::
+	.incbin "graphics/mon_catch_sprites/catch_mon_436_bronzor.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_441_chatot.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_442_spiritomb.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_443_gible.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_449_hippopotas.gbapal"
+
+gMonCatchSpriteGroup42_Pals::
+	.incbin "graphics/mon_catch_sprites/catch_mon_451_skorupi.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_453_croagunk.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_455_carnivine.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_456_finneon.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_459_snover.gbapal"
+
+gMonCatchSpriteGroup43_Pals::
+	.incbin "graphics/mon_catch_sprites/catch_mon_479_rotom.gbapal"

@@ -13,7 +13,7 @@ dex = (ROOT / "src/pokedex.c").read_text()
 rules = picker[picker.index("static u8 GetSavedPokedexFlag"):
                picker.index("static u16 PickMissingBranchEvolution")]
 catch = picker[picker.index("void PickSpeciesForCatchEmMode(void)"):
-               picker.index("void BuildSpeciesWeightsForEggMode(void)")]
+               picker.index("static s16 GetEggEncounterCount(void)")]
 registration = picker[picker.index("void RegisterCaptureOrEvolution(s16 evolved)"):
                       picker.index("static inline u32 GetTimeAdjustedRandom(void)\n{")]
 dex_code = dex[dex.index("static const s16 gPokedexOrder"):
