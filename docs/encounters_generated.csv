@@ -1,0 +1,1921 @@
+Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje referencia;Detalle
+001;Bulbasaur;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+001;Bulbasaur;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+001;Bulbasaur;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+001;Bulbasaur;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+001;Bulbasaur;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+001;Bulbasaur;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+002;Ivysaur;Normal;;;;Evolucion;;;Evolucion de Bulbasaur
+003;Venusaur;Normal;;;;Evolucion;;;Evolucion de Ivysaur
+004;Charmander;Normal;Gen 1;Ruby;Volcano;Caza;2;20%;
+004;Charmander;Normal;Gen 1;Ruby;Volcano;Caza;3;16,67%;
+004;Charmander;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+005;Charmeleon;Normal;;;;Evolucion;;;Evolucion de Charmander
+006;Charizard;Normal;;;;Evolucion;;;Evolucion de Charmeleon
+007;Squirtle;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+007;Squirtle;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+007;Squirtle;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2 flechas
+007;Squirtle;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2 flechas
+008;Wartortle;Normal;;;;Evolucion;;;Evolucion de Squirtle
+009;Blastoise;Normal;;;;Evolucion;;;Evolucion de Wartortle
+010;Caterpie;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+010;Caterpie;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+010;Caterpie;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+010;Caterpie;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+010;Caterpie;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+010;Caterpie;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+011;Metapod;Normal;;;;Evolucion;;;Evolucion de Caterpie
+012;Butterfree;Normal;;;;Evolucion;;;Evolucion de Metapod
+013;Weedle;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+013;Weedle;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+013;Weedle;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+013;Weedle;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+013;Weedle;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+013;Weedle;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+014;Kakuna;Normal;;;;Evolucion;;;Evolucion de Weedle
+015;Beedrill;Normal;;;;Evolucion;;;Evolucion de Kakuna
+016;Pidgey;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+016;Pidgey;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+016;Pidgey;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+016;Pidgey;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+016;Pidgey;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+016;Pidgey;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+016;Pidgey;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+016;Pidgey;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+016;Pidgey;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+017;Pidgeotto;Normal;;;;Evolucion;;;Evolucion de Pidgey
+018;Pidgeot;Normal;;;;Evolucion;;;Evolucion de Pidgeotto
+019;Rattata;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+019;Rattata;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+019;Rattata;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+019;Rattata;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+019;Rattata;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+019;Rattata;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+019;Rattata;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+019;Rattata;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+019;Rattata;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+020;Raticate;Normal;;;;Evolucion;;;Evolucion de Rattata
+021;Spearow;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+021;Spearow;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+021;Spearow;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+021;Spearow;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2 flechas
+022;Fearow;Normal;;;;Evolucion;;;Evolucion de Spearow
+023;Ekans;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+023;Ekans;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+023;Ekans;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+023;Ekans;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2 flechas
+024;Arbok;Normal;;;;Evolucion;;;Evolucion de Ekans
+025;Pikachu;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+025;Pikachu;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+025;Pikachu;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+025;Pikachu;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+025;Pikachu;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+025;Pikachu;Normal;Gen 3;Ruby;Safari Zone;Caza;3;16,39%;
+025;Pikachu;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+025;Pikachu;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+025;Pikachu;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;3 flechas
+025;Pikachu;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+025;Pikachu;Normal;;;;Evolucion;;;Evolucion de Pichu
+026;Raichu;Normal;;;;Evolucion;;;Evolucion de Pikachu
+027;Sandshrew;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+027;Sandshrew;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+027;Sandshrew;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;3 flechas
+027;Sandshrew;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;3 flechas
+028;Sandslash;Normal;;;;Evolucion;;;Evolucion de Sandshrew
+029;Nidoran F;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+029;Nidoran F;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+029;Nidoran F;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+029;Nidoran F;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+029;Nidoran F;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+029;Nidoran F;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+030;Nidorina;Normal;;;;Evolucion;;;Evolucion de Nidoran F
+031;Nidoqueen;Normal;;;;Evolucion;;;Evolucion de Nidorina
+032;Nidoran M;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+032;Nidoran M;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+032;Nidoran M;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+032;Nidoran M;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+032;Nidoran M;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+032;Nidoran M;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+033;Nidorino;Normal;;;;Evolucion;;;Evolucion de Nidoran M
+034;Nidoking;Normal;;;;Evolucion;;;Evolucion de Nidorino
+035;Clefairy;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+035;Clefairy;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+035;Clefairy;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+035;Clefairy;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+035;Clefairy;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+035;Clefairy;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+035;Clefairy;Normal;;;;Evolucion;;;Evolucion de Cleffa
+036;Clefable;Normal;;;;Evolucion;;;Evolucion de Clefairy
+037;Vulpix;Normal;Gen 1;Ruby;Volcano;Caza;2;20%;
+037;Vulpix;Normal;Gen 1;Ruby;Volcano;Caza;3;16,67%;
+037;Vulpix;Normal;Gen 3;Ruby;Volcano;Caza;2;19,61%;
+037;Vulpix;Normal;Gen 3;Ruby;Volcano;Caza;3;19,61%;
+037;Vulpix;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+038;Ninetales;Normal;;;;Evolucion;;;Evolucion de Vulpix
+039;Jigglypuff;Normal;Gen 3;Zafiro;Plains;Caza;2;16,39%;
+039;Jigglypuff;Normal;Gen 3;Zafiro;Plains;Caza;3;14,08%;
+039;Jigglypuff;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+039;Jigglypuff;Normal;;;;Evolucion;;;Evolucion de Igglybuff
+040;Wigglytuff;Normal;;;;Evolucion;;;Evolucion de Jigglypuff
+041;Zubat;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+041;Zubat;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+041;Zubat;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+041;Zubat;Normal;Gen 1;Zafiro;Ice Cave;Caza;2;14,29%;
+041;Zubat;Normal;Gen 1;Zafiro;Ice Cave;Caza;3;12,5%;
+041;Zubat;Normal;Gen 3;Zafiro;Ice Cave;Caza;2;19,23%;
+041;Zubat;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+041;Zubat;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2 flechas
+041;Zubat;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+042;Golbat;Normal;;;;Evolucion;;;Evolucion de Zubat
+043;Oddish;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+043;Oddish;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+043;Oddish;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+043;Oddish;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+043;Oddish;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+043;Oddish;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+044;Gloom;Normal;;;;Evolucion;;;Evolucion de Oddish
+045;Vileplume;Normal;;;;Evolucion;;;Evolucion de Gloom (Ruby)
+046;Paras;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+046;Paras;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+046;Paras;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+046;Paras;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+046;Paras;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+046;Paras;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+047;Parasect;Normal;;;;Evolucion;;;Evolucion de Paras
+048;Venonat;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+048;Venonat;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+048;Venonat;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+048;Venonat;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+048;Venonat;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+048;Venonat;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+049;Venomoth;Normal;;;;Evolucion;;;Evolucion de Venonat
+050;Diglett;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+050;Diglett;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+050;Diglett;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+050;Diglett;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+050;Diglett;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+050;Diglett;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+051;Dugtrio;Normal;;;;Evolucion;;;Evolucion de Diglett
+052;Meowth;Normal;Gen 1;Ruby;Plains;Caza;2;12,5%;
+052;Meowth;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+052;Meowth;Normal;Gen 1;Zafiro;Plains;Caza;2;12,5%;
+052;Meowth;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+052;Meowth;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+052;Meowth;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+052;Meowth;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+052;Meowth;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+052;Meowth;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+053;Persian;Normal;;;;Evolucion;;;Evolucion de Meowth
+054;Psyduck;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
+054;Psyduck;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
+054;Psyduck;Normal;Gen 3;Ruby;Safari Zone;Caza;2;16,39%;
+054;Psyduck;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2 flechas
+054;Psyduck;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+055;Golduck;Normal;;;;Evolucion;;;Evolucion de Psyduck
+056;Mankey;Normal;Gen 1;Zafiro;Wilderness;Caza;2;14,29%;
+056;Mankey;Normal;Gen 1;Zafiro;Wilderness;Caza;3;14,29%;
+056;Mankey;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+057;Primeape;Normal;;;;Evolucion;;;Evolucion de Mankey
+058;Growlithe;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+058;Growlithe;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+058;Growlithe;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
+058;Growlithe;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
+059;Arcanine;Normal;;;;Evolucion;;;Evolucion de Growlithe
+060;Poliwag;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
+060;Poliwag;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
+060;Poliwag;Normal;Gen 2;Zafiro;Lake;Caza;2;14,29%;
+060;Poliwag;Normal;Gen 2;Zafiro;Lake;Caza;3;14,29%;
+060;Poliwag;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+061;Poliwhirl;Normal;;;;Evolucion;;;Evolucion de Poliwag
+062;Poliwrath;Normal;;;;Evolucion;;;Evolucion de Poliwhirl (Ruby)
+063;Abra;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+063;Abra;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+063;Abra;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+063;Abra;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+063;Abra;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+063;Abra;Normal;Gen 3;Ruby;Cave;Caza;3;19,61%;
+063;Abra;Normal;Gen 3;Zafiro;Cave;Caza;3;16,39%;
+063;Abra;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+063;Abra;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+063;Abra;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+064;Kadabra;Normal;;;;Evolucion;;;Evolucion de Abra
+065;Alakazam;Normal;;;;Evolucion;;;Evolucion de Kadabra
+066;Machop;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+066;Machop;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+066;Machop;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+066;Machop;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+066;Machop;Normal;Gen 3;Ruby;Cave;Caza;2;16,39%;
+066;Machop;Normal;Gen 3;Ruby;Cave;Caza;3;19,61%;
+066;Machop;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+066;Machop;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+067;Machoke;Normal;;;;Evolucion;;;Evolucion de Machop
+068;Machamp;Normal;;;;Evolucion;;;Evolucion de Machoke
+069;Bellsprout;Normal;Gen 1;Ruby;Forest;Caza;2;12,5%;
+069;Bellsprout;Normal;Gen 1;Ruby;Forest;Caza;3;12,5%;
+069;Bellsprout;Normal;Gen 1;Zafiro;Forest;Caza;2;12,5%;
+069;Bellsprout;Normal;Gen 1;Zafiro;Forest;Caza;3;12,5%;
+069;Bellsprout;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+069;Bellsprout;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+070;Weepinbell;Normal;;;;Evolucion;;;Evolucion de Bellsprout
+071;Victreebel;Normal;;;;Evolucion;;;Evolucion de Weepinbell
+072;Tentacool;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+072;Tentacool;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+072;Tentacool;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+072;Tentacool;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+072;Tentacool;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
+072;Tentacool;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+072;Tentacool;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
+072;Tentacool;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
+072;Tentacool;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+072;Tentacool;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+073;Tentacruel;Normal;;;;Evolucion;;;Evolucion de Tentacool
+074;Geodude;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+074;Geodude;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+074;Geodude;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+074;Geodude;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+074;Geodude;Normal;Gen 1;Zafiro;Ice Cave;Caza;2;14,29%;
+074;Geodude;Normal;Gen 1;Zafiro;Ice Cave;Caza;3;12,5%;
+074;Geodude;Normal;Gen 3;Zafiro;Wilderness;Caza;2;19,61%;
+074;Geodude;Normal;Gen 3;Zafiro;Wilderness;Caza;3;19,61%;
+074;Geodude;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+074;Geodude;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+074;Geodude;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+074;Geodude;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+075;Graveler;Normal;;;;Evolucion;;;Evolucion de Geodude
+076;Golem;Normal;;;;Evolucion;;;Evolucion de Graveler
+077;Ponyta;Normal;Gen 1;Ruby;Volcano;Caza;2;20%;
+077;Ponyta;Normal;Gen 1;Ruby;Volcano;Caza;3;16,67%;
+077;Ponyta;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+078;Rapidash;Normal;;;;Evolucion;;;Evolucion de Ponyta
+079;Slowpoke;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+079;Slowpoke;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+079;Slowpoke;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+079;Slowpoke;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+079;Slowpoke;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
+079;Slowpoke;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
+079;Slowpoke;Normal;Gen 2;Zafiro;Lake;Caza;2;14,29%;
+079;Slowpoke;Normal;Gen 2;Zafiro;Lake;Caza;3;14,29%;
+079;Slowpoke;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+079;Slowpoke;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+079;Slowpoke;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+080;Slowbro;Normal;;;;Evolucion;;;Evolucion de Slowpoke (Ruby)
+081;Magnemite;Normal;Gen 1;Zafiro;Wilderness;Caza;2;14,29%;
+081;Magnemite;Normal;Gen 1;Zafiro;Wilderness;Caza;3;14,29%;
+081;Magnemite;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+081;Magnemite;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+081;Magnemite;Normal;Gen 3;Ruby;Plains;Caza;2;16,39%;
+081;Magnemite;Normal;Gen 3;Ruby;Plains;Caza;3;19,61%;
+081;Magnemite;Normal;Gen 3;Zafiro;Plains;Caza;2;16,39%;
+081;Magnemite;Normal;Gen 3;Zafiro;Plains;Caza;3;14,08%;
+081;Magnemite;Normal;Gen 3;Ruby;City;Caza;2;14,08%;
+081;Magnemite;Normal;Gen 3;Ruby;City;Caza;3;16,13%;
+081;Magnemite;Normal;Gen 4;Ruby;Cave;Caza;2;14,08%;
+081;Magnemite;Normal;Gen 4;Zafiro;Cave;Caza;2;14,08%;
+081;Magnemite;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+081;Magnemite;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+081;Magnemite;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+081;Magnemite;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+081;Magnemite;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2 flechas
+081;Magnemite;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+081;Magnemite;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+081;Magnemite;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2 flechas
+081;Magnemite;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+081;Magnemite;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+081;Magnemite;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+082;Magneton;Normal;;;;Evolucion;;;Evolucion de Magnemite
+083;Farfetchd;Normal;Gen 1;Ruby;Plains;Caza;3;12,5%;
+083;Farfetchd;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+083;Farfetchd;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+083;Farfetchd;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
+084;Doduo;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+084;Doduo;Normal;Gen 3;Ruby;Safari Zone;Caza;2;16,39%;
+084;Doduo;Normal;Gen 3;Ruby;Safari Zone;Caza;3;16,39%;
+084;Doduo;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+085;Dodrio;Normal;;;;Evolucion;;;Evolucion de Doduo
+086;Seel;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+086;Seel;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+086;Seel;Normal;Gen 1;Zafiro;Ice Cave;Caza;2;14,29%;
+086;Seel;Normal;Gen 1;Zafiro;Ice Cave;Caza;3;12,5%;
+086;Seel;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2 flechas
+086;Seel;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+086;Seel;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2 flechas
+087;Dewgong;Normal;;;;Evolucion;;;Evolucion de Seel
+088;Grimer;Normal;Gen 3;Ruby;Cave;Caza;2;16,39%;
+088;Grimer;Normal;Gen 3;Zafiro;Cave;Caza;2;19,61%;
+088;Grimer;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2 flechas
+088;Grimer;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2 flechas
+089;Muk;Normal;;;;Evolucion;;;Evolucion de Grimer
+090;Shellder;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+090;Shellder;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+090;Shellder;Normal;Gen 1;Zafiro;Ice Cave;Caza;2;14,29%;
+090;Shellder;Normal;Gen 1;Zafiro;Ice Cave;Caza;3;12,5%;
+090;Shellder;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2 flechas
+090;Shellder;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+090;Shellder;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2 flechas
+091;Cloyster;Normal;;;;Evolucion;;;Evolucion de Shellder
+092;Gastly;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+092;Gastly;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+092;Gastly;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+092;Gastly;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+092;Gastly;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+092;Gastly;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+093;Haunter;Normal;;;;Evolucion;;;Evolucion de Gastly
+094;Gengar;Normal;;;;Evolucion;;;Evolucion de Haunter
+095;Onix;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+095;Onix;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+095;Onix;Normal;Gen 1;Zafiro;Ice Cave;Caza;2;14,29%;
+095;Onix;Normal;Gen 1;Zafiro;Ice Cave;Caza;3;12,5%;
+095;Onix;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2 flechas
+095;Onix;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2 flechas
+095;Onix;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+096;Drowzee;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+096;Drowzee;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+097;Hypno;Normal;;;;Evolucion;;;Evolucion de Drowzee
+098;Krabby;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+098;Krabby;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+098;Krabby;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+098;Krabby;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+098;Krabby;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+098;Krabby;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+099;Kingler;Normal;;;;Evolucion;;;Evolucion de Krabby
+100;Voltorb;Normal;Gen 1;Zafiro;Wilderness;Caza;2;14,29%;
+100;Voltorb;Normal;Gen 1;Zafiro;Wilderness;Caza;3;14,29%;
+100;Voltorb;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+100;Voltorb;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+100;Voltorb;Normal;Gen 3;Ruby;Plains;Caza;2;16,39%;
+100;Voltorb;Normal;Gen 3;Ruby;Plains;Caza;3;19,61%;
+100;Voltorb;Normal;Gen 3;Zafiro;Plains;Caza;2;16,39%;
+100;Voltorb;Normal;Gen 3;Zafiro;Plains;Caza;3;14,08%;
+100;Voltorb;Normal;Gen 3;Ruby;City;Caza;2;14,08%;
+100;Voltorb;Normal;Gen 3;Ruby;City;Caza;3;16,13%;
+100;Voltorb;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+100;Voltorb;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+100;Voltorb;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+100;Voltorb;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+101;Electrode;Normal;;;;Evolucion;;;Evolucion de Voltorb
+102;Exeggcute;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+102;Exeggcute;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+102;Exeggcute;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+103;Exeggutor;Normal;;;;Evolucion;;;Evolucion de Exeggcute
+104;Cubone;Normal;Gen 1;Ruby;Cave;Caza;2;12,5%;
+104;Cubone;Normal;Gen 1;Zafiro;Cave;Caza;2;12,5%;
+104;Cubone;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2 flechas
+104;Cubone;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2 flechas
+105;Marowak;Normal;;;;Evolucion;;;Evolucion de Cubone
+106;Hitmonlee;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+106;Hitmonlee;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;3 flechas
+106;Hitmonlee;Normal;;;;Evolucion;;;Evolucion de Tyrogue (segun zona y las ramas pendientes en la Pokedex)
+107;Hitmonchan;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+107;Hitmonchan;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;3 flechas
+107;Hitmonchan;Normal;;;;Evolucion;;;Evolucion de Tyrogue (segun zona y las ramas pendientes en la Pokedex)
+108;Lickitung;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+108;Lickitung;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+108;Lickitung;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+108;Lickitung;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+108;Lickitung;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+108;Lickitung;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+108;Lickitung;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+108;Lickitung;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+108;Lickitung;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2 flechas
+108;Lickitung;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2 flechas
+109;Koffing;Normal;Gen 1;Ruby;Volcano;Caza;2;20%;
+109;Koffing;Normal;Gen 1;Ruby;Volcano;Caza;3;16,67%;
+109;Koffing;Normal;Gen 3;Ruby;Volcano;Caza;2;19,61%;
+109;Koffing;Normal;Gen 3;Ruby;Volcano;Caza;3;19,61%;
+109;Koffing;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+110;Weezing;Normal;;;;Evolucion;;;Evolucion de Koffing
+111;Rhyhorn;Normal;Gen 1;Ruby;Cave;Caza;3;12,5%;
+111;Rhyhorn;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+111;Rhyhorn;Normal;Gen 3;Ruby;Safari Zone;Caza;2;16,39%;
+111;Rhyhorn;Normal;Gen 3;Ruby;Safari Zone;Caza;3;16,39%;
+111;Rhyhorn;Normal;Gen 4;Ruby;Cave;Caza;2;14,08%;
+111;Rhyhorn;Normal;Gen 4;Zafiro;Cave;Caza;2;14,08%;
+111;Rhyhorn;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+111;Rhyhorn;Normal;Gen 4;Ruby;Volcano;Caza;3;14,08%;
+111;Rhyhorn;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+111;Rhyhorn;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+111;Rhyhorn;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+111;Rhyhorn;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+112;Rhydon;Normal;;;;Evolucion;;;Evolucion de Rhyhorn
+113;Chansey;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+113;Chansey;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;3 flechas
+113;Chansey;Normal;;;;Evolucion;;;Evolucion de Happiny
+114;Tangela;Normal;Gen 1;Zafiro;Wilderness;Caza;2;14,29%;
+114;Tangela;Normal;Gen 1;Zafiro;Wilderness;Caza;3;14,29%;
+114;Tangela;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+114;Tangela;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+114;Tangela;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+114;Tangela;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+114;Tangela;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+114;Tangela;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+114;Tangela;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+114;Tangela;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+114;Tangela;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+114;Tangela;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+115;Kangaskhan;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+115;Kangaskhan;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+115;Kangaskhan;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+116;Horsea;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+116;Horsea;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+116;Horsea;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+116;Horsea;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+116;Horsea;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+116;Horsea;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+117;Seadra;Normal;;;;Evolucion;;;Evolucion de Horsea
+118;Goldeen;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
+118;Goldeen;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
+118;Goldeen;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
+118;Goldeen;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
+118;Goldeen;Normal;Gen 3;Zafiro;Lake;Caza;2;19,61%;
+118;Goldeen;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2 flechas
+118;Goldeen;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+118;Goldeen;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2 flechas
+119;Seaking;Normal;;;;Evolucion;;;Evolucion de Goldeen
+120;Staryu;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+120;Staryu;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+120;Staryu;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
+120;Staryu;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
+120;Staryu;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+120;Staryu;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
+120;Staryu;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+120;Staryu;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
+121;Starmie;Normal;;;;Evolucion;;;Evolucion de Staryu
+122;Mr Mime;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+122;Mr Mime;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2 flechas
+122;Mr Mime;Normal;;;;Evolucion;;;Evolucion de Mime Jr.
+123;Scyther;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+123;Scyther;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+123;Scyther;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+124;Jynx;Normal;Gen 1;Zafiro;Cave;Caza;3;12,5%;
+124;Jynx;Normal;Gen 1;Zafiro;Ice Cave;Caza;2;14,29%;
+124;Jynx;Normal;Gen 1;Zafiro;Ice Cave;Caza;3;12,5%;
+124;Jynx;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;3 flechas
+124;Jynx;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+124;Jynx;Normal;;;;Evolucion;;;Evolucion de Smoochum
+125;Electabuzz;Normal;Gen 1;Zafiro;Wilderness;Caza;2;14,29%;
+125;Electabuzz;Normal;Gen 1;Zafiro;Wilderness;Caza;3;14,29%;
+125;Electabuzz;Normal;Gen 1;Ruby;Ruin;Caza;2;20%;
+125;Electabuzz;Normal;Gen 1;Ruby;Ruin;Caza;3;14,29%;
+125;Electabuzz;Normal;Gen 1;Zafiro;Ruin;Caza;2;20%;
+125;Electabuzz;Normal;Gen 1;Zafiro;Ruin;Caza;3;14,29%;
+125;Electabuzz;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+125;Electabuzz;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+125;Electabuzz;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+125;Electabuzz;Normal;;;;Evolucion;;;Evolucion de Elekid
+126;Magmar;Normal;Gen 1;Ruby;Volcano;Caza;2;20%;
+126;Magmar;Normal;Gen 1;Ruby;Volcano;Caza;3;33,33%;
+126;Magmar;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+126;Magmar;Normal;;;;Evolucion;;;Evolucion de Magby
+127;Pinsir;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+127;Pinsir;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+127;Pinsir;Normal;Gen 3;Ruby;Safari Zone;Caza;2;16,39%;
+127;Pinsir;Normal;Gen 3;Ruby;Safari Zone;Caza;3;16,39%;
+127;Pinsir;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+128;Tauros;Normal;Gen 1;Ruby;Safari Zone;Caza;2;12,5%;
+128;Tauros;Normal;Gen 1;Ruby;Safari Zone;Caza;3;12,5%;
+128;Tauros;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+129;Magikarp;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+129;Magikarp;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+129;Magikarp;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
+129;Magikarp;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
+129;Magikarp;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
+129;Magikarp;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
+129;Magikarp;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
+129;Magikarp;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+129;Magikarp;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+130;Gyarados;Normal;;;;Evolucion;;;Evolucion de Magikarp
+131;Lapras;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+131;Lapras;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+131;Lapras;Normal;Gen 1;Ruby;Ruin;Caza;2;20%;
+131;Lapras;Normal;Gen 1;Ruby;Ruin;Caza;3;14,29%;
+131;Lapras;Normal;Gen 1;Zafiro;Ruin;Caza;2;20%;
+131;Lapras;Normal;Gen 1;Zafiro;Ruin;Caza;3;14,29%;
+131;Lapras;Normal;Gen 1;Zafiro;Ice Cave;Caza;2;14,29%;
+131;Lapras;Normal;Gen 1;Zafiro;Ice Cave;Caza;3;25%;
+131;Lapras;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
+131;Lapras;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+131;Lapras;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+131;Lapras;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
+131;Lapras;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+132;Ditto;Normal;Gen 1;Zafiro;Wilderness;Caza;2;14,29%;
+132;Ditto;Normal;Gen 1;Zafiro;Wilderness;Caza;3;14,29%;
+132;Ditto;Normal;Gen 1;Ruby;Ruin;Caza;3;14,29%;
+132;Ditto;Normal;Gen 1;Zafiro;Ruin;Caza;3;14,29%;
+132;Ditto;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;3 flechas
+132;Ditto;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;3 flechas
+132;Ditto;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+133;Eevee;Normal;Gen 1;Zafiro;Plains;Caza;3;12,5%;
+133;Eevee;Normal;Gen 1;Ruby;City;Caza;2;12,5%;
+133;Eevee;Normal;Gen 1;Ruby;City;Caza;3;12,5%;
+133;Eevee;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+133;Eevee;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+133;Eevee;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+133;Eevee;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+133;Eevee;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+133;Eevee;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+133;Eevee;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+133;Eevee;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+133;Eevee;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+133;Eevee;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+133;Eevee;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+133;Eevee;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;3 flechas
+133;Eevee;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+133;Eevee;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;3 flechas
+133;Eevee;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+133;Eevee;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+134;Vaporeon;Normal;;;;Evolucion;;;Evolucion de Eevee (Ocean de ambos tableros o Lake)
+135;Jolteon;Normal;;;;Evolucion;;;Evolucion de Eevee (resto de zonas, salvo las excepciones Leafeon/Glaceon en Gen 4 o RANDOM)
+136;Flareon;Normal;;;;Evolucion;;;Evolucion de Eevee (Volcano)
+137;Porygon;Normal;Gen 1;Zafiro;Wilderness;Caza;2;14,29%;
+137;Porygon;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+137;Porygon;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+137;Porygon;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+137;Porygon;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+137;Porygon;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+137;Porygon;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+137;Porygon;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2 flechas
+138;Omanyte;Normal;Gen 1;Ruby;Ruin;Caza;2;20%;
+138;Omanyte;Normal;Gen 1;Ruby;Ruin;Caza;3;14,29%;
+138;Omanyte;Normal;Gen 1;Zafiro;Ruin;Caza;2;20%;
+138;Omanyte;Normal;Gen 1;Zafiro;Ruin;Caza;3;14,29%;
+138;Omanyte;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+138;Omanyte;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+139;Omastar;Normal;;;;Evolucion;;;Evolucion de Omanyte
+140;Kabuto;Normal;Gen 1;Ruby;Ruin;Caza;2;20%;
+140;Kabuto;Normal;Gen 1;Ruby;Ruin;Caza;3;14,29%;
+140;Kabuto;Normal;Gen 1;Zafiro;Ruin;Caza;2;20%;
+140;Kabuto;Normal;Gen 1;Zafiro;Ruin;Caza;3;14,29%;
+140;Kabuto;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+140;Kabuto;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+141;Kabutops;Normal;;;;Evolucion;;;Evolucion de Kabuto
+142;Aerodactyl;Especial;Gen 1;Ruby;Ruin;Caza;2;20%;
+142;Aerodactyl;Especial;Gen 1;Ruby;Ruin;Caza;3;14,29%;
+142;Aerodactyl;Especial;Gen 1;Zafiro;Ruin;Caza;2;20%;
+142;Aerodactyl;Especial;Gen 1;Zafiro;Ruin;Caza;3;14,29%;
+142;Aerodactyl;Especial;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+142;Aerodactyl;Especial;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+142;Aerodactyl;Especial;;;;Especial;;;"Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+143;Snorlax;Normal;Gen 1;Zafiro;Wilderness;Caza;3;14,29%;
+143;Snorlax;Normal;Gen 1;Ruby;Ruin;Caza;3;14,29%;
+143;Snorlax;Normal;Gen 1;Zafiro;Ruin;Caza;3;14,29%;
+143;Snorlax;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;3 flechas
+143;Snorlax;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;3 flechas
+143;Snorlax;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;3 flechas
+143;Snorlax;Normal;;;;Evolucion;;;Evolucion de Munchlax
+144;Articuno;Especial;;;;Especial;;;Gen 1, Zafiro: cualquier zona, 5% compartido entre las aves disponibles. En Ice Cave, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras aves.
+145;Zapdos;Especial;;;;Especial;;;Gen 1, Zafiro: cualquier zona, 5% compartido entre las aves disponibles. En Plains, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras aves.
+146;Moltres;Especial;;;;Especial;;;Gen 1, Zafiro: cualquier zona, 5% compartido entre las aves disponibles. En Wilderness, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras aves.
+147;Dratini;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
+147;Dratini;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
+147;Dratini;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
+147;Dratini;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
+147;Dratini;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;3 flechas
+147;Dratini;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
+148;Dragonair;Normal;;;;Evolucion;;;Evolucion de Dratini
+149;Dragonite;Normal;;;;Evolucion;;;Evolucion de Dragonair
+150;Mewtwo;Especial;;;;Especial;;;Gen 1, ambos tableros, cualquier zona: Articuno, Zapdos y Moltres capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%.
+151;Mew;Especial;;;;Especial;;;Gen 1, ambos tableros, cualquier zona: tener capturados en la Pokedex los Pokemon nacionales 001-150 y llevar al menos 15 capturas/evoluciones en la partida. 25%.
+152;Chikorita;Especial;Gen 2;Ruby;Forest;Caza;2;12,5%;
+152;Chikorita;Especial;Gen 2;Ruby;Forest;Caza;3;12,5%;
+152;Chikorita;Especial;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+152;Chikorita;Especial;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+152;Chikorita;Especial;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+152;Chikorita;Especial;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+152;Chikorita;Especial;;;;Especial;;;"Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+153;Bayleef;Normal;;;;Evolucion;;;Evolucion de Chikorita
+154;Meganium;Normal;;;;Evolucion;;;Evolucion de Bayleef
+155;Cyndaquil;Especial;Gen 2;Ruby;Plains;Caza;2;12,5%;
+155;Cyndaquil;Especial;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+155;Cyndaquil;Especial;Gen 2;Ruby;Volcano;Caza;2;20%;
+155;Cyndaquil;Especial;Gen 2;Ruby;Volcano;Caza;3;19,61%;
+155;Cyndaquil;Especial;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+155;Cyndaquil;Especial;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+155;Cyndaquil;Especial;RANDOM;Zafiro;Plains;Candidato a caza;;;2 flechas
+155;Cyndaquil;Especial;;;;Especial;;;"Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+156;Quilava;Normal;;;;Evolucion;;;Evolucion de Cyndaquil
+157;Typhlosion;Normal;;;;Evolucion;;;Evolucion de Quilava
+158;Totodile;Especial;Gen 2;Ruby;Ocean;Caza;2;14,29%;
+158;Totodile;Especial;Gen 2;Ruby;Ocean;Caza;3;12,5%;
+158;Totodile;Especial;Gen 2;Zafiro;Ocean;Caza;2;14,29%;
+158;Totodile;Especial;Gen 2;Zafiro;Ocean;Caza;3;12,5%;
+158;Totodile;Especial;Gen 2;Zafiro;Lake;Caza;2;14,29%;
+158;Totodile;Especial;Gen 2;Zafiro;Lake;Caza;3;14,29%;
+158;Totodile;Especial;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+158;Totodile;Especial;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+158;Totodile;Especial;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+158;Totodile;Especial;;;;Especial;;;"Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+159;Croconaw;Normal;;;;Evolucion;;;Evolucion de Totodile
+160;Feraligatr;Normal;;;;Evolucion;;;Evolucion de Croconaw
+161;Sentret;Normal;Gen 2;Ruby;Forest;Caza;2;12,5%;
+161;Sentret;Normal;Gen 2;Ruby;Forest;Caza;3;12,5%;
+161;Sentret;Normal;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+161;Sentret;Normal;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+161;Sentret;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+161;Sentret;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+161;Sentret;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+161;Sentret;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+162;Furret;Normal;;;;Evolucion;;;Evolucion de Sentret
+163;Hoothoot;Normal;Gen 2;Ruby;Forest;Caza;2;12,5%;
+163;Hoothoot;Normal;Gen 2;Ruby;Forest;Caza;3;12,5%;
+163;Hoothoot;Normal;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+163;Hoothoot;Normal;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+163;Hoothoot;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+163;Hoothoot;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+163;Hoothoot;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+163;Hoothoot;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+164;Noctowl;Normal;;;;Evolucion;;;Evolucion de Hoothoot
+165;Ledyba;Normal;Gen 2;Ruby;Forest;Caza;2;12,5%;
+165;Ledyba;Normal;Gen 2;Ruby;Forest;Caza;3;12,5%;
+165;Ledyba;Normal;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+165;Ledyba;Normal;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+165;Ledyba;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+165;Ledyba;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+166;Ledian;Normal;;;;Evolucion;;;Evolucion de Ledyba
+167;Spinarak;Normal;Gen 2;Ruby;Forest;Caza;2;12,5%;
+167;Spinarak;Normal;Gen 2;Ruby;Forest;Caza;3;12,5%;
+167;Spinarak;Normal;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+167;Spinarak;Normal;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+167;Spinarak;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+167;Spinarak;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+168;Ariados;Normal;;;;Evolucion;;;Evolucion de Spinarak
+169;Crobat;Normal;;;;Evolucion;;;Evolucion de Golbat
+170;Chinchou;Normal;Gen 2;Ruby;Ocean;Caza;2;14,29%;
+170;Chinchou;Normal;Gen 2;Ruby;Ocean;Caza;3;12,5%;
+170;Chinchou;Normal;Gen 2;Zafiro;Ocean;Caza;2;14,29%;
+170;Chinchou;Normal;Gen 2;Zafiro;Ocean;Caza;3;12,5%;
+170;Chinchou;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+170;Chinchou;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+170;Chinchou;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+170;Chinchou;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;8%;
+170;Chinchou;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+170;Chinchou;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+170;Chinchou;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+170;Chinchou;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;8%;
+170;Chinchou;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+170;Chinchou;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;5,33%;
+171;Lanturn;Normal;;;;Evolucion;;;Evolucion de Chinchou
+172;Pichu;Especial;Gen 2;Zafiro;Lake;Caza;2;14,29%;
+172;Pichu;Especial;Gen 2;Ruby;City;Caza;3;12,5%;
+172;Pichu;Especial;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+172;Pichu;Especial;RANDOM;Zafiro;Lake;Candidato a caza;;;2 flechas
+172;Pichu;Especial;;;;Especial;;;"Huevo especial heredado, ambos tableros, fuera de Gen 4: al menos 5 capturas/evoluciones y no ser el ultimo huevo. El codigo actual usa 2% sin mejora e-Reader y 1% con ella; forcePichuEgg puede forzarlo. Sus rutas ordinarias, si las hay, se muestran debajo."
+173;Cleffa;Normal;Gen 2;Ruby;City;Caza;3;12,5%;
+173;Cleffa;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+173;Cleffa;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+173;Cleffa;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;12%;
+173;Cleffa;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+173;Cleffa;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+174;Igglybuff;Normal;Gen 2;Ruby;City;Caza;3;12,5%;
+174;Igglybuff;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+174;Igglybuff;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+174;Igglybuff;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+174;Igglybuff;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+174;Igglybuff;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+174;Igglybuff;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+174;Igglybuff;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+175;Togepi;Normal;Gen 2;Ruby;Forest;Caza;3;12,5%;
+175;Togepi;Normal;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+175;Togepi;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+175;Togepi;Normal;Gen 2;Ruby;City;Caza;3;12,5%;
+175;Togepi;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+175;Togepi;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;3 flechas
+175;Togepi;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;3 flechas
+175;Togepi;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;12%;
+175;Togepi;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+175;Togepi;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;4%;
+175;Togepi;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;4%;
+175;Togepi;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;5,33%;
+175;Togepi;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+176;Togetic;Normal;;;;Evolucion;;;Evolucion de Togepi
+177;Natu;Normal;Gen 2;Ruby;Safari Zone;Caza;2;14,08%;
+177;Natu;Normal;Gen 2;Ruby;Safari Zone;Caza;3;14,08%;
+177;Natu;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+177;Natu;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+177;Natu;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+177;Natu;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+177;Natu;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+177;Natu;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+177;Natu;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+177;Natu;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+177;Natu;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+178;Xatu;Normal;Gen 2;Ruby;Ruin;Caza;2;20%;
+178;Xatu;Normal;Gen 2;Ruby;Ruin;Caza;3;16,39%;
+178;Xatu;Normal;Gen 2;Zafiro;Ruin;Caza;2;20%;
+178;Xatu;Normal;Gen 2;Zafiro;Ruin;Caza;3;16,39%;
+178;Xatu;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+178;Xatu;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+178;Xatu;Normal;;;;Evolucion;;;Evolucion de Natu
+179;Mareep;Normal;Gen 2;Ruby;Plains;Caza;2;12,5%;
+179;Mareep;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+179;Mareep;Normal;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+179;Mareep;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+179;Mareep;Normal;Gen 2;Zafiro;Wilderness;Caza;2;14,29%;
+179;Mareep;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+179;Mareep;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+179;Mareep;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+179;Mareep;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+179;Mareep;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+179;Mareep;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+180;Flaaffy;Normal;;;;Evolucion;;;Evolucion de Mareep
+181;Ampharos;Normal;Gen 2;Ruby;Cave;Caza;3;14,29%;
+181;Ampharos;Normal;Gen 2;Zafiro;Cave;Caza;3;14,29%;
+181;Ampharos;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+181;Ampharos;Normal;Gen 2;Ruby;Ruin;Caza;2;20%;
+181;Ampharos;Normal;Gen 2;Ruby;Ruin;Caza;3;16,39%;
+181;Ampharos;Normal;Gen 2;Zafiro;Ruin;Caza;2;20%;
+181;Ampharos;Normal;Gen 2;Zafiro;Ruin;Caza;3;16,39%;
+181;Ampharos;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;3 flechas
+181;Ampharos;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+181;Ampharos;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;3 flechas
+181;Ampharos;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+181;Ampharos;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;3 flechas
+181;Ampharos;Normal;;;;Evolucion;;;Evolucion de Flaaffy
+182;Bellossom;Normal;;;;Evolucion;;;Evolucion de Gloom (Zafiro)
+183;Marill;Normal;Gen 2;Zafiro;Lake;Caza;2;14,29%;
+183;Marill;Normal;Gen 2;Zafiro;Lake;Caza;3;14,29%;
+183;Marill;Normal;Gen 3;Zafiro;Lake;Caza;2;19,61%;
+183;Marill;Normal;Gen 3;Zafiro;Lake;Caza;3;19,61%;
+183;Marill;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+183;Marill;Normal;;;;Evolucion;;;Evolucion de Azurill
+184;Azumarill;Normal;;;;Evolucion;;;Evolucion de Marill
+185;Sudowoodo;Normal;Gen 2;Ruby;Safari Zone;Caza;2;14,08%;
+185;Sudowoodo;Normal;Gen 2;Ruby;Safari Zone;Caza;3;14,08%;
+185;Sudowoodo;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+185;Sudowoodo;Normal;;;;Evolucion;;;Evolucion de Bonsly
+186;Politoed;Normal;;;;Evolucion;;;Evolucion de Poliwhirl (Zafiro)
+187;Hoppip;Normal;Gen 2;Ruby;Forest;Caza;2;12,5%;
+187;Hoppip;Normal;Gen 2;Ruby;Forest;Caza;3;12,5%;
+187;Hoppip;Normal;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+187;Hoppip;Normal;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+187;Hoppip;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+187;Hoppip;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+188;Skiploom;Normal;;;;Evolucion;;;Evolucion de Hoppip
+189;Jumpluff;Normal;;;;Evolucion;;;Evolucion de Skiploom
+190;Aipom;Normal;Gen 2;Ruby;Plains;Caza;2;12,5%;
+190;Aipom;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+190;Aipom;Normal;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+190;Aipom;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+190;Aipom;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+190;Aipom;Normal;Gen 2;Ruby;City;Caza;3;12,5%;
+190;Aipom;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+190;Aipom;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+190;Aipom;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+190;Aipom;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+190;Aipom;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+190;Aipom;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+190;Aipom;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+190;Aipom;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+190;Aipom;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+191;Sunkern;Normal;Gen 2;Ruby;Forest;Caza;2;12,5%;
+191;Sunkern;Normal;Gen 2;Ruby;Forest;Caza;3;12,5%;
+191;Sunkern;Normal;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+191;Sunkern;Normal;Gen 2;Zafiro;Forest;Caza;3;12,5%;
+191;Sunkern;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+191;Sunkern;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+192;Sunflora;Normal;;;;Evolucion;;;Evolucion de Sunkern
+193;Yanma;Normal;Gen 2;Ruby;Safari Zone;Caza;2;14,08%;
+193;Yanma;Normal;Gen 2;Ruby;Safari Zone;Caza;3;14,08%;
+193;Yanma;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+193;Yanma;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+193;Yanma;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+193;Yanma;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+193;Yanma;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+193;Yanma;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+193;Yanma;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
+193;Yanma;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+193;Yanma;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+193;Yanma;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
+194;Wooper;Normal;Gen 2;Ruby;Ocean;Caza;2;14,29%;
+194;Wooper;Normal;Gen 2;Ruby;Ocean;Caza;3;12,5%;
+194;Wooper;Normal;Gen 2;Zafiro;Ocean;Caza;2;14,29%;
+194;Wooper;Normal;Gen 2;Zafiro;Ocean;Caza;3;12,5%;
+194;Wooper;Normal;Gen 2;Zafiro;Lake;Caza;2;14,29%;
+194;Wooper;Normal;Gen 2;Zafiro;Lake;Caza;3;14,29%;
+194;Wooper;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+194;Wooper;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+194;Wooper;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+195;Quagsire;Normal;Gen 2;Zafiro;Lake;Caza;3;14,29%;
+195;Quagsire;Normal;Gen 2;Ruby;Ruin;Caza;2;20%;
+195;Quagsire;Normal;Gen 2;Ruby;Ruin;Caza;3;16,39%;
+195;Quagsire;Normal;Gen 2;Zafiro;Ruin;Caza;2;20%;
+195;Quagsire;Normal;Gen 2;Zafiro;Ruin;Caza;3;16,39%;
+195;Quagsire;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+195;Quagsire;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+195;Quagsire;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;3 flechas
+195;Quagsire;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;3 flechas
+195;Quagsire;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+195;Quagsire;Normal;;;;Evolucion;;;Evolucion de Wooper
+196;Espeon;Normal;;;;Sin ruta natural detectada;;;
+197;Umbreon;Normal;;;;Sin ruta natural detectada;;;
+198;Murkrow;Normal;Gen 2;Ruby;Safari Zone;Caza;2;14,08%;
+198;Murkrow;Normal;Gen 2;Ruby;Safari Zone;Caza;3;14,08%;
+198;Murkrow;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+198;Murkrow;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+198;Murkrow;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+198;Murkrow;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+198;Murkrow;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+198;Murkrow;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+198;Murkrow;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+198;Murkrow;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+198;Murkrow;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+199;Slowking;Normal;;;;Evolucion;;;Evolucion de Slowpoke (Zafiro)
+200;Misdreavus;Normal;Gen 2;Ruby;Safari Zone;Caza;2;14,08%;
+200;Misdreavus;Normal;Gen 2;Ruby;Safari Zone;Caza;3;14,08%;
+200;Misdreavus;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+200;Misdreavus;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+200;Misdreavus;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+200;Misdreavus;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+200;Misdreavus;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+200;Misdreavus;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+200;Misdreavus;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+201;Unown;Normal;Gen 2;Ruby;Safari Zone;Caza;2;14,08%;
+201;Unown;Normal;Gen 2;Ruby;Safari Zone;Caza;3;14,08%;
+201;Unown;Normal;Gen 2;Ruby;Ruin;Caza;2;20%;
+201;Unown;Normal;Gen 2;Ruby;Ruin;Caza;3;16,39%;
+201;Unown;Normal;Gen 2;Zafiro;Ruin;Caza;2;20%;
+201;Unown;Normal;Gen 2;Zafiro;Ruin;Caza;3;16,39%;
+201;Unown;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+201;Unown;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+201;Unown;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+202;Wobbuffet;Normal;Gen 2;Ruby;Safari Zone;Caza;2;1,41%;
+202;Wobbuffet;Normal;Gen 2;Ruby;Safari Zone;Caza;3;1,41%;
+202;Wobbuffet;Normal;Gen 3;Ruby;Safari Zone;Caza;2;1,64%;
+202;Wobbuffet;Normal;Gen 3;Ruby;Safari Zone;Caza;3;1,64%;
+202;Wobbuffet;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+202;Wobbuffet;Normal;;;;Evolucion;;;Evolucion de Wynaut
+203;Girafarig;Normal;Gen 2;Ruby;Plains;Caza;2;12,5%;
+203;Girafarig;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+203;Girafarig;Normal;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+203;Girafarig;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+203;Girafarig;Normal;Gen 3;Ruby;Safari Zone;Caza;2;16,39%;
+203;Girafarig;Normal;Gen 3;Ruby;Safari Zone;Caza;3;16,39%;
+203;Girafarig;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+203;Girafarig;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+203;Girafarig;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+204;Pineco;Normal;Gen 2;Ruby;Forest;Caza;2;12,5%;
+204;Pineco;Normal;Gen 2;Zafiro;Forest;Caza;2;12,5%;
+204;Pineco;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2 flechas
+204;Pineco;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2 flechas
+205;Forretress;Normal;;;;Evolucion;;;Evolucion de Pineco
+206;Dunsparce;Normal;Gen 2;Ruby;Plains;Caza;2;12,5%;
+206;Dunsparce;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+206;Dunsparce;Normal;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+206;Dunsparce;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+206;Dunsparce;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+206;Dunsparce;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+207;Gligar;Normal;Gen 2;Ruby;Cave;Caza;2;14,29%;
+207;Gligar;Normal;Gen 2;Ruby;Cave;Caza;3;14,29%;
+207;Gligar;Normal;Gen 2;Zafiro;Cave;Caza;2;14,29%;
+207;Gligar;Normal;Gen 2;Zafiro;Cave;Caza;3;14,29%;
+207;Gligar;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+207;Gligar;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+207;Gligar;Normal;Gen 4;Ruby;Cave;Caza;2;14,08%;
+207;Gligar;Normal;Gen 4;Ruby;Cave;Caza;3;14,08%;
+207;Gligar;Normal;Gen 4;Zafiro;Cave;Caza;2;14,08%;
+207;Gligar;Normal;Gen 4;Zafiro;Cave;Caza;3;14,08%;
+207;Gligar;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+207;Gligar;Normal;Gen 4;Ruby;Volcano;Caza;3;14,08%;
+207;Gligar;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+207;Gligar;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+207;Gligar;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+207;Gligar;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+208;Steelix;Normal;;;;Evolucion;;;Evolucion de Onix
+209;Snubbull;Normal;Gen 2;Ruby;Plains;Caza;2;12,5%;
+209;Snubbull;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+209;Snubbull;Normal;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+209;Snubbull;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+209;Snubbull;Normal;Gen 2;Zafiro;Wilderness;Caza;2;14,29%;
+209;Snubbull;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+209;Snubbull;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+209;Snubbull;Normal;Gen 2;Ruby;City;Caza;3;12,5%;
+209;Snubbull;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+209;Snubbull;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+209;Snubbull;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+209;Snubbull;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+210;Granbull;Normal;;;;Evolucion;;;Evolucion de Snubbull
+211;Qwilfish;Normal;Gen 2;Ruby;Ocean;Caza;2;14,29%;
+211;Qwilfish;Normal;Gen 2;Ruby;Ocean;Caza;3;12,5%;
+211;Qwilfish;Normal;Gen 2;Zafiro;Ocean;Caza;2;14,29%;
+211;Qwilfish;Normal;Gen 2;Zafiro;Ocean;Caza;3;12,5%;
+211;Qwilfish;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+211;Qwilfish;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+212;Scizor;Normal;;;;Evolucion;;;Evolucion de Scyther
+213;Shuckle;Normal;Gen 2;Ruby;Cave;Caza;2;14,29%;
+213;Shuckle;Normal;Gen 2;Ruby;Cave;Caza;3;14,29%;
+213;Shuckle;Normal;Gen 2;Zafiro;Cave;Caza;2;14,29%;
+213;Shuckle;Normal;Gen 2;Zafiro;Cave;Caza;3;14,29%;
+213;Shuckle;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+213;Shuckle;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+213;Shuckle;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+213;Shuckle;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+213;Shuckle;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+214;Heracross;Normal;Gen 2;Ruby;Safari Zone;Caza;2;14,08%;
+214;Heracross;Normal;Gen 2;Ruby;Safari Zone;Caza;3;14,08%;
+214;Heracross;Normal;Gen 3;Ruby;Safari Zone;Caza;2;16,39%;
+214;Heracross;Normal;Gen 3;Ruby;Safari Zone;Caza;3;16,39%;
+214;Heracross;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+215;Sneasel;Normal;Gen 2;Ruby;Cave;Caza;2;14,29%;
+215;Sneasel;Normal;Gen 2;Ruby;Cave;Caza;3;14,29%;
+215;Sneasel;Normal;Gen 2;Zafiro;Cave;Caza;2;14,29%;
+215;Sneasel;Normal;Gen 2;Zafiro;Cave;Caza;3;14,29%;
+215;Sneasel;Normal;Gen 2;Zafiro;Wilderness;Caza;2;14,29%;
+215;Sneasel;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+215;Sneasel;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+215;Sneasel;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+215;Sneasel;Normal;Gen 4;Ruby;Cave;Caza;3;14,08%;
+215;Sneasel;Normal;Gen 4;Zafiro;Cave;Caza;3;14,08%;
+215;Sneasel;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+215;Sneasel;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+215;Sneasel;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+215;Sneasel;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+215;Sneasel;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+215;Sneasel;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+216;Teddiursa;Normal;Gen 2;Ruby;Cave;Caza;2;14,29%;
+216;Teddiursa;Normal;Gen 2;Ruby;Cave;Caza;3;14,29%;
+216;Teddiursa;Normal;Gen 2;Zafiro;Cave;Caza;2;14,29%;
+216;Teddiursa;Normal;Gen 2;Zafiro;Cave;Caza;3;14,29%;
+216;Teddiursa;Normal;Gen 2;Zafiro;Wilderness;Caza;2;14,29%;
+216;Teddiursa;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+216;Teddiursa;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+216;Teddiursa;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+216;Teddiursa;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+216;Teddiursa;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2 flechas
+216;Teddiursa;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+217;Ursaring;Normal;;;;Evolucion;;;Evolucion de Teddiursa
+218;Slugma;Normal;Gen 2;Ruby;Volcano;Caza;2;20%;
+218;Slugma;Normal;Gen 2;Ruby;Volcano;Caza;3;19,61%;
+218;Slugma;Normal;Gen 3;Ruby;Volcano;Caza;2;19,61%;
+218;Slugma;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+219;Magcargo;Normal;;;;Evolucion;;;Evolucion de Slugma
+220;Swinub;Normal;Gen 2;Ruby;Cave;Caza;2;14,29%;
+220;Swinub;Normal;Gen 2;Ruby;Cave;Caza;3;14,29%;
+220;Swinub;Normal;Gen 2;Zafiro;Cave;Caza;2;14,29%;
+220;Swinub;Normal;Gen 2;Zafiro;Cave;Caza;3;14,29%;
+220;Swinub;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+220;Swinub;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+220;Swinub;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+220;Swinub;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+220;Swinub;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+220;Swinub;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+220;Swinub;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+220;Swinub;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;4%;
+220;Swinub;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;4%;
+220;Swinub;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+220;Swinub;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+221;Piloswine;Normal;;;;Evolucion;;;Evolucion de Swinub
+222;Corsola;Normal;Gen 2;Ruby;Ocean;Caza;2;14,29%;
+222;Corsola;Normal;Gen 2;Ruby;Ocean;Caza;3;12,5%;
+222;Corsola;Normal;Gen 2;Zafiro;Ocean;Caza;2;14,29%;
+222;Corsola;Normal;Gen 2;Zafiro;Ocean;Caza;3;12,5%;
+222;Corsola;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+222;Corsola;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+222;Corsola;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+222;Corsola;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+222;Corsola;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+222;Corsola;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+222;Corsola;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+222;Corsola;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+222;Corsola;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+222;Corsola;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+223;Remoraid;Normal;Gen 2;Ruby;Ocean;Caza;2;14,29%;
+223;Remoraid;Normal;Gen 2;Ruby;Ocean;Caza;3;12,5%;
+223;Remoraid;Normal;Gen 2;Zafiro;Ocean;Caza;2;14,29%;
+223;Remoraid;Normal;Gen 2;Zafiro;Ocean;Caza;3;12,5%;
+223;Remoraid;Normal;Gen 2;Zafiro;Lake;Caza;2;14,29%;
+223;Remoraid;Normal;Gen 2;Zafiro;Lake;Caza;3;14,29%;
+223;Remoraid;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+223;Remoraid;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+223;Remoraid;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+224;Octillery;Normal;;;;Evolucion;;;Evolucion de Remoraid
+225;Delibird;Normal;Gen 2;Ruby;Cave;Caza;2;14,29%;
+225;Delibird;Normal;Gen 2;Zafiro;Cave;Caza;2;14,29%;
+225;Delibird;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+225;Delibird;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+225;Delibird;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2 flechas
+225;Delibird;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2 flechas
+225;Delibird;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+226;Mantine;Normal;Gen 2;Ruby;Ocean;Caza;2;14,29%;
+226;Mantine;Normal;Gen 2;Ruby;Ocean;Caza;3;25%;
+226;Mantine;Normal;Gen 2;Zafiro;Ocean;Caza;2;14,29%;
+226;Mantine;Normal;Gen 2;Zafiro;Ocean;Caza;3;25%;
+226;Mantine;Normal;Gen 2;Ruby;Ruin;Caza;3;16,39%;
+226;Mantine;Normal;Gen 2;Zafiro;Ruin;Caza;3;16,39%;
+226;Mantine;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+226;Mantine;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;3 flechas
+226;Mantine;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+226;Mantine;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;3 flechas
+226;Mantine;Normal;;;;Evolucion;;;Evolucion de Mantyke
+227;Skarmory;Normal;Gen 2;Ruby;Volcano;Caza;3;1,96%;
+227;Skarmory;Normal;Gen 2;Ruby;Ruin;Caza;3;1,64%;
+227;Skarmory;Normal;Gen 2;Zafiro;Ruin;Caza;3;1,64%;
+227;Skarmory;Normal;Gen 3;Ruby;Volcano;Caza;2;1,96%;
+227;Skarmory;Normal;Gen 3;Ruby;Volcano;Caza;3;1,96%;
+227;Skarmory;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;3 flechas
+227;Skarmory;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+227;Skarmory;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;3 flechas
+228;Houndour;Normal;Gen 2;Ruby;Volcano;Caza;2;20%;
+228;Houndour;Normal;Gen 2;Ruby;Volcano;Caza;3;19,61%;
+228;Houndour;Normal;Gen 2;Zafiro;Wilderness;Caza;2;14,29%;
+228;Houndour;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+228;Houndour;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+228;Houndour;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+229;Houndoom;Normal;Gen 2;Ruby;Volcano;Caza;2;20%;
+229;Houndoom;Normal;Gen 2;Ruby;Volcano;Caza;3;19,61%;
+229;Houndoom;Normal;Gen 2;Ruby;Ruin;Caza;2;20%;
+229;Houndoom;Normal;Gen 2;Ruby;Ruin;Caza;3;16,39%;
+229;Houndoom;Normal;Gen 2;Zafiro;Ruin;Caza;2;20%;
+229;Houndoom;Normal;Gen 2;Zafiro;Ruin;Caza;3;16,39%;
+229;Houndoom;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+229;Houndoom;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+229;Houndoom;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+229;Houndoom;Normal;;;;Evolucion;;;Evolucion de Houndour
+230;Kingdra;Normal;;;;Evolucion;;;Evolucion de Seadra
+231;Phanpy;Normal;Gen 2;Zafiro;Wilderness;Caza;2;14,29%;
+231;Phanpy;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+231;Phanpy;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+231;Phanpy;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;8%;
+231;Phanpy;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;8%;
+231;Phanpy;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+231;Phanpy;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+231;Phanpy;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;8%;
+231;Phanpy;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;8%;
+231;Phanpy;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;5,33%;
+231;Phanpy;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;5,33%;
+232;Donphan;Normal;;;;Evolucion;;;Evolucion de Phanpy
+233;Porygon2;Normal;;;;Evolucion;;;Evolucion de Porygon
+234;Stantler;Normal;Gen 2;Ruby;Plains;Caza;2;12,5%;
+234;Stantler;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+234;Stantler;Normal;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+234;Stantler;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+234;Stantler;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+234;Stantler;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+235;Smeargle;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+235;Smeargle;Normal;Gen 2;Ruby;City;Caza;2;12,5%;
+235;Smeargle;Normal;Gen 2;Ruby;City;Caza;3;12,5%;
+235;Smeargle;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+235;Smeargle;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
+236;Tyrogue;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+236;Tyrogue;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
+236;Tyrogue;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+236;Tyrogue;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+236;Tyrogue;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+236;Tyrogue;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+237;Hitmontop;Normal;;;;Evolucion;;;Evolucion de Tyrogue (segun zona y las ramas pendientes en la Pokedex)
+238;Smoochum;Normal;Gen 2;Zafiro;Wilderness;Caza;3;12,5%;
+238;Smoochum;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+238;Smoochum;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+238;Smoochum;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+238;Smoochum;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;3 flechas
+238;Smoochum;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+238;Smoochum;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+238;Smoochum;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+238;Smoochum;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+239;Elekid;Normal;Gen 2;Zafiro;Wilderness;Caza;2;14,29%;
+239;Elekid;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2 flechas
+239;Elekid;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+239;Elekid;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+239;Elekid;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;4%;
+239;Elekid;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;4%;
+239;Elekid;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+239;Elekid;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+240;Magby;Normal;Gen 2;Ruby;Volcano;Caza;2;20%;
+240;Magby;Normal;Gen 2;Ruby;Volcano;Caza;3;19,61%;
+240;Magby;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+240;Magby;Normal;Gen 2;Ruby;Cualquier zona;Huevo;;8%;
+240;Magby;Normal;Gen 2;Zafiro;Cualquier zona;Huevo;;8%;
+240;Magby;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;4%;
+240;Magby;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;4%;
+240;Magby;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+240;Magby;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+241;Miltank;Normal;Gen 2;Ruby;Plains;Caza;2;12,5%;
+241;Miltank;Normal;Gen 2;Ruby;Plains;Caza;3;12,5%;
+241;Miltank;Normal;Gen 2;Zafiro;Plains;Caza;2;12,5%;
+241;Miltank;Normal;Gen 2;Zafiro;Plains;Caza;3;12,5%;
+241;Miltank;Normal;Gen 2;Ruby;City;Caza;3;12,5%;
+241;Miltank;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+241;Miltank;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+241;Miltank;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+242;Blissey;Normal;;;;Evolucion;;;Evolucion de Chansey
+243;Raikou;Especial;;;;Especial;;;Gen 2, Ruby: cualquier zona, 5% compartido entre las bestias disponibles. En Safari Zone, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras bestias.
+244;Entei;Especial;;;;Especial;;;Gen 2, Ruby: cualquier zona, 5% compartido entre las bestias disponibles. En Volcano, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras bestias.
+245;Suicune;Especial;;;;Especial;;;Gen 2, Ruby: cualquier zona, 5% compartido entre las bestias disponibles. En Ocean, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras bestias.
+246;Larvitar;Normal;Gen 2;Ruby;Cave;Caza;2;14,29%;
+246;Larvitar;Normal;Gen 2;Ruby;Cave;Caza;3;14,29%;
+246;Larvitar;Normal;Gen 2;Zafiro;Cave;Caza;2;14,29%;
+246;Larvitar;Normal;Gen 2;Zafiro;Cave;Caza;3;14,29%;
+246;Larvitar;Normal;Gen 2;Zafiro;Ice Cave;Caza;2;12,5%;
+246;Larvitar;Normal;Gen 2;Zafiro;Ice Cave;Caza;3;12,5%;
+246;Larvitar;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+246;Larvitar;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+246;Larvitar;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+247;Pupitar;Normal;;;;Evolucion;;;Evolucion de Larvitar
+248;Tyranitar;Normal;;;;Evolucion;;;Evolucion de Pupitar
+249;Lugia;Especial;;;;Especial;;;Gen 2, Zafiro, cualquier zona: Suicune, Raikou y Entei capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%.
+250;Ho-Oh;Especial;;;;Especial;;;Gen 2, Ruby, cualquier zona: Suicune, Raikou y Entei capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%.
+251;Celebi;Especial;;;;Especial;;;Gen 2, ambos tableros, Forest: al menos 15 capturas/evoluciones en la partida. 25%.
+252;Treecko;Normal;Gen 3;Ruby;Forest;Caza;3;14,08%;
+252;Treecko;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;3 flechas
+253;Grovyle;Normal;;;;Evolucion;;;Evolucion de Treecko
+254;Sceptile;Normal;;;;Evolucion;;;Evolucion de Grovyle
+255;Torchic;Normal;Gen 3;Ruby;Volcano;Caza;3;19,61%;
+255;Torchic;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;3 flechas
+256;Combusken;Normal;;;;Evolucion;;;Evolucion de Torchic
+257;Blaziken;Normal;;;;Evolucion;;;Evolucion de Combusken
+258;Mudkip;Normal;Gen 3;Zafiro;Lake;Caza;3;19,61%;
+258;Mudkip;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;3 flechas
+259;Marshtomp;Normal;;;;Evolucion;;;Evolucion de Mudkip
+260;Swampert;Normal;;;;Evolucion;;;Evolucion de Marshtomp
+261;Poochyena;Normal;Gen 3;Ruby;Plains;Caza;2;16,39%;
+261;Poochyena;Normal;Gen 3;Ruby;Plains;Caza;3;19,61%;
+261;Poochyena;Normal;Gen 3;Zafiro;Plains;Caza;2;16,39%;
+261;Poochyena;Normal;Gen 3;Zafiro;Plains;Caza;3;14,08%;
+261;Poochyena;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+261;Poochyena;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+262;Mightyena;Normal;;;;Evolucion;;;Evolucion de Poochyena
+263;Zigzagoon;Normal;Gen 3;Ruby;Forest;Caza;2;16,39%;
+263;Zigzagoon;Normal;Gen 3;Ruby;City;Caza;2;14,08%;
+263;Zigzagoon;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+263;Zigzagoon;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2 flechas
+264;Linoone;Normal;;;;Evolucion;;;Evolucion de Zigzagoon
+265;Wurmple;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+265;Wurmple;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+265;Wurmple;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+265;Wurmple;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+265;Wurmple;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+265;Wurmple;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+266;Silcoon;Normal;Gen 3;Ruby;Forest;Caza;2;16,39%;
+266;Silcoon;Normal;Gen 3;Ruby;Forest;Caza;3;14,08%;
+266;Silcoon;Normal;Gen 3;Zafiro;Forest;Caza;2;19,61%;
+266;Silcoon;Normal;Gen 3;Zafiro;Forest;Caza;3;14,08%;
+266;Silcoon;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+266;Silcoon;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+266;Silcoon;Normal;;;;Evolucion;;;"Evolucion de Wurmple (prioridad si falta en la Pokedex; si ambas ramas estan capturadas, Ruby)"
+267;Beautifly;Normal;;;;Evolucion;;;Evolucion de Silcoon
+268;Cascoon;Normal;Gen 3;Ruby;Forest;Caza;2;16,39%;
+268;Cascoon;Normal;Gen 3;Ruby;Forest;Caza;3;14,08%;
+268;Cascoon;Normal;Gen 3;Zafiro;Forest;Caza;2;19,61%;
+268;Cascoon;Normal;Gen 3;Zafiro;Forest;Caza;3;14,08%;
+268;Cascoon;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+268;Cascoon;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+268;Cascoon;Normal;;;;Evolucion;;;"Evolucion de Wurmple (si Silcoon esta capturado y falta Cascoon; si ambas ramas estan capturadas, Zafiro)"
+269;Dustox;Normal;;;;Evolucion;;;Evolucion de Cascoon
+270;Lotad;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+270;Lotad;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+270;Lotad;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+271;Lombre;Normal;Gen 3;Zafiro;Lake;Caza;2;19,61%;
+271;Lombre;Normal;Gen 3;Zafiro;Lake;Caza;3;19,61%;
+271;Lombre;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+271;Lombre;Normal;;;;Evolucion;;;Evolucion de Lotad
+272;Ludicolo;Normal;;;;Evolucion;;;Evolucion de Lombre
+273;Seedot;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+273;Seedot;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+273;Seedot;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+274;Nuzleaf;Normal;;;;Evolucion;;;Evolucion de Seedot
+275;Shiftry;Normal;;;;Evolucion;;;Evolucion de Nuzleaf
+276;Taillow;Normal;Gen 3;Ruby;Plains;Caza;2;16,39%;
+276;Taillow;Normal;Gen 3;Ruby;Plains;Caza;3;19,61%;
+276;Taillow;Normal;Gen 3;Zafiro;Plains;Caza;2;16,39%;
+276;Taillow;Normal;Gen 3;Zafiro;Plains;Caza;3;14,08%;
+276;Taillow;Normal;Gen 3;Ruby;City;Caza;2;14,08%;
+276;Taillow;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+276;Taillow;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+276;Taillow;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+277;Swellow;Normal;;;;Evolucion;;;Evolucion de Taillow
+278;Wingull;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
+278;Wingull;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
+278;Wingull;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2 flechas
+278;Wingull;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2 flechas
+279;Pelipper;Normal;;;;Evolucion;;;Evolucion de Wingull
+280;Ralts;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+280;Ralts;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+280;Ralts;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+280;Ralts;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+280;Ralts;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;4%;
+280;Ralts;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;4%;
+280;Ralts;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+280;Ralts;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+281;Kirlia;Normal;;;;Evolucion;;;Evolucion de Ralts
+282;Gardevoir;Normal;;;;Evolucion;;;"Evolucion de Kirlia (rama base; en Gen 4/RANDOM se prioriza si falta y se elige en Ruby si ambas estan capturadas)"
+283;Surskit;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+283;Surskit;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+283;Surskit;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+284;Masquerain;Normal;;;;Evolucion;;;Evolucion de Surskit
+285;Shroomish;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+285;Shroomish;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+285;Shroomish;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+286;Breloom;Normal;;;;Evolucion;;;Evolucion de Shroomish
+287;Slakoth;Normal;Gen 3;Ruby;Forest;Caza;2;16,39%;
+287;Slakoth;Normal;Gen 3;Ruby;Forest;Caza;3;14,08%;
+287;Slakoth;Normal;Gen 3;Zafiro;Forest;Caza;2;19,61%;
+287;Slakoth;Normal;Gen 3;Zafiro;Forest;Caza;3;14,08%;
+287;Slakoth;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+287;Slakoth;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+288;Vigoroth;Normal;;;;Evolucion;;;Evolucion de Slakoth
+289;Slaking;Normal;;;;Evolucion;;;Evolucion de Vigoroth
+290;Nincada;Normal;Gen 3;Ruby;Forest;Caza;3;14,08%;
+290;Nincada;Normal;Gen 3;Zafiro;Forest;Caza;3;14,08%;
+290;Nincada;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;3 flechas
+290;Nincada;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;3 flechas
+291;Ninjask;Normal;;;;Evolucion;;;Evolucion de Nincada (se registra al evolucionar Nincada)
+292;Shedinja;Normal;;;;Evolucion;;;Evolucion de Nincada (se registra adicionalmente al evolucionar Nincada)
+293;Whismur;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+293;Whismur;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+293;Whismur;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+293;Whismur;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+293;Whismur;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+293;Whismur;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+294;Loudred;Normal;Gen 3;Ruby;Cave;Caza;2;16,39%;
+294;Loudred;Normal;Gen 3;Ruby;Cave;Caza;3;19,61%;
+294;Loudred;Normal;Gen 3;Zafiro;Cave;Caza;2;19,61%;
+294;Loudred;Normal;Gen 3;Zafiro;Cave;Caza;3;16,39%;
+294;Loudred;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+294;Loudred;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+294;Loudred;Normal;;;;Evolucion;;;Evolucion de Whismur
+295;Exploud;Normal;;;;Evolucion;;;Evolucion de Loudred
+296;Makuhita;Normal;Gen 3;Zafiro;Cave;Caza;2;19,61%;
+296;Makuhita;Normal;Gen 3;Zafiro;Cave;Caza;3;16,39%;
+296;Makuhita;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+297;Hariyama;Normal;;;;Evolucion;;;Evolucion de Makuhita
+298;Azurill;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;8%;
+298;Azurill;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;8%;
+298;Azurill;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+299;Nosepass;Normal;Gen 3;Ruby;Cave;Caza;2;1,64%;
+299;Nosepass;Normal;Gen 3;Ruby;Cave;Caza;3;1,96%;
+299;Nosepass;Normal;Gen 3;Zafiro;Cave;Caza;2;1,96%;
+299;Nosepass;Normal;Gen 3;Zafiro;Cave;Caza;3;1,64%;
+299;Nosepass;Normal;Gen 3;Zafiro;Ice Cave;Caza;2;1,92%;
+299;Nosepass;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;1,61%;
+299;Nosepass;Normal;Gen 4;Ruby;Cave;Caza;2;1,41%;
+299;Nosepass;Normal;Gen 4;Ruby;Cave;Caza;3;1,41%;
+299;Nosepass;Normal;Gen 4;Zafiro;Cave;Caza;2;1,41%;
+299;Nosepass;Normal;Gen 4;Zafiro;Cave;Caza;3;1,41%;
+299;Nosepass;Normal;Gen 4;Ruby;Volcano;Caza;3;1,41%;
+299;Nosepass;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+299;Nosepass;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;3 flechas
+299;Nosepass;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+299;Nosepass;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+300;Skitty;Normal;Gen 3;Ruby;City;Caza;2;14,08%;
+300;Skitty;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+300;Skitty;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;8%;
+300;Skitty;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;8%;
+300;Skitty;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+301;Delcatty;Normal;;;;Evolucion;;;Evolucion de Skitty
+302;Sableye;Normal;Gen 3;Zafiro;Cave;Caza;3;16,39%;
+302;Sableye;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;3 flechas
+303;Mawile;Normal;Gen 3;Ruby;Cave;Caza;2;16,39%;
+303;Mawile;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2 flechas
+304;Aron;Normal;Gen 3;Zafiro;Ice Cave;Caza;2;19,23%;
+304;Aron;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;16,13%;
+304;Aron;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+304;Aron;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+304;Aron;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+304;Aron;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+304;Aron;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+304;Aron;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+304;Aron;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+305;Lairon;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;16,13%;
+305;Lairon;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;3 flechas
+305;Lairon;Normal;;;;Evolucion;;;Evolucion de Aron
+306;Aggron;Normal;;;;Evolucion;;;Evolucion de Lairon
+307;Meditite;Normal;Gen 3;Zafiro;Wilderness;Caza;2;19,61%;
+307;Meditite;Normal;Gen 3;Zafiro;Wilderness;Caza;3;19,61%;
+307;Meditite;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+308;Medicham;Normal;;;;Evolucion;;;Evolucion de Meditite
+309;Electrike;Normal;Gen 3;Ruby;Plains;Caza;2;16,39%;
+309;Electrike;Normal;Gen 3;Zafiro;Plains;Caza;2;16,39%;
+309;Electrike;Normal;Gen 3;Ruby;City;Caza;2;14,08%;
+309;Electrike;Normal;Gen 3;Ruby;City;Caza;3;16,13%;
+309;Electrike;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+309;Electrike;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+309;Electrike;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2 flechas
+310;Manectric;Normal;;;;Evolucion;;;Evolucion de Electrike
+311;Plusle;Normal;Gen 3;Ruby;City;Caza;3;16,13%;
+311;Plusle;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+311;Plusle;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+311;Plusle;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+311;Plusle;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+312;Minun;Normal;Gen 3;Ruby;City;Caza;3;16,13%;
+312;Minun;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+312;Minun;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+312;Minun;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+312;Minun;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+313;Volbeat;Normal;Gen 3;Zafiro;Plains;Caza;3;14,08%;
+313;Volbeat;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
+314;Illumise;Normal;Gen 3;Ruby;Plains;Caza;2;16,39%;
+314;Illumise;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+315;Roselia;Normal;Gen 3;Ruby;Forest;Caza;2;16,39%;
+315;Roselia;Normal;Gen 3;Ruby;Forest;Caza;3;14,08%;
+315;Roselia;Normal;Gen 3;Zafiro;Forest;Caza;2;19,61%;
+315;Roselia;Normal;Gen 3;Zafiro;Forest;Caza;3;14,08%;
+315;Roselia;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+315;Roselia;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+315;Roselia;Normal;;;;Evolucion;;;Evolucion de Budew
+316;Gulpin;Normal;Gen 3;Ruby;City;Caza;2;14,08%;
+316;Gulpin;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+316;Gulpin;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;8%;
+316;Gulpin;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;8%;
+316;Gulpin;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+317;Swalot;Normal;;;;Evolucion;;;Evolucion de Gulpin
+318;Carvanha;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
+318;Carvanha;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+318;Carvanha;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
+318;Carvanha;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
+318;Carvanha;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+318;Carvanha;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+319;Sharpedo;Normal;;;;Evolucion;;;Evolucion de Carvanha
+320;Wailmer;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
+320;Wailmer;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+320;Wailmer;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+321;Wailord;Normal;;;;Evolucion;;;Evolucion de Wailmer
+322;Numel;Normal;Gen 3;Ruby;Volcano;Caza;2;19,61%;
+322;Numel;Normal;Gen 3;Ruby;Volcano;Caza;3;19,61%;
+322;Numel;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+323;Camerupt;Normal;;;;Evolucion;;;Evolucion de Numel
+324;Torkoal;Normal;Gen 3;Ruby;Volcano;Caza;2;19,61%;
+324;Torkoal;Normal;Gen 3;Ruby;Volcano;Caza;3;19,61%;
+324;Torkoal;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+325;Spoink;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;8%;
+325;Spoink;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+325;Spoink;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;8%;
+325;Spoink;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+325;Spoink;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+325;Spoink;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+326;Grumpig;Normal;;;;Evolucion;;;Evolucion de Spoink
+327;Spinda;Normal;Gen 3;Ruby;City;Caza;3;16,13%;
+327;Spinda;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+327;Spinda;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+327;Spinda;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+327;Spinda;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+327;Spinda;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+327;Spinda;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+327;Spinda;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+328;Trapinch;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+328;Trapinch;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+328;Trapinch;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+328;Trapinch;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+328;Trapinch;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+328;Trapinch;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+329;Vibrava;Normal;Gen 3;Zafiro;Wilderness;Caza;2;19,61%;
+329;Vibrava;Normal;Gen 3;Zafiro;Wilderness;Caza;3;19,61%;
+329;Vibrava;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+329;Vibrava;Normal;;;;Evolucion;;;Evolucion de Trapinch
+330;Flygon;Normal;;;;Evolucion;;;Evolucion de Vibrava
+331;Cacnea;Normal;Gen 3;Zafiro;Wilderness;Caza;2;19,61%;
+331;Cacnea;Normal;Gen 3;Zafiro;Wilderness;Caza;3;19,61%;
+331;Cacnea;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+332;Cacturne;Normal;;;;Evolucion;;;Evolucion de Cacnea
+333;Swablu;Normal;Gen 3;Zafiro;Wilderness;Caza;3;19,61%;
+333;Swablu;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;3 flechas
+334;Altaria;Normal;;;;Evolucion;;;Evolucion de Swablu
+335;Zangoose;Normal;Gen 3;Ruby;Plains;Caza;3;19,61%;
+335;Zangoose;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
+336;Seviper;Normal;Gen 3;Zafiro;Plains;Caza;3;14,08%;
+336;Seviper;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
+337;Lunatone;Normal;Gen 3;Zafiro;Cave;Caza;2;19,61%;
+337;Lunatone;Normal;Gen 3;Zafiro;Cave;Caza;3;16,39%;
+337;Lunatone;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+338;Solrock;Normal;Gen 3;Ruby;Cave;Caza;2;16,39%;
+338;Solrock;Normal;Gen 3;Ruby;Cave;Caza;3;19,61%;
+338;Solrock;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+339;Barboach;Normal;Gen 3;Zafiro;Lake;Caza;2;19,61%;
+339;Barboach;Normal;Gen 3;Zafiro;Lake;Caza;3;19,61%;
+339;Barboach;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+340;Whiscash;Normal;;;;Evolucion;;;Evolucion de Barboach
+341;Corphish;Normal;Gen 3;Zafiro;Lake;Caza;2;19,61%;
+341;Corphish;Normal;Gen 3;Zafiro;Lake;Caza;3;19,61%;
+341;Corphish;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+342;Crawdaunt;Normal;;;;Evolucion;;;Evolucion de Corphish
+343;Baltoy;Normal;Gen 3;Zafiro;Wilderness;Caza;2;19,61%;
+343;Baltoy;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2 flechas
+344;Claydol;Normal;;;;Evolucion;;;Evolucion de Baltoy
+345;Lileep;Normal;Gen 3;Ruby;Ocean;Caza;2;1,96%;
+345;Lileep;Normal;Gen 3;Ruby;Ocean;Caza;3;1,64%;
+345;Lileep;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+346;Cradily;Normal;;;;Evolucion;;;Evolucion de Lileep
+347;Anorith;Normal;Gen 3;Zafiro;Ocean;Caza;2;1,96%;
+347;Anorith;Normal;Gen 3;Zafiro;Ocean;Caza;3;1,64%;
+347;Anorith;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+348;Armaldo;Normal;;;;Evolucion;;;Evolucion de Anorith
+349;Feebas;Normal;Gen 3;Zafiro;Lake;Caza;2;1,96%;
+349;Feebas;Normal;Gen 3;Zafiro;Lake;Caza;3;1,96%;
+349;Feebas;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+350;Milotic;Normal;;;;Evolucion;;;Evolucion de Feebas
+351;Castform;Normal;Gen 3;Ruby;Plains;Caza;2;1,64%;
+351;Castform;Normal;Gen 3;Ruby;Plains;Caza;3;1,96%;
+351;Castform;Normal;Gen 3;Zafiro;Plains;Caza;2;1,64%;
+351;Castform;Normal;Gen 3;Zafiro;Plains;Caza;3;1,41%;
+351;Castform;Normal;Gen 3;Ruby;City;Caza;3;1,61%;
+351;Castform;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+351;Castform;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+351;Castform;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+352;Kecleon;Normal;Gen 3;Ruby;Forest;Caza;2;1,64%;
+352;Kecleon;Normal;Gen 3;Ruby;Forest;Caza;3;1,41%;
+352;Kecleon;Normal;Gen 3;Zafiro;Forest;Caza;2;1,96%;
+352;Kecleon;Normal;Gen 3;Zafiro;Forest;Caza;3;1,41%;
+352;Kecleon;Normal;Gen 3;Ruby;City;Caza;2;1,41%;
+352;Kecleon;Normal;Gen 3;Ruby;City;Caza;3;1,61%;
+352;Kecleon;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+352;Kecleon;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+352;Kecleon;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+353;Shuppet;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+353;Shuppet;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+353;Shuppet;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+353;Shuppet;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+353;Shuppet;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+353;Shuppet;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+354;Banette;Normal;;;;Evolucion;;;Evolucion de Shuppet
+355;Duskull;Normal;Gen 3;Ruby;Forest;Caza;2;16,39%;
+355;Duskull;Normal;Gen 3;Ruby;Forest;Caza;3;14,08%;
+355;Duskull;Normal;Gen 3;Zafiro;Forest;Caza;2;19,61%;
+355;Duskull;Normal;Gen 3;Zafiro;Forest;Caza;3;14,08%;
+355;Duskull;Normal;Gen 4;Zafiro;Cave;Caza;3;14,08%;
+355;Duskull;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+355;Duskull;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+355;Duskull;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+355;Duskull;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+355;Duskull;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+355;Duskull;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+355;Duskull;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;3 flechas
+355;Duskull;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+355;Duskull;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+356;Dusclops;Normal;;;;Evolucion;;;Evolucion de Duskull
+357;Tropius;Normal;Gen 3;Zafiro;Forest;Caza;3;14,08%;
+357;Tropius;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;3 flechas
+358;Chimecho;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+358;Chimecho;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+358;Chimecho;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+358;Chimecho;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+358;Chimecho;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+358;Chimecho;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+358;Chimecho;Normal;;;;Evolucion;;;Evolucion de Chingling
+359;Absol;Normal;Gen 3;Zafiro;Wilderness;Caza;2;1,96%;
+359;Absol;Normal;Gen 3;Zafiro;Wilderness;Caza;3;1,96%;
+359;Absol;Normal;Gen 3;Zafiro;Ice Cave;Caza;2;1,92%;
+359;Absol;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;1,61%;
+359;Absol;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+359;Absol;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+360;Wynaut;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+360;Wynaut;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+360;Wynaut;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+361;Snorunt;Normal;Gen 3;Zafiro;Ice Cave;Caza;2;19,23%;
+361;Snorunt;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;16,13%;
+361;Snorunt;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+361;Snorunt;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+361;Snorunt;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+361;Snorunt;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+361;Snorunt;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+361;Snorunt;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;4%;
+361;Snorunt;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;4%;
+361;Snorunt;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+361;Snorunt;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+362;Glalie;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;16,13%;
+362;Glalie;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;3 flechas
+362;Glalie;Normal;;;;Evolucion;;;"Evolucion de Snorunt (rama base; en Gen 4/RANDOM se prioriza si falta y se elige en Ruby si ambas estan capturadas)"
+363;Spheal;Normal;Gen 3;Zafiro;Ice Cave;Caza;2;19,23%;
+363;Spheal;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;16,13%;
+363;Spheal;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+363;Spheal;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+363;Spheal;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+363;Spheal;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+363;Spheal;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+363;Spheal;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+363;Spheal;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+364;Sealeo;Normal;;;;Evolucion;;;Evolucion de Spheal
+365;Walrein;Normal;;;;Evolucion;;;Evolucion de Sealeo
+366;Clamperl;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
+366;Clamperl;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
+367;Huntail;Normal;;;;Evolucion;;;Evolucion de Clamperl (Ruby)
+368;Gorebyss;Normal;;;;Evolucion;;;Evolucion de Clamperl (Zafiro)
+369;Relicanth;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+369;Relicanth;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
+369;Relicanth;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
+369;Relicanth;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
+370;Luvdisc;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
+370;Luvdisc;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+370;Luvdisc;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
+370;Luvdisc;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
+370;Luvdisc;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+370;Luvdisc;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+371;Bagon;Normal;Gen 1;Ruby;Cualquier zona;Huevo;;4%;
+371;Bagon;Normal;Gen 1;Zafiro;Cualquier zona;Huevo;;4%;
+371;Bagon;Normal;Gen 3;Ruby;Cualquier zona;Huevo;;4%;
+371;Bagon;Normal;Gen 3;Zafiro;Cualquier zona;Huevo;;4%;
+371;Bagon;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;1,33%;
+371;Bagon;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
+372;Shelgon;Normal;Gen 3;Ruby;Cave;Caza;2;16,39%;
+372;Shelgon;Normal;Gen 3;Ruby;Cave;Caza;3;19,61%;
+372;Shelgon;Normal;Gen 3;Zafiro;Cave;Caza;2;19,61%;
+372;Shelgon;Normal;Gen 3;Zafiro;Cave;Caza;3;16,39%;
+372;Shelgon;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+372;Shelgon;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+372;Shelgon;Normal;;;;Evolucion;;;Evolucion de Bagon
+373;Salamence;Normal;;;;Evolucion;;;Evolucion de Shelgon
+374;Beldum;Normal;Gen 3;Ruby;Ruin;Caza;2;33,33%;
+374;Beldum;Normal;Gen 3;Ruby;Ruin;Caza;3;25%;
+374;Beldum;Normal;Gen 3;Zafiro;Ruin;Caza;2;33,33%;
+374;Beldum;Normal;Gen 3;Zafiro;Ruin;Caza;3;25%;
+374;Beldum;Normal;Gen 3;Zafiro;Ice Cave;Caza;2;19,23%;
+374;Beldum;Normal;Gen 3;Zafiro;Ice Cave;Caza;3;16,13%;
+374;Beldum;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+374;Beldum;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+374;Beldum;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+375;Metang;Normal;;;;Evolucion;;;Evolucion de Beldum
+376;Metagross;Normal;;;;Evolucion;;;Evolucion de Metang
+377;Regirock;Normal;Gen 3;Ruby;Ruin;Caza;2;33,33%;
+377;Regirock;Normal;Gen 3;Ruby;Ruin;Caza;3;25%;
+377;Regirock;Normal;Gen 3;Zafiro;Ruin;Caza;2;33,33%;
+377;Regirock;Normal;Gen 3;Zafiro;Ruin;Caza;3;25%;
+378;Regice;Normal;Gen 3;Ruby;Ruin;Caza;2;33,33%;
+378;Regice;Normal;Gen 3;Ruby;Ruin;Caza;3;25%;
+378;Regice;Normal;Gen 3;Zafiro;Ruin;Caza;2;33,33%;
+378;Regice;Normal;Gen 3;Zafiro;Ruin;Caza;3;25%;
+379;Registeel;Normal;Gen 3;Ruby;Ruin;Caza;3;25%;
+379;Registeel;Normal;Gen 3;Zafiro;Ruin;Caza;3;25%;
+380;Latias;Especial;;;;Especial;;;"Zafiro, fuera de Gen 4: aparece en la seleccion heredada de invitados, con al menos 100 especies capturadas registradas en gBoardConfig y 5 capturas/evoluciones en partida. El grupo se activa al 1% (2% con mejora e-Reader), luego prioriza invitados pendientes o sortea entre candidatos. No es un 1% individual garantizado; forceSpecialMons omite esos requisitos."
+381;Latios;Especial;;;;Especial;;;"Ruby, fuera de Gen 4: aparece en la seleccion heredada de invitados, con al menos 100 especies capturadas registradas en gBoardConfig y 5 capturas/evoluciones en partida. El grupo se activa al 1% (2% con mejora e-Reader), luego prioriza invitados pendientes o sortea entre candidatos. No es un 1% individual garantizado; forceSpecialMons omite esos requisitos."
+382;Kyogre;Especial;;;;Especial;;;Bonus de Kyogre, Zafiro. La fase de captura se activa al superarlo cuando numCompletedBonusStages % 5 == 3 (segunda visita a Kyogre del ciclo). No usa una probabilidad de caza normal.
+383;Groudon;Especial;;;;Especial;;;Bonus de Groudon, Ruby. La fase de captura se activa al superarlo cuando numCompletedBonusStages % 5 == 3 (segunda visita a Groudon del ciclo). No usa una probabilidad de caza normal.
+384;Rayquaza;Especial;;;;Especial;;;Bonus de Rayquaza, accesible desde ambos tableros. La fase de captura se activa al superar el bonus cuando numCompletedBonusStages % 10 == 9 (segunda visita a Rayquaza del ciclo). No usa una probabilidad de caza normal.
+385;Jirachi;Especial;;;;Especial;;;Existe el premio PRIZE_JIRACHI_CATCH_MODE del agujero central, que activa el modo Jirachi. Falta detallar en esta guia la disponibilidad y el peso del premio en la ruleta.
+386;Deoxys;Especial;;;;Especial;;;Gen 3, ambos tableros, Ruin: haber capturado a Rayquaza en esta partida. 20%.
+387;Turtwig;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+387;Turtwig;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+387;Turtwig;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+387;Turtwig;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+387;Turtwig;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+387;Turtwig;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+387;Turtwig;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+387;Turtwig;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
+388;Grotle;Normal;;;;Evolucion;;;Evolucion de Turtwig
+389;Torterra;Normal;;;;Evolucion;;;Evolucion de Grotle
+390;Chimchar;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+390;Chimchar;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+390;Chimchar;Normal;Gen 4;Ruby;Volcano;Caza;3;14,08%;
+390;Chimchar;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+390;Chimchar;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+390;Chimchar;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
+390;Chimchar;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+390;Chimchar;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+391;Monferno;Normal;;;;Evolucion;;;Evolucion de Chimchar
+392;Infernape;Normal;;;;Evolucion;;;Evolucion de Monferno
+393;Piplup;Normal;Gen 4;Ruby;Ocean;Caza;2;12,5%;
+393;Piplup;Normal;Gen 4;Ruby;Ocean;Caza;3;25%;
+393;Piplup;Normal;Gen 4;Zafiro;Ocean;Caza;2;12,5%;
+393;Piplup;Normal;Gen 4;Zafiro;Ocean;Caza;3;25%;
+393;Piplup;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+393;Piplup;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+393;Piplup;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+393;Piplup;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+393;Piplup;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+393;Piplup;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+393;Piplup;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+393;Piplup;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+394;Prinplup;Normal;;;;Evolucion;;;Evolucion de Piplup
+395;Empoleon;Normal;;;;Evolucion;;;Evolucion de Prinplup
+396;Starly;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+396;Starly;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+396;Starly;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+396;Starly;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+396;Starly;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+396;Starly;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2 flechas
+397;Staravia;Normal;;;;Evolucion;;;Evolucion de Starly
+398;Staraptor;Normal;;;;Evolucion;;;Evolucion de Staravia
+399;Bidoof;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+399;Bidoof;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+399;Bidoof;Normal;Gen 4;Ruby;Ocean;Caza;2;12,5%;
+399;Bidoof;Normal;Gen 4;Zafiro;Ocean;Caza;2;12,5%;
+399;Bidoof;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+399;Bidoof;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+399;Bidoof;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+399;Bidoof;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2 flechas
+399;Bidoof;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2 flechas
+399;Bidoof;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2 flechas
+399;Bidoof;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+399;Bidoof;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2 flechas
+399;Bidoof;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2 flechas
+400;Bibarel;Normal;;;;Evolucion;;;Evolucion de Bidoof
+401;Kricketot;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+401;Kricketot;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+401;Kricketot;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2 flechas
+401;Kricketot;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2 flechas
+402;Kricketune;Normal;;;;Evolucion;;;Evolucion de Kricketot
+403;Shinx;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+403;Shinx;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+403;Shinx;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+403;Shinx;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+403;Shinx;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+403;Shinx;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+403;Shinx;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+403;Shinx;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+403;Shinx;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+404;Luxio;Normal;;;;Evolucion;;;Evolucion de Shinx
+405;Luxray;Normal;;;;Evolucion;;;Evolucion de Luxio
+406;Budew;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;12%;
+406;Budew;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;12%;
+406;Budew;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+406;Budew;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+407;Roserade;Normal;;;;Evolucion;;;Evolucion de Roselia
+408;Cranidos;Normal;Gen 4;Ruby;Cave;Caza;2;14,08%;
+408;Cranidos;Normal;Gen 4;Ruby;Cave;Caza;3;14,08%;
+408;Cranidos;Normal;Gen 4;Zafiro;Cave;Caza;2;14,08%;
+408;Cranidos;Normal;Gen 4;Zafiro;Cave;Caza;3;14,08%;
+408;Cranidos;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+408;Cranidos;Normal;Gen 4;Ruby;Volcano;Caza;3;14,08%;
+408;Cranidos;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+408;Cranidos;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+408;Cranidos;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+408;Cranidos;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+408;Cranidos;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+408;Cranidos;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+408;Cranidos;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+408;Cranidos;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+408;Cranidos;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+409;Rampardos;Normal;;;;Evolucion;;;Evolucion de Cranidos
+410;Shieldon;Normal;Gen 4;Ruby;Cave;Caza;2;14,08%;
+410;Shieldon;Normal;Gen 4;Ruby;Cave;Caza;3;14,08%;
+410;Shieldon;Normal;Gen 4;Zafiro;Cave;Caza;2;14,08%;
+410;Shieldon;Normal;Gen 4;Zafiro;Cave;Caza;3;14,08%;
+410;Shieldon;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+410;Shieldon;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+410;Shieldon;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+410;Shieldon;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+410;Shieldon;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+410;Shieldon;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+410;Shieldon;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+410;Shieldon;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+411;Bastiodon;Normal;;;;Evolucion;;;Evolucion de Shieldon
+412;Burmy;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+412;Burmy;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+412;Burmy;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+412;Burmy;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+412;Burmy;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+412;Burmy;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+413;Wormadam;Normal;;;;Evolucion;;;"Evolucion de Burmy (rama base; en Gen 4/RANDOM se prioriza si falta y se elige en Ruby si ambas estan capturadas)"
+414;Mothim;Normal;;;;Evolucion;;;"Evolucion de Burmy (Gen 4/RANDOM: si falta y la otra rama ya esta capturada; si ambas estan capturadas, Zafiro)"
+415;Combee;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+415;Combee;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+415;Combee;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+415;Combee;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+415;Combee;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+415;Combee;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+416;Vespiquen;Normal;;;;Evolucion;;;Evolucion de Combee
+417;Pachirisu;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+417;Pachirisu;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+417;Pachirisu;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+417;Pachirisu;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+417;Pachirisu;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+417;Pachirisu;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+417;Pachirisu;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+417;Pachirisu;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+417;Pachirisu;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+417;Pachirisu;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+417;Pachirisu;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+417;Pachirisu;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+418;Buizel;Normal;Gen 4;Ruby;Ocean;Caza;2;12,5%;
+418;Buizel;Normal;Gen 4;Ruby;Ocean;Caza;3;25%;
+418;Buizel;Normal;Gen 4;Zafiro;Ocean;Caza;2;12,5%;
+418;Buizel;Normal;Gen 4;Zafiro;Ocean;Caza;3;25%;
+418;Buizel;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+418;Buizel;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+418;Buizel;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+418;Buizel;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+418;Buizel;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+419;Floatzel;Normal;;;;Evolucion;;;Evolucion de Buizel
+420;Cherubi;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+420;Cherubi;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+420;Cherubi;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+420;Cherubi;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+420;Cherubi;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+420;Cherubi;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+421;Cherrim;Normal;;;;Evolucion;;;Evolucion de Cherubi
+422;Shellos;Normal;Gen 4;Ruby;Ocean;Caza;2;25%;
+422;Shellos;Normal;Gen 4;Ruby;Ocean;Caza;3;12,5%;
+422;Shellos;Normal;Gen 4;Zafiro;Ocean;Caza;2;25%;
+422;Shellos;Normal;Gen 4;Zafiro;Ocean;Caza;3;12,5%;
+422;Shellos;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+422;Shellos;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+422;Shellos;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+422;Shellos;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+422;Shellos;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+423;Gastrodon;Normal;;;;Evolucion;;;Evolucion de Shellos
+424;Ambipom;Normal;;;;Evolucion;;;Evolucion de Aipom
+425;Drifloon;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+425;Drifloon;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+425;Drifloon;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+425;Drifloon;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+425;Drifloon;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+425;Drifloon;Normal;RANDOM;Ruby;City;Candidato a caza;;;2 flechas
+425;Drifloon;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+425;Drifloon;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+426;Drifblim;Normal;;;;Evolucion;;;Evolucion de Drifloon
+427;Buneary;Normal;Gen 4;Ruby;Forest;Caza;2;12,5%;
+427;Buneary;Normal;Gen 4;Ruby;Forest;Caza;3;12,5%;
+427;Buneary;Normal;Gen 4;Zafiro;Forest;Caza;2;12,5%;
+427;Buneary;Normal;Gen 4;Zafiro;Forest;Caza;3;12,5%;
+427;Buneary;Normal;RANDOM;Ruby;Forest;Candidato a caza;;;2/3 flechas
+427;Buneary;Normal;RANDOM;Zafiro;Forest;Candidato a caza;;;2/3 flechas
+428;Lopunny;Normal;;;;Evolucion;;;Evolucion de Buneary
+429;Mismagius;Normal;;;;Evolucion;;;Evolucion de Misdreavus
+430;Honchkrow;Normal;;;;Evolucion;;;Evolucion de Murkrow
+431;Glameow;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+431;Glameow;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+431;Glameow;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+431;Glameow;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+431;Glameow;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+431;Glameow;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+431;Glameow;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+431;Glameow;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+431;Glameow;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+431;Glameow;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+431;Glameow;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+431;Glameow;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+432;Purugly;Normal;;;;Evolucion;;;Evolucion de Glameow
+433;Chingling;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;8%;
+433;Chingling;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;8%;
+433;Chingling;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+433;Chingling;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+434;Stunky;Normal;Gen 4;Ruby;Plains;Caza;2;12,5%;
+434;Stunky;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+434;Stunky;Normal;Gen 4;Zafiro;Plains;Caza;2;12,5%;
+434;Stunky;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+434;Stunky;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+434;Stunky;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+434;Stunky;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+434;Stunky;Normal;Gen 4;Ruby;City;Caza;2;12,5%;
+434;Stunky;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+434;Stunky;Normal;RANDOM;Ruby;City;Candidato a caza;;;2/3 flechas
+434;Stunky;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;2/3 flechas
+434;Stunky;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2 flechas
+434;Stunky;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;2/3 flechas
+434;Stunky;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+435;Skuntank;Normal;;;;Evolucion;;;Evolucion de Stunky
+436;Bronzor;Normal;Gen 4;Ruby;Cave;Caza;2;14,08%;
+436;Bronzor;Normal;Gen 4;Ruby;Cave;Caza;3;14,08%;
+436;Bronzor;Normal;Gen 4;Zafiro;Cave;Caza;2;14,08%;
+436;Bronzor;Normal;Gen 4;Zafiro;Cave;Caza;3;14,08%;
+436;Bronzor;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+436;Bronzor;Normal;Gen 4;Ruby;Volcano;Caza;3;14,08%;
+436;Bronzor;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+436;Bronzor;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+436;Bronzor;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+436;Bronzor;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+436;Bronzor;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+436;Bronzor;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+436;Bronzor;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+436;Bronzor;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2/3 flechas
+436;Bronzor;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+436;Bronzor;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+436;Bronzor;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+436;Bronzor;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2/3 flechas
+437;Bronzong;Normal;;;;Evolucion;;;Evolucion de Bronzor
+438;Bonsly;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;8%;
+438;Bonsly;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;8%;
+438;Bonsly;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+438;Bonsly;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+439;Mime Jr.;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;8%;
+439;Mime Jr.;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;8%;
+439;Mime Jr.;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+439;Mime Jr.;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+440;Happiny;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;8%;
+440;Happiny;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;8%;
+440;Happiny;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+440;Happiny;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+441;Chatot;Normal;Gen 4;Ruby;Plains;Caza;3;12,5%;
+441;Chatot;Normal;Gen 4;Zafiro;Plains;Caza;3;12,5%;
+441;Chatot;Normal;Gen 4;Ruby;Ocean;Caza;2;12,5%;
+441;Chatot;Normal;Gen 4;Ruby;Ocean;Caza;3;12,5%;
+441;Chatot;Normal;Gen 4;Zafiro;Ocean;Caza;2;12,5%;
+441;Chatot;Normal;Gen 4;Zafiro;Ocean;Caza;3;12,5%;
+441;Chatot;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+441;Chatot;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+441;Chatot;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+441;Chatot;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+441;Chatot;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+441;Chatot;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
+441;Chatot;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;3 flechas
+441;Chatot;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+441;Chatot;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
+441;Chatot;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;3 flechas
+442;Spiritomb;Normal;Gen 4;Ruby;Ruin;Caza;2;12,5%;
+442;Spiritomb;Normal;Gen 4;Zafiro;Ruin;Caza;2;12,5%;
+442;Spiritomb;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;2 flechas
+442;Spiritomb;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;2 flechas
+443;Gible;Normal;Gen 4;Ruby;Cave;Caza;2;14,08%;
+443;Gible;Normal;Gen 4;Ruby;Cave;Caza;3;14,08%;
+443;Gible;Normal;Gen 4;Zafiro;Cave;Caza;2;14,08%;
+443;Gible;Normal;Gen 4;Zafiro;Cave;Caza;3;14,08%;
+443;Gible;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+443;Gible;Normal;Gen 4;Ruby;Volcano;Caza;3;14,08%;
+443;Gible;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+443;Gible;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+443;Gible;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;2/3 flechas
+443;Gible;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+443;Gible;Normal;RANDOM;Zafiro;Cave;Candidato a caza;;;2/3 flechas
+443;Gible;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+444;Gabite;Normal;;;;Evolucion;;;Evolucion de Gible
+445;Garchomp;Normal;;;;Evolucion;;;Evolucion de Gabite
+446;Munchlax;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;8%;
+446;Munchlax;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;8%;
+446;Munchlax;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;2,67%;
+446;Munchlax;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
+447;Riolu;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;12%;
+447;Riolu;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;12%;
+447;Riolu;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+447;Riolu;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+448;Lucario;Normal;;;;Evolucion;;;Evolucion de Riolu
+449;Hippopotas;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+449;Hippopotas;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+449;Hippopotas;Normal;Gen 4;Ruby;Volcano;Caza;2;12,5%;
+449;Hippopotas;Normal;Gen 4;Ruby;Volcano;Caza;3;14,08%;
+449;Hippopotas;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+449;Hippopotas;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+449;Hippopotas;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+449;Hippopotas;Normal;RANDOM;Ruby;Volcano;Candidato a caza;;;2/3 flechas
+449;Hippopotas;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+450;Hippowdon;Normal;;;;Evolucion;;;Evolucion de Hippopotas
+451;Skorupi;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+451;Skorupi;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+451;Skorupi;Normal;Gen 4;Zafiro;Wilderness;Caza;2;12,5%;
+451;Skorupi;Normal;Gen 4;Zafiro;Wilderness;Caza;3;12,5%;
+451;Skorupi;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+451;Skorupi;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2/3 flechas
+452;Drapion;Normal;;;;Evolucion;;;Evolucion de Skorupi
+453;Croagunk;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+453;Croagunk;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+453;Croagunk;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+453;Croagunk;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+453;Croagunk;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+453;Croagunk;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+454;Toxicroak;Normal;;;;Evolucion;;;Evolucion de Croagunk
+455;Carnivine;Normal;Gen 4;Ruby;Safari Zone;Caza;2;12,5%;
+455;Carnivine;Normal;Gen 4;Ruby;Safari Zone;Caza;3;12,5%;
+455;Carnivine;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+455;Carnivine;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+455;Carnivine;Normal;RANDOM;Ruby;Safari Zone;Candidato a caza;;;2/3 flechas
+455;Carnivine;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+456;Finneon;Normal;Gen 4;Ruby;Ocean;Caza;2;25%;
+456;Finneon;Normal;Gen 4;Ruby;Ocean;Caza;3;25%;
+456;Finneon;Normal;Gen 4;Zafiro;Ocean;Caza;2;25%;
+456;Finneon;Normal;Gen 4;Zafiro;Ocean;Caza;3;25%;
+456;Finneon;Normal;Gen 4;Zafiro;Lake;Caza;2;12,5%;
+456;Finneon;Normal;Gen 4;Zafiro;Lake;Caza;3;12,5%;
+456;Finneon;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
+456;Finneon;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
+456;Finneon;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
+457;Lumineon;Normal;;;;Evolucion;;;Evolucion de Finneon
+458;Mantyke;Normal;Gen 4;Ruby;Cualquier zona;Huevo;;12%;
+458;Mantyke;Normal;Gen 4;Zafiro;Cualquier zona;Huevo;;12%;
+458;Mantyke;Normal;RANDOM;Ruby;Cualquier zona;Huevo;;4%;
+458;Mantyke;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;4%;
+459;Snover;Normal;Gen 4;Ruby;Cave;Caza;3;14,08%;
+459;Snover;Normal;Gen 4;Zafiro;Ice Cave;Caza;2;12,5%;
+459;Snover;Normal;Gen 4;Zafiro;Ice Cave;Caza;3;12,5%;
+459;Snover;Normal;RANDOM;Ruby;Cave;Candidato a caza;;;3 flechas
+459;Snover;Normal;RANDOM;Zafiro;Ice Cave;Candidato a caza;;;2/3 flechas
+460;Abomasnow;Normal;;;;Evolucion;;;Evolucion de Snover
+461;Weavile;Normal;;;;Evolucion;;;Evolucion de Sneasel
+462;Magnezone;Normal;;;;Evolucion;;;Evolucion de Magneton
+463;Lickilicky;Normal;;;;Evolucion;;;Evolucion de Lickitung
+464;Rhyperior;Normal;;;;Evolucion;;;Evolucion de Rhydon
+465;Tangrowth;Normal;;;;Evolucion;;;Evolucion de Tangela
+466;Electivire;Normal;;;;Evolucion;;;Evolucion de Electabuzz
+467;Magmortar;Normal;;;;Evolucion;;;Evolucion de Magmar
+468;Togekiss;Normal;;;;Evolucion;;;Evolucion de Togetic
+469;Yanmega;Normal;;;;Evolucion;;;Evolucion de Yanma
+470;Leafeon;Normal;;;;Evolucion;;;Evolucion de Eevee (Gen 4 o RANDOM, Forest de ambos tableros)
+471;Glaceon;Normal;;;;Evolucion;;;Evolucion de Eevee (Gen 4 o RANDOM, Ice Cave de Zafiro o Cave de Ruby)
+472;Gliscor;Normal;;;;Evolucion;;;Evolucion de Gligar
+473;Mamoswine;Normal;;;;Evolucion;;;Evolucion de Piloswine
+474;Porygon-Z;Normal;;;;Evolucion;;;Evolucion de Porygon2
+475;Gallade;Normal;;;;Evolucion;;;"Evolucion de Kirlia (Gen 4/RANDOM: si falta y la otra rama ya esta capturada; si ambas estan capturadas, Zafiro)"
+476;Probopass;Normal;;;;Evolucion;;;Evolucion de Nosepass
+477;Dusknoir;Normal;;;;Evolucion;;;Evolucion de Dusclops
+478;Froslass;Normal;;;;Evolucion;;;"Evolucion de Snorunt (Gen 4/RANDOM: si falta y la otra rama ya esta capturada; si ambas estan capturadas, Zafiro)"
+479;Rotom;Normal;Gen 4;Ruby;Ruin;Caza;3;12,5%;
+479;Rotom;Normal;Gen 4;Zafiro;Ruin;Caza;3;12,5%;
+479;Rotom;Normal;Gen 4;Ruby;City;Caza;3;12,5%;
+479;Rotom;Normal;RANDOM;Ruby;City;Candidato a caza;;;3 flechas
+479;Rotom;Normal;RANDOM;Ruby;Ruin;Candidato a caza;;;3 flechas
+479;Rotom;Normal;RANDOM;Zafiro;Ruin;Candidato a caza;;;3 flechas
+480;Uxie;Especial;;;;Especial;;;"Gen 4, Zafiro, Lake: al menos 10 capturas/evoluciones. 20% compartido entre Uxie y Azelf; al capturar uno, el otro conserva el 20%."
+481;Mesprit;Especial;;;;Especial;;;Gen 4, ambos tableros: 5% en cualquier zona, aumentado al 20% en Lake. Sin minimo de capturas.
+482;Azelf;Especial;;;;Especial;;;"Gen 4, Zafiro, Lake: al menos 10 capturas/evoluciones. 20% compartido entre Uxie y Azelf; al capturar uno, el otro conserva el 20%."
+483;Dialga;Especial;;;;Especial;;;Gen 4, Zafiro, cualquier zona: Uxie, Azelf y Mesprit capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%.
+484;Palkia;Especial;;;;Especial;;;Gen 4, Ruby, cualquier zona: Uxie, Azelf y Mesprit capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%.
+485;Heatran;Especial;;;;Especial;;;Gen 4, Ruby, Volcano: al menos 15 capturas/evoluciones en la partida. 25%.
+486;Regigigas;Especial;;;;Especial;;;Gen 4, ambos tableros, Ruin: Regirock, Regice y Registeel capturados en la Pokedex. 25%, sin minimo de capturas en partida.
+487;Giratina;Especial;;;;Especial;;;Gen 4, ambos tableros, cualquier zona: Dialga y Palkia capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%.
+488;Cresselia;Especial;;;;Especial;;;Gen 4, ambos tableros, cualquier zona: 5%, sin minimo de capturas.
+489;Phione;Especial;;;;Especial;;;Gen 4, ambos tableros, Ocean: haber capturado a Manaphy en esta partida. 25%.
+490;Manaphy;Especial;;;;Especial;;;"Gen 4 o RANDOM, ambos tableros: capturar cinco Pokemon de huevo en cualquier bioma. El siguiente huevo entregado en Ocean sera el huevo especial de Manaphy desde que aparece. Al iniciar ese intento se consume el contador; si se pierde, hay que capturar cinco huevos de nuevo. No entra en el sorteo ordinario."
+491;Darkrai;Especial;;;;Especial;;;Gen 4, ambos tableros, cualquier zona: haber capturado a Cresselia en esta partida y llevar al menos 15 capturas/evoluciones. 25%.
+492;Shaymin;Especial;;;;Especial;;;Gen 4, ambos tableros, Forest: al menos 15 capturas/evoluciones en la partida. 25%.
+493;Arceus;Especial;;;;Especial;;;Gen 4, ambos tableros, cualquier zona: Dialga, Palkia y Giratina capturados en la Pokedex y al menos 30 capturas/evoluciones en la partida. 25%.
+522;Blitzle;Normal;;;;Sin ruta natural detectada;;;
+523;Zebstrika;Normal;;;;Evolucion;;;Evolucion de Blitzle
+523;Zebstrika;Normal;;;;Sin ruta natural detectada;;;
+610;Axew;Normal;;;;Sin ruta natural detectada;;;
+698;Amaura;Normal;;;;Sin ruta natural detectada;;;
+722;Rowlet;Normal;;;;Sin ruta natural detectada;;;
+840;Applin;Normal;;;;Sin ruta natural detectada;;;
+909;Fuecoco;Normal;;;;Sin ruta natural detectada;;;

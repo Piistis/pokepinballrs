@@ -1,0 +1,364 @@
+{
+  "version": 1,
+  "instructions": "Editar specials para los encuentros especiales y evolution_overrides para ramas que dependen del contexto. No editar ENCUENTROS.md. reviewed_functions obliga a revisar descripciones al cambiar el comportamiento, no las tablas de zonas. No actualizar huellas a ciegas.",
+  "general_notes": [
+    "Los requisitos de Pokedex exigen CAPTURADO, no solo VISTO. Las capturas de partida incluyen evoluciones.",
+    "Los legendarios del selector nuevo se capturan una vez por partida; fallar un intento no consume su oportunidad. Rayquaza, los bonus originales y Manaphy conservan sus eventos propios.",
+    "En RANDOM se eligen dos grupos errantes y dos especiales compatibles con el tablero. Solo los elegidos pueden salir por este selector; Manaphy y los bonus son independientes.",
+    "Si las probabilidades de legendarios elegibles superan el 100%, el 100% se reparte por igual entre las especies elegibles. En otro caso se mantienen los porcentajes indicados."
+  ],
+  "specials": [
+    {
+      "species": "SPECIES_ARTICUNO",
+      "description": "Gen 1, Zafiro: cualquier zona, 5% compartido entre las aves disponibles. En Ice Cave, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras aves."
+    },
+    {
+      "species": "SPECIES_ZAPDOS",
+      "description": "Gen 1, Zafiro: cualquier zona, 5% compartido entre las aves disponibles. En Plains, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras aves."
+    },
+    {
+      "species": "SPECIES_MOLTRES",
+      "description": "Gen 1, Zafiro: cualquier zona, 5% compartido entre las aves disponibles. En Wilderness, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras aves."
+    },
+    {
+      "species": "SPECIES_MEW",
+      "description": "Gen 1, ambos tableros, cualquier zona: tener capturados en la Pokedex los Pokemon nacionales 001-150 y llevar al menos 15 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_MEWTWO",
+      "description": "Gen 1, ambos tableros, cualquier zona: Articuno, Zapdos y Moltres capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_SUICUNE",
+      "description": "Gen 2, Ruby: cualquier zona, 5% compartido entre las bestias disponibles. En Ocean, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras bestias."
+    },
+    {
+      "species": "SPECIES_RAIKOU",
+      "description": "Gen 2, Ruby: cualquier zona, 5% compartido entre las bestias disponibles. En Safari Zone, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras bestias."
+    },
+    {
+      "species": "SPECIES_ENTEI",
+      "description": "Gen 2, Ruby: cualquier zona, 5% compartido entre las bestias disponibles. En Volcano, desde 10 capturas/evoluciones en partida: 20% para este Pokemon y 5% compartido entre las otras bestias."
+    },
+    {
+      "species": "SPECIES_LUGIA",
+      "description": "Gen 2, Zafiro, cualquier zona: Suicune, Raikou y Entei capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_HO_OH",
+      "description": "Gen 2, Ruby, cualquier zona: Suicune, Raikou y Entei capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_CELEBI",
+      "description": "Gen 2, ambos tableros, Forest: al menos 15 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_DEOXYS",
+      "description": "Gen 3, ambos tableros, Ruin: haber capturado a Rayquaza en esta partida. 20%."
+    },
+    {
+      "species": "SPECIES_UXIE",
+      "description": "Gen 4, Zafiro, Lake: al menos 10 capturas/evoluciones. 20% compartido entre Uxie y Azelf; al capturar uno, el otro conserva el 20%."
+    },
+    {
+      "species": "SPECIES_AZELF",
+      "description": "Gen 4, Zafiro, Lake: al menos 10 capturas/evoluciones. 20% compartido entre Uxie y Azelf; al capturar uno, el otro conserva el 20%."
+    },
+    {
+      "species": "SPECIES_MESPRIT",
+      "description": "Gen 4, ambos tableros: 5% en cualquier zona, aumentado al 20% en Lake. Sin minimo de capturas."
+    },
+    {
+      "species": "SPECIES_DIALGA",
+      "description": "Gen 4, Zafiro, cualquier zona: Uxie, Azelf y Mesprit capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_PALKIA",
+      "description": "Gen 4, Ruby, cualquier zona: Uxie, Azelf y Mesprit capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_HEATRAN",
+      "description": "Gen 4, Ruby, Volcano: al menos 15 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_REGIGIGAS",
+      "description": "Gen 4, ambos tableros, Ruin: Regirock, Regice y Registeel capturados en la Pokedex. 25%, sin minimo de capturas en partida."
+    },
+    {
+      "species": "SPECIES_GIRATINA",
+      "description": "Gen 4, ambos tableros, cualquier zona: Dialga y Palkia capturados en la Pokedex y al menos 20 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_CRESSELIA",
+      "description": "Gen 4, ambos tableros, cualquier zona: 5%, sin minimo de capturas."
+    },
+    {
+      "species": "SPECIES_PHIONE",
+      "description": "Gen 4, ambos tableros, Ocean: haber capturado a Manaphy en esta partida. 25%."
+    },
+    {
+      "species": "SPECIES_DARKRAI",
+      "description": "Gen 4, ambos tableros, cualquier zona: haber capturado a Cresselia en esta partida y llevar al menos 15 capturas/evoluciones. 25%."
+    },
+    {
+      "species": "SPECIES_SHAYMIN",
+      "description": "Gen 4, ambos tableros, Forest: al menos 15 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_ARCEUS",
+      "description": "Gen 4, ambos tableros, cualquier zona: Dialga, Palkia y Giratina capturados en la Pokedex y al menos 30 capturas/evoluciones en la partida. 25%."
+    },
+    {
+      "species": "SPECIES_MANAPHY",
+      "description": "Gen 4 o RANDOM, ambos tableros: capturar cinco Pokemon de huevo en cualquier bioma. El siguiente huevo entregado en Ocean sera el huevo especial de Manaphy desde que aparece. Al iniciar ese intento se consume el contador; si se pierde, hay que capturar cinco huevos de nuevo. No entra en el sorteo ordinario."
+    },
+    {
+      "species": "SPECIES_RAYQUAZA",
+      "description": "Bonus de Rayquaza, accesible desde ambos tableros. La fase de captura se activa al superar el bonus cuando numCompletedBonusStages % 10 == 9 (segunda visita a Rayquaza del ciclo). No usa una probabilidad de caza normal."
+    },
+    {
+      "species": "SPECIES_GROUDON",
+      "description": "Bonus de Groudon, Ruby. La fase de captura se activa al superarlo cuando numCompletedBonusStages % 5 == 3 (segunda visita a Groudon del ciclo). No usa una probabilidad de caza normal."
+    },
+    {
+      "species": "SPECIES_KYOGRE",
+      "description": "Bonus de Kyogre, Zafiro. La fase de captura se activa al superarlo cuando numCompletedBonusStages % 5 == 3 (segunda visita a Kyogre del ciclo). No usa una probabilidad de caza normal."
+    },
+    {
+      "species": "SPECIES_JIRACHI",
+      "description": "Existe el premio PRIZE_JIRACHI_CATCH_MODE del agujero central, que activa el modo Jirachi. Falta detallar en esta guia la disponibilidad y el peso del premio en la ruleta.",
+      "pending": true
+    },
+    {
+      "species": "SPECIES_LATIOS",
+      "description": "Ruby, fuera de Gen 4: aparece en la seleccion heredada de invitados, con al menos 100 especies capturadas registradas en gBoardConfig y 5 capturas/evoluciones en partida. El grupo se activa al 1% (2% con mejora e-Reader), luego prioriza invitados pendientes o sortea entre candidatos. No es un 1% individual garantizado; forceSpecialMons omite esos requisitos."
+    },
+    {
+      "species": "SPECIES_LATIAS",
+      "description": "Zafiro, fuera de Gen 4: aparece en la seleccion heredada de invitados, con al menos 100 especies capturadas registradas en gBoardConfig y 5 capturas/evoluciones en partida. El grupo se activa al 1% (2% con mejora e-Reader), luego prioriza invitados pendientes o sortea entre candidatos. No es un 1% individual garantizado; forceSpecialMons omite esos requisitos."
+    },
+    {
+      "species": "SPECIES_PICHU",
+      "description": "Huevo especial heredado, ambos tableros, fuera de Gen 4: al menos 5 capturas/evoluciones y no ser el ultimo huevo. El codigo actual usa 2% sin mejora e-Reader y 1% con ella; forcePichuEgg puede forzarlo. Sus rutas ordinarias, si las hay, se muestran debajo."
+    },
+    {
+      "species": "SPECIES_CHIKORITA",
+      "description": "Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+    },
+    {
+      "species": "SPECIES_CYNDAQUIL",
+      "description": "Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+    },
+    {
+      "species": "SPECIES_TOTODILE",
+      "description": "Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+    },
+    {
+      "species": "SPECIES_AERODACTYL",
+      "description": "Ademas de las rutas ordinarias indicadas debajo, puede obtenerse con la carta e-Reader de invitados especiales fuera de Gen 4. Tambien participa en el grupo de invitados heredado si ya tiene un flag en la Pokedex: grupo al 1% (2% con mejora), desde 100 especies registradas como capturadas en gBoardConfig y 5 capturas/evoluciones en partida. Se priorizan invitados pendientes; el porcentaje no es individual. forceSpecialMons puede forzar el grupo."
+    }
+  ],
+  "evolution_overrides": {
+    "SPECIES_WURMPLE": [
+      {
+        "target": "SPECIES_SILCOON",
+        "condition": "prioridad si falta en la Pokedex; si ambas ramas estan capturadas, Ruby"
+      },
+      {
+        "target": "SPECIES_CASCOON",
+        "condition": "si Silcoon esta capturado y falta Cascoon; si ambas ramas estan capturadas, Zafiro"
+      }
+    ],
+    "SPECIES_GLOOM": [
+      {
+        "target": "SPECIES_VILEPLUME",
+        "condition": "Ruby"
+      },
+      {
+        "target": "SPECIES_BELLOSSOM",
+        "condition": "Zafiro"
+      }
+    ],
+    "SPECIES_CLAMPERL": [
+      {
+        "target": "SPECIES_HUNTAIL",
+        "condition": "Ruby"
+      },
+      {
+        "target": "SPECIES_GOREBYSS",
+        "condition": "Zafiro"
+      }
+    ],
+    "SPECIES_POLIWHIRL": [
+      {
+        "target": "SPECIES_POLIWRATH",
+        "condition": "Ruby"
+      },
+      {
+        "target": "SPECIES_POLITOED",
+        "condition": "Zafiro"
+      }
+    ],
+    "SPECIES_SLOWPOKE": [
+      {
+        "target": "SPECIES_SLOWBRO",
+        "condition": "Ruby"
+      },
+      {
+        "target": "SPECIES_SLOWKING",
+        "condition": "Zafiro"
+      }
+    ],
+    "SPECIES_EEVEE": [
+      {
+        "target": "SPECIES_VAPOREON",
+        "condition": "Ocean de ambos tableros o Lake"
+      },
+      {
+        "target": "SPECIES_FLAREON",
+        "condition": "Volcano"
+      },
+      {
+        "target": "SPECIES_JOLTEON",
+        "condition": "resto de zonas, salvo las excepciones Leafeon/Glaceon en Gen 4 o RANDOM"
+      },
+      {
+        "target": "SPECIES_LEAFEON",
+        "condition": "Gen 4 o RANDOM, Forest de ambos tableros"
+      },
+      {
+        "target": "SPECIES_GLACEON",
+        "condition": "Gen 4 o RANDOM, Ice Cave de Zafiro o Cave de Ruby"
+      }
+    ],
+    "SPECIES_TYROGUE": [
+      {
+        "target": "SPECIES_HITMONLEE",
+        "condition": "segun zona y las ramas pendientes en la Pokedex"
+      },
+      {
+        "target": "SPECIES_HITMONCHAN",
+        "condition": "segun zona y las ramas pendientes en la Pokedex"
+      },
+      {
+        "target": "SPECIES_HITMONTOP",
+        "condition": "segun zona y las ramas pendientes en la Pokedex"
+      }
+    ],
+    "SPECIES_BURMY": [
+      {
+        "target": "SPECIES_WORMADAM",
+        "condition": "rama base; en Gen 4/RANDOM se prioriza si falta y se elige en Ruby si ambas estan capturadas"
+      },
+      {
+        "target": "SPECIES_MOTHIM",
+        "condition": "Gen 4/RANDOM: si falta y la otra rama ya esta capturada; si ambas estan capturadas, Zafiro"
+      }
+    ],
+    "SPECIES_KIRLIA": [
+      {
+        "target": "SPECIES_GARDEVOIR",
+        "condition": "rama base; en Gen 4/RANDOM se prioriza si falta y se elige en Ruby si ambas estan capturadas"
+      },
+      {
+        "target": "SPECIES_GALLADE",
+        "condition": "Gen 4/RANDOM: si falta y la otra rama ya esta capturada; si ambas estan capturadas, Zafiro"
+      }
+    ],
+    "SPECIES_SNORUNT": [
+      {
+        "target": "SPECIES_GLALIE",
+        "condition": "rama base; en Gen 4/RANDOM se prioriza si falta y se elige en Ruby si ambas estan capturadas"
+      },
+      {
+        "target": "SPECIES_FROSLASS",
+        "condition": "Gen 4/RANDOM: si falta y la otra rama ya esta capturada; si ambas estan capturadas, Zafiro"
+      }
+    ],
+    "SPECIES_NINCADA": [
+      {
+        "target": "SPECIES_NINJASK",
+        "condition": "se registra al evolucionar Nincada"
+      },
+      {
+        "target": "SPECIES_SHEDINJA",
+        "condition": "se registra adicionalmente al evolucionar Nincada"
+      }
+    ]
+  },
+  "reviewed_functions": [
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "GetEvolutionTargetForCurrentContext",
+      "sha256": "9b9a6366b620c49c03b1fbcdf6ae841083298ef0458cd8143b43aa36686362db"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "PickMissingBranchEvolution",
+      "sha256": "5a1e695378bc11e029429243bb4b224fafcb252b66ddd098a3c90e3b0d1b292a"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "PickMissingTripleBranchEvolution",
+      "sha256": "6f0ac1ee432fbab78ab6ae39857ec7aaed82b868d569c5b85227ed0e14bb76a6"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "BuildSpeciesWeightsForCatchEmMode",
+      "sha256": "bdbeacdb793aee99b343777a167d8414dff036857a27e7f6dce01f0171e15523"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "GetEggEncounterWeight",
+      "sha256": "5580386c3ba4d31bc191481aeee974f4d9f5c64e4da200eead77ef953d1aefa7"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "GetEggEncounterCount",
+      "sha256": "07006d2ed4a0c2ea5ed22cfcfa628fbdbda0e8d737f09987a5ca930381e8492d"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "GetEggMonForSelectedGeneration",
+      "sha256": "33b909400001308ec97e37bee9e21b02784f839ac2c6a657f7744621bafc2e7e"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "PickSpeciesForCatchEmMode",
+      "sha256": "5ae3422a1a162b1c3a560c0983e974e2c0603c6f15e2c8f590069c2c1d7d86bc"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "PickSpeciesForEggMode",
+      "sha256": "03d4b6d412005d113f6885be005e86ba077c91119b6021c4292790ba8fae2f14"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "MeetsLegendarySpecialConditions",
+      "sha256": "21e8e917c00f799ed3b5c63886a1cdbe9d96863d5f429adf383888d6fe0bdb28"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "BuildLegendaryEncounterWeights",
+      "sha256": "921664ba4b6f71e0dcc498e220864883f1d65eca2e43183d013569a6e5d6759f"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "PrepareManaphyEgg",
+      "sha256": "598087e9634c088765c9e5efb895487e9c84003d373030ab4b2f0d4de8a004e3"
+    },
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "function": "BeginManaphyEggAttempt",
+      "sha256": "348c1c21426df4c8714c2ccb276f8221a304369e689e20c305d3a7784b99756a"
+    }
+  ],
+  "reviewed_blocks": [
+    {
+      "file": "src/main_board_catch_hatch_picker.c",
+      "start": "static const struct LegendarySpecialRule sLegendarySpecialRules[]",
+      "end": "static s16 GetLegendaryEncounterIndex",
+      "sha256": "be71acf4184f4aa5b84f1d448730ea4d747004b255209f85d93bf1b7e37121c9"
+    }
+  ]
+}

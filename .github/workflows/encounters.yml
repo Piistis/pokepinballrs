@@ -1,0 +1,49 @@
+name: Lista de encuentros
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'include/constants/**'
+      - 'data/**'
+      - 'docs/encounters_special.json'
+      - 'docs/ENCUENTROS.md'
+      - 'docs/encounters_generated.csv'
+      - 'tools/scripts/*encounter*'
+      - '.github/workflows/encounters.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'include/constants/**'
+      - 'data/**'
+      - 'docs/**'
+      - 'tools/scripts/*encounter*'
+      - '.github/workflows/encounters.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  encounters:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generar lista
+        id: generate
+        run: python tools/scripts/generate_encounter_guide.py
+      - name: Pruebas del generador
+        run: python tools/scripts/test_encounter_guide.py
+      - name: Publicar lista como artefacto de esta ejecucion
+        if: always() && steps.generate.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: lista-encuentros
+          path: |
+            docs/ENCUENTROS.md
+            docs/encounters_generated.csv
+      - name: Comprobar que se ha actualizado la lista versionada
+        run: git diff --exit-code -- docs/ENCUENTROS.md docs/encounters_generated.csv

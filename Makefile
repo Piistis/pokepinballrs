@@ -120,6 +120,14 @@ ifeq ($(COMPARE),1)
 	@$(SHA1) pokepinballrs.sha1
 endif
 
+.PHONY: encounters check-encounters
+encounters:
+	python3 tools/scripts/generate_encounter_guide.py
+
+check-encounters:
+	python3 tools/scripts/generate_encounter_guide.py --check
+	python3 tools/scripts/test_encounter_guide.py
+
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: rom
 
