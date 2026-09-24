@@ -155,7 +155,10 @@ void PinballGame_State0_49ED4(void)
     }
 
     if (var0 == 1 && gMain.selectedField < MAIN_FIELD_COUNT)
+    {
         InitRandomWildMonLocationsForNewGame();
+        InitLegendaryEncountersForNewGame();
+    }
 
     gBoardConfig.caughtSpeciesCount = 0;
     for (j = 0; j < NUM_SPECIES; j++)

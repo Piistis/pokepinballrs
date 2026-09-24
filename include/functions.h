@@ -498,6 +498,8 @@ void AddManaphyEggCapture(void);
 void LoadHatchEggFrame(s16 frame);
 void RestoreManaphyEggPalette(void);
 s16 PokedexListPositionToSpecies(s16 listPosition);
+void InitLegendaryEncountersForNewGame(void);
+void RestoreLegendaryEncounterState(void);
 void RestoreManaphyEggOam(void);
 void RenderManaphyEggPalette(void);
 //extern ? InitEggMode();

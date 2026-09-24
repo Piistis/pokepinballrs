@@ -214,6 +214,7 @@ void RestoreGameState(u16 arg0)
         gCurrentPinballGame->debugForcedEggSpecies = SPECIES_NONE;
         gCurrentPinballGame->debugForcedCatchSpecies = SPECIES_NONE;
         NormalizeManaphyEggState();
+        RestoreLegendaryEncounterState();
         for (i = 0; i < NUM_EREADER_CARDS; i++)
             gMain.eReaderBonuses[i] = gCurrentPinballGame->eReaderBonuses[i];
 

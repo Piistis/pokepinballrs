@@ -1,7 +1,7 @@
 gWildMonLocations:: @ 0x08055A84
 	@ Forest | Ruby | Two arrows
-	.2byte SPECIES_DEOXYS
-	.2byte SPECIES_DEOXYS
+	.2byte SPECIES_SLAKOTH
+	.2byte SPECIES_ROSELIA
 	.2byte SPECIES_SILCOON
 	.2byte SPECIES_CASCOON
 	.2byte SPECIES_DUSKULL
@@ -11,13 +11,13 @@ gWildMonLocations:: @ 0x08055A84
 
 	@ Forest | Ruby | Three arrows
 	.2byte SPECIES_TREECKO
-	.2byte SPECIES_DEOXYS
-	.2byte SPECIES_DEOXYS
+	.2byte SPECIES_SLAKOTH
+	.2byte SPECIES_ROSELIA
 	.2byte SPECIES_SILCOON
 	.2byte SPECIES_CASCOON
 	.2byte SPECIES_DUSKULL
 	.2byte SPECIES_NINCADA
-	.2byte SPECIES_DEOXYS
+	.2byte SPECIES_KECLEON
 
 	@ Forest | Sapphire | Two arrows
 	.2byte SPECIES_SLAKOTH
