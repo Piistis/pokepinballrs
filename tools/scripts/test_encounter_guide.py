@@ -59,11 +59,20 @@ class GuideTests(unittest.TestCase):
 
     def test_unavailable_species_not_invented(self):
         self.assertNotIn("SPECIES_FUECOCO", self.reachable)
-        self.assertNotIn("SPECIES_ESPEON", self.reachable)
-        self.assertNotIn("SPECIES_UMBREON", self.reachable)
         self.assertIn("Sin ruta natural detectada", self.md)
         # Jirachi has a known route, even though its roulette details need review.
         self.assertIn("SPECIES_JIRACHI", self.reachable)
+
+    def test_gen2_eevee_and_johto_evolutions(self):
+        for board in ("Ruby", "Sapphire"):
+            routes = [r for r in self.routes if r.species == "SPECIES_EEVEE"
+                      and r.mode == "Gen 2" and r.board == board and r.area == "Ruin"]
+            self.assertEqual({r.arrows for r in routes}, {2, 3})
+            self.assertTrue(all(r.chance > 0 for r in routes))
+        for mon, area in (("SPECIES_ESPEON", "Plains"), ("SPECIES_UMBREON", "Ruin")):
+            self.assertIn(mon, self.reachable)
+            entry = next(e for e in self.manual["evolution_overrides"]["SPECIES_EEVEE"] if e["target"] == mon)
+            self.assertEqual(entry["condition"], f"Gen 2 o RANDOM, {area} de ambos tableros")
 
     def with_modified_read(self, path, transform):
         original = guide.read

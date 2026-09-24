@@ -891,7 +891,7 @@ gWildMonLocationsGen2::
 	.2byte SPECIES_HOUNDOOM
 	.2byte SPECIES_QUAGSIRE
 	.2byte SPECIES_XATU
-	.2byte SPECIES_NONE
+	.2byte SPECIES_EEVEE
 	.2byte SPECIES_NONE
 	.2byte SPECIES_NONE
 
@@ -903,7 +903,7 @@ gWildMonLocationsGen2::
 	.2byte SPECIES_MANTINE
 	.2byte SPECIES_SKARMORY
 	.2byte SPECIES_XATU
-	.2byte SPECIES_NONE
+	.2byte SPECIES_EEVEE
 
 	@ Ruin | Sapphire | Two arrows
 	.2byte SPECIES_UNOWN
@@ -911,7 +911,7 @@ gWildMonLocationsGen2::
 	.2byte SPECIES_HOUNDOOM
 	.2byte SPECIES_QUAGSIRE
 	.2byte SPECIES_XATU
-	.2byte SPECIES_NONE
+	.2byte SPECIES_EEVEE
 	.2byte SPECIES_NONE
 	.2byte SPECIES_NONE
 
@@ -923,7 +923,7 @@ gWildMonLocationsGen2::
 	.2byte SPECIES_MANTINE
 	.2byte SPECIES_SKARMORY
 	.2byte SPECIES_XATU
-	.2byte SPECIES_NONE
+	.2byte SPECIES_EEVEE
 
 	@ City | Ruby | Two arrows
 	.2byte SPECIES_SENTRET

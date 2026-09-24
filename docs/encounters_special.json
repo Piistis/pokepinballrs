@@ -220,7 +220,15 @@
       },
       {
         "target": "SPECIES_JOLTEON",
-        "condition": "resto de zonas, salvo las excepciones Leafeon/Glaceon en Gen 4 o RANDOM"
+        "condition": "resto de zonas, salvo Espeon/Umbreon en Gen 2 o RANDOM y Leafeon/Glaceon en Gen 4 o RANDOM"
+      },
+      {
+        "target": "SPECIES_ESPEON",
+        "condition": "Gen 2 o RANDOM, Plains de ambos tableros"
+      },
+      {
+        "target": "SPECIES_UMBREON",
+        "condition": "Gen 2 o RANDOM, Ruin de ambos tableros"
       },
       {
         "target": "SPECIES_LEAFEON",
@@ -290,7 +298,7 @@
     {
       "file": "src/main_board_catch_hatch_picker.c",
       "function": "GetEvolutionTargetForCurrentContext",
-      "sha256": "9b9a6366b620c49c03b1fbcdf6ae841083298ef0458cd8143b43aa36686362db"
+      "sha256": "041a7611497808bc9d54902eff2bf402aa24a5cfc7f60bee410b8e8226ef648c"
     },
     {
       "file": "src/main_board_catch_hatch_picker.c",

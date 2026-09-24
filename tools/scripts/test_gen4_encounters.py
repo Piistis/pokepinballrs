@@ -142,7 +142,7 @@ def prepare_data():
         for kind in ("Gfx", "Pals"):
             assert f".4byte gMonCatchSpriteGroup{group}_{kind}" in rom
     assert "/*0x130*/ s16 speciesWeights[25];" in (ROOT / "include/global.h").read_text(encoding="utf-8")
-    species_c = "struct Species { u16 catchIndex, eggIndex, evolutionMethod, evolutionTarget; };\n"
+    species_c = "struct Species { u16 catchIndex, eggIndex; signed char evolutionMethod; u16 evolutionTarget; };\n"
     species_c += "const struct Species gSpeciesInfo[NUM_SPECIES] = {\n"
     for mon, data in info.items():
         species_c += "    [%s] = {%s, %s, %s, %s},\n" % (
@@ -150,6 +150,15 @@ def prepare_data():
     species_c += "};\nconst u16 gWildMonLocationsGen4[AREA_COUNT][2][8] = {\n"
     for i in range(0, len(names), 2):
         species_c += "    {{%s}, {%s}},\n" % (", ".join(names[i]), ", ".join(names[i + 1]))
+    species_c += "};\nconst u16 gWildMonLocationsGen2[AREA_COUNT][2][8] = {\n"
+    gen2 = section((ROOT / "data/mon_locations.inc").read_text(encoding="utf-8"),
+                   "gWildMonLocationsGen2::", "gWildMonLocationsGen4::")
+    gen2_rows = re.findall(r"@ ([^\n]+)\n((?:\s*\.2byte SPECIES_\w+\n)+)", gen2)
+    assert len(gen2_rows) == 32
+    gen2_names = [re.findall(r"SPECIES_\w+", row) for _, row in gen2_rows]
+    assert all(len(row) == 8 for row in gen2_names)
+    for i in range(0, len(gen2_names), 2):
+        species_c += "    {{%s}, {%s}},\n" % (", ".join(gen2_names[i]), ", ".join(gen2_names[i + 1]))
     return species_c + "};\n" + eggs_source
 
 
@@ -162,6 +171,8 @@ void SetDex(u16 species, u8 flag)
 }
 static u16 GetWildMonForSelectedGeneration(s16 area, s16 arrows, s16 index)
 {
+    if (gSelectedGeneration == GENERATION_2)
+        return gWildMonLocationsGen2[area][arrows][index];
     return gWildMonLocationsGen4[area][arrows][index];
 }
 int main(void)
@@ -260,6 +271,70 @@ int main(void)
         game.area = field == FIELD_RUBY ? AREA_CAVE_RUBY : AREA_ICE_CAVE;
         CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == SPECIES_GLACEON);
     }
+    /* Eevee is catchable in Gen 2 on either board, even as the first catch. */
+    gSelectedGeneration = GENERATION_2;
+    for (field = 0; field < MAIN_FIELD_COUNT; field++)
+    for (arrows = 0; arrows < 2; arrows++)
+    for (flag = 0; flag <= SPECIES_CAUGHT; flag++)
+    {
+        gMain.selectedField = field;
+        game.area = field == FIELD_RUBY ? AREA_RUIN_RUBY : AREA_RUIN_SAPPHIRE;
+        game.catchModeArrows = (s16)(arrows + 2);
+        game.caughtMonCount = 0;
+        game.lastCatchSpecies = SPECIES_NONE;
+        for (i = 0; i < NUM_SPECIES; i++) SetDex((u16)i, (u8)flag);
+        BuildSpeciesWeightsForCatchEmMode();
+        total = game.totalWeight; count = 0;
+        for (nextRoll = 0; nextRoll < total; nextRoll++)
+        {
+            PickSpeciesForCatchEmMode();
+            if (game.currentSpecies == SPECIES_EEVEE) count++;
+        }
+        CHECK(count > 0 && gSpeciesInfo[SPECIES_EEVEE].catchIndex > 0);
+    }
+    /* Target, evolution items and successful registration agree in every mode. */
+    gMain.mainState = 1;
+    for (generation = GENERATION_1; generation <= GENERATION_RANDOM; generation++)
+    for (field = 0; field < MAIN_FIELD_COUNT; field++)
+    {
+        gSelectedGeneration = generation;
+        gMain.selectedField = field;
+        game.area = field == FIELD_RUBY ? AREA_PLAINS_RUBY : AREA_PLAINS_SAPPHIRE;
+        candidate = generation == GENERATION_2 || generation == GENERATION_RANDOM ? SPECIES_ESPEON : SPECIES_JOLTEON;
+        CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == candidate);
+        CHECK(GetEvolutionMethodForCurrentContext(SPECIES_EEVEE) == (candidate == SPECIES_ESPEON ? 1 : 7));
+        SetDex(candidate, 0);
+        game.currentSpecies = SPECIES_EEVEE;
+        RegisterCaptureOrEvolution(1);
+        CHECK(game.currentSpecies == candidate && GetSavedPokedexFlag(candidate) == SPECIES_CAUGHT);
+
+        game.area = field == FIELD_RUBY ? AREA_RUIN_RUBY : AREA_RUIN_SAPPHIRE;
+        candidate = generation == GENERATION_2 || generation == GENERATION_RANDOM ? SPECIES_UMBREON : SPECIES_JOLTEON;
+        CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == candidate);
+        CHECK(GetEvolutionMethodForCurrentContext(SPECIES_EEVEE) == (candidate == SPECIES_UMBREON ? 1 : 7));
+        SetDex(candidate, 0);
+        game.currentSpecies = SPECIES_EEVEE;
+        RegisterCaptureOrEvolution(1);
+        CHECK(game.currentSpecies == candidate && GetSavedPokedexFlag(candidate) == SPECIES_CAUGHT);
+
+        game.area = field == FIELD_RUBY ? AREA_FOREST_RUBY : AREA_FOREST_SAPPHIRE;
+        candidate = generation == GENERATION_4 || generation == GENERATION_RANDOM ? SPECIES_LEAFEON : SPECIES_JOLTEON;
+        CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == candidate);
+        CHECK(GetEvolutionMethodForCurrentContext(SPECIES_EEVEE) == (candidate == SPECIES_LEAFEON ? 1 : 7));
+        game.area = field == FIELD_RUBY ? AREA_CAVE_RUBY : AREA_ICE_CAVE;
+        candidate = generation == GENERATION_4 || generation == GENERATION_RANDOM ? SPECIES_GLACEON : SPECIES_JOLTEON;
+        CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == candidate);
+        CHECK(GetEvolutionMethodForCurrentContext(SPECIES_EEVEE) == (candidate == SPECIES_GLACEON ? 1 : 7));
+        game.area = field == FIELD_RUBY ? AREA_OCEAN_RUBY : AREA_OCEAN_SAPPHIRE;
+        CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == SPECIES_VAPOREON);
+        CHECK(GetEvolutionMethodForCurrentContext(SPECIES_EEVEE) == 6);
+        game.area = field == FIELD_RUBY ? AREA_VOLCANO : AREA_LAKE;
+        CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == (field == FIELD_RUBY ? SPECIES_FLAREON : SPECIES_VAPOREON));
+        CHECK(GetEvolutionMethodForCurrentContext(SPECIES_EEVEE) == (field == FIELD_RUBY ? 3 : 6));
+        game.area = field == FIELD_RUBY ? AREA_CITY : AREA_WILDERNESS;
+        CHECK(GetEvolutionTargetForCurrentContext(SPECIES_EEVEE) == SPECIES_JOLTEON);
+        CHECK(GetEvolutionMethodForCurrentContext(SPECIES_EEVEE) == 7);
+    }
     return 0;
 }
 '''
@@ -275,8 +350,12 @@ def main():
     fixture = fixture[:fixture.index("static u16 GetWildMonForSelectedGeneration")]
     fixture += "static u16 GetWildMonForSelectedGeneration(s16 area, s16 arrows, s16 index);\n"
     fixture += "const u16 gCommonAndEggWeights[] = {10, 10, 15, 15, 2, 0};\n"
+    fixture += "typedef signed char s8;\n"
     getter = section(picker, "static u16 GetEggMonForSelectedGeneration", "static u8 GetSavedPokedexFlag")
     evolution = section(picker, "static u16 PickMissingBranchEvolution", "/**\n *   0 if captured via ball")
+    evolution += section((ROOT / "src/main_board_evolution_mode.c").read_text(),
+                         "static s8 GetEvolutionMethodForCurrentContext", "void CleanupEvolutionModeState")
+    evolution += legendary.registration
     weights = section(picker, "void BuildSpeciesWeightsForCatchEmMode", "void PickSpeciesForCatchEmMode")
     egg_code = picker[picker.index("static s16 GetEggEncounterCount"):]
     source_code = fixture + legendary.dex_code + legendary.rules + evolution + getter + weights + legendary.catch + egg_code + TESTS
@@ -311,6 +390,7 @@ def main():
     print("PASS: all Gen 4 nonlegendary species reachable on both boards; 32 eight-slot rows;")
     print("      catch/hatch separation, PNG palettes, graphics groups and all Dex hatch indices;")
     print("      real C catch/egg lotteries, no empty starting pools, RANDOM eggs and evolution branches.")
+    print("      Gen 2 Eevee catches on both boards; Eevee targets/items and Dex registration by mode.")
 
 
 if __name__ == "__main__":

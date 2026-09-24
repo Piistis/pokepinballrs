@@ -34,6 +34,12 @@ static s8 GetEvolutionMethodForCurrentContext(u16 species)
     case SPECIES_SLOWPOKE:
         return gMain.selectedField == FIELD_RUBY ? 1 : 4;
     case SPECIES_EEVEE:
+        if ((gSelectedGeneration == GENERATION_2 || gSelectedGeneration == GENERATION_RANDOM)
+         && (gCurrentPinballGame->area == AREA_PLAINS_RUBY
+          || gCurrentPinballGame->area == AREA_PLAINS_SAPPHIRE
+          || (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->area == AREA_RUIN_RUBY)
+          || (gMain.selectedField == FIELD_SAPPHIRE && gCurrentPinballGame->area == AREA_RUIN_SAPPHIRE)))
+            return 1;
         if ((gSelectedGeneration == GENERATION_4 || gSelectedGeneration == GENERATION_RANDOM)
          && (gCurrentPinballGame->area == AREA_FOREST_RUBY
           || gCurrentPinballGame->area == AREA_FOREST_SAPPHIRE

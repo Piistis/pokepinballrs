@@ -864,6 +864,15 @@ static u16 PickMissingTripleBranchEvolution(u16 target1, u16 target2, u16 target
 
 static u16 GetEvolutionTargetForCurrentContext(u16 species)
 {
+    if (species == SPECIES_EEVEE
+     && (gSelectedGeneration == GENERATION_2 || gSelectedGeneration == GENERATION_RANDOM))
+    {
+        if (gCurrentPinballGame->area == AREA_PLAINS_RUBY
+         || gCurrentPinballGame->area == AREA_PLAINS_SAPPHIRE)
+            return SPECIES_ESPEON;
+        if (IsLegendaryRuin())
+            return SPECIES_UMBREON;
+    }
     if (gSelectedGeneration == GENERATION_4 || gSelectedGeneration == GENERATION_RANDOM)
     {
         switch (species)
