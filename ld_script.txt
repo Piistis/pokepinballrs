@@ -134,6 +134,7 @@ SECTIONS
         . = ALIGN(4); src/data.o(.rodata)
         . = ALIGN(4); src/pokedex.o(.rodata)
         . = ALIGN(4); src/generation_select.o(.rodata)
+        . = ALIGN(4); src/main_board_catch_hatch_picker.o(.rodata)
         . = ALIGN(4); data/rom_2.o(.rodata)
     }=0xFF
 

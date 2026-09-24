@@ -121,7 +121,7 @@ static const s16 gPokedexOrder[NUM_SPECIES] = {
 #include "../data/pokedex_entries/pokedex_order.inc"
 };
 
-static s16 PokedexListPositionToSpecies(s16 listPosition)
+s16 PokedexListPositionToSpecies(s16 listPosition)
 {
     if (listPosition < 0)
         return gPokedexOrder[0];

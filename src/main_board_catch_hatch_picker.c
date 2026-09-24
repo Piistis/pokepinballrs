@@ -375,6 +375,171 @@ static u8 GetSavedPokedexFlag(s16 species)
     return SPECIES_UNSEEN;
 }
 
+#define LEGENDARY_ENCOUNTER_MAGIC 0x4C454731
+#define LEGENDARY_ROLL_RANGE 1200
+
+static s16 GetLegendaryEncounterIndex(u16 species)
+{
+    switch (species)
+    {
+    case SPECIES_ARTICUNO: return 0;
+    case SPECIES_ZAPDOS: return 1;
+    case SPECIES_MOLTRES: return 2;
+    case SPECIES_MEWTWO: return 3;
+    case SPECIES_MEW: return 4;
+    case SPECIES_SUICUNE: return 5;
+    case SPECIES_RAIKOU: return 6;
+    case SPECIES_ENTEI: return 7;
+    case SPECIES_LUGIA: return 8;
+    case SPECIES_HO_OH: return 9;
+    case SPECIES_CELEBI: return 10;
+    default: return -1;
+    }
+}
+
+static void NormalizeLegendaryEncounterState(void)
+{
+    if (gCurrentPinballGame->legendaryEncounterMagic != LEGENDARY_ENCOUNTER_MAGIC
+     || (gCurrentPinballGame->legendaryCaughtMask & ~0x7FF))
+    {
+        gCurrentPinballGame->legendaryEncounterMagic = LEGENDARY_ENCOUNTER_MAGIC;
+        gCurrentPinballGame->legendaryCaughtMask = 0;
+    }
+}
+
+static bool8 IsLegendaryCaughtThisGame(u16 species)
+{
+    s16 index = GetLegendaryEncounterIndex(species);
+    return index >= 0 && (gCurrentPinballGame->legendaryCaughtMask & (1 << index));
+}
+
+static void RegisterLegendaryCapture(u16 species)
+{
+    s16 index = GetLegendaryEncounterIndex(species);
+    NormalizeLegendaryEncounterState();
+    if (index >= 0)
+        gCurrentPinballGame->legendaryCaughtMask |= 1 << index;
+}
+
+static bool8 IsKantoPokedexCaught(void)
+{
+    s16 i;
+    for (i = 0; i < 150; i++)
+        if (GetSavedPokedexFlag(PokedexListPositionToSpecies(i)) < SPECIES_CAUGHT)
+            return FALSE;
+    return TRUE;
+}
+
+static bool8 IsTrioPokedexCaught(u16 first, u16 second, u16 third)
+{
+    return GetSavedPokedexFlag(first) >= SPECIES_CAUGHT
+        && GetSavedPokedexFlag(second) >= SPECIES_CAUGHT
+        && GetSavedPokedexFlag(third) >= SPECIES_CAUGHT;
+}
+
+static void AddLegendaryEncounter(u16 *species, u16 *weights, s16 *count, u16 mon, u16 weight)
+{
+    if (!IsLegendaryCaughtThisGame(mon))
+    {
+        species[*count] = mon;
+        weights[*count] = weight;
+        (*count)++;
+    }
+}
+
+static u16 PickLegendaryEncounter(void)
+{
+    u16 species[7], weights[7], trio[3];
+    s16 count = 0;
+    s16 specialCount, trioCount = 0, favored = -1;
+    s16 i, others = 0, trioWeight = 0;
+    u32 roll;
+    bool8 gen1, gen2;
+
+    if (gMain.mainState == STATE_GAME_IDLE || gMain.selectedField >= MAIN_FIELD_COUNT)
+        return SPECIES_NONE;
+
+    NormalizeLegendaryEncounterState();
+    gen1 = gSelectedGeneration == GENERATION_1 || gSelectedGeneration == GENERATION_RANDOM;
+    gen2 = gSelectedGeneration == GENERATION_2 || gSelectedGeneration == GENERATION_RANDOM;
+    if (gen1)
+    {
+        if (gCurrentPinballGame->caughtMonCount >= 15 && IsKantoPokedexCaught())
+            AddLegendaryEncounter(species, weights, &count, SPECIES_MEW, 300);
+        if (gCurrentPinballGame->caughtMonCount >= 20
+         && IsTrioPokedexCaught(SPECIES_ARTICUNO, SPECIES_ZAPDOS, SPECIES_MOLTRES))
+            AddLegendaryEncounter(species, weights, &count, SPECIES_MEWTWO, 300);
+    }
+    if (gen2)
+    {
+        if (gCurrentPinballGame->caughtMonCount >= 20
+         && IsTrioPokedexCaught(SPECIES_SUICUNE, SPECIES_RAIKOU, SPECIES_ENTEI))
+            AddLegendaryEncounter(species, weights, &count,
+                gMain.selectedField == FIELD_RUBY ? SPECIES_HO_OH : SPECIES_LUGIA, 300);
+        if (gCurrentPinballGame->caughtMonCount >= 15
+         && (gCurrentPinballGame->area == AREA_FOREST_RUBY
+          || gCurrentPinballGame->area == AREA_FOREST_SAPPHIRE))
+            AddLegendaryEncounter(species, weights, &count, SPECIES_CELEBI, 300);
+    }
+    specialCount = count;
+
+    if (gen1 && gMain.selectedField == FIELD_SAPPHIRE)
+    {
+        trio[0] = SPECIES_ARTICUNO;
+        trio[1] = SPECIES_ZAPDOS;
+        trio[2] = SPECIES_MOLTRES;
+        trioCount = 3;
+        switch (gCurrentPinballGame->area)
+        {
+        case AREA_ICE_CAVE: favored = 0; break;
+        case AREA_PLAINS_SAPPHIRE: favored = 1; break;
+        case AREA_WILDERNESS: favored = 2; break;
+        }
+    }
+    else if (gen2 && gMain.selectedField == FIELD_RUBY)
+    {
+        trio[0] = SPECIES_SUICUNE;
+        trio[1] = SPECIES_RAIKOU;
+        trio[2] = SPECIES_ENTEI;
+        trioCount = 3;
+        switch (gCurrentPinballGame->area)
+        {
+        case AREA_OCEAN_RUBY: favored = 0; break;
+        case AREA_SAFARI_ZONE: favored = 1; break;
+        case AREA_VOLCANO: favored = 2; break;
+        }
+    }
+    if (gCurrentPinballGame->caughtMonCount < 10)
+        favored = -1;
+    for (i = 0; i < trioCount; i++)
+        if (i != favored && !IsLegendaryCaughtThisGame(trio[i]))
+            others++;
+    for (i = 0; i < trioCount; i++)
+    {
+        if (IsLegendaryCaughtThisGame(trio[i]))
+            continue;
+        // A shared 5% bucket, plus 20% for the area's favored member at 10+.
+        weights[count] = i == favored ? 240 : 60 / others;
+        trioWeight += weights[count];
+        species[count++] = trio[i];
+    }
+
+    // RANDOM Forest can unlock all four 25% specials. Preserve the trio's 5%.
+    if (specialCount * 300 + trioWeight > LEGENDARY_ROLL_RANGE)
+        for (i = 0; i < specialCount; i++)
+            weights[i] = (LEGENDARY_ROLL_RANGE - trioWeight) / specialCount;
+    if (!count)
+        return SPECIES_NONE;
+    roll = GetTimeAdjustedRandom() % LEGENDARY_ROLL_RANGE;
+    for (i = 0; i < count; i++)
+    {
+        if (roll < weights[i])
+            return species[i];
+        roll -= weights[i];
+    }
+    return SPECIES_NONE;
+}
+
 static u16 PickMissingBranchEvolution(u16 target1, u16 target2)
 {
     if (GetSavedPokedexFlag(target1) < SPECIES_CAUGHT)
@@ -456,7 +621,10 @@ void RegisterCaptureOrEvolution(s16 evolved)
     if (!evolved)
     {
         if (gMain.mainState != STATE_GAME_IDLE)
+        {
+            RegisterLegendaryCapture(gCurrentPinballGame->currentSpecies);
             SaveFile_SetPokedexFlags(gCurrentPinballGame->currentSpecies, SPECIES_CAUGHT);
+        }
 
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].evolutionMethod != 0)
         {
@@ -615,12 +783,21 @@ void PickSpeciesForCatchEmMode(void)
     s16 i;
     u32 rand;
     u16 specialMons[6];
+    u16 legendary;
 
     if (gCurrentPinballGame->debugForcedCatchSpecies < SPECIES_NONE)
     {
         gCurrentPinballGame->currentSpecies = gCurrentPinballGame->debugForcedCatchSpecies;
         gCurrentPinballGame->debugForcedCatchSpecies = SPECIES_NONE;
         gCurrentPinballGame->lastCatchSpecies = gCurrentPinballGame->currentSpecies;
+        return;
+    }
+
+    legendary = PickLegendaryEncounter();
+    if (legendary != SPECIES_NONE)
+    {
+        gCurrentPinballGame->currentSpecies = legendary;
+        gCurrentPinballGame->lastCatchSpecies = legendary;
         return;
     }
 

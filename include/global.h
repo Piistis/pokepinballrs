@@ -218,7 +218,9 @@ struct PinballGame
     /*0x080*/ s16 jirachiLogicX;
     /*0x082*/ s16 jirachiLogicY;
     /*0x084*/ struct Vector16 jirachiStarTagPos[4];
-    /*0x094*/ u8 filler94[0x28];
+    /*0x094*/ u32 legendaryEncounterMagic;
+    /*0x098*/ u16 legendaryCaughtMask;
+    /*0x09A*/ u8 filler9A[0x22];
     /*0x0BC*/ s16 jirachiTargetX;
     /*0x0BE*/ s16 jirachiTargetY;
     /*0x0C0*/ s16 jirachiDisplayX;

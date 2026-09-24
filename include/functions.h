@@ -497,6 +497,7 @@ void BeginManaphyEggAttempt(void);
 void AddManaphyEggCapture(void);
 void LoadHatchEggFrame(s16 frame);
 void RestoreManaphyEggPalette(void);
+s16 PokedexListPositionToSpecies(s16 listPosition);
 void RestoreManaphyEggOam(void);
 void RenderManaphyEggPalette(void);
 //extern ? InitEggMode();
