@@ -1917,11 +1917,10 @@ Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje refe
 491;Darkrai;Especial;;;;Especial;;;Gen 4, ambos tableros, cualquier zona: haber capturado a Cresselia en esta partida y llevar al menos 15 capturas/evoluciones. 25%.
 492;Shaymin;Especial;;;;Especial;;;Gen 4, ambos tableros, Forest: al menos 15 capturas/evoluciones en la partida. 25%.
 493;Arceus;Especial;;;;Especial;;;Gen 4, ambos tableros, cualquier zona: Dialga, Palkia y Giratina capturados en la Pokedex y al menos 30 capturas/evoluciones en la partida. 25%.
-522;Blitzle;Normal;;;;Sin ruta natural detectada;;;
-523;Zebstrika;Normal;;;;Evolucion;;;Evolucion de Blitzle
-523;Zebstrika;Normal;;;;Sin ruta natural detectada;;;
-610;Axew;Normal;;;;Sin ruta natural detectada;;;
-698;Amaura;Normal;;;;Sin ruta natural detectada;;;
-722;Rowlet;Normal;;;;Sin ruta natural detectada;;;
-840;Applin;Normal;;;;Sin ruta natural detectada;;;
-909;Fuecoco;Normal;;;;Sin ruta natural detectada;;;
+522;Blitzle;Inactivo;;;;Fuera de esta beta;;;"ID y datos reservados; sin ruta natural"
+523;Zebstrika;Inactivo;;;;Fuera de esta beta;;;"ID y datos reservados; sin ruta natural"
+610;Axew;Inactivo;;;;Fuera de esta beta;;;"ID y datos reservados; sin ruta natural"
+698;Amaura;Inactivo;;;;Fuera de esta beta;;;"ID y datos reservados; sin ruta natural"
+722;Rowlet;Inactivo;;;;Fuera de esta beta;;;"ID y datos reservados; sin ruta natural"
+840;Applin;Inactivo;;;;Fuera de esta beta;;;"ID y datos reservados; sin ruta natural"
+909;Fuecoco;Inactivo;;;;Fuera de esta beta;;;"ID y datos reservados; sin ruta natural"

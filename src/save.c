@@ -6,6 +6,7 @@
 #include "constants/bg_music.h"
 #include "constants/generations.h"
 #include "save_storage.h"
+#include "constants/debug.h"
 #include <stddef.h>
 
 static bool16 LoadSaveDataFromSram(void);
@@ -321,6 +322,7 @@ void SaveFile_SetPokedexFlags(s16 species, u8 flag)
 
 void SaveFile_DebugCompletePokedex(void)
 {
+#if DEBUG_TOOLS_ENABLED
     s16 i;
 
     for (i = 0; i < NUM_SAVE_SPECIES; i++)
@@ -331,6 +333,7 @@ void SaveFile_DebugCompletePokedex(void)
 
     SaveFile_WriteToSram();
     SaveFile_ReadSavedGamePresent();
+#endif
 }
 
 static u16 SavedBoardSong(u8 field)

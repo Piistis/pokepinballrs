@@ -70,6 +70,10 @@ class Route:
 
 
 def species_data(root):
+    config = read(root, "include/constants/content.h")
+    expanded = re.search(r"#define POST_GEN4_SPECIES_ENABLED\s+(TRUE|FALSE)", config)[1] == "TRUE"
+    order = read(root, "data/pokedex_entries/pokedex_order.inc")
+    parked = set(re.findall(r"SPECIES_\w+", order.split("#if POST_GEN4_SPECIES_ENABLED", 1)[1].split("#endif", 1)[0]))
     ids = {name: int(number) for name, number in re.findall(
         r"#define (SPECIES_\w+)\s+(\d+)", read(root, "include/constants/species.h"))}
     portraits = re.findall(r'\.incbin "graphics/mon_portraits/(\d+)_[^"]+\.4bpp"',
@@ -80,6 +84,7 @@ def species_data(root):
         fields = dict(re.findall(r"\.(catchIndex|eggIndex|evolutionMethod|evolutionTarget) = (\w+)", body))
         fields["name"] = re.search(r'\.name = "([^"]+)"', body)[1].strip().title()
         fields["number"] = int(portraits[ids[name]])
+        fields["enabled"] = expanded or name not in parked
         info[name] = fields
     assert len(info) == len(portraits) == ids["SPECIES_NONE"], "Tablas de especies/retratos desalineadas"
     assert len({data["number"] for data in info.values()}) == len(info), "Numeros nacionales duplicados"
@@ -264,10 +269,11 @@ def render(info, routes, manual, reachable):
         by_species[route.species].append(route)
     specials = {entry["species"]: entry for entry in manual["specials"]}
     ordered = sorted(info, key=lambda mon: info[mon]["number"])
-    missing = [mon for mon in ordered if mon not in reachable]
+    missing = [mon for mon in ordered if info[mon]["enabled"] and mon not in reachable]
+    parked = [mon for mon in ordered if not info[mon]["enabled"]]
     md = ["# Lista de encuentros", "", "Generada desde el codigo. No editar este archivo: los especiales y las ramas",
           "condicionales se mantienen en [encounters_special.json](encounters_special.json).", "",
-          f"Especies insertadas: **{len(info)}**. Sin ruta natural detectada: **{len(missing)}**.", "",
+          f"Especies activas: **{len(info) - len(parked)}**. Reservadas fuera de la beta: **{len(parked)}**. Sin ruta natural detectada: **{len(missing)}**.", "",
           "## Como leer los porcentajes", "",
           "- `ref.` es la probabilidad DENTRO del sorteo normal: candidatos y evoluciones sin registrar,",
           "  al menos una captura/evolucion en partida, sin excluir al ultimo Pokemon y sin mejoras e-Reader.",
@@ -284,7 +290,7 @@ def render(info, routes, manual, reachable):
     writer = csv.writer(output, delimiter=";", lineterminator="\n")
     writer.writerow(["Numero nacional", "Pokemon", "Seccion", "Modo", "Tablero", "Zona", "Metodo", "Flechas", "Porcentaje referencia", "Detalle"])
     for mon in ordered:
-        if mon in specials:
+        if mon in specials or not info[mon]["enabled"]:
             continue
         data = info[mon]
         descriptions = route_lines(by_species[mon])
@@ -295,6 +301,9 @@ def render(info, routes, manual, reachable):
            "| No. | Pokemon | Como se consigue |", "| --- | --- | --- |"]
     for mon in ordered:
         data = info[mon]
+        if not data["enabled"]:
+            writer.writerow([f"{data['number']:03d}", data["name"], "Inactivo", "", "", "", "Fuera de esta beta", "", "", "ID y datos reservados; sin ruta natural"])
+            continue
         for route in by_species[mon]:
             writer.writerow([f"{data['number']:03d}", data["name"], "Especial" if mon in specials else "Normal",
                              route.mode, "Zafiro" if route.board == "Sapphire" else route.board, route.area,
@@ -314,6 +323,10 @@ def render(info, routes, manual, reachable):
             writer.writerow([f"{data['number']:03d}", data["name"], "Normal", "", "", "", "Sin ruta natural detectada", "", "", ""])
     md += ["", "## Pendientes detectados", ""]
     md += [f"- {info[mon]['number']:03d} - {info[mon]['name']}: sin origen natural en las fuentes revisadas." for mon in missing] or ["Ninguno."]
+    if parked:
+        md += ["", "## Fuera de esta beta", "", "IDs y datos conservados por compatibilidad. No aparecen en la Pokedex ni tienen una ruta natural de obtencion.", "",
+               "| No. | Pokemon | Estado |", "| --- | --- | --- |"]
+        md += [f"| {info[mon]['number']:03d} | {info[mon]['name']} | Aplazado para su generacion |" for mon in parked]
     md += ["", "## Regenerar", "", "```bash", "python3 tools/scripts/generate_encounter_guide.py", "```", "",
            "Comprobar que la lista esta al dia, sin modificar archivos:", "", "```bash",
            "python3 tools/scripts/generate_encounter_guide.py --check", "```", "",

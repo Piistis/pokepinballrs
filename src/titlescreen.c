@@ -5,6 +5,7 @@
 #include "titlescreen.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "constants/debug.h"
 
 static void TitleScreen_CheckDeleteKeyComboPressed(void);
 static bool8 TitleScreen_CheckDebugPokedexCompleteComboPressed(void);
@@ -22,7 +23,7 @@ static void DebugSoundTest_CopyText(u8 *dest, const u8 *src, s16 maxLength);
 #define NUM_IDLE_FRAMES 1800
 
 #define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
-#define DEBUG_SOUND_TEST_ENABLED FALSE
+#define DEBUG_SOUND_TEST_ENABLED (DEBUG_TOOLS_ENABLED && FALSE)
 #define DEBUG_SOUND_TEST_COUNT 204
 #define DEBUG_SOUND_TEST_VISIBLE_ROWS 16
 #define DEBUG_SOUND_TEST_NAME_LENGTH 32
@@ -793,6 +794,7 @@ static void TitleScreen_CheckDeleteKeyComboPressed(void)
 
 static bool8 TitleScreen_CheckDebugPokedexCompleteComboPressed(void)
 {
+#if DEBUG_TOOLS_ENABLED
     if (JOY_HELD(L_BUTTON | R_BUTTON) == (L_BUTTON | R_BUTTON))
     {
         if (gEReaderAccessCounter < 0)
@@ -806,6 +808,7 @@ static bool8 TitleScreen_CheckDebugPokedexCompleteComboPressed(void)
 
     if (gEReaderAccessCounter < 0)
         gEReaderAccessCounter = 0;
+#endif
 
     return FALSE;
 }

@@ -3,7 +3,7 @@
 Generada desde el codigo. No editar este archivo: los especiales y las ramas
 condicionales se mantienen en [encounters_special.json](encounters_special.json).
 
-Especies insertadas: **500**. Sin ruta natural detectada: **7**.
+Especies activas: **493**. Reservadas fuera de la beta: **7**. Sin ruta natural detectada: **0**.
 
 ## Como leer los porcentajes
 
@@ -478,13 +478,6 @@ Especies insertadas: **500**. Sin ruta natural detectada: **7**.
 | 477 | Dusknoir | Evolucion de Dusclops |
 | 478 | Froslass | Evolucion de Snorunt (Gen 4/RANDOM: si falta y la otra rama ya esta capturada; si ambas estan capturadas, Zafiro) |
 | 479 | Rotom | Caza: Gen 4, Ambos, Ruin, 3 flechas, 12,5% ref.<br>Caza: Gen 4, Ruby, City, 3 flechas, 12,5% ref.<br>Candidato a caza: RANDOM, Ruby, City, 3 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Ambos, Ruin, 3 flechas; seleccion y porcentaje variables por partida |
-| 522 | Blitzle | **Sin ruta natural detectada** |
-| 523 | Zebstrika | Evolucion de Blitzle<br>**Cadena sin origen natural detectado** |
-| 610 | Axew | **Sin ruta natural detectada** |
-| 698 | Amaura | **Sin ruta natural detectada** |
-| 722 | Rowlet | **Sin ruta natural detectada** |
-| 840 | Applin | **Sin ruta natural detectada** |
-| 909 | Fuecoco | **Sin ruta natural detectada** |
 
 ## Encuentros especiales
 
@@ -535,13 +528,21 @@ Si las probabilidades de legendarios elegibles superan el 100%, el 100% se repar
 
 ## Pendientes detectados
 
-- 522 - Blitzle: sin origen natural en las fuentes revisadas.
-- 523 - Zebstrika: sin origen natural en las fuentes revisadas.
-- 610 - Axew: sin origen natural en las fuentes revisadas.
-- 698 - Amaura: sin origen natural en las fuentes revisadas.
-- 722 - Rowlet: sin origen natural en las fuentes revisadas.
-- 840 - Applin: sin origen natural en las fuentes revisadas.
-- 909 - Fuecoco: sin origen natural en las fuentes revisadas.
+Ninguno.
+
+## Fuera de esta beta
+
+IDs y datos conservados por compatibilidad. No aparecen en la Pokedex ni tienen una ruta natural de obtencion.
+
+| No. | Pokemon | Estado |
+| --- | --- | --- |
+| 522 | Blitzle | Aplazado para su generacion |
+| 523 | Zebstrika | Aplazado para su generacion |
+| 610 | Axew | Aplazado para su generacion |
+| 698 | Amaura | Aplazado para su generacion |
+| 722 | Rowlet | Aplazado para su generacion |
+| 840 | Applin | Aplazado para su generacion |
+| 909 | Fuecoco | Aplazado para su generacion |
 
 ## Regenerar
 

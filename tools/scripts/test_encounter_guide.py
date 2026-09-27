@@ -59,7 +59,9 @@ class GuideTests(unittest.TestCase):
 
     def test_unavailable_species_not_invented(self):
         self.assertNotIn("SPECIES_FUECOCO", self.reachable)
-        self.assertIn("Sin ruta natural detectada", self.md)
+        self.assertIn("Fuera de esta beta", self.md)
+        self.assertFalse(self.info["SPECIES_FUECOCO"]["enabled"])
+        self.assertEqual(sum(data["enabled"] for data in self.info.values()), 493)
         # Jirachi has a known route, even though its roulette details need review.
         self.assertIn("SPECIES_JIRACHI", self.reachable)
 

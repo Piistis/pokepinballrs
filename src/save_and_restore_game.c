@@ -1,6 +1,7 @@
 #include "global.h"
 #include "agb_sram.h"
 #include "save_storage.h"
+#include "constants/debug.h"
 #include "functions.h"
 #include "main.h"
 #include "m4a.h"
@@ -197,6 +198,10 @@ bool8 RestoreGameState(u16 arg0)
         gMain.tempField = gCurrentPinballGame->savedTempField;
         gMain.isBonusField = gCurrentPinballGame->savedIsBonusField;
         gMain.modeChangeFlags = gCurrentPinballGame->savedModeChangeFlags;
+#if !DEBUG_TOOLS_ENABLED
+        gMain.modeChangeFlags &= ~MODE_CHANGE_DEBUG;
+        gCurrentPinballGame->debugMenuSelection = 0;
+#endif
         gMain.debugMenuCursorIndex = gCurrentPinballGame->savedDebugMenuCursorIndex;
         gMain.pendingModeChangeType = gCurrentPinballGame->savedPendingModeChangeType;
         gMain.animationTimer = gCurrentPinballGame->savedAnimationTimer;

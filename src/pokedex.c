@@ -10,6 +10,8 @@
 #include "constants/characters.h"
 #include "constants/pinball_game.h"
 #include "constants/global.h"
+#include "constants/debug.h"
+#include "constants/content.h"
 
 #define DEX_NUM_DIGITS      3
 #define SCROLL_WAIT_FRAMES  9
@@ -117,7 +119,7 @@ struct PokedexEntry
 
 extern const struct PokedexEntry gPokedexEntries[];
 
-static const s16 gPokedexOrder[NUM_SPECIES] = {
+static const s16 gPokedexOrder[] = {
 #include "../data/pokedex_entries/pokedex_order.inc"
 };
 
@@ -125,8 +127,8 @@ s16 PokedexListPositionToSpecies(s16 listPosition)
 {
     if (listPosition < 0)
         return gPokedexOrder[0];
-    if (listPosition >= NUM_SPECIES)
-        return gPokedexOrder[NUM_SPECIES - 1];
+    if (listPosition >= ARRAY_COUNT(gPokedexOrder))
+        return gPokedexOrder[ARRAY_COUNT(gPokedexOrder) - 1];
 
     return gPokedexOrder[listPosition];
 }
@@ -261,7 +263,7 @@ void InitPokedexState(void)
         gPokedexFlagExchangeBuffer[i] = gPokedexFlags[i];
     }
 
-    gPokedexListEntryCount = NUM_SPECIES;
+    gPokedexListEntryCount = ARRAY_COUNT(gPokedexOrder);
     UpdateSelectedMonFromListPosition();
 }
 
@@ -963,6 +965,7 @@ void Pokedex_CheckDeleteKeyComboPressed(void)
 
 static bool8 Pokedex_CheckDebugCompleteComboPressed(void)
 {
+#if DEBUG_TOOLS_ENABLED
     if (JOY_HELD(L_BUTTON | R_BUTTON) == (L_BUTTON | R_BUTTON))
     {
         if (gPokedex_EraseSaveDataAccessCounter < 0)
@@ -975,6 +978,7 @@ static bool8 Pokedex_CheckDebugCompleteComboPressed(void)
 
     if (gPokedex_EraseSaveDataAccessCounter < 0)
         gPokedex_EraseSaveDataAccessCounter = 0;
+#endif
 
     return FALSE;
 }
@@ -2441,9 +2445,9 @@ void LoadPokedexFlagsFromSave(void)
 
     gPokedexNumOwned = 0;
     gPokedexNumSeen = 0;
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (i = 0; i < ARRAY_COUNT(gPokedexOrder); i++)
     {
-        switch (GetPokedexFlag(i))
+        switch (GetPokedexFlag(PokedexListPositionToSpecies(i)))
         {
         case SPECIES_CAUGHT:
             gPokedexNumOwned++;

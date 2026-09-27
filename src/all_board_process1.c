@@ -3,6 +3,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "constants/debug.h"
 
 
 
@@ -24,6 +25,7 @@ void ClearBG0Tilemap(void)
 
 void AllBoardProcess_1B_47160(void)
 {
+#if DEBUG_TOOLS_ENABLED
     if ((JOY_NEW(SELECT_BUTTON) || JOY_HELD(L_BUTTON | R_BUTTON) == (L_BUTTON | R_BUTTON))
         && gMain.mainState != STATE_GAME_IDLE
         && !gCurrentPinballGame->startButtonDisabled
@@ -47,6 +49,7 @@ void AllBoardProcess_1B_47160(void)
         return;
     }
 
+#endif
     if (JOY_NEW(START_BUTTON) && gMain.mainState != STATE_GAME_IDLE
         && !gCurrentPinballGame->startButtonDisabled)
     {

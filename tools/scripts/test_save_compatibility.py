@@ -93,6 +93,7 @@ typedef unsigned int uintptr_t;
 #endif
 #define TRUE 1
 #define FALSE 0
+#include "constants/debug.h"
 #define NULL ((void *)0)
 #define SPECIES_UNSEEN 0
 #define SPECIES_CAUGHT 4
@@ -394,8 +395,8 @@ int main(void)
     SaveFile_DebugCompletePokedex(); CHECK(!gMain.hasSavedGame);
     for (i = 0; i < NUM_SPECIES; i++)
     {
-        if (i < NUM_SAVE_SPECIES) CHECK(gMain_saveData.pokedexFlags[i] == 4);
-        else CHECK(gExtraPokedexFlags[i - NUM_SAVE_SPECIES] == 4);
+        if (i < NUM_SAVE_SPECIES) CHECK(gMain_saveData.pokedexFlags[i] == (DEBUG_TOOLS_ENABLED ? 4 : 0));
+        else CHECK(gExtraPokedexFlags[i - NUM_SAVE_SPECIES] == (DEBUG_TOOLS_ENABLED ? 4 : 0));
     }
     memcpy(before, sram, sizeof(sram));
     SaveFile_SetPokedexFlags(-1, 4); SaveFile_SetPokedexFlags(SPECIES_NONE, 4);
@@ -462,14 +463,14 @@ int TestUserSave(void)
         cfile = work / 'test.c'
         cfile.write_text(code)
         exe = work / ('test.exe' if os.name == 'nt' else 'test')
-        for count in (500, 520):
+        for count, debug in ((500, 0), (520, 0), (500, 1), (520, 1)):
             if candidates:
                 command = [compiler, '/nologo', '/W3', '/WX', '/GS-', '/Od',
-                           f'/DFUTURE_SPECIES_COUNT={count}', f'/I{ROOT / "include"}', str(cfile),
+                           f'/DFUTURE_SPECIES_COUNT={count}', f'/DDEBUG_TOOLS_ENABLED={debug}', f'/I{ROOT / "include"}', str(cfile),
                            '/link', '/nodefaultlib', '/entry:main', '/subsystem:console', f'/out:{exe}']
             else:
                 command = [compiler, '-m32', '-std=gnu89', '-Wimplicit', '-Wparentheses', '-Werror',
-                           '-fno-builtin', f'-DFUTURE_SPECIES_COUNT={count}', '-I', str(ROOT / 'include'),
+                           '-fno-builtin', f'-DFUTURE_SPECIES_COUNT={count}', f'-DDEBUG_TOOLS_ENABLED={debug}', '-I', str(ROOT / 'include'),
                            str(cfile), '-o', str(exe)]
             subprocess.run(command, cwd=work, check=True)
             result = subprocess.run([str(exe)], cwd=work)
@@ -477,7 +478,7 @@ int TestUserSave(void)
                 line = result.returncode
                 detail = code.splitlines()[line - 1] if 0 < line <= len(code.splitlines()) else ''
                 raise SystemExit(f'Save regression failed at line/status {line}: {detail}')
-            print(f'PASS ({count} species): legacy and versioned saves, backup recovery, torn writes, '
+            print(f'PASS ({count} species, debug={debug}): legacy and versioned saves, backup recovery, torn writes, '
                   'snapshot pointers, totals, sentinel migration and deletion.')
     if original is not None:
         assert args.save.read_bytes() == original, 'Input save was modified!'

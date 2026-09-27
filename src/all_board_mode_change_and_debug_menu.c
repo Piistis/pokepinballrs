@@ -114,17 +114,13 @@ void BonusStage_HandleModeChangeFlags(void)
         return;
     }
 
+#if DEBUG_TOOLS_ENABLED
     if (gMain.modeChangeFlags & MODE_CHANGE_DEBUG)
     {
-#if DEBUG_TOOLS_ENABLED
         DebugTools_RenderAndHandleInput();
-#else
-        // debug tool (move ball position, and change ball speed)
-        DebugMenu_RenderAndHandleInput();
-        gCurrentPinballGame->debugMenuSelection = gMain.debugMenuCursorIndex + 1;
-#endif
         return;
     }
+#endif
 }
 
 void DebugTools_OpenMenu(void)
