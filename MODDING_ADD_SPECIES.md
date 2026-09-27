@@ -13,6 +13,9 @@
 El punto importante: no subas el tamano de `pokedexFlags` dentro de `SaveData`
 si no quieres cambiar el layout del save y arriesgar corrupciones/crashes.
 
+Consulta `MODDING_SAVE_COMPATIBILITY.md` antes de tocar IDs o estructuras de
+guardado. `make` comprueba los IDs existentes y el layout de `PinballGame`.
+
 ## Checklist rapido
 
 Para anadir una especie nueva hay que tocar, como minimo:
@@ -39,28 +42,23 @@ Archivo:
 include/constants/species.h
 ```
 
-Ejemplo actual:
+Ejemplo actual (final de la lista, IDs internos, no numeros nacionales):
 
 ```c
-#define SPECIES_AERODACTYL      204
-#define SPECIES_TEST_EXTRA      205
-#define SPECIES_ZEBSTRIKA       206
-#define SPECIES_NONE            207
-
-#define BONUS_SPECIES_START SPECIES_CHIKORITA
-#define NUM_BONUS_SPECIES (SPECIES_TEST_EXTRA - SPECIES_CHIKORITA)
+#define SPECIES_APPLIN          498
+#define SPECIES_FUECOCO         499
+#define SPECIES_NONE            500
 #define NUM_SPECIES SPECIES_NONE
 #define NUM_SAVE_SPECIES 205
 ```
 
-Para anadir otra especie despues de Zebstrika, el patron seria:
+Para anadir otra especie, el patron seria (sin renumerar ninguna existente):
 
 ```c
-#define SPECIES_AERODACTYL      204
-#define SPECIES_BLITZLE         205
-#define SPECIES_ZEBSTRIKA       206
-#define SPECIES_NUEVO_MON       207
-#define SPECIES_NONE            208
+#define SPECIES_APPLIN          498
+#define SPECIES_FUECOCO         499
+#define SPECIES_NUEVO_MON       500
+#define SPECIES_NONE            501
 
 #define NUM_SPECIES SPECIES_NONE
 #define NUM_SAVE_SPECIES 205
@@ -70,8 +68,10 @@ Notas:
 
 - `NUM_SAVE_SPECIES` debe quedarse en `205`.
 - `SPECIES_NONE` debe estar siempre justo despues de la ultima especie real.
-- Conviene renombrar `SPECIES_TEST_EXTRA` a `SPECIES_BLITZLE` cuando el prototipo
-  ya deje de ser temporal.
+- No recicles ni reordenes IDs internos. El orden visible se cambia en la tabla
+  de Pokedex, no en estas constantes.
+- Anade los nuevos IDs al registro `docs/save_schema_v1.json` al publicarlos,
+  conservando todos los existentes.
 
 ## 2. Anadir datos base de especie
 

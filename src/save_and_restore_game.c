@@ -1,5 +1,6 @@
 #include "global.h"
 #include "agb_sram.h"
+#include "save_storage.h"
 #include "functions.h"
 #include "main.h"
 #include "m4a.h"
@@ -148,12 +149,10 @@ void SaveGameStateSnapshot(s16 arg0)
 
 void SaveGameToSram(void)
 {
-    NormalizeEvolvablePartySpeciesStorage();
-    gCurrentPinballGame->saveDataValid = TRUE;
-    WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(*gCurrentPinballGame));
+    SaveFile_WriteGameState();
 }
 
-void RestoreGameState(u16 arg0)
+bool8 RestoreGameState(u16 arg0)
 {
     s16 i, j;
     s16 var0, var1;
@@ -161,8 +160,11 @@ void RestoreGameState(u16 arg0)
 
     if (arg0 == 1)
     {
-        ReadSramFast((void *)SRAM + 0x544, (u8 *)gCurrentPinballGame, sizeof(*gCurrentPinballGame));
-        NormalizeEvolvablePartySpeciesStorage();
+        if (!SaveFile_ReadGameState())
+        {
+            gMain.sramError = TRUE;
+            return FALSE;
+        }
     }
     else if (arg0 == 2)
     {
@@ -321,8 +323,9 @@ void RestoreGameState(u16 arg0)
     if (arg0 == 1)
     {
         gCurrentPinballGame->saveDataValid = FALSE;
-        WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(gCurrentPinballGame->saveDataValid));
+        SaveFile_ClearGameState();
     }
+    return TRUE;
 }
 
 void RestoreFieldSpecificGraphics(void)

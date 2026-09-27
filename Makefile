@@ -128,6 +128,10 @@ check-encounters:
 	python3 tools/scripts/generate_encounter_guide.py --check
 	python3 tools/scripts/test_encounter_guide.py
 
+.PHONY: check-save-schema
+check-save-schema:
+	python3 tools/scripts/test_save_compatibility.py --schema-only
+
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: rom
 
@@ -220,7 +224,7 @@ $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 $(OBJ_DIR)/ld_script.ld: ld_script.txt $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
 	cd $(OBJ_DIR) && sed -f ../../ld_script.sed ../../$< | sed "s#tools/#../../tools/#g" > ld_script.ld
 
-$(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
+$(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS) | check-save-schema
 	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)
 
 $(ROM): $(ELF)

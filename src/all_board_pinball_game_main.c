@@ -30,7 +30,7 @@ extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gDxModePikachuObjTiles[];
 
 extern void SaveGameToSram(void);
-extern void RestoreGameState(u16);
+extern bool8 RestoreGameState(u16);
 
 void ClampPortraitSpritesToOffscreen(void);
 void SetBallPositionForBonusReturn(void);
@@ -100,8 +100,13 @@ void PinballGame_State0_49ED4(void)
         InitPinballGameState();
         if (gMain.mainState == STATE_GAME_IDLE)
             RestoreGameState(2);
-        else
-            RestoreGameState(1);
+        else if (!RestoreGameState(1))
+        {
+            gMain.continueFromSave = FALSE;
+            EnableVBlankInterrupts();
+            SetMainGameState(STATE_TITLE);
+            return;
+        }
 
         SetupDisplayRegistersForField();
         ConfigureBoardProcessesForField();

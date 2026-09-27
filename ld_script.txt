@@ -109,6 +109,7 @@ SECTIONS
         src/options.o(.text);
         src/pokemon_cry.o(.text);
         src/save.o(.text);
+        src/save_storage.o(.text);
         src/m4a_1.o(.text);
         src/m4a.o(.text);
         src/libagbsyscall.o(.text);
@@ -130,6 +131,8 @@ SECTIONS
         . = ALIGN(4); src/m4a_tables.o(.rodata);
         . = ALIGN(4); data/sound_data.o(.rodata)
         . = ALIGN(4); src/agb_sram.o(.rodata);
+        . = ALIGN(4); src/save.o(.rodata);
+        . = ALIGN(4); src/save_storage.o(.rodata);
         . = ALIGN(4); data/sound_data_2.o(.rodata)
         . = ALIGN(4); src/data.o(.rodata)
         . = ALIGN(4); src/pokedex.o(.rodata)

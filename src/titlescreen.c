@@ -1,5 +1,6 @@
 #include "global.h"
 #include "agb_sram.h"
+#include "save_storage.h"
 #include "m4a.h"
 #include "titlescreen.h"
 #include "main.h"
@@ -1041,6 +1042,5 @@ void DeleteSaveFile(void)
 {
     ResetSaveFile();
     SaveFile_WriteToSram();
-    gMain.hasSavedGame = FALSE;
-    WriteAndVerifySramFast((const u8 *)&gMain.hasSavedGame, (void *)0x0E000544, sizeof(gMain.hasSavedGame));
+    SaveFile_ClearGameState();
 }
