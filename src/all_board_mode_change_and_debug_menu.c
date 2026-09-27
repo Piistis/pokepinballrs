@@ -42,7 +42,8 @@ extern const s8 gBonusSummaryTextTemplates[][3][20];
 #define DEBUG_TOOL_MENU_FORCE_HATCH 2
 #define DEBUG_TOOL_MENU_SOUND_TEST 3
 #define DEBUG_TOOL_MENU_EGG_COUNTER 4
-#define DEBUG_TOOL_MENU_COUNT 5
+#define DEBUG_TOOL_MENU_CAPTURE_COUNTER 5
+#define DEBUG_TOOL_MENU_COUNT 6
 #define DEBUG_TOOL_TEXT_FIRST_ROW 26
 #define DEBUG_TOOL_TEXT_ALT_FIRST_ROW 60
 #define DEBUG_TOOL_TEXT_ROW_COUNT 2
@@ -63,6 +64,8 @@ static void DebugTools_RenderForceEvolutionOption(bool8 selected, s16 row);
 static void DebugTools_RenderForceHatchOption(bool8 selected, s16 row);
 static void DebugTools_RenderSoundTestOption(bool8 selected, s16 row);
 static void DebugTools_RenderEggCounterOption(s16 row);
+static void DebugTools_IncrementCaptureCounter(void);
+static void DebugTools_RenderCaptureCounterOption(s16 row);
 static void DebugTools_RenderPokemonName(u16 species, s16 row, bool8 selected);
 static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected);
 static void DebugTools_RenderMenuBackdrop(void);
@@ -258,6 +261,11 @@ static void DebugTools_RenderAndHandleInput(void)
             else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_EGG_COUNTER)
             {
                 AddManaphyEggCapture();
+                m4aSongNumStart(SE_MENU_SELECT);
+            }
+            else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_CAPTURE_COUNTER)
+            {
+                DebugTools_IncrementCaptureCounter();
                 m4aSongNumStart(SE_MENU_SELECT);
             }
             else
@@ -487,6 +495,40 @@ static void DebugTools_RenderEggCounterOption(s16 row)
     DebugTools_RenderTextRow(text, row);
 }
 
+static void DebugTools_IncrementCaptureCounter(void)
+{
+    if (gCurrentPinballGame->caughtMonCount < 999)
+        gCurrentPinballGame->caughtMonCount++;
+    else
+        gCurrentPinballGame->caughtMonCount = 999;
+}
+
+static void DebugTools_RenderCaptureCounterOption(s16 row)
+{
+    u8 text[20];
+    u16 count = gCurrentPinballGame->caughtMonCount;
+
+    if (count > 999)
+        count = 999;
+    DebugTools_ClearLineText(text, 20);
+    text[0] = '>';
+    text[2] = 'C';
+    text[3] = 'A';
+    text[4] = 'T';
+    text[5] = 'C';
+    text[6] = 'H';
+    text[7] = '/';
+    text[8] = 'E';
+    text[9] = 'V';
+    text[10] = 'O';
+    text[12] = (u8)('0' + count / 100);
+    text[13] = (u8)('0' + (count / 10) % 10);
+    text[14] = (u8)('0' + count % 10);
+    text[16] = '+';
+    text[17] = '1';
+    DebugTools_RenderTextRow(text, row);
+}
+
 static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected)
 {
     s16 i;
@@ -530,6 +572,8 @@ static void DebugTools_RenderMenuBackdrop(void)
             DebugTools_RenderForceHatchOption(TRUE, 1);
         else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_EGG_COUNTER)
             DebugTools_RenderEggCounterOption(1);
+        else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_CAPTURE_COUNTER)
+            DebugTools_RenderCaptureCounterOption(1);
         else
             DebugTools_RenderSoundTestOption(TRUE, 1);
     }

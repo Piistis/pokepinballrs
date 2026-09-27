@@ -123,6 +123,15 @@ tables or future encounter constants use that section.
 
 ## Verification
 
+With `DEBUG_TOOLS_ENABLED` enabled, open the in-game debug menu (L+R), select
+`CATCH/EVO 000 +1` and press A to increment the current game's capture/evolution
+counter. The option displays the live total and stops at 999, matching the HUD.
+B closes the menu. This changes only `caughtMonCount`: it does not award points,
+extra balls, Pokedex flags, egg progress or prerequisite legendary captures.
+Test natural catch encounters afterwards; force-catch bypasses their conditions.
+The option is disabled along with the other tools by setting
+`DEBUG_TOOLS_ENABLED FALSE` in `include/constants/debug.h`.
+
 ```sh
 python tools/scripts/test_legendary_encounters.py
 python tools/scripts/test_manaphy_egg.py

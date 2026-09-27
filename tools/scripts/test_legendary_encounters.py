@@ -16,6 +16,21 @@ catch = picker[picker.index("void PickSpeciesForCatchEmMode(void)"):
                picker.index("static s16 GetEggEncounterCount(void)")]
 registration = picker[picker.index("void RegisterCaptureOrEvolution(s16 evolved)"):
                       picker.index("static inline u32 GetTimeAdjustedRandom(void)\n{")]
+debug = (ROOT / "src/all_board_mode_change_and_debug_menu.c").read_text()
+debug_counter_code = r'''
+u8 counterText[20];
+s16 counterRow;
+static void DebugTools_RenderTextRow(u8 *text, s16 row)
+{
+    int i;
+    for (i = 0; i < 20; i++) counterText[i] = text[i];
+    counterRow = row;
+}
+'''
+debug_counter_code += debug[debug.index("static void DebugTools_ClearLineText(u8 *text, s16 length)\n{"):
+                           debug.index("static void DebugTools_RenderTextRow(u8 *text, s16 row)\n{")]
+debug_counter_code += debug[debug.index("static void DebugTools_IncrementCaptureCounter(void)\n{"):
+                           debug.index("static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected)\n{")]
 dex_code = dex[dex.index("static const s16 gPokedexOrder"):
                dex.index("static s16 GetPokedexFlag")]
 dex_code = dex_code.replace('#include "../data/pokedex_entries/pokedex_order.inc"',
@@ -303,6 +318,29 @@ int main(void)
 {
     int i, generation, field, area;
     struct Game saved;
+    /* The debug counter changes only the total and renders within one menu row. */
+    Reset();
+    saved = game;
+    for (i = 0; i <= 1000; i++)
+    {
+        CHECK(game.caughtMonCount == (i < 999 ? i : 999));
+        DebugTools_RenderCaptureCounterOption(1);
+        CHECK(counterRow == 1 && counterText[0] == '>' && counterText[19] == 0);
+        CHECK(counterText[12] == '0' + game.caughtMonCount / 100);
+        CHECK(counterText[13] == '0' + (game.caughtMonCount / 10) % 10);
+        CHECK(counterText[14] == '0' + game.caughtMonCount % 10);
+        CHECK(counterText[16] == '+' && counterText[17] == '1');
+        DebugTools_IncrementCaptureCounter();
+    }
+    CHECK(game.legendaryCaughtMask == saved.legendaryCaughtMask);
+    CHECK(game.randomLegendarySpecialMask == saved.randomLegendarySpecialMask);
+    CHECK(game.randomLegendaryRoamerMask == saved.randomLegendaryRoamerMask);
+    CHECK(game.debugForcedCatchSpecies == saved.debugForcedCatchSpecies);
+    for (i = 0; i < NUM_SPECIES; i++) CHECK(GetSavedPokedexFlag((u16)i) == 0);
+    game.caughtMonCount = 65535;
+    DebugTools_RenderCaptureCounterOption(1);
+    CHECK(counterText[12] == '9' && counterText[13] == '9' && counterText[14] == '9');
+    DebugTools_IncrementCaptureCounter(); CHECK(game.caughtMonCount == 999);
     Reset();
     Sample();
     CHECK(counts[SPECIES_ARTICUNO] == 20 && counts[SPECIES_ZAPDOS] == 20);
@@ -311,7 +349,7 @@ int main(void)
     game.caughtMonCount = 9;
     Sample();
     CHECK(counts[SPECIES_ARTICUNO] == 20);
-    game.caughtMonCount = 10;
+    DebugTools_IncrementCaptureCounter();
     Sample();
     CHECK(counts[SPECIES_ARTICUNO] == 240 && counts[SPECIES_ZAPDOS] == 30);
     CHECK(counts[SPECIES_MOLTRES] == 30 && counts[SPECIES_NONE] == 900);
@@ -345,11 +383,11 @@ int main(void)
     }
     game.caughtMonCount = 14;
     Sample(); CHECK(counts[SPECIES_MEW] == 0);
-    game.caughtMonCount = 15;
+    DebugTools_IncrementCaptureCounter();
     Sample(); CHECK(counts[SPECIES_MEW] == 300);
     game.caughtMonCount = 19;
     Sample(); CHECK(counts[SPECIES_MEWTWO] == 0);
-    game.caughtMonCount = 20;
+    DebugTools_IncrementCaptureCounter();
     Sample(); CHECK(counts[SPECIES_MEWTWO] == 300);
     SetDex(SPECIES_ZAPDOS, SPECIES_CAUGHT - 1);
     Sample(); CHECK(counts[SPECIES_MEWTWO] == 0 && counts[SPECIES_MEW] == 0);
@@ -463,6 +501,12 @@ int main(void)
 
 
 def main():
+    assert "#define DEBUG_TOOL_MENU_CAPTURE_COUNTER 5" in debug
+    assert "#define DEBUG_TOOL_MENU_COUNT 6" in debug
+    assert re.search(r"else if \(gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_CAPTURE_COUNTER\)\s*"
+                     r"\{\s*DebugTools_IncrementCaptureCounter\(\);", debug)
+    assert re.search(r"else if \(gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_CAPTURE_COUNTER\)\s*"
+                     r"DebugTools_RenderCaptureCounterOption\(1\);", debug)
     names = re.findall(r"case (SPECIES_\w+): return \d+;", rules)
     locations = (ROOT / "data/mon_locations.inc").read_text()
     assert len(names) == 27
@@ -488,7 +532,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix="legendary-test-") as temporary:
         work = Path(temporary)
         source = work / "test.c"
-        source.write_text(FIXTURE + dex_code + rules + registration + catch + TESTS)
+        source.write_text(FIXTURE + dex_code + rules + registration + catch + debug_counter_code + TESTS)
         executable = work / ("test.exe" if os.name == "nt" else "test")
         env = os.environ.copy()
         if Path(compiler).name.lower() in ("cl", "cl.exe"):
@@ -508,6 +552,7 @@ def main():
     print("      save state, debug precedence, normal fallback and ordinary-table exclusions.")
     print("      Gen 3/4 gates, Rayquaza/Manaphy/Cresselia this-game captures, equal overflow,")
     print("      2048 RANDOM selections, board compatibility, Darkrai dependency and save migration.")
+    print("      Debug capture/evolution counter, 999 cap, menu digits and natural 10/15/20 unlocks.")
 
 
 if __name__ == "__main__":
