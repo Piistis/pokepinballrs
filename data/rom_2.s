@@ -765,8 +765,8 @@ gDexAnimationIx:: @ 0x086A61BC
     .2byte 209, -1, 210, -1, 211, -1, 212, 213, -1, HATCH_DEX_ANIM_OFFSET + 45
     .2byte 214, -1, -1, -1, -1, -1, -1, -1, -1, -1
     .2byte -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
-    .2byte 215, -1, -1, -1, -1, -1, -1, -1, -1, -1
-    .2byte -1, HATCH_DEX_ANIM_OFFSET + 44, -1, -1, -1, 184, 185, 186, 187, 188
+    .2byte 215, 216, 217, 218, 219, 220, 221, 222, 223, 224
+    .2byte 225, HATCH_DEX_ANIM_OFFSET + 44, 226, 227, 228, 184, 185, 186, 187, 188
 gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
@@ -9175,6 +9175,8 @@ gCatchMonPaletteGroups::
 	.4byte gMonCatchSpriteGroup41_Pals
 	.4byte gMonCatchSpriteGroup42_Pals
 	.4byte gMonCatchSpriteGroup43_Pals
+	.4byte gMonCatchSpriteGroup44_Pals
+	.4byte gMonCatchSpriteGroup45_Pals
 gMainLeftFlipperSpriteSet:: @ 0x086B15F8
 .2byte 1
     packed_sprite_oaml x=-0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x0, priority=0x2, paletteNum=0x0
@@ -16634,6 +16636,8 @@ gCatchSpriteGfxPtrs:: @ 0x086BB6F4
 	.4byte gMonCatchSpriteGroup41_Gfx
 	.4byte gMonCatchSpriteGroup42_Gfx
 	.4byte gMonCatchSpriteGroup43_Gfx
+	.4byte gMonCatchSpriteGroup44_Gfx
+	.4byte gMonCatchSpriteGroup45_Gfx
 gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup0_Gfx
 	.4byte gMonPortraitsGroup1_Gfx

@@ -74,8 +74,14 @@ Sapphire o Cave Ruby. En las demas zonas conserva las rutas anteriores.
 
 Se conectan 23 sprites normales nuevos, de Cranidos a Rotom, con indices de
 captura 193 a 215. Sus PNG originales, paletas, manifiesto, grupos de graficos
-y animaciones de Pokedex deben mantenerse sincronizados. Este bloque no
-registra los PNG pendientes de los legendarios.
+y animaciones de Pokedex deben mantenerse sincronizados.
+
+Los 13 sprites especiales de Uxie a Arceus (sin Manaphy) usan los indices
+216 a 228: Uxie, Mesprit, Azelf, Dialga, Palkia, Heatran, Regigigas, Giratina,
+Cresselia, Phione, Darkrai, Shaymin y Arceus. Completan el grupo 43 y anaden
+los grupos 44 y 45, tanto de graficos como de paletas. Sus condiciones de
+encuentro no cambian y siguen fuera de las tablas normales. Manaphy conserva
+su sprite de huevo, indice 44, y su evento exclusivo.
 
 Los indices de captura ya superan 199: el antiguo umbral de animacion de huevo
 200 dejaria de distinguirlos. `HATCH_DEX_ANIM_OFFSET` se comparte entre C y
@@ -101,6 +107,9 @@ Las pruebas de host verifican rutas de obtencion de todos los no legendarios de
 Gen 4 en ambos tableros, dimensiones de tablas, paletas PNG, indices de graficos,
 ausencia de legendarios en tablas normales, todos los indices de huevo de la
 Pokedex, sorteos C de captura/huevo, pools iniciales no vacios y ramas de evolucion.
+Tambien verifican los sprites de captura de los 13 especiales, los 107 retratos
+de Gen 4, sus nueve sprites de huevo y los assets de Zigzagoon. Comprobar siempre
+los grupos y las paletas al registrar sprites; no basta con copiar el PNG.
 
 La compilacion ARM y la comprobacion en emulador siguen siendo necesarias:
 probar capturas en ambos tableros, huevos normales, Manaphy, SELECT en la Pokedex

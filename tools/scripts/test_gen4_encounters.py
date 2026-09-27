@@ -20,12 +20,12 @@ def section(text, start, end):
     return text[text.index(start):text.index(end)]
 
 
-def check_png(path):
+def check_png(path, size=(144, 48)):
     data = path.read_bytes()
     assert data[:8] == b"\x89PNG\r\n\x1a\n", path
     width, height, depth, mode, compression, filtering, interlace = struct.unpack(
         ">IIBBBBB", data[16:29])
-    assert (width, height) == (144, 48) and mode == 3 and depth in (4, 8), path
+    assert (width, height) == size and mode == 3 and depth in (4, 8), path
     assert compression == filtering == interlace == 0, path
     offset, compressed, palette = 8, b"", b""
     while offset < len(data):
@@ -126,13 +126,53 @@ def prepare_data():
     assert gfx_paths == pal_paths and len(gfx_paths) < offset
     manifest = json.loads((ROOT / "graphics/mon_catch_sprites/catch_sprites_gfx.json").read_text(encoding="utf-8"))
     registered = {entry["gfx_filename"] for entry in manifest["files"]}
-    for mon in ordinary:
+    gen4 = {mon for mon, number in ids.items() if ids["SPECIES_TURTWIG"] <= number <= ids["SPECIES_ARCEUS"]}
+    special_catches = (gen4 & special) - {"SPECIES_MANAPHY"}
+    assert len(special_catches) == 13
+    catch_animation = section(rom, "gPokedexCatchAnimIndices::", "gPokedexListNameVramOffsets::")
+    catch_values = [int(value.strip()) for line in re.findall(r"\.2byte ([^\n]+)", catch_animation)
+                    for value in line.split(",")]
+    assert len(catch_values) == ids["SPECIES_NONE"]
+    for mon in ordinary | special_catches | {"SPECIES_ZIGZAGOON"}:
         index = int(info[mon]["catchIndex"])
+        assert 0 < index < 256, mon
         assert values[ids[mon]] == index, mon
+        if mon in gen4:
+            assert catch_values[ids[mon]] == 0, mon
         assert index < len(gfx_paths) and Path(gfx_paths[index]).stem in registered, mon
-        if ids[mon] >= ids["SPECIES_TURTWIG"]:
+        if mon in gen4 or mon == "SPECIES_ZIGZAGOON":
             assert gfx_paths[index].endswith("_" + mon.removeprefix("SPECIES_").lower()), mon
             check_png(ROOT / (gfx_paths[index] + ".png"))
+    # Sprite group addresses must agree with the /5 and %5 runtime lookup.
+    for source, kind in ((gfx, "Gfx"), (pals, "Pals")):
+        consumed = 0
+        groups = re.findall(r"gMonCatchSpriteGroup(\d+)_" + kind + r"::([^:]*?)(?=gMonCatchSpriteGroup|\Z)", source, re.S)
+        for number, body in groups:
+            assert int(number) * 5 == consumed, (kind, number)
+            consumed += len(re.findall(r"\.incbin", body))
+        assert consumed == len(gfx_paths), kind
+    portraits = re.findall(r'\.incbin "([^\"]+)\.4bpp"',
+                           (ROOT / "data/graphics/mon_portraits.inc").read_text())
+    portrait_pals = (ROOT / "data/graphics/mon_portraits_pals.inc").read_text()
+    portrait_manifest = json.loads((ROOT / "graphics/mon_portraits/mon_portraits_gfx.json").read_text())
+    portrait_files = {entry["gfx_filename"]: entry for entry in portrait_manifest["files"]}
+    assert len(portraits) == ids["SPECIES_NONE"]
+    for mon in gen4 | {"SPECIES_ZIGZAGOON"}:
+        path = portraits[ids[mon]]
+        name = {"SPECIES_MIME_JR": "mimejr", "SPECIES_PORYGON_Z": "porygon-z"}.get(
+            mon, mon.removeprefix("SPECIES_").lower())
+        assert path.endswith("_" + name + "_portrait"), mon
+        assert f'"{path}.gbapal"' in portrait_pals, mon
+        assert portrait_files[Path(path).stem]["palette"] == Path(path).name + ".gbapal", mon
+        check_png(ROOT / (path + ".png"), (48, 32))
+    hatch_paths = re.findall(r'\.incbin "([^\"]+)\.4bpp"',
+                            (ROOT / "data/graphics/mon_hatch_sprites.inc").read_text())
+    for mon in (eggs & gen4) | {"SPECIES_MANAPHY"}:
+        index = int(info[mon]["eggIndex"])
+        assert values[ids[mon]] == offset + index, mon
+        name = mon.removeprefix("SPECIES_").lower().replace("_", "")
+        assert hatch_paths[index].endswith("/" + name + "_hatch"), mon
+        check_png(ROOT / (hatch_paths[index] + ".png"), (120, 72))
     # Check ALL hatch references after moving the namespace, including older generations.
     for mon, data in info.items():
         index = values[ids[mon]]
@@ -391,6 +431,7 @@ def main():
     print("      catch/hatch separation, PNG palettes, graphics groups and all Dex hatch indices;")
     print("      real C catch/egg lotteries, no empty starting pools, RANDOM eggs and evolution branches.")
     print("      Gen 2 Eevee catches on both boards; Eevee targets/items and Dex registration by mode.")
+    print("      Gen 4 legendary catch assets, all Gen 4 portraits/hatch assets and Zigzagoon replacements.")
 
 
 if __name__ == "__main__":

@@ -307,3 +307,20 @@ gMonCatchSpriteGroup42_Pals::
 
 gMonCatchSpriteGroup43_Pals::
 	.incbin "graphics/mon_catch_sprites/catch_mon_479_rotom.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_480_uxie.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_481_mesprit.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_482_azelf.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_483_dialga.gbapal"
+
+gMonCatchSpriteGroup44_Pals::
+	.incbin "graphics/mon_catch_sprites/catch_mon_484_palkia.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_485_heatran.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_486_regigigas.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_487_giratina.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_488_cresselia.gbapal"
+
+gMonCatchSpriteGroup45_Pals::
+	.incbin "graphics/mon_catch_sprites/catch_mon_489_phione.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_491_darkrai.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_492_shaymin.gbapal"
+	.incbin "graphics/mon_catch_sprites/catch_mon_493_arceus.gbapal"

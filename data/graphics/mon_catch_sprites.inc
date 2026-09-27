@@ -301,3 +301,20 @@ gMonCatchSpriteGroup42_Gfx::
 
 gMonCatchSpriteGroup43_Gfx::
 	.incbin "graphics/mon_catch_sprites/catch_mon_479_rotom.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_480_uxie.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_481_mesprit.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_482_azelf.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_483_dialga.4bpp"
+
+gMonCatchSpriteGroup44_Gfx::
+	.incbin "graphics/mon_catch_sprites/catch_mon_484_palkia.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_485_heatran.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_486_regigigas.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_487_giratina.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_488_cresselia.4bpp"
+
+gMonCatchSpriteGroup45_Gfx::
+	.incbin "graphics/mon_catch_sprites/catch_mon_489_phione.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_491_darkrai.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_492_shaymin.4bpp"
+	.incbin "graphics/mon_catch_sprites/catch_mon_493_arceus.4bpp"

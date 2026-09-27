@@ -872,6 +872,58 @@
     {
       "gfx_filename": "catch_mon_479_rotom",
       "palette": "catch_mon_479_rotom.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_480_uxie",
+      "palette": "catch_mon_480_uxie.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_481_mesprit",
+      "palette": "catch_mon_481_mesprit.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_482_azelf",
+      "palette": "catch_mon_482_azelf.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_483_dialga",
+      "palette": "catch_mon_483_dialga.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_484_palkia",
+      "palette": "catch_mon_484_palkia.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_485_heatran",
+      "palette": "catch_mon_485_heatran.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_486_regigigas",
+      "palette": "catch_mon_486_regigigas.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_487_giratina",
+      "palette": "catch_mon_487_giratina.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_488_cresselia",
+      "palette": "catch_mon_488_cresselia.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_489_phione",
+      "palette": "catch_mon_489_phione.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_491_darkrai",
+      "palette": "catch_mon_491_darkrai.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_492_shaymin",
+      "palette": "catch_mon_492_shaymin.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_493_arceus",
+      "palette": "catch_mon_493_arceus.gbapal"
     }
   ]
 }
