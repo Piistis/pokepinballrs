@@ -76,6 +76,20 @@ class GuideTests(unittest.TestCase):
             entry = next(e for e in self.manual["evolution_overrides"]["SPECIES_EEVEE"] if e["target"] == mon)
             self.assertEqual(entry["condition"], f"Gen 2 o RANDOM, {area} de ambos tableros")
 
+    def test_egg_only_species_never_listed_as_catches(self):
+        catches = [r for r in self.routes if r.method in ("Caza", "Candidato a caza")]
+        for route in catches:
+            self.assertTrue(route.species == "SPECIES_TREECKO" or self.info[route.species]["catchIndex"] != "0")
+        self.assertTrue(any(r.species == "SPECIES_NATU" and r.method == "Huevo" for r in self.routes))
+        for name in ("ZUBAT", "ODDISH", "HORSEA", "SANDSHREW"):
+            self.assertTrue(any(r.species == "SPECIES_" + name for r in catches))
+        self.assertEqual(sum(data["enabled"] and mon in self.reachable for mon, data in self.info.items()), 493)
+
+    def test_egg_only_table_entry_is_rejected(self):
+        with self.with_modified_read("data/mon_locations.inc", lambda s: s.replace("SPECIES_BULBASAUR", "SPECIES_NATU", 1)):
+            with self.assertRaisesRegex(ValueError, "Caza sin sprite propio"):
+                guide.build()
+
     def with_modified_read(self, path, transform):
         original = guide.read
 

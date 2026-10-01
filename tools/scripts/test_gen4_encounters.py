@@ -11,6 +11,7 @@ import tempfile
 import zlib
 
 import test_legendary_encounters as legendary
+import generate_encounter_guide as guide
 
 ROOT = legendary.ROOT
 picker = legendary.picker
@@ -199,7 +200,18 @@ def prepare_data():
     assert all(len(row) == 8 for row in gen2_names)
     for i in range(0, len(gen2_names), 2):
         species_c += "    {{%s}, {%s}},\n" % (", ".join(gen2_names[i]), ", ".join(gen2_names[i + 1]))
-    return species_c + "};\n" + eggs_source
+    species_c += "};\n"
+    for table in ("gWildMonLocations", "gWildMonLocationsGen1"):
+        rows = guide.catch_tables(ROOT)[table]
+        species_c += f"const u16 {table}[AREA_COUNT][2][8] = {{\n"
+        for i in range(0, len(rows), 2):
+            species_c += "    {{%s}, {%s}},\n" % (", ".join(rows[i][3]), ", ".join(rows[i + 1][3]))
+        species_c += "};\n"
+    for table, rows in guide.catch_tables(ROOT).items():
+        for area, board, arrows, mons in rows:
+            for mon in mons:
+                assert mon in ("SPECIES_NONE", "SPECIES_TREECKO") or int(info[mon]["catchIndex"]) > 0, (table, area, board, arrows, mon)
+    return species_c + eggs_source
 
 
 TESTS = r'''
@@ -209,21 +221,81 @@ void SetDex(u16 species, u8 flag)
     if (species < NUM_SAVE_SPECIES) gMain_saveData.pokedexFlags[species] = flag;
     else gExtraPokedexFlags[species - NUM_SAVE_SPECIES] = flag;
 }
-static u16 GetWildMonForSelectedGeneration(s16 area, s16 arrows, s16 index)
+int TestAllCatchTables(void)
 {
-    if (gSelectedGeneration == GENERATION_2)
-        return gWildMonLocationsGen2[area][arrows][index];
-    return gWildMonLocationsGen4[area][arrows][index];
+    int gen, area, arrows, i, roll, pass;
+    u16 total;
+    CHECK(!CanSpeciesAppearInCatchEmMode(SPECIES_NATU));
+    CHECK(!CanSpeciesAppearInCatchEmMode(SPECIES_PICHU));
+    CHECK(!CanSpeciesAppearInCatchEmMode(SPECIES_XATU));
+    CHECK(!CanSpeciesAppearInCatchEmMode(SPECIES_NONE));
+    CHECK(CanSpeciesAppearInCatchEmMode(SPECIES_TREECKO));
+    CHECK(CanSpeciesAppearInCatchEmMode(SPECIES_ZUBAT));
+    CHECK(CanSpeciesAppearInCatchEmMode(SPECIES_ODDISH));
+    CHECK(CanSpeciesAppearInCatchEmMode(SPECIES_HORSEA));
+    CHECK(CanSpeciesAppearInCatchEmMode(SPECIES_SANDSHREW));
+    /* Simulate an old/bad RANDOM row: reject Natu without rejecting Treecko's valid index 0. */
+    gSelectedGeneration = GENERATION_RANDOM;
+    sRandomWildMonLocationsGenerated = TRUE;
+    game.area = 0; game.catchModeArrows = 2; game.caughtMonCount = 10;
+    game.lastCatchSpecies = SPECIES_NONE;
+    for (i = 0; i < 8; i++) sRandomWildMonLocations[0][0][i] = SPECIES_NATU;
+    sRandomWildMonLocations[0][0][1] = SPECIES_TREECKO;
+    BuildSpeciesWeightsForCatchEmMode();
+    CHECK(game.speciesWeights[0] == 0 && game.totalWeight > 0);
+    for (roll = 0; roll < game.totalWeight; roll++)
+    {
+        nextRoll = (u32)roll; PickSpeciesForCatchEmMode();
+        CHECK(game.currentSpecies == SPECIES_TREECKO);
+    }
+    sRandomWildMonLocations[0][0][1] = SPECIES_NATU;
+    BuildSpeciesWeightsForCatchEmMode(); CHECK(game.totalWeight == 0);
+    PickSpeciesForCatchEmMode(); CHECK(game.currentSpecies == SPECIES_TREECKO);
+    for (gen = GENERATION_1; gen <= GENERATION_RANDOM; gen++)
+    {
+        if (gen > GENERATION_4 && gen != GENERATION_RANDOM) continue;
+        gSelectedGeneration = gen;
+        InitRandomWildMonLocationsForNewGame();
+        for (area = 0; area < AREA_COUNT; area++)
+        for (arrows = 0; arrows < 2; arrows++)
+        for (pass = 0; pass < 2; pass++)
+        {
+            game.area = (s16)area; game.catchModeArrows = (s16)(arrows + 2);
+            game.caughtMonCount = pass ? 10 : 0;
+            game.lastCatchSpecies = GetWildMonForSelectedGeneration((s16)area, (s16)arrows, 0);
+            BuildSpeciesWeightsForCatchEmMode(); total = game.totalWeight;
+            for (i = 0; i < 8; i++)
+            {
+                u16 mon = GetWildMonForSelectedGeneration((s16)area, (s16)arrows, (s16)i);
+                if (mon != SPECIES_NONE) CHECK(CanSpeciesAppearInCatchEmMode(mon));
+            }
+            for (roll = 0; roll < (total ? total : 1); roll++)
+            {
+                nextRoll = (u32)roll;
+                PickSpeciesForCatchEmMode();
+                CHECK(CanSpeciesAppearInCatchEmMode(game.currentSpecies));
+                CHECK(game.currentSpecies != SPECIES_NATU);
+            }
+            game.totalWeight = 0;
+            game.debugForcedCatchSpecies = SPECIES_NATU;
+            PickSpeciesForCatchEmMode();
+            CHECK(CanSpeciesAppearInCatchEmMode(game.currentSpecies));
+            CHECK(game.debugForcedCatchSpecies == SPECIES_NONE);
+        }
+    }
+    return 0;
 }
 int main(void)
 {
-    int area, field, arrows, flag, last, i, count, generation;
+    int area, field, arrows, flag, last, i, count, generation, result;
     u16 total, candidate;
     int seen[NUM_SPECIES];
     gSelectedGeneration = GENERATION_4;
     gMain.mainState = STATE_GAME_IDLE;
     game.debugForcedCatchSpecies = SPECIES_NONE;
     game.debugForcedEggSpecies = SPECIES_NONE;
+    result = TestAllCatchTables(); if (result) return result;
+    gSelectedGeneration = GENERATION_4;
     /* Every row can start a game and survive excluding the last encounter. */
     for (flag = 0; flag <= SPECIES_CAUGHT; flag++)
     {
@@ -385,12 +457,15 @@ def main():
     fixture = legendary.FIXTURE.replace("#define WILD_MON_LOCATION_COUNT 10", "#define WILD_MON_LOCATION_COUNT 8\n#define SPECIES_SHARED 3")
     fixture = fixture.replace("speciesWeights[10]", "speciesWeights[25]")
     fixture = fixture.replace("    s16 area,", "    u16 debugForcedEggSpecies, lastEggSpecies;\n    u8 forcePichuEgg, manaphyEggActive;\n    s16 area,")
-    fixture = fixture.replace("struct { u16 evolutionMethod, evolutionTarget; } gSpeciesInfo[NUM_SPECIES];", data)
+    fixture = fixture.replace("struct { u16 evolutionMethod, evolutionTarget, catchIndex; } gSpeciesInfo[NUM_SPECIES];", data)
     fixture = re.sub(r"u16 GetEvolutionTargetForCurrentContext[^\n]+\n", "", fixture)
     fixture = fixture[:fixture.index("static u16 GetWildMonForSelectedGeneration")]
     fixture += "static u16 GetWildMonForSelectedGeneration(s16 area, s16 arrows, s16 index);\n"
     fixture += "const u16 gCommonAndEggWeights[] = {10, 10, 15, 15, 2, 0};\n"
     fixture += "typedef signed char s8;\n"
+    fixture += "#define EWRAM_DATA\n"
+    random_code = section(picker, "#define RANDOM_WILD_MON_SOURCE_TABLE_COUNT", "void NormalizeEvolvablePartySpeciesStorage")
+    random_code += section(picker, "static u16 GetWildMonForSelectedGeneration", "static u16 GetEggMonForSelectedGeneration")
     getter = section(picker, "static u16 GetEggMonForSelectedGeneration", "static u8 GetSavedPokedexFlag")
     evolution = section(picker, "static u16 PickMissingBranchEvolution", "/**\n *   0 if captured via ball")
     evolution += section((ROOT / "src/main_board_evolution_mode.c").read_text(),
@@ -398,7 +473,7 @@ def main():
     evolution += legendary.registration
     weights = section(picker, "void BuildSpeciesWeightsForCatchEmMode", "void PickSpeciesForCatchEmMode")
     egg_code = picker[picker.index("static s16 GetEggEncounterCount"):]
-    source_code = fixture + legendary.dex_code + legendary.rules + evolution + getter + weights + legendary.catch + egg_code + TESTS
+    source_code = fixture + random_code + legendary.dex_code + legendary.rules + evolution + getter + weights + legendary.catch + egg_code + TESTS
     compiler = os.environ.get("CC") or shutil.which("cc") or shutil.which("cl")
     if not compiler and os.name == "nt":
         candidates = sorted(Path("C:/Program Files/Microsoft Visual Studio").glob(
@@ -432,6 +507,7 @@ def main():
     print("      real C catch/egg lotteries, no empty starting pools, RANDOM eggs and evolution branches.")
     print("      Gen 2 Eevee catches on both boards; Eevee targets/items and Dex registration by mode.")
     print("      Gen 4 legendary catch assets, all Gen 4 portraits/hatch assets and Zigzagoon replacements.")
+    print("      All Gen 1-4/RANDOM catch pools reject egg-only sprites; zero-weight fallback and Gen 1 exceptions.")
 
 
 if __name__ == "__main__":

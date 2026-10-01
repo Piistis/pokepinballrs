@@ -712,10 +712,7 @@ static void DebugTools_PlaySelectedSound(void)
 
 static bool8 DebugTools_IsSpeciesSelectableForCatch(u16 species)
 {
-    if (species >= SPECIES_NONE)
-        return FALSE;
-
-    return species == SPECIES_TREECKO || gSpeciesInfo[species].catchIndex != 0;
+    return CanSpeciesAppearInCatchEmMode(species);
 }
 
 static bool8 DebugTools_IsSpeciesSelectableForHatch(u16 species)

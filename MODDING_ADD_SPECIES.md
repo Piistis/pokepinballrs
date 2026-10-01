@@ -16,6 +16,14 @@ si no quieres cambiar el layout del save y arriesgar corrupciones/crashes.
 Consulta `MODDING_SAVE_COMPATIBILITY.md` antes de tocar IDs o estructuras de
 guardado. `make` comprueba los IDs existentes y el layout de `PinballGame`.
 
+No incluir una especie en `data/mon_locations.inc` si no tiene sprite de caza
+propio: `catchIndex == 0` solo es valido para Treecko. Las especies de huevo
+se mantienen en `src/data/egg_locations.h` y sus evoluciones se obtienen por
+evolucion, no reutilizando el grafico de Treecko. Zubat, Oddish, Horsea y
+Sandshrew si pueden entrar en caza: ya disponen de indices y sprites propios.
+`CanSpeciesAppearInCatchEmMode` aplica la misma regla al sorteo, RANDOM y debug;
+`test_gen4_encounters.py` ahora valida las cuatro generaciones y RANDOM.
+
 ## Checklist rapido
 
 Para anadir una especie nueva hay que tocar, como minimo:

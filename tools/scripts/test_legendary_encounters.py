@@ -14,6 +14,8 @@ rules = picker[picker.index("static u8 GetSavedPokedexFlag"):
                picker.index("static u16 PickMissingBranchEvolution")]
 catch = picker[picker.index("void PickSpeciesForCatchEmMode(void)"):
                picker.index("static s16 GetEggEncounterCount(void)")]
+catch = picker[picker.index("bool8 CanSpeciesAppearInCatchEmMode(u16 species)"):
+               picker.index("void BuildSpeciesWeightsForCatchEmMode(void)")] + catch
 registration = picker[picker.index("void RegisterCaptureOrEvolution(s16 evolved)"):
                       picker.index("static inline u32 GetTimeAdjustedRandom(void)\n{")]
 debug = (ROOT / "src/all_board_mode_change_and_debug_menu.c").read_text()
@@ -69,7 +71,8 @@ struct { int caughtSpeciesCount; } gBoardConfig;
 struct { u8 pokedexFlags[NUM_SAVE_SPECIES]; } gMain_saveData;
 u8 gExtraPokedexFlags[NUM_SPECIES - NUM_SAVE_SPECIES];
 int gSelectedGeneration;
-struct { u16 evolutionMethod, evolutionTarget; } gSpeciesInfo[NUM_SPECIES];
+struct { u16 evolutionMethod, evolutionTarget, catchIndex; } gSpeciesInfo[NUM_SPECIES];
+bool8 CanSpeciesAppearInCatchEmMode(u16 species);
 void SetDex(u16 species, u8 flag);
 void SaveFile_SetPokedexFlags(u16 species, u8 flag) { SetDex(species, flag); }
 void AddEvolvablePartySpecies(u16 species) { (void)species; }
@@ -102,7 +105,7 @@ void SetDex(u16 species, u8 flag)
 void Reset(void)
 {
     int i;
-    for (i = 0; i < NUM_SPECIES; i++) SetDex(i, 0);
+    for (i = 0; i < NUM_SPECIES; i++) { SetDex(i, 0); gSpeciesInfo[i].catchIndex = 1; }
     for (i = 0; i < NUM_EREADER_CARDS; i++) gMain.eReaderBonuses[i] = 0;
     game.legendaryEncounterMagic = 0;
     game.legendaryCaughtMask = 0xFFFF;

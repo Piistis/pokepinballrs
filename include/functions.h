@@ -37,6 +37,7 @@ void DefaultMainCallback(void);
 // src/rom_3219C.c
 
 void PickSpeciesForCatchEmMode(void);
+bool8 CanSpeciesAppearInCatchEmMode(u16 species);
 
 // src/rom_850.c
 

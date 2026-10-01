@@ -198,6 +198,10 @@ def build(root=ROOT):
     random_candidates = defaultdict(set)
     for mode, table in sorted(modes.items()):
         for area, board, arrows, mons in catches[table]:
+            invalid = [mon for mon in mons if mon not in ("SPECIES_NONE", "SPECIES_TREECKO")
+                       and info[mon]["catchIndex"] == "0"]
+            if invalid:
+                raise ValueError(f"Caza sin sprite propio: {mode} {area} {board}: {invalid}")
             counts = Counter(mon for mon in mons if mon != "SPECIES_NONE")
             if not counts:
                 raise ValueError(f"Fila vacia: {mode} {area} {board}")
@@ -281,6 +285,9 @@ def render(info, routes, manual, reachable):
           "- La Pokedex, el ultimo encuentro, la primera captura y los eventos especiales cambian el resultado real.",
           "  Si un especial ocupa el 25%, el sorteo normal solo se ejecuta en el 75% restante (salvo otros eventos).",
           "- RANDOM muestra candidatos, NO encuentros garantizados: sus tablas normales se sortean por partida.",
+          "- Caza solo admite especies con sprite de captura propio; tener sprite de huevo no basta.",
+          "  Si no queda ningun candidato con peso, se usa uno valido de la zona ignorando rareza/repeticion;",
+          "  una tabla totalmente invalida usa el inicial de la generacion (Treecko en Gen 3/RANDOM).",
           "  Los huevos RANDOM combinan las tablas original, Gen 2 y Gen 4; sus porcentajes tambien son de referencia.",
           "- La tabla original de huevos se usa actualmente en Gen 1 y Gen 3 y mezcla generaciones: se documenta",
           "  lo que hace el codigo, no una distribucion ideal. La evolucion requiere obtener antes la preevolucion.",

@@ -313,7 +313,7 @@
     {
       "file": "src/main_board_catch_hatch_picker.c",
       "function": "BuildSpeciesWeightsForCatchEmMode",
-      "sha256": "bdbeacdb793aee99b343777a167d8414dff036857a27e7f6dce01f0171e15523"
+      "sha256": "c1cc48b37f87d5a32bbd7cce71bf79e2df89280519f32571b8d364ffc0639400"
     },
     {
       "file": "src/main_board_catch_hatch_picker.c",
@@ -333,7 +333,7 @@
     {
       "file": "src/main_board_catch_hatch_picker.c",
       "function": "PickSpeciesForCatchEmMode",
-      "sha256": "5ae3422a1a162b1c3a560c0983e974e2c0603c6f15e2c8f590069c2c1d7d86bc"
+      "sha256": "c11e9d9fe020e45b2cbfd945375068933c4c2a11d54fd288e6759a2d0a93ac90"
     },
     {
       "file": "src/main_board_catch_hatch_picker.c",

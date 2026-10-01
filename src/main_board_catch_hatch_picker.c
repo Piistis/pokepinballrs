@@ -119,6 +119,9 @@ void InitRandomWildMonLocationsForNewGame(void)
 
 static bool8 IsSpeciesBlacklistedFromRandomWildMons(u16 species)
 {
+    if (!CanSpeciesAppearInCatchEmMode(species))
+        return TRUE;
+
     switch (species)
     {
     case SPECIES_NONE:
@@ -994,6 +997,35 @@ PickSpeciesForX determines a species as follows:
 
 */
 
+bool8 CanSpeciesAppearInCatchEmMode(u16 species)
+{
+    /* Index zero is Treecko, not a usable fallback for egg/evolution-only species. */
+    return species < NUM_SPECIES
+        && (species == SPECIES_TREECKO || gSpeciesInfo[species].catchIndex != 0);
+}
+
+static u16 GetFallbackCatchSpecies(void)
+{
+    s16 i;
+    s16 arrows = gCurrentPinballGame->catchModeArrows == 3;
+    u16 species;
+
+    /* Relax rarity/repeat restrictions only when the normal lottery is empty. */
+    for (i = 0; i < WILD_MON_LOCATION_COUNT; i++)
+    {
+        species = GetWildMonForSelectedGeneration(gCurrentPinballGame->area, arrows, i);
+        if (CanSpeciesAppearInCatchEmMode(species))
+            return species;
+    }
+    switch (gSelectedGeneration)
+    {
+    case GENERATION_1: return SPECIES_BULBASAUR;
+    case GENERATION_2: return SPECIES_CHIKORITA;
+    case GENERATION_4: return SPECIES_TURTWIG;
+    default: return SPECIES_TREECKO;
+    }
+}
+
 void BuildSpeciesWeightsForCatchEmMode(void)
 {
     s16 threeArrows;
@@ -1012,6 +1044,11 @@ void BuildSpeciesWeightsForCatchEmMode(void)
     for (i = 0; i < WILD_MON_LOCATION_COUNT; i++)
     {
         currentSpecies = GetWildMonForSelectedGeneration(gCurrentPinballGame->area, threeArrows, i);
+        if (!CanSpeciesAppearInCatchEmMode(currentSpecies))
+        {
+            gCurrentPinballGame->speciesWeights[i] = gCurrentPinballGame->totalWeight;
+            continue;
+        }
         switch (currentSpecies)
         {
             // Rare pokemon
@@ -1096,16 +1133,17 @@ void PickSpeciesForCatchEmMode(void)
     u16 specialMons[6];
     u16 legendary;
 
-    if (gCurrentPinballGame->debugForcedCatchSpecies < SPECIES_NONE)
+    if (CanSpeciesAppearInCatchEmMode(gCurrentPinballGame->debugForcedCatchSpecies))
     {
         gCurrentPinballGame->currentSpecies = gCurrentPinballGame->debugForcedCatchSpecies;
         gCurrentPinballGame->debugForcedCatchSpecies = SPECIES_NONE;
         gCurrentPinballGame->lastCatchSpecies = gCurrentPinballGame->currentSpecies;
         return;
     }
+    gCurrentPinballGame->debugForcedCatchSpecies = SPECIES_NONE;
 
     legendary = PickLegendaryEncounter();
-    if (legendary != SPECIES_NONE)
+    if (CanSpeciesAppearInCatchEmMode(legendary))
     {
         gCurrentPinballGame->currentSpecies = legendary;
         gCurrentPinballGame->lastCatchSpecies = legendary;
@@ -1197,14 +1235,22 @@ void PickSpeciesForCatchEmMode(void)
             else
                 threeArrows = 0;
 
-            rand = GetTimeAdjustedRandom();
-            rand %= gCurrentPinballGame->totalWeight;
-            for (i = 0; i < WILD_MON_LOCATION_COUNT && gCurrentPinballGame->speciesWeights[i] <= rand; i++);
+            if (gCurrentPinballGame->totalWeight == 0)
+                gCurrentPinballGame->currentSpecies = GetFallbackCatchSpecies();
+            else
+            {
+                rand = GetTimeAdjustedRandom();
+                rand %= gCurrentPinballGame->totalWeight;
+                for (i = 0; i < WILD_MON_LOCATION_COUNT && gCurrentPinballGame->speciesWeights[i] <= rand; i++);
 
-            gCurrentPinballGame->currentSpecies = GetWildMonForSelectedGeneration(gCurrentPinballGame->area, threeArrows, i);
+                gCurrentPinballGame->currentSpecies = i < WILD_MON_LOCATION_COUNT
+                    ? GetWildMonForSelectedGeneration(gCurrentPinballGame->area, threeArrows, i) : SPECIES_NONE;
+            }
         }
     }
 
+    if (!CanSpeciesAppearInCatchEmMode(gCurrentPinballGame->currentSpecies))
+        gCurrentPinballGame->currentSpecies = GetFallbackCatchSpecies();
     gCurrentPinballGame->lastCatchSpecies = gCurrentPinballGame->currentSpecies;
 }
 
