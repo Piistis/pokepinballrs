@@ -18,6 +18,9 @@ static void SaveExtraPokedexFlagsToSram(void);
 #define EXTRA_POKEDEX_SAVE_OFFSET 0x1A00
 #define EXTRA_POKEDEX_SAVE_BACKUP_OFFSET 0x1B00
 
+/* Bonus-stage BG tilemaps use IWRAM through 0x03007400. Keep Dex flags separate. */
+EWRAM_DATA u8 gExtraPokedexFlags[EXTRA_POKEDEX_FLAGS_COUNT] = {0};
+
 struct LegacyPokedexHeader
 {
     u32 magic;

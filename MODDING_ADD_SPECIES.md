@@ -16,6 +16,11 @@ si no quieres cambiar el layout del save y arriesgar corrupciones/crashes.
 Consulta `MODDING_SAVE_COMPATIBILITY.md` antes de tocar IDs o estructuras de
 guardado. `make` comprueba los IDs existentes y el layout de `PinballGame`.
 
+Los flags extra usan un array propio en EWRAM (`gExtraPokedexFlags` en `save.c`).
+No guardarlos en buffers graficos ni en `gUnknown_03006C00`, que Spheal y Kyogre
+sobrescriben durante la partida. Ejecutar `test_evolution_portraits.py` para
+comprobar tambien los retratos bloqueados/desbloqueados de especies nuevas.
+
 No incluir una especie en `data/mon_locations.inc` si no tiene sprite de caza
 propio: `catchIndex == 0` solo es valido para Treecko. Las especies de huevo
 se mantienen en `src/data/egg_locations.h` y sus evoluciones se obtienen por

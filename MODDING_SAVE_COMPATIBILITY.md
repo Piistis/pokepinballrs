@@ -15,6 +15,13 @@
 
 ## Formato versionado (version 1)
 
+Los flags extra en RAM tienen su propio array `gExtraPokedexFlags` en EWRAM,
+definido en `save.c` y enlazado con `src/save.o(ewram_data)`. No reutilizar
+`gUnknown_03006C00`: esa direccion es `gBG0TilemapBuffer + 0x800` (u16) y
+los fondos de Spheal/Kyogre la sobrescriben. Eso podia revelar evoluciones
+no vistas solo para especies nuevas, e incluso contaminar futuros guardados.
+Separar la RAM no cambia los IDs, estructuras ni offsets del archivo `.sav`.
+
 SRAM de 32 KiB. Todos los offsets son relativos a `0x0E000000`.
 
 | Bloque | Copia A | Copia B | Espacio por copia |
@@ -75,6 +82,7 @@ de PinballGame no se serializan; esta migracion no cambia esa limitacion previa.
 ```sh
 python3 tools/scripts/test_save_compatibility.py --schema-only
 python3 tools/scripts/test_save_compatibility.py
+python3 tools/scripts/test_evolution_portraits.py
 ```
 
 La segunda compila el codigo real de save.c/save_storage.c contra SRAM simulada
@@ -87,6 +95,12 @@ futuras, punteros reconstruidos, contadores, sentinel y borrado.
 Para la muestra legacy de 500 especies y sin partida suspendida aportada durante
 esta tarea, se puede anadir `--save ../pokepinballrs.sav`. Solo se lee; se comprueba
 su hash al terminar. Ese archivo personal NO se incluye en Git.
+
+La prueba de retratos ejecuta las escrituras reales de tilemap de Spheal
+(entrada/restauracion) y Kyogre con flags de Pokedex controlados. Verifica
+que Kirlia y Mismagius siguen no vistos, que se conserva el progreso de todas
+las especies, y que los retratos de evolucion en vivo y al restaurar mantienen
+la regla original: no visto = interrogacion, visto = silueta, obtenido = color.
 
 Estas pruebas de host no sustituyen compilar con agbcc y probar en emulador:
 guardar/continuar en ambos tableros, conservar puntos, vidas, contador, generacion,

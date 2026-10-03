@@ -156,7 +156,8 @@ struct PinballGame game;
 struct PinballGame *gCurrentPinballGame = &game;
 struct SaveData gMain_saveData;
 struct { u8 sramError; u32 hasSavedGame; } gMain;
-u8 gExtraPokedexFlags[NUM_SPECIES - NUM_SAVE_SPECIES];
+#define EWRAM_DATA
+extern u8 gExtraPokedexFlags[NUM_SPECIES - NUM_SAVE_SPECIES];
 u8 gSelectedGeneration;
 u8 gSaveFileSignature[] = "POKEPINAGB";
 void SetButtonConfigInputs(int n) { (void)n; }
