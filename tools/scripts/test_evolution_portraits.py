@@ -119,6 +119,11 @@ def main():
         storage = f'#define gExtraPokedexFlags ((u8 *)gBG0TilemapBuffer + {offset})'
     else:
         assert 'extern u8 gExtraPokedexFlags[NUM_SPECIES - NUM_SAVE_SPECIES];' in variables
+        # global.h includes variables.h before constants/global.h. This header
+        # must provide its own species constants for the sized declaration.
+        declaration_prefix = variables.split('extern u8 gExtraPokedexFlags', 1)[0]
+        assert '#include "constants/species.h"' in declaration_prefix, (
+            'variables.h needs species constants before declaring gExtraPokedexFlags')
         storage = re.search(r'EWRAM_DATA u8 gExtraPokedexFlags\[[^;]+;', guide.read(ROOT, 'src/save.c'))[0]
         storage = '#define EWRAM_DATA\n#define EXTRA_POKEDEX_FLAGS_COUNT (NUM_SPECIES - NUM_SAVE_SPECIES)\n' + storage
         linker = guide.read(ROOT, 'ld_script.txt').split('/* start of iwram */')[0]

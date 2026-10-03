@@ -8,6 +8,7 @@
 #include "constants/fields.h"
 #include "constants/high_scores.h"
 #include "constants/pinball_game.h"
+#include "constants/species.h"
 
 #define SPECIES_UNSEEN 0
 #define SPECIES_SEEN 1
