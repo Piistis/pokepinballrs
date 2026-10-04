@@ -9,25 +9,37 @@
 extern const u16 gLocation_Pals[];
 extern const s16 gAreaPortraitIndexes[];
 
-// Only BG VRAM 0..0x9FFF and BG palettes are borrowed. OBJ graphics stay intact.
+#define ENCOUNTERS_BG_BYTES 0x4800
+#define ENCOUNTERS_PORTRAITS (ENCOUNTERS_PER_PAGE + 1)
+#define PAUSE_LABEL_OBJECTS 6
+#define PAUSE_LABEL_TILES ((void *)0x06017E80)
+
+enum { TRANSFER_NONE, TRANSFER_OPEN, TRANSFER_PAGE, TRANSFER_CLOSE };
+
 struct EncountersScreen
 {
-    u16 vram[0xA000 / 2];
-    u16 palette[256];
+    u16 bgBackup[ENCOUNTERS_BG_BYTES / 2];
+    u16 objBackup[ENCOUNTERS_PORTRAITS * 0x300 / 2];
+    u16 paletteBackup[512];
+    struct OamData oamBackup[128];
+    const u8 *portraits[ENCOUNTERS_PORTRAITS];
+    u16 portraitPalettes[ENCOUNTERS_PORTRAITS][16];
+    u16 pageTiles[128];
     u16 species[ENCOUNTERS_CAPACITY];
     u16 count, page, pageCount;
     u16 bg0cnt, dispcnt, xOffset, yOffset;
     u16 blendControl, blendAlpha, blendBrightness;
     bool8 blendEnabled;
     bool8 active;
+    u8 transfer;
 };
 
 static EWRAM_DATA struct EncountersScreen sEncounters = {0};
 static EWRAM_DATA struct
 {
-    u16 tiles[128];
-    struct OamData oam[2];
-    u16 ids[2];
+    u16 tiles[192];
+    struct OamData oam[PAUSE_LABEL_OBJECTS];
+    u16 ids[PAUSE_LABEL_OBJECTS];
     bool8 active;
 } sPauseLabel = {0};
 
@@ -37,53 +49,9 @@ static const u8 sDigits[11][5] = {
     {7,5,7,5,7}, {7,5,7,1,7}, {1,1,2,4,4}
 };
 
-static const u8 sPauseLetters[10][7] = {
-    {31,16,16,30,16,16,31}, {17,25,25,21,19,19,17},
-    {14,17,16,16,16,17,14}, {14,17,17,17,17,17,14},
-    {17,17,17,17,17,17,14}, {17,25,25,21,19,19,17},
-    {31,4,4,4,4,4,4}, {31,16,16,30,16,16,31},
-    {30,17,17,30,20,18,17}, {15,16,16,14,1,1,30}
-};
-
 bool8 Encounters_IsOpen(void)
 {
     return sEncounters.active;
-}
-
-static void PutPixel(s16 x, s16 y, u8 color)
-{
-    u32 offset;
-    vu16 *dest;
-    if (x < 0 || x >= 240 || y < 0 || y >= 160)
-        return;
-    offset = ((y / 8) * 30 + x / 8) * 64 + (y % 8) * 8 + x % 8;
-    dest = (vu16 *)VRAM + offset / 2;
-    // GBA VRAM does not support byte stores.
-    if (offset & 1)
-        *dest = (*dest & 0x00FF) | (color << 8);
-    else
-        *dest = (*dest & 0xFF00) | color;
-}
-
-static void DrawImage(const u16 *runs, s16 width, s16 height, s16 x, s16 y, s16 firstRow, s16 rows, bool8 transparent)
-{
-    s16 row, col;
-    u16 remaining = 0;
-    u8 color = 0;
-    for (row = 0; row < height; row++)
-    {
-        for (col = 0; col < width; col++)
-        {
-            if (remaining == 0)
-            {
-                color = *runs & 255;
-                remaining = *runs++ >> 8;
-            }
-            remaining--;
-            if (row >= firstRow && row < firstRow + rows && (!transparent || color))
-                PutPixel(x + col, y + row - firstRow, color);
-        }
-    }
 }
 
 static bool8 IsCaught(u16 species)
@@ -95,76 +63,67 @@ static bool8 IsCaught(u16 species)
     return gMain_saveData.pokedexFlags[species] == SPECIES_CAUGHT;
 }
 
-static void DrawPortrait(const u8 *tiles, const u16 *palette, s16 x, s16 y, s16 bank, bool8 caught)
+static void PreparePortrait(s16 slot, const u8 *tiles, const u16 *palette, s16 x, s16 y, bool8 caught)
 {
-    s16 row, col, index, i;
-    u8 color;
+    s16 i;
+    struct OamData *oam;
+    sEncounters.portraits[slot] = tiles;
     for (i = 0; i < 16; i++)
-        ((vu16 *)BG_PLTT)[bank * 16 + i] = caught ? palette[i] : (i == 15 ? 0x7FFF : 0);
-    for (row = 0; row < 32; row++)
+        sEncounters.portraitPalettes[slot][i] = caught ? palette[i] : (i == 15 ? 0x7FFF : 0);
+    // The build uses -mwidth 2 -mheight 2: six native 16x16 OBJ blocks.
+    for (i = 0; i < 6; i++)
     {
-        for (col = 0; col < 48; col++)
-        {
-            index = ((row / 8) * 6 + col / 8) * 32 + (row % 8) * 4 + (col % 8) / 2;
-            color = (tiles[index] >> ((col & 1) * 4)) & 15;
-            PutPixel(x + col, y + row, color || bank == 2 ? bank * 16 + color : 2);
-        }
+        oam = &gOamBuffer[slot * 6 + i];
+        memset(oam, 0, sizeof(*oam));
+        oam->x = x + (i % 3) * 16;
+        oam->y = y + (i / 3) * 16;
+        oam->size = ST_OAM_SIZE_1;
+        oam->tileNum = slot * 24 + i * 4;
+        oam->paletteNum = slot;
     }
 }
 
-static void DrawDigit(s16 digit, s16 x)
+static void PrepareDigit(s16 digit, s16 x)
 {
-    s16 y, col;
+    s16 y, col, pixel;
+    u8 *tiles = (u8 *)sEncounters.pageTiles;
     for (y = 0; y < 5; y++)
         for (col = 0; col < 3; col++)
             if (sDigits[digit][y] & (4 >> col))
-                PutPixel(x + col, 56 + y, 1);
+            {
+                pixel = x + col;
+                tiles[(pixel / 8) * 64 + y * 8 + pixel % 8] = 1;
+            }
 }
 
-static void RenderEncounters(void)
+static void PreparePage(void)
 {
-    s16 x, y, slot, index, area;
+    s16 slot, index, i;
     u16 species;
-    REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_FORCED_BLANK;
-    DmaCopy16(3, sEncountersPalette, BG_PLTT, sizeof(sEncountersPalette));
-    DrawImage(sEncountersBackground, 240, 160, 0, 0, 0, 160, FALSE);
-    DrawImage(sEncountersFrames, 54, 80, 93, 13, 0, 40, TRUE);
-    area = gAreaPortraitIndexes[gCurrentPinballGame->area];
-    DrawPortrait(gLocationPortraitGfx[area], &gLocation_Pals[area * 16], 96, 17, 2, TRUE);
-    DrawImage(sEncountersButtons, 16, 32, 16, 51, 16, 16, TRUE);
-    DrawImage(sEncountersButtons, 16, 32, 208, 51, 0, 16, TRUE);
-    DrawDigit(sEncounters.page + 1, 110);
-    DrawDigit(10, 118);
-    DrawDigit(sEncounters.pageCount, 126);
+    memcpy(sEncounters.pageTiles, sEncountersBgTiles + ENCOUNTERS_PAGE_TILE * 32, sizeof(sEncounters.pageTiles));
+    PrepareDigit(sEncounters.page + 1, 6);
+    PrepareDigit(10, 14);
+    PrepareDigit(sEncounters.pageCount, 22);
     for (slot = 0; slot < ENCOUNTERS_PER_PAGE; slot++)
     {
-        x = 10 + (slot % 4) * 56;
-        y = 66 + (slot / 4) * 47;
-        DrawImage(sEncountersFrames, 54, 80, x, y, 40, 40, TRUE);
         index = sEncounters.page * ENCOUNTERS_PER_PAGE + slot;
+        sEncounters.portraits[slot + 1] = NULL;
+        for (i = 0; i < 6; i++)
+            gOamBuffer[(slot + 1) * 6 + i].affineMode = ST_OAM_AFFINE_ERASE;
         if (index < sEncounters.count)
         {
             species = sEncounters.species[index];
-            DrawPortrait(gMonPortraitGroupGfx[species / 15] + (species % 15) * 0x300,
-                         gMonPortraitGroupPals[species / 15][species % 15],
-                         x + 3, y + 4, 3 + slot, IsCaught(species));
-        }
-        else
-        {
-            for (index = 0; index < 32; index++)
-                for (area = 0; area < 48; area++)
-                    PutPixel(x + 3 + area, y + 4 + index, 2);
+            PreparePortrait(slot + 1,
+                gMonPortraitGroupGfx[species / 15] + (species % 15) * 0x300,
+                gMonPortraitGroupPals[species / 15][species % 15],
+                13 + (slot % 4) * 56, 70 + (slot / 4) * 47, IsCaught(species));
         }
     }
-    for (y = 0; y < 20; y++)
-        for (x = 0; x < 32; x++)
-            ((vu16 *)BG_SCREEN_ADDR(19))[y * 32 + x] = x < 30 ? y * 30 + x : 0;
-    REG_BG0CNT = BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(19) | BGCNT_256COLOR | BGCNT_TXT256x256;
-    gMain.dispcntBackup = DISPCNT_MODE_0 | DISPCNT_BG0_ON;
 }
 
 void Encounters_Open(void)
 {
+    s16 i, area;
     if (sEncounters.active || gMain.selectedField >= MAIN_FIELD_COUNT
      || gCurrentPinballGame->area >= AREA_COUNT || !(gMain.modeChangeFlags & MODE_CHANGE_PAUSE))
         return;
@@ -181,27 +140,56 @@ void Encounters_Open(void)
     sEncounters.blendAlpha = gMain.blendAlpha;
     sEncounters.blendBrightness = gMain.blendBrightness;
     sEncounters.blendEnabled = gMain.blendEnabled;
+    // Read-only snapshots do not require blanking the visible paused board.
+    DmaCopy16(3, VRAM, sEncounters.bgBackup, sizeof(sEncounters.bgBackup));
+    DmaCopy16(3, OBJ_VRAM0, sEncounters.objBackup, sizeof(sEncounters.objBackup));
+    DmaCopy16(3, BG_PLTT, sEncounters.paletteBackup, sizeof(sEncounters.paletteBackup));
+    memcpy(sEncounters.oamBackup, gOamBuffer, sizeof(sEncounters.oamBackup));
+    memset(gOamBuffer, 0, sizeof(sEncounters.oamBackup));
+    for (i = 0; i < 128; i++)
+        gOamBuffer[i].affineMode = ST_OAM_AFFINE_ERASE;
+    area = gAreaPortraitIndexes[gCurrentPinballGame->area];
+    PreparePortrait(0, gLocationPortraitGfx[area], &gLocation_Pals[area * 16], 96, 17, TRUE);
+    PreparePage();
     sEncounters.active = TRUE;
-    REG_DISPCNT |= DISPCNT_FORCED_BLANK;
-    DmaCopy16(3, VRAM, sEncounters.vram, sizeof(sEncounters.vram));
-    DmaCopy16(3, BG_PLTT, sEncounters.palette, sizeof(sEncounters.palette));
-    gMain.bgOffsets[0].xOffset = 0;
-    gMain.bgOffsets[0].yOffset = 0;
-    gMain.blendEnabled = TRUE;
-    gMain.blendControl = 0;
-    gMain.blendAlpha = 0;
-    gMain.blendBrightness = 0;
+    sEncounters.transfer = TRANSFER_OPEN;
     m4aSongNumStart(SE_MENU_SELECT);
-    RenderEncounters();
 }
 
 void Encounters_Update(void)
 {
+    if (sEncounters.transfer != TRANSFER_NONE)
+        return;
     if (JOY_NEW(B_BUTTON | START_BUTTON))
     {
-        REG_DISPCNT |= DISPCNT_FORCED_BLANK;
-        DmaCopy16(3, sEncounters.vram, VRAM, sizeof(sEncounters.vram));
-        DmaCopy16(3, sEncounters.palette, BG_PLTT, sizeof(sEncounters.palette));
+        sEncounters.transfer = TRANSFER_CLOSE;
+        gMain.newKeys &= ~(B_BUTTON | START_BUTTON);
+        m4aSongNumStart(SE_MENU_CANCEL);
+    }
+    else if (JOY_NEW(L_BUTTON | R_BUTTON) && sEncounters.pageCount > 1)
+    {
+        if (JOY_NEW(L_BUTTON))
+            sEncounters.page = sEncounters.page ? sEncounters.page - 1 : sEncounters.pageCount - 1;
+        else
+            sEncounters.page = (sEncounters.page + 1) % sEncounters.pageCount;
+        PreparePage();
+        sEncounters.transfer = TRANSFER_PAGE;
+        m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
+    }
+}
+
+// Called after VBlankIntrWait, before the common OAM/register upload.
+void Encounters_VBlank(void)
+{
+    s16 slot;
+    if (sEncounters.transfer == TRANSFER_NONE)
+        return;
+    if (sEncounters.transfer == TRANSFER_CLOSE)
+    {
+        DmaCopy16(3, sEncounters.bgBackup, VRAM, sizeof(sEncounters.bgBackup));
+        DmaCopy16(3, sEncounters.objBackup, OBJ_VRAM0, sizeof(sEncounters.objBackup));
+        DmaCopy16(3, sEncounters.paletteBackup, BG_PLTT, sizeof(sEncounters.paletteBackup));
+        memcpy(gOamBuffer, sEncounters.oamBackup, sizeof(sEncounters.oamBackup));
         REG_BG0CNT = sEncounters.bg0cnt;
         gMain.dispcntBackup = sEncounters.dispcnt;
         gMain.bgOffsets[0].xOffset = sEncounters.xOffset;
@@ -211,18 +199,35 @@ void Encounters_Update(void)
         gMain.blendBrightness = sEncounters.blendBrightness;
         gMain.blendEnabled = sEncounters.blendEnabled;
         sEncounters.active = FALSE;
-        gMain.newKeys &= ~(B_BUTTON | START_BUTTON);
-        m4aSongNumStart(SE_MENU_CANCEL);
     }
-    else if (JOY_NEW(L_BUTTON | R_BUTTON))
+    else
     {
-        if (JOY_NEW(L_BUTTON))
-            sEncounters.page = sEncounters.page ? sEncounters.page - 1 : sEncounters.pageCount - 1;
-        else
-            sEncounters.page = (sEncounters.page + 1) % sEncounters.pageCount;
-        m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
-        RenderEncounters();
+        if (sEncounters.transfer == TRANSFER_OPEN)
+        {
+            DmaCopy16(3, sEncountersBgTiles, VRAM, sizeof(sEncountersBgTiles));
+            DmaCopy16(3, sEncountersTilemap, BG_SCREEN_ADDR(8), sizeof(sEncountersTilemap));
+            DmaCopy16(3, sEncountersPalette, BG_PLTT, sizeof(sEncountersPalette));
+            ((vu16 *)BG_PLTT)[32] = sEncounters.portraitPalettes[0][0];
+            REG_BG0CNT = BGCNT_SCREENBASE(8) | BGCNT_256COLOR | BGCNT_TXT256x256;
+            gMain.dispcntBackup = DISPCNT_MODE_0 | DISPCNT_BG0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP;
+            gMain.bgOffsets[0].xOffset = 0;
+            gMain.bgOffsets[0].yOffset = 0;
+            gMain.blendEnabled = TRUE;
+            gMain.blendControl = 0;
+            gMain.blendAlpha = 0;
+            gMain.blendBrightness = 0;
+        }
+        for (slot = sEncounters.transfer == TRANSFER_OPEN ? 0 : 1; slot < ENCOUNTERS_PORTRAITS; slot++)
+        {
+            if (sEncounters.portraits[slot])
+            {
+                DmaCopy16(3, sEncounters.portraits[slot], (u8 *)OBJ_VRAM0 + slot * 0x300, 0x300);
+                DmaCopy16(3, sEncounters.portraitPalettes[slot], (u16 *)OBJ_PLTT + slot * 16, 32);
+            }
+        }
+        DmaCopy16(3, sEncounters.pageTiles, (u8 *)VRAM + ENCOUNTERS_PAGE_TILE * 64, sizeof(sEncounters.pageTiles));
     }
+    sEncounters.transfer = TRANSFER_NONE;
 }
 
 static bool8 IsPauseOam(s16 id)
@@ -240,15 +245,17 @@ static bool8 IsPauseOam(s16 id)
 
 void EncountersPause_Begin(void)
 {
-    s16 pass, id, count = 0, ch, x, y, pixel, offset;
-    u16 tiles[128];
-    if (gMain.selectedField >= MAIN_FIELD_COUNT || (gMain.modeChangeFlags & MODE_CHANGE_DEBUG))
+    s16 pass, id, i, count = 0;
+    if (sPauseLabel.active || gMain.selectedField >= MAIN_FIELD_COUNT || (gMain.modeChangeFlags & MODE_CHANGE_DEBUG))
         return;
-    for (pass = 0; pass < 2 && count < 2; pass++)
+    for (pass = 0; pass < 2 && count < PAUSE_LABEL_OBJECTS; pass++)
     {
-        for (id = 127; id >= 0 && count < 2; id--)
+        for (id = 127; id >= 0 && count < PAUSE_LABEL_OBJECTS; id--)
         {
-            if (IsPauseOam(id) || (count && sPauseLabel.ids[0] == id))
+            if (IsPauseOam(id))
+                continue;
+            for (i = 0; i < count && sPauseLabel.ids[i] != id; i++);
+            if (i != count)
                 continue;
             if (pass == 0 && gOamBuffer[id].affineMode != ST_OAM_AFFINE_ERASE && gOamBuffer[id].y < 160)
                 continue;
@@ -256,18 +263,8 @@ void EncountersPause_Begin(void)
             sPauseLabel.oam[count++] = gOamBuffer[id];
         }
     }
-    DmaCopy16(3, (void *)0x06017F00, sPauseLabel.tiles, sizeof(sPauseLabel.tiles));
-    memset(tiles, 0, sizeof(tiles));
-    for (ch = 0; ch < 10; ch++)
-        for (y = 0; y < 7; y++)
-            for (x = 0; x < 5; x++)
-                if (sPauseLetters[ch][y] & (16 >> x))
-                {
-                    pixel = ch * 6 + x;
-                    offset = (pixel / 8) * 32 + y * 4 + (pixel % 8) / 2;
-                    tiles[offset / 2] |= 12 << ((pixel % 4) * 4);
-                }
-    DmaCopy16(3, tiles, (void *)0x06017F00, sizeof(tiles));
+    DmaCopy16(3, PAUSE_LABEL_TILES, sPauseLabel.tiles, sizeof(sPauseLabel.tiles));
+    DmaCopy16(3, sEncountersWord, PAUSE_LABEL_TILES, sizeof(sEncountersWord));
     sPauseLabel.active = TRUE;
 }
 
@@ -276,31 +273,51 @@ void EncountersPause_End(void)
     s16 i;
     if (!sPauseLabel.active)
         return;
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < PAUSE_LABEL_OBJECTS; i++)
         gOamBuffer[sPauseLabel.ids[i]] = sPauseLabel.oam[i];
-    DmaCopy16(3, sPauseLabel.tiles, (void *)0x06017F00, sizeof(sPauseLabel.tiles));
+    DmaCopy16(3, sPauseLabel.tiles, PAUSE_LABEL_TILES, sizeof(sPauseLabel.tiles));
     sPauseLabel.active = FALSE;
 }
 
 void EncountersPause_Draw(void)
 {
-    s16 i;
+    s16 i, x, y;
     u16 affineParam;
-    struct OamData *oam;
+    struct OamData *oam, *anchor;
     if (!sPauseLabel.active)
         return;
-    for (i = 0; i < 2; i++)
+    anchor = &gOamBuffer[gMain.spriteGroups[SG_PAUSE_PANEL].oam[1].oamId];
+    // SAVE uses a double-size affine 8x8 glyph: its visible origin is +4,+4.
+    x = (anchor->x + 4) & 511;
+    y = (anchor->y + 4 + 24) & 255;
+    for (i = 0; i < PAUSE_LABEL_OBJECTS; i++)
     {
         oam = &gOamBuffer[sPauseLabel.ids[i]];
-        // OAM matrix words are shared with unrelated affine sprites.
         affineParam = oam->affineParam;
-        memset(oam, 0, sizeof(*oam));
+        if (i < 3)
+        {
+            memset(oam, 0, sizeof(*oam));
+            oam->x = x + i * 32;
+            oam->y = y;
+            oam->shape = ST_OAM_H_RECTANGLE;
+            oam->size = ST_OAM_SIZE_1;
+            oam->tileNum = 0x3F4 + i * 4;
+            oam->paletteNum = 9;
+        }
+        else if (i == 3)
+        {
+            anchor = &gOamBuffer[gMain.spriteGroups[SG_PAUSE_TOP_BORDER].oam[1].oamId];
+            *oam = *anchor;
+            oam->x = (anchor->x + 32) & 511;
+        }
+        else
+        {
+            anchor = &gOamBuffer[gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER].oam[2].oamId];
+            *oam = *anchor;
+            oam->x = (anchor->x + (i - 3) * 32) & 511;
+        }
         oam->affineParam = affineParam;
-        oam->x = 100 + i * 32;
-        oam->y = gCurrentPinballGame->pauseAnimTimer >= 24 ? 108 : 160;
-        oam->shape = ST_OAM_H_RECTANGLE;
-        oam->size = ST_OAM_SIZE_1;
-        oam->tileNum = 0x3F8 + i * 4;
-        oam->paletteNum = 9;
+        if (gCurrentPinballGame->pauseAnimTimer < 24)
+            oam->affineMode = ST_OAM_AFFINE_ERASE;
     }
 }

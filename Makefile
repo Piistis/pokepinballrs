@@ -134,7 +134,7 @@ check-encounters-screen:
 	python3 tools/scripts/test_encounters_screen.py
 	python3 tools/scripts/test_gen4_encounters.py
 
-src/data/encounters_assets.h: tools/scripts/generate_encounters_assets.py graphics/options/Encounters.png graphics/options/Encounters_Frames.png graphics/options/Encounters_Buttons.png
+src/data/encounters_assets.h: tools/scripts/generate_encounters_assets.py graphics/options/Encounters.png graphics/options/Encounters_Frames.png graphics/options/Encounters_Buttons.png graphics/options/Encounters_Word.png
 	python3 tools/scripts/generate_encounters_assets.py
 
 $(C_BUILDDIR)/encounters.o: src/data/encounters_assets.h

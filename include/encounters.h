@@ -11,6 +11,7 @@ u16 GetCurrentAreaCatchEncounters(u16 *species);
 bool8 Encounters_IsOpen(void);
 void Encounters_Open(void);
 void Encounters_Update(void);
+void Encounters_VBlank(void);
 void EncountersPause_Begin(void);
 void EncountersPause_End(void);
 void EncountersPause_Draw(void);

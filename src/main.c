@@ -294,6 +294,7 @@ void DefaultMainCallback(void)
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {
         VBlankIntrWait();
+        Encounters_VBlank();
         if (!Encounters_IsOpen())
             RenderManaphyEggPalette();
         DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
