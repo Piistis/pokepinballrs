@@ -20,7 +20,7 @@ Source PNGs in `graphics/options`:
 
 - `Encounters.png`: 240 x 160 background.
 - `Encounters_Frames.png`: 54 x 80; area frame first, Pokemon frame second.
-  Each frame is 54 x 40 with a 48 x 32 portrait at offset (3, 4).
+  Each frame is 54 x 40 with a 48 x 32 portrait at offset (3, 5).
 - `Encounters_Buttons.png`: 16 x 32; R first, L second.
 - `Encounters_Word.png`: 80 x 8 pause label, white on transparent-key green.
 

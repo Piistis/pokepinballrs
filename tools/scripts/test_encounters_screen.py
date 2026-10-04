@@ -388,7 +388,7 @@ def verify_pixels(frame, page, paths):
         actual = [frame[(top+y)*240+left+x] for y in range(h) for x in range(w)]
         assert actual == expected, f'{label}: portrait/geometry differs from the source PNG'
     _, _, area = assets.read_png(ROOT/'graphics/area_portraits/loc00_ruby_forest.png')
-    assert_region(96, 17, 48, 32, [rgb15(c) for c in area], 'area')
+    assert_region(96, 18, 48, 32, [rgb15(c) for c in area], 'area')
     for slot in range(8):
         number = page*8+slot
         if number < 12:
@@ -397,7 +397,7 @@ def verify_pixels(frame, page, paths):
             expected = [0x7fff if p == 0 else rgb15(palette[p]) if caught else 0x7fff if p == 15 else 0 for p in pixels]
         else:
             expected = [0x7fff]*1536
-        assert_region(13+slot%4*56, 70+slot//4*47, 48, 32, expected, f'page {page+1}, slot {slot}')
+        assert_region(13+slot%4*56, 71+slot//4*47, 48, 32, expected, f'page {page+1}, slot {slot}')
     _, _, buttons = assets.read_png(ROOT/'graphics/options/Encounters_Buttons.png')
     for left, first in ((16, 16), (208, 0)):
         for y in range(16):

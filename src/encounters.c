@@ -116,7 +116,7 @@ static void PreparePage(void)
             PreparePortrait(slot + 1,
                 gMonPortraitGroupGfx[species / 15] + (species % 15) * 0x300,
                 gMonPortraitGroupPals[species / 15][species % 15],
-                13 + (slot % 4) * 56, 70 + (slot / 4) * 47, IsCaught(species));
+                13 + (slot % 4) * 56, 71 + (slot / 4) * 47, IsCaught(species));
         }
     }
 }
@@ -149,7 +149,7 @@ void Encounters_Open(void)
     for (i = 0; i < 128; i++)
         gOamBuffer[i].affineMode = ST_OAM_AFFINE_ERASE;
     area = gAreaPortraitIndexes[gCurrentPinballGame->area];
-    PreparePortrait(0, gLocationPortraitGfx[area], &gLocation_Pals[area * 16], 96, 17, TRUE);
+    PreparePortrait(0, gLocationPortraitGfx[area], &gLocation_Pals[area * 16], 96, 18, TRUE);
     PreparePage();
     sEncounters.active = TRUE;
     sEncounters.transfer = TRANSFER_OPEN;

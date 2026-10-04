@@ -74,11 +74,11 @@ def generate():
         for y in range(32):
             screen[(top+y)*240+left:(top+y)*240+left+48] = [color] * 48
     blit('Frames', 54, 0, 40, 93, 13)
-    clear_portrait(96, 17, 32)
+    clear_portrait(96, 18, 32)
     for slot in range(8):
         x, y = 10 + slot % 4 * 56, 66 + slot // 4 * 47
         blit('Frames', 54, 40, 40, x, y)
-        clear_portrait(x + 3, y + 4)
+        clear_portrait(x + 3, y + 5)
     blit('Buttons', 16, 16, 16, 16, 49)
     blit('Buttons', 16, 0, 16, 208, 49)
     tiles, tilemap = [], [0] * 1024
