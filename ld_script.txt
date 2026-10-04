@@ -12,9 +12,12 @@ SECTIONS
         src/main_board_to_be_split.o(ewram_data);
         src/main_board_to_be_split.o(.bss);
         src/save.o(ewram_data);
+        . = ALIGN(4); src/encounters.o(ewram_data);
         /* COMMON starts at ??? */
 <COMMON>
     }
+    /* The unused historical filler follows the last live EWRAM pointer. */
+    ASSERT(VerifySramFast + 4 <= 0x02040000, "EWRAM exceeds 256 KiB")
 
     /* start of iwram */
     . = 0x03000000;
@@ -100,6 +103,7 @@ SECTIONS
         src/all_board_process1.o(.text);
         src/all_board_mode_change_and_debug_menu.o(.text);
         src/all_board_pause_game.o(.text);
+        src/encounters.o(.text);
         src/all_board_pinball_game_main.o(.text);
         src/save_and_restore_game.o(.text);
         src/all_board_process8.o(.text);
@@ -133,6 +137,7 @@ SECTIONS
         . = ALIGN(4); data/sound_data.o(.rodata)
         . = ALIGN(4); src/agb_sram.o(.rodata);
         . = ALIGN(4); src/save.o(.rodata);
+        . = ALIGN(4); src/encounters.o(.rodata);
         . = ALIGN(4); src/save_storage.o(.rodata);
         . = ALIGN(4); data/sound_data_2.o(.rodata)
         . = ALIGN(4); src/data.o(.rodata)

@@ -3,6 +3,7 @@
 #include "gbplayer.h"
 #include "link.h"
 #include "m4a.h"
+#include "encounters.h"
 
 static void InitGame(void);
 static void InitMainState(void);
@@ -55,6 +56,8 @@ void VBlankIntr(void)
 void VCountIntr(void)
 {
     INTR_CHECK |= INTR_FLAG_VCOUNT;
+    if (Encounters_IsOpen())
+        return;
     while (!(REG_DISPSTAT & DISPSTAT_HBLANK));
     if (gMain.mainState == STATE_GAME_MAIN)
     {
@@ -291,7 +294,8 @@ void DefaultMainCallback(void)
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {
         VBlankIntrWait();
-        RenderManaphyEggPalette();
+        if (!Encounters_IsOpen())
+            RenderManaphyEggPalette();
         DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
         REG_DISPCNT = gMain.dispcntBackup;
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;

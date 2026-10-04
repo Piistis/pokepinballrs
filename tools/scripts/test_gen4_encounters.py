@@ -223,8 +223,9 @@ void SetDex(u16 species, u8 flag)
 }
 int TestAllCatchTables(void)
 {
-    int gen, area, arrows, i, roll, pass;
+    int gen, area, arrows, i, roll, pass, n, j;
     u16 total;
+    u16 encounters[ENCOUNTERS_CAPACITY + 1];
     CHECK(!CanSpeciesAppearInCatchEmMode(SPECIES_NATU));
     CHECK(!CanSpeciesAppearInCatchEmMode(SPECIES_PICHU));
     CHECK(!CanSpeciesAppearInCatchEmMode(SPECIES_XATU));
@@ -264,6 +265,22 @@ int TestAllCatchTables(void)
             game.caughtMonCount = pass ? 10 : 0;
             game.lastCatchSpecies = GetWildMonForSelectedGeneration((s16)area, (s16)arrows, 0);
             BuildSpeciesWeightsForCatchEmMode(); total = game.totalWeight;
+            encounters[ENCOUNTERS_CAPACITY] = 0xABCD;
+            n = GetCurrentAreaCatchEncounters(encounters);
+            CHECK(n <= ENCOUNTERS_CAPACITY && encounters[ENCOUNTERS_CAPACITY] == 0xABCD);
+            CHECK(game.totalWeight == total);
+            for (i = 0; i < n; i++)
+            {
+                CHECK(!IsSpeciesBlacklistedFromRandomWildMons(encounters[i]));
+                for (j = i + 1; j < n; j++) CHECK(encounters[i] != encounters[j]);
+            }
+            for (i = 0; i < 16; i++)
+            {
+                u16 mon = GetWildMonForSelectedGeneration((s16)area, (s16)(i / 8), (s16)(i % 8));
+                if (IsSpeciesBlacklistedFromRandomWildMons(mon)) continue;
+                for (j = 0; j < n && encounters[j] != mon; j++);
+                CHECK(j < n);
+            }
             for (i = 0; i < 8; i++)
             {
                 u16 mon = GetWildMonForSelectedGeneration((s16)area, (s16)arrows, (s16)i);
@@ -464,6 +481,8 @@ def main():
     fixture += "const u16 gCommonAndEggWeights[] = {10, 10, 15, 15, 2, 0};\n"
     fixture += "typedef signed char s8;\n"
     fixture += "#define EWRAM_DATA\n"
+    fixture += re.search(r'^#define ENCOUNTERS_CAPACITY.*$',
+                         (ROOT / 'include/encounters.h').read_text(), re.M)[0] + '\n'
     random_code = section(picker, "#define RANDOM_WILD_MON_SOURCE_TABLE_COUNT", "void NormalizeEvolvablePartySpeciesStorage")
     random_code += section(picker, "static u16 GetWildMonForSelectedGeneration", "static u16 GetEggMonForSelectedGeneration")
     getter = section(picker, "static u16 GetEggMonForSelectedGeneration", "static u8 GetSavedPokedexFlag")

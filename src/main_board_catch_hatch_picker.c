@@ -9,6 +9,7 @@
 #include "constants/pinball_game.h"
 #include "constants/areas.h"
 #include "constants/legendary_encounters.h"
+#include "encounters.h"
 
 #define MANAPHY_EGG_STATE_MAGIC 0x4D414E42
 #define MANAPHY_EGG_REQUIRED_CAPTURES 5
@@ -375,6 +376,31 @@ static u16 GetWildMonForSelectedGeneration(s16 area, s16 threeArrows, s16 index)
     default:
         return gWildMonLocations[area][threeArrows][index];
     }
+}
+
+u16 GetCurrentAreaCatchEncounters(u16 *species)
+{
+    s16 arrows, slot, i;
+    u16 candidate, count = 0;
+
+    if (gMain.selectedField >= MAIN_FIELD_COUNT || gCurrentPinballGame->area >= AREA_COUNT)
+        return 0;
+
+    for (arrows = 0; arrows < 2; arrows++)
+    {
+        for (slot = 0; slot < WILD_MON_LOCATION_COUNT; slot++)
+        {
+            candidate = GetWildMonForSelectedGeneration(gCurrentPinballGame->area, arrows, slot);
+            // The RANDOM blacklist currently identifies the special species and
+            // missing catch sprites; neither belongs in this normal-catch view.
+            if (IsSpeciesBlacklistedFromRandomWildMons(candidate))
+                continue;
+            for (i = 0; i < count && species[i] != candidate; i++);
+            if (i == count && count < ENCOUNTERS_CAPACITY)
+                species[count++] = candidate;
+        }
+    }
+    return count;
 }
 
 static u16 GetEggMonForSelectedGeneration(s16 field, s16 index)

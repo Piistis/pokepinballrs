@@ -128,6 +128,17 @@ check-encounters:
 	python3 tools/scripts/generate_encounter_guide.py --check
 	python3 tools/scripts/test_encounter_guide.py
 
+.PHONY: check-encounters-screen
+check-encounters-screen:
+	python3 tools/scripts/generate_encounters_assets.py --check
+	python3 tools/scripts/test_encounters_screen.py
+	python3 tools/scripts/test_gen4_encounters.py
+
+src/data/encounters_assets.h: tools/scripts/generate_encounters_assets.py graphics/options/Encounters.png graphics/options/Encounters_Frames.png graphics/options/Encounters_Buttons.png
+	python3 tools/scripts/generate_encounters_assets.py
+
+$(C_BUILDDIR)/encounters.o: src/data/encounters_assets.h
+
 .PHONY: check-save-schema
 check-save-schema:
 	python3 tools/scripts/test_save_compatibility.py --schema-only

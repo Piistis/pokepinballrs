@@ -76,6 +76,10 @@ u16 gManaphyEggPalette[16];
 const void *lastSource;
 void *lastDestination;
 int dmaCalls, lastSize;
+bool8 encountersOpen;
+int encountersUpdates;
+bool8 Encounters_IsOpen(void) { return encountersOpen; }
+void Encounters_Update(void) { encountersUpdates++; }
 u16 colorDuringUpdate;
 void ObserveBoardUpdate(void) { colorDuringUpdate = paletteMemory[13][5]; }
 void (*gPinballGameStateFuncs[])(void) = { ObserveBoardUpdate };
@@ -148,6 +152,8 @@ void Reset(void)
         for (j = 0; j < 16; j++) paletteMemory[i][j] = i * 16 + j;
     }
     dmaCalls = 0;
+    encountersOpen = FALSE;
+    encountersUpdates = 0;
 }
 
 int main(void)
@@ -281,6 +287,12 @@ int main(void)
     CHECK(gOamBuffer[0].paletteNum == 13);
     CHECK(paletteMemory[14][5] == 14 * 16 + 5 && paletteMemory[15][5] == 15 * 16 + 5);
     CHECK(paletteMemory[13][5] == gManaphyEggPalette[5]);
+    encountersOpen = TRUE;
+    colorDuringUpdate = 0x1234;
+    PinballGameMain();
+    CHECK(encountersUpdates == 1 && colorDuringUpdate == 0x1234);
+    CHECK(gOamBuffer[0].paletteNum == 13 && paletteMemory[13][5] == gManaphyEggPalette[5]);
+    encountersOpen = FALSE;
     /* The displayed OAM still uses bank 13 while the next frame is updated. */
     PinballGameMain();
     CHECK(colorDuringUpdate == gManaphyEggPalette[5]);

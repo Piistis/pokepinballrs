@@ -4,6 +4,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/debug.h"
+#include "encounters.h"
 
 
 
@@ -25,6 +26,7 @@ void ClearBG0Tilemap(void)
 
 void AllBoardProcess_1B_47160(void)
 {
+    s16 pauseOptionCount = gMain.selectedField < MAIN_FIELD_COUNT ? 3 : 2;
 #if DEBUG_TOOLS_ENABLED
     if ((JOY_NEW(SELECT_BUTTON) || JOY_HELD(L_BUTTON | R_BUTTON) == (L_BUTTON | R_BUTTON))
         && gMain.mainState != STATE_GAME_IDLE
@@ -70,18 +72,26 @@ void AllBoardProcess_1B_47160(void)
     {
         if (JOY_NEW(DPAD_UP))
         {
-            gCurrentPinballGame->pauseMenuCursorIndex ^= 1;
+            gCurrentPinballGame->pauseMenuCursorIndex =
+                (gCurrentPinballGame->pauseMenuCursorIndex + pauseOptionCount - 1) % pauseOptionCount;
             m4aSongNumStart(SE_PAUSE_CURSOR_MOVE);
         }
 
         if (JOY_NEW(DPAD_DOWN))
         {
-            gCurrentPinballGame->pauseMenuCursorIndex ^= 1;
+            gCurrentPinballGame->pauseMenuCursorIndex =
+                (gCurrentPinballGame->pauseMenuCursorIndex + 1) % pauseOptionCount;
             m4aSongNumStart(SE_PAUSE_CURSOR_MOVE);
         }
 
         if (JOY_NEW(A_BUTTON) && !JOY_HELD(B_BUTTON | SELECT_BUTTON | START_BUTTON))
         {
+            if (gMain.selectedField < MAIN_FIELD_COUNT && gCurrentPinballGame->pauseMenuCursorIndex == 2)
+            {
+                Encounters_Open();
+                gMain.newKeys &= ~A_BUTTON;
+                return;
+            }
             if (gCurrentPinballGame->pauseMenuCursorIndex == 0)
             {
                 gMain.gameExitState = 2;

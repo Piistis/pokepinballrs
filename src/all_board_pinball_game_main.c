@@ -8,6 +8,7 @@
 #include "constants/fields.h"
 #include "constants/species.h"
 #include "constants/board/ruby_states.h"
+#include "encounters.h"
 
 extern struct PinballGame gPinballGameState;
 
@@ -54,6 +55,11 @@ static s16 GetBoardPokedexFlag(s16 species)
 
 void PinballGameMain(void)
 {
+    if (Encounters_IsOpen())
+    {
+        Encounters_Update();
+        return;
+    }
     RestoreManaphyEggOam();
     gPinballGameStateFuncs[gMain.subState]();
 }
@@ -575,6 +581,8 @@ void MainGameFrameUpdate(void)
     UpdateButtonActionsFromJoy();
     DebugTools_TryOpenMenu();
     CurrentBoardProcPairs_020028D8[1].updateFunc();
+    if (Encounters_IsOpen())
+        return;
     if (gMain.gameExitState == 0 && !(gMain.modeChangeFlags & MODE_CHANGE_PAUSE))
     {
         CurrentBoardProcPairs_020028D8[2].updateFunc();

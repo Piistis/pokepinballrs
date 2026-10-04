@@ -2,6 +2,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "encounters.h"
 
 extern const struct Vector16 gPauseMenuSpriteOffsets[];
 extern const u16 gPauseMenuTextAnimFrames[];
@@ -76,12 +77,14 @@ void PauseGame(void)
         HideGroudonShockwaveSprite();
 
     SetRumblePaused(1);
+    EncountersPause_Begin();
 }
 
 //Unpauses the game and restores the blend settings
 //Also starts the BGM if it was playing before
 void UnpauseGame(void)
 {
+    EncountersPause_End();
     gMain.blendControl = gCurrentPinballGame->pauseBlendControl;
     gMain.blendAlpha = gCurrentPinballGame->pauseBlendAlpha;
     gMain.blendBrightness = gCurrentPinballGame->pauseBlendBrightness;
@@ -291,6 +294,8 @@ void AnimatePauseMenuOverlay(void)
     group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
     group->baseX = 68 + xOffset;
     group->baseY = 108 - yOffset;
+    if (gMain.selectedField < MAIN_FIELD_COUNT && gCurrentPinballGame->pauseAnimTimer >= 24)
+        group->baseY += 12;
     for (i = 0; i < 3; i++)
     {
         oamSimple = &group->oam[i];
@@ -298,5 +303,6 @@ void AnimatePauseMenuOverlay(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
+    EncountersPause_Draw();
     gCurrentPinballGame->pauseAnimTimer++;
 }
