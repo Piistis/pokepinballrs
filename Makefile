@@ -127,6 +127,7 @@ encounters:
 check-encounters:
 	python3 tools/scripts/generate_encounter_guide.py --check
 	python3 tools/scripts/test_encounter_guide.py
+	python3 tools/scripts/test_evolution_reachability.py
 
 .PHONY: check-encounters-screen
 check-encounters-screen:

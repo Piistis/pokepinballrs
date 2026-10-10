@@ -97,7 +97,7 @@ gWildMonLocations:: @ 0x08055A84
 	.2byte SPECIES_CARVANHA
 	.2byte SPECIES_LUVDISC
 	.2byte SPECIES_LILEEP
-	.2byte SPECIES_NONE
+	.2byte SPECIES_CLAMPERL
 
 	@ Ocean | Sapphire | Two arrows
 	.2byte SPECIES_MAGIKARP
@@ -414,7 +414,7 @@ gWildMonLocationsGen1::
 
 	@ Ocean | Ruby | Three arrows
 	.2byte SPECIES_LAPRAS
-	.2byte SPECIES_TENTACOOL
+	.2byte SPECIES_POLIWAG
 	.2byte SPECIES_SLOWPOKE
 	.2byte SPECIES_STARYU
 	.2byte SPECIES_MAGIKARP

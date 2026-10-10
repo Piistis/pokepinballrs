@@ -391,6 +391,10 @@ Prueba esto antes de dar una especie por buena:
 9. En la Pokedex se muestran nombre, categoria, altura, peso y texto correctos.
 10. Al pulsar `Select` en la Pokedex, sale el sprite de captura correcto.
 11. Electrike/Aerodactyl y las especies cercanas siguen viendose bien.
+12. Ejecutar `python3 tools/scripts/test_evolution_reachability.py`: no basta con
+    tener una preevolucion en alguna tabla. Debe ser obtenible en el tablero y
+    generacion donde pueda alcanzar cada evolucion, y visitar la zona requerida.
+    No asumir transferencias entre partidas/tableros. Ver `MODDING_ENCOUNTER_GUIDE.md`.
 
 ## Orden seguro para nuevas especies
 

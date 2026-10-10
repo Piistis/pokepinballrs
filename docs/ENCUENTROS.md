@@ -84,7 +84,7 @@ Especies activas: **493**. Reservadas fuera de la beta: **7**. Sin ruta natural 
 | 057 | Primeape | Evolucion de Mankey |
 | 058 | Growlithe | Caza: Gen 1, Ambos, Plains, 3 flechas, 12,5% ref.<br>Candidato a caza: RANDOM, Ambos, Plains, 3 flechas; seleccion y porcentaje variables por partida |
 | 059 | Arcanine | Evolucion de Growlithe |
-| 060 | Poliwag | Caza: Gen 1, Zafiro, Lake, 2 flechas, 16,67% ref.<br>Caza: Gen 1, Zafiro, Lake, 3 flechas, 14,29% ref.<br>Caza: Gen 2, Zafiro, Lake, 2 flechas, 16,67% ref.<br>Caza: Gen 2, Zafiro, Lake, 3 flechas, 16,67% ref.<br>Candidato a caza: RANDOM, Zafiro, Lake, 2/3 flechas; seleccion y porcentaje variables por partida |
+| 060 | Poliwag | Caza: Gen 1, Ruby, Ocean, 3 flechas, 12,5% ref.<br>Caza: Gen 1, Zafiro, Lake, 2 flechas, 16,67% ref.<br>Caza: Gen 1, Zafiro, Lake, 3 flechas, 14,29% ref.<br>Caza: Gen 2, Zafiro, Lake, 2 flechas, 16,67% ref.<br>Caza: Gen 2, Zafiro, Lake, 3 flechas, 16,67% ref.<br>Candidato a caza: RANDOM, Ruby, Ocean, 3 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Zafiro, Lake, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 061 | Poliwhirl | Evolucion de Poliwag |
 | 062 | Poliwrath | Evolucion de Poliwhirl (Ruby) |
 | 063 | Abra | Caza: Gen 1, Ambos, Cave, 2 flechas, 12,5% ref.<br>Caza: Gen 1, Ambos, Cave, 3 flechas, 12,5% ref.<br>Caza: Gen 1, Ruby, City, 2 flechas, 12,5% ref.<br>Caza: Gen 3, Ruby, Cave, 3 flechas, 19,61% ref.<br>Caza: Gen 3, Zafiro, Cave, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Cave, 2/3 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Ruby, City, 2 flechas; seleccion y porcentaje variables por partida |
@@ -96,7 +96,7 @@ Especies activas: **493**. Reservadas fuera de la beta: **7**. Sin ruta natural 
 | 069 | Bellsprout | Caza: Gen 1, Ambos, Forest, 2 flechas, 12,5% ref.<br>Caza: Gen 1, Ambos, Forest, 3 flechas, 12,5% ref.<br>Candidato a caza: RANDOM, Ambos, Forest, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 070 | Weepinbell | Evolucion de Bellsprout |
 | 071 | Victreebel | Evolucion de Weepinbell |
-| 072 | Tentacool | Caza: Gen 1, Ambos, Ocean, 2 flechas, 12,5% ref.<br>Caza: Gen 1, Ambos, Ocean, 3 flechas, 12,5% ref.<br>Caza: Gen 3, Ambos, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ambos, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
+| 072 | Tentacool | Caza: Gen 1, Ambos, Ocean, 2 flechas, 12,5% ref.<br>Caza: Gen 1, Zafiro, Ocean, 3 flechas, 12,5% ref.<br>Caza: Gen 3, Ambos, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 14,08% ref.<br>Caza: Gen 3, Zafiro, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 073 | Tentacruel | Evolucion de Tentacool |
 | 074 | Geodude | Caza: Gen 1, Ambos, Cave, 2 flechas, 12,5% ref.<br>Caza: Gen 1, Ambos, Cave, 3 flechas, 12,5% ref.<br>Caza: Gen 1, Zafiro, Ice Cave, 2 flechas, 14,29% ref.<br>Caza: Gen 1, Zafiro, Ice Cave, 3 flechas, 12,5% ref.<br>Caza: Gen 3, Zafiro, Wilderness, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Zafiro, Wilderness, 3 flechas, 19,61% ref.<br>Candidato a caza: RANDOM, Ambos, Cave, 2/3 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Zafiro, Ice Cave, 2/3 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Zafiro, Wilderness, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 075 | Graveler | Evolucion de Geodude |
@@ -144,7 +144,7 @@ Especies activas: **493**. Reservadas fuera de la beta: **7**. Sin ruta natural 
 | 117 | Seadra | Evolucion de Horsea |
 | 118 | Goldeen | Caza: Gen 1, Ambos, Ocean, 2 flechas, 12,5% ref.<br>Caza: Gen 1, Zafiro, Lake, 2 flechas, 16,67% ref.<br>Caza: Gen 1, Zafiro, Lake, 3 flechas, 14,29% ref.<br>Caza: Gen 3, Zafiro, Lake, 2 flechas, 19,61% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 2 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Zafiro, Lake, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 119 | Seaking | Evolucion de Goldeen |
-| 120 | Staryu | Caza: Gen 1, Ambos, Ocean, 3 flechas, 12,5% ref.<br>Caza: Gen 1, Zafiro, Lake, 2 flechas, 16,67% ref.<br>Caza: Gen 1, Zafiro, Lake, 3 flechas, 14,29% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 3 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Zafiro, Lake, 2/3 flechas; seleccion y porcentaje variables por partida |
+| 120 | Staryu | Caza: Gen 1, Ambos, Ocean, 3 flechas, 12,5% ref.<br>Caza: Gen 1, Zafiro, Lake, 2 flechas, 16,67% ref.<br>Caza: Gen 1, Zafiro, Lake, 3 flechas, 14,29% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 14,08% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 3 flechas; seleccion y porcentaje variables por partida<br>Candidato a caza: RANDOM, Zafiro, Lake, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 121 | Starmie | Evolucion de Staryu |
 | 122 | Mr Mime | Caza: Gen 1, Ruby, Safari Zone, 2 flechas, 12,5% ref.<br>Candidato a caza: RANDOM, Ruby, Safari Zone, 2 flechas; seleccion y porcentaje variables por partida<br>Evolucion de Mime Jr. |
 | 123 | Scyther | Caza: Gen 1, Ruby, Safari Zone, 2 flechas, 12,5% ref.<br>Caza: Gen 1, Ruby, Safari Zone, 3 flechas, 12,5% ref.<br>Candidato a caza: RANDOM, Ruby, Safari Zone, 2/3 flechas; seleccion y porcentaje variables por partida |
@@ -326,9 +326,9 @@ Especies activas: **493**. Reservadas fuera de la beta: **7**. Sin ruta natural 
 | 315 | Roselia | Caza: Gen 3, Ruby, Forest, 2 flechas, 16,39% ref.<br>Caza: Gen 3, Ambos, Forest, 3 flechas, 14,08% ref.<br>Caza: Gen 3, Zafiro, Forest, 2 flechas, 19,61% ref.<br>Candidato a caza: RANDOM, Ambos, Forest, 2/3 flechas; seleccion y porcentaje variables por partida<br>Evolucion de Budew |
 | 316 | Gulpin | Huevo: Gen 1, Zafiro, Cualquier zona, 8% ref.<br>Huevo: Gen 3, Zafiro, Cualquier zona, 8% ref.<br>Huevo: RANDOM, Zafiro, Cualquier zona, 2,67% ref. |
 | 317 | Swalot | Evolucion de Gulpin |
-| 318 | Carvanha | Caza: Gen 3, Ambos, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ambos, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
+| 318 | Carvanha | Caza: Gen 3, Ambos, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 14,08% ref.<br>Caza: Gen 3, Zafiro, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 319 | Sharpedo | Evolucion de Carvanha |
-| 320 | Wailmer | Caza: Gen 3, Ruby, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ruby, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
+| 320 | Wailmer | Caza: Gen 3, Ruby, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 14,08% ref.<br>Candidato a caza: RANDOM, Ruby, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 321 | Wailord | Evolucion de Wailmer |
 | 322 | Numel | Caza: Gen 3, Ruby, Volcano, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ruby, Volcano, 3 flechas, 19,61% ref.<br>Candidato a caza: RANDOM, Ruby, Volcano, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 323 | Camerupt | Evolucion de Numel |
@@ -353,7 +353,7 @@ Especies activas: **493**. Reservadas fuera de la beta: **7**. Sin ruta natural 
 | 342 | Crawdaunt | Evolucion de Corphish |
 | 343 | Baltoy | Caza: Gen 3, Zafiro, Wilderness, 2 flechas, 19,61% ref.<br>Candidato a caza: RANDOM, Zafiro, Wilderness, 2 flechas; seleccion y porcentaje variables por partida |
 | 344 | Claydol | Evolucion de Baltoy |
-| 345 | Lileep | Caza: Gen 3, Ruby, Ocean, 2 flechas, 1,96% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 1,64% ref.<br>Candidato a caza: RANDOM, Ruby, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
+| 345 | Lileep | Caza: Gen 3, Ruby, Ocean, 2 flechas, 1,96% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 1,41% ref.<br>Candidato a caza: RANDOM, Ruby, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 346 | Cradily | Evolucion de Lileep |
 | 347 | Anorith | Caza: Gen 3, Zafiro, Ocean, 2 flechas, 1,96% ref.<br>Caza: Gen 3, Zafiro, Ocean, 3 flechas, 1,64% ref.<br>Candidato a caza: RANDOM, Zafiro, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 348 | Armaldo | Evolucion de Anorith |
@@ -374,11 +374,11 @@ Especies activas: **493**. Reservadas fuera de la beta: **7**. Sin ruta natural 
 | 363 | Spheal | Huevo: Gen 1, Ambos, Cualquier zona, 4% ref.<br>Huevo: Gen 3, Ambos, Cualquier zona, 4% ref.<br>Huevo: RANDOM, Ambos, Cualquier zona, 1,33% ref. |
 | 364 | Sealeo | Evolucion de Spheal |
 | 365 | Walrein | Evolucion de Sealeo |
-| 366 | Clamperl | Caza: Gen 3, Zafiro, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Zafiro, Ocean, 3 flechas; seleccion y porcentaje variables por partida |
+| 366 | Clamperl | Caza: Gen 3, Ruby, Ocean, 3 flechas, 14,08% ref.<br>Caza: Gen 3, Zafiro, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 3 flechas; seleccion y porcentaje variables por partida |
 | 367 | Huntail | Evolucion de Clamperl (Ruby) |
 | 368 | Gorebyss | Evolucion de Clamperl (Zafiro) |
-| 369 | Relicanth | Caza: Gen 3, Ambos, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 3 flechas; seleccion y porcentaje variables por partida |
-| 370 | Luvdisc | Caza: Gen 3, Ambos, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ambos, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
+| 369 | Relicanth | Caza: Gen 3, Ruby, Ocean, 3 flechas, 14,08% ref.<br>Caza: Gen 3, Zafiro, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 3 flechas; seleccion y porcentaje variables por partida |
+| 370 | Luvdisc | Caza: Gen 3, Ambos, Ocean, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Ruby, Ocean, 3 flechas, 14,08% ref.<br>Caza: Gen 3, Zafiro, Ocean, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Ocean, 2/3 flechas; seleccion y porcentaje variables por partida |
 | 371 | Bagon | Huevo: Gen 1, Ambos, Cualquier zona, 4% ref.<br>Huevo: Gen 3, Ambos, Cualquier zona, 4% ref.<br>Huevo: RANDOM, Ambos, Cualquier zona, 1,33% ref. |
 | 372 | Shelgon | Caza: Gen 3, Ruby, Cave, 2 flechas, 16,39% ref.<br>Caza: Gen 3, Ruby, Cave, 3 flechas, 19,61% ref.<br>Caza: Gen 3, Zafiro, Cave, 2 flechas, 19,61% ref.<br>Caza: Gen 3, Zafiro, Cave, 3 flechas, 16,39% ref.<br>Candidato a caza: RANDOM, Ambos, Cave, 2/3 flechas; seleccion y porcentaje variables por partida<br>Evolucion de Bagon |
 | 373 | Salamence | Evolucion de Shelgon |

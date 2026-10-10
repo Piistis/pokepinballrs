@@ -181,10 +181,12 @@ Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje refe
 058;Growlithe;Normal;RANDOM;Ruby;Plains;Candidato a caza;;;3 flechas
 058;Growlithe;Normal;RANDOM;Zafiro;Plains;Candidato a caza;;;3 flechas
 059;Arcanine;Normal;;;;Evolucion;;;Evolucion de Growlithe
+060;Poliwag;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
 060;Poliwag;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
 060;Poliwag;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
 060;Poliwag;Normal;Gen 2;Zafiro;Lake;Caza;2;16,67%;
 060;Poliwag;Normal;Gen 2;Zafiro;Lake;Caza;3;16,67%;
+060;Poliwag;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
 060;Poliwag;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
 061;Poliwhirl;Normal;;;;Evolucion;;;Evolucion de Poliwag
 062;Poliwrath;Normal;;;;Evolucion;;;Evolucion de Poliwhirl (Ruby)
@@ -219,11 +221,10 @@ Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje refe
 070;Weepinbell;Normal;;;;Evolucion;;;Evolucion de Bellsprout
 071;Victreebel;Normal;;;;Evolucion;;;Evolucion de Weepinbell
 072;Tentacool;Normal;Gen 1;Ruby;Ocean;Caza;2;12,5%;
-072;Tentacool;Normal;Gen 1;Ruby;Ocean;Caza;3;12,5%;
 072;Tentacool;Normal;Gen 1;Zafiro;Ocean;Caza;2;12,5%;
 072;Tentacool;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
 072;Tentacool;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
-072;Tentacool;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+072;Tentacool;Normal;Gen 3;Ruby;Ocean;Caza;3;14,08%;
 072;Tentacool;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
 072;Tentacool;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
 072;Tentacool;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
@@ -435,7 +436,7 @@ Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje refe
 120;Staryu;Normal;Gen 1;Zafiro;Ocean;Caza;3;12,5%;
 120;Staryu;Normal;Gen 1;Zafiro;Lake;Caza;2;16,67%;
 120;Staryu;Normal;Gen 1;Zafiro;Lake;Caza;3;14,29%;
-120;Staryu;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+120;Staryu;Normal;Gen 3;Ruby;Ocean;Caza;3;14,08%;
 120;Staryu;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
 120;Staryu;Normal;RANDOM;Zafiro;Lake;Candidato a caza;;;2/3 flechas
 120;Staryu;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
@@ -1209,14 +1210,14 @@ Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje refe
 316;Gulpin;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;2,67%;
 317;Swalot;Normal;;;;Evolucion;;;Evolucion de Gulpin
 318;Carvanha;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
-318;Carvanha;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+318;Carvanha;Normal;Gen 3;Ruby;Ocean;Caza;3;14,08%;
 318;Carvanha;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
 318;Carvanha;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
 318;Carvanha;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
 318;Carvanha;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;2/3 flechas
 319;Sharpedo;Normal;;;;Evolucion;;;Evolucion de Carvanha
 320;Wailmer;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
-320;Wailmer;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+320;Wailmer;Normal;Gen 3;Ruby;Ocean;Caza;3;14,08%;
 320;Wailmer;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
 321;Wailord;Normal;;;;Evolucion;;;Evolucion de Wailmer
 322;Numel;Normal;Gen 3;Ruby;Volcano;Caza;2;19,61%;
@@ -1279,7 +1280,7 @@ Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje refe
 343;Baltoy;Normal;RANDOM;Zafiro;Wilderness;Candidato a caza;;;2 flechas
 344;Claydol;Normal;;;;Evolucion;;;Evolucion de Baltoy
 345;Lileep;Normal;Gen 3;Ruby;Ocean;Caza;2;1,96%;
-345;Lileep;Normal;Gen 3;Ruby;Ocean;Caza;3;1,64%;
+345;Lileep;Normal;Gen 3;Ruby;Ocean;Caza;3;1,41%;
 345;Lileep;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas
 346;Cradily;Normal;;;;Evolucion;;;Evolucion de Lileep
 347;Anorith;Normal;Gen 3;Zafiro;Ocean;Caza;2;1,96%;
@@ -1364,16 +1365,18 @@ Numero nacional;Pokemon;Seccion;Modo;Tablero;Zona;Metodo;Flechas;Porcentaje refe
 363;Spheal;Normal;RANDOM;Zafiro;Cualquier zona;Huevo;;1,33%;
 364;Sealeo;Normal;;;;Evolucion;;;Evolucion de Spheal
 365;Walrein;Normal;;;;Evolucion;;;Evolucion de Sealeo
+366;Clamperl;Normal;Gen 3;Ruby;Ocean;Caza;3;14,08%;
 366;Clamperl;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
+366;Clamperl;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
 366;Clamperl;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
 367;Huntail;Normal;;;;Evolucion;;;Evolucion de Clamperl (Ruby)
 368;Gorebyss;Normal;;;;Evolucion;;;Evolucion de Clamperl (Zafiro)
-369;Relicanth;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+369;Relicanth;Normal;Gen 3;Ruby;Ocean;Caza;3;14,08%;
 369;Relicanth;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
 369;Relicanth;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;3 flechas
 369;Relicanth;Normal;RANDOM;Zafiro;Ocean;Candidato a caza;;;3 flechas
 370;Luvdisc;Normal;Gen 3;Ruby;Ocean;Caza;2;19,61%;
-370;Luvdisc;Normal;Gen 3;Ruby;Ocean;Caza;3;16,39%;
+370;Luvdisc;Normal;Gen 3;Ruby;Ocean;Caza;3;14,08%;
 370;Luvdisc;Normal;Gen 3;Zafiro;Ocean;Caza;2;19,61%;
 370;Luvdisc;Normal;Gen 3;Zafiro;Ocean;Caza;3;16,39%;
 370;Luvdisc;Normal;RANDOM;Ruby;Ocean;Candidato a caza;;;2/3 flechas

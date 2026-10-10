@@ -27,11 +27,29 @@ Antes de subir cambios:
 ```bash
 python3 tools/scripts/generate_encounter_guide.py
 python3 tools/scripts/test_encounter_guide.py
+python3 tools/scripts/test_evolution_reachability.py
 python3 tools/scripts/generate_encounter_guide.py --check
 ```
 
 `--check` no escribe archivos y devuelve un error si falta regenerar. Se deben
 incluir ambos archivos generados en el mismo commit que cambia las tablas.
+
+La auditoria de rutas compila en el equipo las funciones C reales de caza,
+huevo, seleccion de evolucion y registro de captura (requiere GCC/Clang o MSVC).
+Comprueba las especies normales de la beta por generacion y tablero, usando
+solo las zonas de la ruleta de ese tablero, sin transferir el equipo a otro.
+Parte de una Pokedex vacia por contexto y explora las ramas al ir registrandolas.
+La union debe cubrir todas las especies normales; no obliga a que los exclusivos
+aparezcan en ambos tableros. Para Gen 4 se exige ademas cobertura en cada tablero.
+Los eventos legendarios se comprueban por separado con
+`test_legendary_encounters.py` y `test_manaphy_egg.py`; esta auditoria no sustituye
+la comprobacion de la ROM en emulador.
+
+Regresiones cubiertas: Clamperl en Ocean/Ruby/Gen 3 con tres flechas para Huntail;
+Poliwag en Ocean/Ruby/Gen 1 con tres flechas para Poliwrath. Gorebyss sigue
+requiriendo Sapphire. Tentacool conserva su encuentro de dos flechas en Ocean
+de Ruby. Las pruebas retiran los dos encuentros nuevos solo en memoria y
+verifican que ambos bloqueos vuelven a detectarse.
 
 ## Automatizacion de GitHub
 

@@ -469,7 +469,7 @@ int main(void)
 '''
 
 
-def main():
+def build_source():
     data = prepare_data()
     fixture = legendary.FIXTURE.replace("#define WILD_MON_LOCATION_COUNT 10", "#define WILD_MON_LOCATION_COUNT 8\n#define SPECIES_SHARED 3")
     fixture = fixture.replace("speciesWeights[10]", "speciesWeights[25]")
@@ -492,7 +492,10 @@ def main():
     evolution += legendary.registration
     weights = section(picker, "void BuildSpeciesWeightsForCatchEmMode", "void PickSpeciesForCatchEmMode")
     egg_code = picker[picker.index("static s16 GetEggEncounterCount"):]
-    source_code = fixture + random_code + legendary.dex_code + legendary.rules + evolution + getter + weights + legendary.catch + egg_code + TESTS
+    return fixture + random_code + legendary.dex_code + legendary.rules + evolution + getter + weights + legendary.catch + egg_code
+
+
+def run_test(source_code):
     compiler = os.environ.get("CC") or shutil.which("cc") or shutil.which("cl")
     if not compiler and os.name == "nt":
         candidates = sorted(Path("C:/Program Files/Microsoft Visual Studio").glob(
@@ -521,6 +524,10 @@ def main():
             line = result.returncode
             detail = lines[line - 1] if 0 < line <= len(lines) else "unknown line"
             raise SystemExit(f"C regression failed (line/status {line}): {detail}")
+
+
+def main():
+    run_test(build_source() + TESTS)
     print("PASS: all Gen 4 nonlegendary species reachable on both boards; 32 eight-slot rows;")
     print("      catch/hatch separation, PNG palettes, graphics groups and all Dex hatch indices;")
     print("      real C catch/egg lotteries, no empty starting pools, RANDOM eggs and evolution branches.")
