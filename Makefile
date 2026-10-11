@@ -120,29 +120,13 @@ ifeq ($(COMPARE),1)
 	@$(SHA1) pokepinballrs.sha1
 endif
 
-.PHONY: encounters check-encounters
-encounters:
-	python3 tools/scripts/generate_encounter_guide.py
-
-check-encounters:
-	python3 tools/scripts/generate_encounter_guide.py --check
-	python3 tools/scripts/test_encounter_guide.py
-	python3 tools/scripts/test_evolution_reachability.py
-
-.PHONY: check-encounters-screen
-check-encounters-screen:
-	python3 tools/scripts/generate_encounters_assets.py --check
-	python3 tools/scripts/test_encounters_screen.py
-	python3 tools/scripts/test_gen4_encounters.py
+# Optional local validation targets; not required by a clean checkout.
+-include Makefile.local
 
 src/data/encounters_assets.h: tools/scripts/generate_encounters_assets.py graphics/options/Encounters.png graphics/options/Encounters_Frames.png graphics/options/Encounters_Buttons.png graphics/options/Encounters_Word.png graphics/options/changemode.png graphics/options/egg.png graphics/pokedex/text_glyphs.png tools/preproc/asm_file.cpp
 	python3 tools/scripts/generate_encounters_assets.py
 
 $(C_BUILDDIR)/encounters.o: src/data/encounters_assets.h
-
-.PHONY: check-save-schema
-check-save-schema:
-	python3 tools/scripts/test_save_compatibility.py --schema-only
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: rom
@@ -236,7 +220,7 @@ $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 $(OBJ_DIR)/ld_script.ld: ld_script.txt $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
 	cd $(OBJ_DIR) && sed -f ../../ld_script.sed ../../$< | sed "s#tools/#../../tools/#g" > ld_script.ld
 
-$(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS) | check-save-schema
+$(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
 	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)
 
 $(ROM): $(ELF)

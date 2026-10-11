@@ -45,3 +45,16 @@ graphics_rules_generated.mk
 
 # python
 __pycache__/
+
+# Local validation, modding notes and generated reports (not build inputs).
+/Makefile.local
+/AGENTS.md
+/DEBUG.md
+/MODDING_*.md
+/docs/
+/_tmp_pokedata/
+/.github/workflows/encounters.yml
+/tools/scripts/*
+!/tools/scripts/generate_encounters_assets.py
+!/tools/scripts/generate_graphics_rules.sh
+!/tools/scripts/objpalette.py
