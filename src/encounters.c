@@ -11,26 +11,31 @@ extern const s16 gAreaPortraitIndexes[];
 
 #define ENCOUNTERS_BG_BYTES 0x4800
 #define ENCOUNTERS_PORTRAITS (ENCOUNTERS_PER_PAGE + 1)
+#define ENCOUNTERS_HEADER_BYTES 0x900
 #define PAUSE_LABEL_OBJECTS 6
 #define PAUSE_LABEL_TILES ((void *)0x06017E80)
 
-enum { TRANSFER_NONE, TRANSFER_OPEN, TRANSFER_PAGE, TRANSFER_CLOSE };
+enum { TRANSFER_NONE, TRANSFER_OPEN, TRANSFER_PAGE, TRANSFER_MODE, TRANSFER_CLOSE };
 
 struct EncountersScreen
 {
     u16 bgBackup[ENCOUNTERS_BG_BYTES / 2];
-    u16 objBackup[ENCOUNTERS_PORTRAITS * 0x300 / 2];
+    u16 objBackup[(ENCOUNTERS_PORTRAITS * 0x300 + ENCOUNTERS_HEADER_BYTES) / 2];
     u16 paletteBackup[512];
     struct OamData oamBackup[128];
     const u8 *portraits[ENCOUNTERS_PORTRAITS];
     u16 portraitPalettes[ENCOUNTERS_PORTRAITS][16];
     u16 pageTiles[128];
-    u16 species[ENCOUNTERS_CAPACITY];
-    u16 count, page, pageCount;
+    u16 headerTiles[3][384];
+    u16 tilemap[1024];
+    u16 species[ENCOUNTERS_EGG_CAPACITY];
+    u8 catchArrows[ENCOUNTERS_CAPACITY];
+    u16 count, page, pageCount, caughtCount;
     u16 bg0cnt, dispcnt, xOffset, yOffset;
     u16 blendControl, blendAlpha, blendBrightness;
     bool8 blendEnabled;
     bool8 active;
+    bool8 eggMode;
     u8 transfer;
 };
 
@@ -47,6 +52,11 @@ static const u8 sDigits[11][5] = {
     {7,5,5,5,7}, {2,6,2,2,7}, {7,1,7,4,7}, {7,1,7,1,7},
     {5,5,7,1,1}, {7,4,7,1,7}, {7,4,7,5,7}, {7,1,1,1,1},
     {7,5,7,5,7}, {7,5,7,1,7}, {1,1,2,4,4}
+};
+
+static const char *const sAreaNames[AREA_COUNT + 1] = {
+    "Forest", "Forest", "Plains", "Plains", "Ocean", "Ocean", "Cave", "Cave",
+    "Safari Zone", "Volcano", "Lake", "Wilderness", "Ruins", "Ruins", "City", "Ice Cave", "Eggs"
 };
 
 bool8 Encounters_IsOpen(void)
@@ -96,17 +106,110 @@ static void PrepareDigit(s16 digit, s16 x)
             }
 }
 
+static void HeaderPixel(u16 *tiles, s16 x, s16 y, u8 color)
+{
+    s16 offset, shift;
+    u8 *bytes = (u8 *)tiles;
+    if (x < 0 || x >= 96 || y < 0 || y >= 16)
+        return;
+    offset = (x / 32) * 256 + (y / 8) * 128 + ((x % 32) / 8) * 32 + (y % 8) * 4 + (x % 8) / 2;
+    shift = (x & 1) * 4;
+    bytes[offset] = (bytes[offset] & ~(15 << shift)) | (color << shift);
+}
+
+static void PrepareHeaderText(s16 label, const char *text)
+{
+    s16 i, x, y, dx, dy, pass, cursor, width = 0;
+    u16 glyph;
+    memset(sEncounters.headerTiles[label], 0, sizeof(sEncounters.headerTiles[label]));
+    for (i = 0; text[i]; i++)
+        width += sEncountersFontWidths[text[i] - 32];
+    // Draw the complete one-pixel outline before the white foreground.
+    for (pass = 0; pass < 2; pass++)
+    {
+        cursor = (88 - width) / 2;
+        for (i = 0; text[i]; i++)
+        {
+            glyph = text[i] - 32;
+            for (y = 0; y < 16; y++)
+                for (x = 0; x < 8; x++)
+                    if (sEncountersFont[glyph * 16 + y] & (1 << x))
+                    {
+                        if (pass)
+                            HeaderPixel(sEncounters.headerTiles[label], cursor + x, y, 2);
+                        else
+                            for (dy = -1; dy <= 1; dy++)
+                                for (dx = -1; dx <= 1; dx++)
+                                    HeaderPixel(sEncounters.headerTiles[label], cursor + x + dx, y + dy, 1);
+                    }
+            cursor += sEncountersFontWidths[glyph];
+        }
+    }
+}
+
+static s16 AppendNumber(char *text, s16 pos, u16 value)
+{
+    if (value >= 100)
+        text[pos++] = '0' + value / 100;
+    if (value >= 10)
+        text[pos++] = '0' + (value / 10) % 10;
+    text[pos++] = '0' + value % 10;
+    return pos;
+}
+
+static void PrepareHeader(void)
+{
+    s16 label, i, pos = 0;
+    char text[20];
+    struct OamData *oam;
+    PrepareHeaderText(0, sAreaNames[sEncounters.eggMode ? AREA_COUNT : gCurrentPinballGame->area]);
+    pos = AppendNumber(text, pos, sEncounters.caughtCount);
+    text[pos++] = '/';
+    pos = AppendNumber(text, pos, sEncounters.count);
+    text[pos++] = ' ';
+    text[pos++] = '(';
+    pos = AppendNumber(text, pos, sEncounters.count ? sEncounters.caughtCount * 100 / sEncounters.count : 0);
+    text[pos++] = '%';
+    text[pos++] = ')';
+    text[pos] = 0;
+    PrepareHeaderText(1, text);
+    memcpy(sEncounters.headerTiles[2], sEncountersModeGuides + (sEncounters.eggMode ? 384 : 0), 0x300);
+    for (label = 0; label < 3; label++)
+        for (i = 0; i < 3; i++)
+        {
+            oam = &gOamBuffer[ENCOUNTERS_PORTRAITS * 6 + label * 3 + i];
+            memset(oam, 0, sizeof(*oam));
+            oam->x = (label == 0 ? 0 : label == 1 ? 144 : 160) + i * 32;
+            oam->y = label == 0 ? 24 : label == 1 ? 12 : 36;
+            oam->shape = ST_OAM_H_RECTANGLE;
+            oam->size = ST_OAM_SIZE_2;
+            oam->tileNum = ENCOUNTERS_PORTRAITS * 24 + label * 24 + i * 8;
+            oam->paletteNum = 9;
+        }
+}
+
 static void PreparePage(void)
 {
-    s16 slot, index, i;
+    s16 slot, index, i, row, tx, ty, red;
     u16 species;
     memcpy(sEncounters.pageTiles, sEncountersBgTiles + ENCOUNTERS_PAGE_TILE * 32, sizeof(sEncounters.pageTiles));
-    PrepareDigit(sEncounters.page + 1, 6);
+    if (sEncounters.page + 1 >= 10)
+        PrepareDigit((sEncounters.page + 1) / 10, 2);
+    PrepareDigit((sEncounters.page + 1) % 10, 6);
     PrepareDigit(10, 14);
-    PrepareDigit(sEncounters.pageCount, 22);
+    if (sEncounters.pageCount >= 10)
+        PrepareDigit(sEncounters.pageCount / 10, 20);
+    PrepareDigit(sEncounters.pageCount % 10, sEncounters.pageCount >= 10 ? 24 : 22);
+    memcpy(sEncounters.tilemap, sEncountersTilemap, sizeof(sEncounters.tilemap));
     for (slot = 0; slot < ENCOUNTERS_PER_PAGE; slot++)
     {
         index = sEncounters.page * ENCOUNTERS_PER_PAGE + slot;
+        red = !sEncounters.eggMode && index < sEncounters.count && sEncounters.catchArrows[index] == 2;
+        tx = (10 + (slot % 4) * 56) / 8;
+        ty = (66 + (slot / 4) * 47) / 8;
+        for (row = 0; row < 6; row++)
+            memcpy(&sEncounters.tilemap[(ty + row) * 32 + tx],
+                &sEncountersFrameMaps[(red * ENCOUNTERS_PER_PAGE + slot) * 42 + row * 7], 14);
         sEncounters.portraits[slot + 1] = NULL;
         for (i = 0; i < 6; i++)
             gOamBuffer[(slot + 1) * 6 + i].affineMode = ST_OAM_AFFINE_ERASE;
@@ -121,17 +224,41 @@ static void PreparePage(void)
     }
 }
 
-void Encounters_Open(void)
+static void PrepareView(void)
 {
     s16 i, area;
-    if (sEncounters.active || gMain.selectedField >= MAIN_FIELD_COUNT
-     || gCurrentPinballGame->area >= AREA_COUNT || !(gMain.modeChangeFlags & MODE_CHANGE_PAUSE))
-        return;
-    sEncounters.count = GetCurrentAreaCatchEncounters(sEncounters.species);
+    sEncounters.count = sEncounters.eggMode ? GetCurrentEggEncounters(sEncounters.species)
+                                          : GetCurrentAreaCatchEncounters(sEncounters.species);
     sEncounters.page = 0;
+    sEncounters.caughtCount = 0;
+    for (i = 0; i < sEncounters.count; i++)
+    {
+        if (IsCaught(sEncounters.species[i]))
+            sEncounters.caughtCount++;
+        if (!sEncounters.eggMode)
+            sEncounters.catchArrows[i] = GetCurrentAreaCatchArrows(sEncounters.species[i]);
+    }
     sEncounters.pageCount = (sEncounters.count + ENCOUNTERS_PER_PAGE - 1) / ENCOUNTERS_PER_PAGE;
     if (!sEncounters.pageCount)
         sEncounters.pageCount = 1;
+    if (sEncounters.eggMode)
+        PreparePortrait(0, (const u8 *)sEncountersEggTiles, sEncountersEggPalette, 96, 18, TRUE);
+    else
+    {
+        area = gAreaPortraitIndexes[gCurrentPinballGame->area];
+        PreparePortrait(0, gLocationPortraitGfx[area], &gLocation_Pals[area * 16], 96, 18, TRUE);
+    }
+    PrepareHeader();
+    PreparePage();
+}
+
+void Encounters_Open(void)
+{
+    s16 i;
+    if (sEncounters.active || gMain.selectedField >= MAIN_FIELD_COUNT
+     || gCurrentPinballGame->area >= AREA_COUNT || !(gMain.modeChangeFlags & MODE_CHANGE_PAUSE))
+        return;
+    sEncounters.eggMode = FALSE;
     sEncounters.bg0cnt = REG_BG0CNT;
     sEncounters.dispcnt = gMain.dispcntBackup;
     sEncounters.xOffset = gMain.bgOffsets[0].xOffset;
@@ -148,9 +275,7 @@ void Encounters_Open(void)
     memset(gOamBuffer, 0, sizeof(sEncounters.oamBackup));
     for (i = 0; i < 128; i++)
         gOamBuffer[i].affineMode = ST_OAM_AFFINE_ERASE;
-    area = gAreaPortraitIndexes[gCurrentPinballGame->area];
-    PreparePortrait(0, gLocationPortraitGfx[area], &gLocation_Pals[area * 16], 96, 18, TRUE);
-    PreparePage();
+    PrepareView();
     sEncounters.active = TRUE;
     sEncounters.transfer = TRANSFER_OPEN;
     m4aSongNumStart(SE_MENU_SELECT);
@@ -165,6 +290,14 @@ void Encounters_Update(void)
         sEncounters.transfer = TRANSFER_CLOSE;
         gMain.newKeys &= ~(B_BUTTON | START_BUTTON);
         m4aSongNumStart(SE_MENU_CANCEL);
+    }
+    else if (JOY_NEW(SELECT_BUTTON))
+    {
+        sEncounters.eggMode = !sEncounters.eggMode;
+        PrepareView();
+        sEncounters.transfer = TRANSFER_MODE;
+        gMain.newKeys &= ~SELECT_BUTTON;
+        m4aSongNumStart(SE_MENU_SELECT);
     }
     else if (JOY_NEW(L_BUTTON | R_BUTTON) && sEncounters.pageCount > 1)
     {
@@ -205,9 +338,7 @@ void Encounters_VBlank(void)
         if (sEncounters.transfer == TRANSFER_OPEN)
         {
             DmaCopy16(3, sEncountersBgTiles, VRAM, sizeof(sEncountersBgTiles));
-            DmaCopy16(3, sEncountersTilemap, BG_SCREEN_ADDR(8), sizeof(sEncountersTilemap));
             DmaCopy16(3, sEncountersPalette, BG_PLTT, sizeof(sEncountersPalette));
-            ((vu16 *)BG_PLTT)[32] = sEncounters.portraitPalettes[0][0];
             REG_BG0CNT = BGCNT_SCREENBASE(8) | BGCNT_256COLOR | BGCNT_TXT256x256;
             gMain.dispcntBackup = DISPCNT_MODE_0 | DISPCNT_BG0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP;
             gMain.bgOffsets[0].xOffset = 0;
@@ -217,7 +348,13 @@ void Encounters_VBlank(void)
             gMain.blendAlpha = 0;
             gMain.blendBrightness = 0;
         }
-        for (slot = sEncounters.transfer == TRANSFER_OPEN ? 0 : 1; slot < ENCOUNTERS_PORTRAITS; slot++)
+        if (sEncounters.transfer != TRANSFER_PAGE)
+        {
+            DmaCopy16(3, sEncounters.headerTiles, (u8 *)OBJ_VRAM0 + ENCOUNTERS_PORTRAITS * 0x300, ENCOUNTERS_HEADER_BYTES);
+            DmaCopy16(3, sEncountersHeaderPalette, (u16 *)OBJ_PLTT + 9 * 16, 32);
+            DmaCopy16(3, &sEncounters.portraitPalettes[0][0], (u16 *)BG_PLTT + 32, 2);
+        }
+        for (slot = sEncounters.transfer == TRANSFER_PAGE ? 1 : 0; slot < ENCOUNTERS_PORTRAITS; slot++)
         {
             if (sEncounters.portraits[slot])
             {
@@ -226,6 +363,7 @@ void Encounters_VBlank(void)
             }
         }
         DmaCopy16(3, sEncounters.pageTiles, (u8 *)VRAM + ENCOUNTERS_PAGE_TILE * 64, sizeof(sEncounters.pageTiles));
+        DmaCopy16(3, sEncounters.tilemap, BG_SCREEN_ADDR(8), sizeof(sEncounters.tilemap));
     }
     sEncounters.transfer = TRANSFER_NONE;
 }

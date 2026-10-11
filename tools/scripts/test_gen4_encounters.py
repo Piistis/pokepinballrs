@@ -271,8 +271,13 @@ int TestAllCatchTables(void)
             CHECK(game.totalWeight == total);
             for (i = 0; i < n; i++)
             {
+                int mask = 0, slot;
                 CHECK(!IsSpeciesBlacklistedFromRandomWildMons(encounters[i]));
                 for (j = i + 1; j < n; j++) CHECK(encounters[i] != encounters[j]);
+                for (slot = 0; slot < 16; slot++)
+                    if (GetWildMonForSelectedGeneration((s16)area, (s16)(slot / 8), (s16)(slot % 8)) == encounters[i])
+                        mask |= 1 << (slot / 8);
+                CHECK(GetCurrentAreaCatchArrows(encounters[i]) == mask);
             }
             for (i = 0; i < 16; i++)
             {
@@ -302,6 +307,65 @@ int TestAllCatchTables(void)
     }
     return 0;
 }
+int TestEggInventory(void)
+{
+    int gen, field, area, captures, last, forced, eggCaptures, active, n, i, j;
+    u8 expected[NUM_SPECIES], actual[NUM_SPECIES];
+    u16 eggs[ENCOUNTERS_EGG_CAPACITY + 1];
+    struct Game saved;
+    unsigned char *before, *after;
+    u32 seed;
+    randomizing = 1;
+    for (gen = GENERATION_1; gen <= GENERATION_RANDOM; gen++)
+    {
+        if (gen > GENERATION_4 && gen != GENERATION_RANDOM) continue;
+        gSelectedGeneration = gen;
+        for (field = 0; field < MAIN_FIELD_COUNT; field++)
+        for (area = 0; area < AREA_COUNT; area++)
+        for (captures = 4; captures <= 5; captures++)
+        for (last = 0; last < 2; last++)
+        for (forced = 0; forced < 2; forced++)
+        for (eggCaptures = 0; eggCaptures <= 5; eggCaptures++)
+        for (active = 0; active < 2; active++)
+        {
+            gMain.selectedField = field; game.area = (s16)area;
+            game.caughtMonCount = (u16)captures;
+            game.lastEggSpecies = last ? SPECIES_PICHU : SPECIES_NONE;
+            game.forcePichuEgg = (u8)forced;
+            game.manaphyEggCatchCount = (u8)eggCaptures;
+            game.manaphyEggActive = (u8)active;
+            for (i = 0; i < NUM_SPECIES; i++) expected[i] = actual[i] = 0;
+            for (i = 0; i < GetEggEncounterCount(); i++)
+                expected[GetEggMonForSelectedGeneration((s16)field, (s16)i)] = 1;
+            if (gen != GENERATION_4 && (forced || (captures >= 5 && !last))) expected[SPECIES_PICHU] = 1;
+            if ((gen == GENERATION_4 || gen == GENERATION_RANDOM)
+             && (active || (eggCaptures == 5 && area == (field == FIELD_RUBY ? AREA_OCEAN_RUBY : AREA_OCEAN_SAPPHIRE))))
+                expected[SPECIES_MANAPHY] = 1;
+            saved = game; seed = selectionSeed;
+            eggs[ENCOUNTERS_EGG_CAPACITY] = 0xABCD;
+            n = GetCurrentEggEncounters(eggs);
+            CHECK(n > 0 && n <= ENCOUNTERS_EGG_CAPACITY && eggs[ENCOUNTERS_EGG_CAPACITY] == 0xABCD);
+            CHECK(selectionSeed == seed);
+            before = (unsigned char *)&saved; after = (unsigned char *)&game;
+            for (i = 0; i < (int)sizeof(game); i++) CHECK(before[i] == after[i]);
+            for (i = 0; i < n; i++)
+            {
+                CHECK(eggs[i] < SPECIES_NONE);
+                for (j = i + 1; j < n; j++) CHECK(eggs[i] != eggs[j]);
+                actual[eggs[i]] = 1;
+            }
+            for (i = 0; i < SPECIES_NONE; i++) CHECK(actual[i] == expected[i]);
+        }
+    }
+    gMain.selectedField = MAIN_FIELD_COUNT;
+    CHECK(GetCurrentEggEncounters(eggs) == 0);
+    gMain.selectedField = FIELD_RUBY; game.area = AREA_COUNT;
+    CHECK(GetCurrentEggEncounters(eggs) == 0);
+    game.area = AREA_FOREST_RUBY;
+    game.manaphyEggActive = 0; game.manaphyEggCatchCount = 0;
+    game.forcePichuEgg = 0; randomizing = 0;
+    return 0;
+}
 int main(void)
 {
     int area, field, arrows, flag, last, i, count, generation, result;
@@ -312,6 +376,7 @@ int main(void)
     game.debugForcedCatchSpecies = SPECIES_NONE;
     game.debugForcedEggSpecies = SPECIES_NONE;
     result = TestAllCatchTables(); if (result) return result;
+    result = TestEggInventory(); if (result) return result;
     gSelectedGeneration = GENERATION_4;
     /* Every row can start a game and survive excluding the last encounter. */
     for (flag = 0; flag <= SPECIES_CAUGHT; flag++)
@@ -473,7 +538,7 @@ def build_source():
     data = prepare_data()
     fixture = legendary.FIXTURE.replace("#define WILD_MON_LOCATION_COUNT 10", "#define WILD_MON_LOCATION_COUNT 8\n#define SPECIES_SHARED 3")
     fixture = fixture.replace("speciesWeights[10]", "speciesWeights[25]")
-    fixture = fixture.replace("    s16 area,", "    u16 debugForcedEggSpecies, lastEggSpecies;\n    u8 forcePichuEgg, manaphyEggActive;\n    s16 area,")
+    fixture = fixture.replace("    s16 area,", "    u16 debugForcedEggSpecies, lastEggSpecies;\n    u8 forcePichuEgg, manaphyEggActive, manaphyEggCatchCount;\n    s16 area,")
     fixture = fixture.replace("struct { u16 evolutionMethod, evolutionTarget, catchIndex; } gSpeciesInfo[NUM_SPECIES];", data)
     fixture = re.sub(r"u16 GetEvolutionTargetForCurrentContext[^\n]+\n", "", fixture)
     fixture = fixture[:fixture.index("static u16 GetWildMonForSelectedGeneration")]
@@ -481,8 +546,9 @@ def build_source():
     fixture += "const u16 gCommonAndEggWeights[] = {10, 10, 15, 15, 2, 0};\n"
     fixture += "typedef signed char s8;\n"
     fixture += "#define EWRAM_DATA\n"
-    fixture += re.search(r'^#define ENCOUNTERS_CAPACITY.*$',
-                         (ROOT / 'include/encounters.h').read_text(), re.M)[0] + '\n'
+    fixture += '\n'.join(re.findall(r'^#define ENCOUNTERS_(?:EGG_)?CAPACITY.*$',
+                         (ROOT / 'include/encounters.h').read_text(), re.M)) + '\n'
+    fixture += re.search(r'^#define MANAPHY_EGG_REQUIRED_CAPTURES.*$', picker, re.M)[0] + '\n'
     random_code = section(picker, "#define RANDOM_WILD_MON_SOURCE_TABLE_COUNT", "void NormalizeEvolvablePartySpeciesStorage")
     random_code += section(picker, "static u16 GetWildMonForSelectedGeneration", "static u16 GetEggMonForSelectedGeneration")
     getter = section(picker, "static u16 GetEggMonForSelectedGeneration", "static u8 GetSavedPokedexFlag")
@@ -534,6 +600,7 @@ def main():
     print("      Gen 2 Eevee catches on both boards; Eevee targets/items and Dex registration by mode.")
     print("      Gen 4 legendary catch assets, all Gen 4 portraits/hatch assets and Zigzagoon replacements.")
     print("      All Gen 1-4/RANDOM catch pools reject egg-only sprites; zero-weight fallback and Gen 1 exceptions.")
+    print("      Area arrow masks and deduplicated egg inventory; Pichu/Manaphy eligibility, no RNG/state changes.")
 
 
 if __name__ == "__main__":

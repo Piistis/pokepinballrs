@@ -403,6 +403,19 @@ u16 GetCurrentAreaCatchEncounters(u16 *species)
     return count;
 }
 
+u8 GetCurrentAreaCatchArrows(u16 species)
+{
+    s16 arrows, slot;
+    u8 result = 0;
+    if (gMain.selectedField >= MAIN_FIELD_COUNT || gCurrentPinballGame->area >= AREA_COUNT)
+        return 0;
+    for (arrows = 0; arrows < 2; arrows++)
+        for (slot = 0; slot < WILD_MON_LOCATION_COUNT; slot++)
+            if (GetWildMonForSelectedGeneration(gCurrentPinballGame->area, arrows, slot) == species)
+                result |= 1 << arrows;
+    return result;
+}
+
 static u16 GetEggMonForSelectedGeneration(s16 field, s16 index)
 {
     if (gSelectedGeneration == GENERATION_RANDOM)
@@ -1283,6 +1296,41 @@ void PickSpeciesForCatchEmMode(void)
 static s16 GetEggEncounterCount(void)
 {
     return gSelectedGeneration == GENERATION_RANDOM ? 75 : 25;
+}
+
+static u16 AppendEggEncounter(u16 *species, u16 count, u16 candidate)
+{
+    s16 i;
+    if (candidate >= SPECIES_NONE || count >= ENCOUNTERS_EGG_CAPACITY)
+        return count;
+    for (i = 0; i < count; i++)
+        if (species[i] == candidate)
+            return count;
+    species[count] = candidate;
+    return count + 1;
+}
+
+u16 GetCurrentEggEncounters(u16 *species)
+{
+    s16 i;
+    u16 count = 0;
+    if (gMain.selectedField >= MAIN_FIELD_COUNT || gCurrentPinballGame->area >= AREA_COUNT)
+        return 0;
+    for (i = 0; i < GetEggEncounterCount(); i++)
+        count = AppendEggEncounter(species, count, GetEggMonForSelectedGeneration(gMain.selectedField, i));
+
+    // Inventory of the pool, not a roll: never advance RNG, counters or egg state.
+    if (gSelectedGeneration != GENERATION_4
+     && (gCurrentPinballGame->forcePichuEgg
+      || (gCurrentPinballGame->caughtMonCount >= 5 && gCurrentPinballGame->lastEggSpecies != SPECIES_PICHU)))
+        count = AppendEggEncounter(species, count, SPECIES_PICHU);
+    if ((gSelectedGeneration == GENERATION_4 || gSelectedGeneration == GENERATION_RANDOM)
+     && (gCurrentPinballGame->manaphyEggActive
+      || (gCurrentPinballGame->manaphyEggCatchCount == MANAPHY_EGG_REQUIRED_CAPTURES
+       && ((gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->area == AREA_OCEAN_RUBY)
+        || (gMain.selectedField == FIELD_SAPPHIRE && gCurrentPinballGame->area == AREA_OCEAN_SAPPHIRE)))))
+        count = AppendEggEncounter(species, count, SPECIES_MANAPHY);
+    return count;
 }
 
 static s16 GetEggEncounterWeight(u16 species)

@@ -36,12 +36,14 @@ typedef u16 Palette[16];
 #include "constants/sprite_groups.h"
 #define ENCOUNTERS_PER_PAGE 8
 #define ENCOUNTERS_CAPACITY (2 * WILD_MON_LOCATION_COUNT)
+#define ENCOUNTERS_EGG_CAPACITY 77
 #define SPECIES_CAUGHT 4
 #define ST_OAM_AFFINE_ERASE 2
 #define ST_OAM_AFFINE_DOUBLE 3
 #define ST_OAM_AFFINE_OFF 0
 #define ST_OAM_H_RECTANGLE 1
 #define ST_OAM_SIZE_1 1
+#define ST_OAM_SIZE_2 2
 #define DISPCNT_MODE_0 0
 #define DISPCNT_FORCED_BLANK 128
 #define DISPCNT_BG0_ON 256
@@ -95,9 +97,18 @@ struct { u8 pokedexFlags[NUM_SAVE_SPECIES]; } gMain_saveData;
 u8 gExtraPokedexFlags[NUM_SPECIES - NUM_SAVE_SPECIES];
 int candidateCount = 16, lastSound;
 u16 candidates[16];
+int eggCount = 14;
+u16 eggs[ENCOUNTERS_EGG_CAPACITY];
+u8 arrowFlags[16];
 void m4aSongNumStart(int sound) { lastSound = sound; }
 u16 GetCurrentAreaCatchEncounters(u16 *out) {
     int i; for (i = 0; i < candidateCount; i++) out[i] = candidates[i]; return candidateCount;
+}
+u8 GetCurrentAreaCatchArrows(u16 species) {
+    int i; for (i = 0; i < candidateCount; i++) if (candidates[i] == species) return arrowFlags[i]; return 0;
+}
+u16 GetCurrentEggEncounters(u16 *out) {
+    int i; for (i = 0; i < eggCount; i++) out[i] = eggs[i]; return eggCount;
 }
 #ifdef _MSC_VER
 typedef unsigned __int64 host_size;
@@ -162,7 +173,9 @@ void ResetFixture(void) {
     gMain.dispcntBackup = regs[1] = 0x1F40; regs[0] = 0x1508;
     gMain.bgOffsets[0].xOffset = 12; gMain.bgOffsets[0].yOffset = 352;
     gMain.blendControl = 0xCF; gMain.blendBrightness = 10; gMain.blendEnabled = 1;
-    gMain.heldKeys = 0; candidateCount = 16; game.pauseAnimTimer = 24;
+    gMain.heldKeys = 0; candidateCount = 16; eggCount = 14; game.pauseAnimTimer = 24;
+    for (i = 0; i < ENCOUNTERS_EGG_CAPACITY; i++) eggs[i] = (u16)i;
+    for (i = 0; i < 16; i++) arrowFlags[i] = i % 3 + 1;
     inVBlank = videoWrites = badWrites = checkTransfers = 0;
 }
 EXPORT int TestScreen(void) {
@@ -189,17 +202,17 @@ EXPORT int TestScreen(void) {
         gMain.newKeys = A_BUTTON; AllBoardProcess_1B_47160(); CHECK(Encounters_IsOpen());
         CHECK(Equal(beforeVideo, video, sizeof(video)) && Equal(beforePalette, palettes, sizeof(palettes)));
         CHECK(!(regs[1] & DISPCNT_FORCED_BLANK));
-        Flush(); CHECK(videoWrites < 16384 && !badWrites);
+        Flush(); CHECK(videoWrites < 24576 && !badWrites);
         CHECK(sEncounters.pageCount == (n > 8 ? 2 : 1)); CHECK(sEncounters.page == 0);
         CHECK(gMain.modeChangeFlags == MODE_CHANGE_PAUSE && !gMain.gameExitState);
         CHECK(gMain.dispcntBackup == 0x1140 && gMain.bgOffsets[0].yOffset == 0);
         gMain.newKeys = L_BUTTON; Encounters_Update(); Flush(); CHECK(sEncounters.page == sEncounters.pageCount - 1);
-        CHECK(videoWrites <= 6656 && !badWrites);
+        CHECK(videoWrites <= 8704 && !badWrites);
         gMain.newKeys = R_BUTTON; Encounters_Update(); Flush(); CHECK(sEncounters.page == 0);
-        for (i = 0; i < 6; i++) { gMain.newKeys = R_BUTTON; Encounters_Update(); Flush(); CHECK(videoWrites <= 6656); }
+        for (i = 0; i < 6; i++) { gMain.newKeys = R_BUTTON; Encounters_Update(); Flush(); CHECK(videoWrites <= 8704); }
         CHECK(!(regs[1] & DISPCNT_FORCED_BLANK) && !badWrites);
         gMain.newKeys = repeat & 1 ? START_BUTTON : B_BUTTON; Encounters_Update(); Flush();
-        CHECK(videoWrites <= 27000 && !badWrites); checkTransfers = 0;
+        CHECK(videoWrites <= 29000 && !badWrites); checkTransfers = 0;
         CHECK(!Encounters_IsOpen() && gMain.modeChangeFlags == MODE_CHANGE_PAUSE);
         CHECK(Equal(beforeVideo, video, sizeof(video)) && Equal(beforePalette, palettes, sizeof(palettes)));
         CHECK(Equal(beforeOam, gOamBuffer, sizeof(gOamBuffer)));
@@ -234,6 +247,34 @@ EXPORT int TestScreen(void) {
     }
     CHECK(gOamBuffer[sPauseLabel.ids[0]].x == 104 && gOamBuffer[sPauseLabel.ids[0]].y == 96);
     EncountersPause_End();
+    for (n = 0; n <= ENCOUNTERS_EGG_CAPACITY; n++) {
+        ResetFixture(); InitAssets(); eggCount = n;
+        gMain.modeChangeFlags = MODE_CHANGE_PAUSE;
+        for (i = 0; i < NUM_SPECIES; i++) {
+            if (i < NUM_SAVE_SPECIES) gMain_saveData.pokedexFlags[i] = i % 2 ? 4 : 1;
+            else gExtraPokedexFlags[i - NUM_SAVE_SPECIES] = i % 2 ? 4 : 1;
+        }
+        memcpy(beforeVideo, video, sizeof(video)); memcpy(beforePalette, palettes, sizeof(palettes));
+        memcpy(beforeOam, gOamBuffer, sizeof(gOamBuffer));
+        checkTransfers = 1; Encounters_Open(); Flush();
+        gMain.newKeys = SELECT_BUTTON; Encounters_Update();
+        CHECK(sEncounters.eggMode && sEncounters.count == n && sEncounters.page == 0);
+        CHECK(!(gMain.newKeys & SELECT_BUTTON));
+        CHECK(sEncounters.caughtCount == n / 2);
+        Flush(); CHECK(videoWrites < 13000 && !badWrites);
+        CHECK(sEncounters.pageCount == (n ? (n + 7) / 8 : 1));
+        CHECK(palettes[32] == sEncountersEggPalette[0]);
+        gMain.newKeys = L_BUTTON; Encounters_Update(); Flush();
+        CHECK(sEncounters.page == sEncounters.pageCount - 1);
+        gMain.newKeys = R_BUTTON; Encounters_Update(); Flush(); CHECK(sEncounters.page == 0);
+        gMain.newKeys = SELECT_BUTTON; Encounters_Update(); Flush();
+        CHECK(!sEncounters.eggMode && sEncounters.count == 16 && sEncounters.page == 0);
+        CHECK(palettes[32] == gLocation_Pals[0]);
+        gMain.newKeys = SELECT_BUTTON; Encounters_Update(); Flush();
+        gMain.newKeys = B_BUTTON; Encounters_Update(); Flush();
+        CHECK(Equal(beforeVideo, video, sizeof(video)) && Equal(beforePalette, palettes, sizeof(palettes)));
+        CHECK(Equal(beforeOam, gOamBuffer, sizeof(gOamBuffer)) && !badWrites);
+    }
     return 0;
 }
 EXPORT void Preview(int page) {
@@ -245,6 +286,21 @@ EXPORT void Preview(int page) {
         else gExtraPokedexFlags[mon - NUM_SAVE_SPECIES] = 4;
     }
     sEncounters.active = 0; Encounters_Open(); sEncounters.page = page; PreparePage(); Flush();
+}
+EXPORT void PreviewEggs(int page) {
+    int i;
+    Preview(0); eggCount = 12;
+    for (i = 0; i < 12; i++) eggs[i] = candidates[i];
+    gMain.newKeys = SELECT_BUTTON; Encounters_Update(); Flush();
+    sEncounters.page = page; PreparePage(); sEncounters.transfer = TRANSFER_PAGE; Flush();
+}
+EXPORT void PreviewArea(int area) {
+    Preview(0); game.area = area; PrepareHeader();
+    sEncounters.transfer = TRANSFER_MODE; Flush();
+}
+EXPORT void PreviewProgress(int count, int caught) {
+    PreviewEggs(0); sEncounters.count = count; sEncounters.caughtCount = caught;
+    PrepareHeader(); sEncounters.transfer = TRANSFER_MODE; Flush();
 }
 EXPORT void *Video(void) { return video; }
 EXPORT void *Palettes(void) { return palettes; }
@@ -364,8 +420,8 @@ def render_hardware(lib):
         if a & 0x300 == 0x200:
             continue
         shape, size = a >> 14, b >> 14
-        assert (shape, size) in ((0, 1), (1, 1))
-        w, h = (16, 16) if shape == 0 else (32, 8)
+        assert (shape, size) in ((0, 1), (1, 1), (1, 2))
+        w, h = (16, 16) if shape == 0 else (32, 8 if size == 1 else 16)
         left, top, bank = b & 511, a & 255, 256 + (c >> 12)*16
         for y in range(h):
             for x in range(w):
@@ -383,11 +439,11 @@ def rgb15(rgb):
     return (r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10)
 
 
-def verify_pixels(frame, page, paths):
+def verify_pixels(frame, page, paths, eggs=False):
     def assert_region(left, top, w, h, expected, label):
         actual = [frame[(top+y)*240+left+x] for y in range(h) for x in range(w)]
         assert actual == expected, f'{label}: portrait/geometry differs from the source PNG'
-    _, _, area = assets.read_png(ROOT/'graphics/area_portraits/loc00_ruby_forest.png')
+    _, _, area = assets.read_png(ROOT/('graphics/options/egg.png' if eggs else 'graphics/area_portraits/loc00_ruby_forest.png'))
     assert_region(96, 18, 48, 32, [rgb15(c) for c in area], 'area')
     for slot in range(8):
         number = page*8+slot
@@ -398,6 +454,22 @@ def verify_pixels(frame, page, paths):
         else:
             expected = [0x7fff]*1536
         assert_region(13+slot%4*56, 71+slot//4*47, 48, 32, expected, f'page {page+1}, slot {slot}')
+        _, _, frames = assets.read_png(ROOT/'graphics/options/Encounters_Frames.png')
+        red = not eggs and number < 12 and number % 3 == 1
+        first = 80 if red else 40
+        for y in range(40):
+            for x in range(54):
+                if 3 <= x < 51 and 5 <= y < 37:
+                    continue
+                color = frames[(first+y)*54+x]
+                if color != (0, 255, 0):
+                    assert frame[(66+slot//4*47+y)*240+10+slot%4*56+x] == rgb15(color), ('frame', slot, red)
+    _, _, guide_pixels = assets.read_png(ROOT/'graphics/options/changemode.png')
+    for y in range(16):
+        for x in range(72):
+            color = guide_pixels[((16 if eggs else 0)+y)*72+x]
+            if color != (0, 255, 0):
+                assert frame[(36+y)*240+160+x] == rgb15(color), 'SELECT guide'
     _, _, buttons = assets.read_png(ROOT/'graphics/options/Encounters_Buttons.png')
     for left, first in ((16, 16), (208, 0)):
         for y in range(16):
@@ -405,6 +477,26 @@ def verify_pixels(frame, page, paths):
                 color = buttons[(first+y)*16+x]
                 if color != (0, 255, 0):
                     assert frame[(49+y)*240+left+x] == rgb15(color), 'L/R must move up two pixels'
+
+
+def verify_header(frame, name, count=12, caught=8):
+    masks, widths = assets.header_font()
+    for text, left, top in ((name, 0, 24), (f'{caught}/{count} ({caught*100//count if count else 0}%)', 144, 12)):
+        width = sum(widths[ord(c)-32] for c in text)
+        cursor = (88-width)//2
+        foreground = set()
+        for char in text:
+            index = ord(char)-32
+            for y in range(16):
+                for x in range(8):
+                    if masks[index*16+y] & (1 << x):
+                        foreground.add((cursor+x, y))
+            cursor += widths[index]
+        outline = {(x+dx, y+dy) for x, y in foreground for dx in (-1, 0, 1) for dy in (-1, 0, 1)} - foreground
+        assert foreground and all(0 <= x < 88 and 0 <= y < 16 for x, y in foreground | outline), text
+        for pixels, color in ((foreground, 0x7fff), (outline, 0)):
+            for x, y in pixels:
+                assert frame[(top+y)*240+left+x] == color, (text, x, y, color)
 
 
 def write_png(path, frame):
@@ -463,7 +555,21 @@ def main():
                 lib.Preview(page)
                 frame = render_hardware(lib)
                 verify_pixels(frame, page, paths)
+                verify_header(frame, 'Forest')
                 write_png(output / f'page-{page + 1}.png', frame)
+                lib.PreviewEggs(page)
+                frame = render_hardware(lib)
+                verify_pixels(frame, page, paths, eggs=True)
+                verify_header(frame, 'Eggs')
+                write_png(output / f'eggs-{page + 1}.png', frame)
+            for area, name in ((8, 'Safari Zone'), (11, 'Wilderness'), (15, 'Ice Cave')):
+                lib.PreviewArea(area)
+                frame = render_hardware(lib)
+                verify_header(frame, name)
+                write_png(output / f'area-{area}.png', frame)
+            for count, caught in ((0, 0), (1, 0), (1, 1), (77, 77), (77, 76)):
+                lib.PreviewProgress(count, caught)
+                verify_header(render_hardware(lib), 'Eggs', count, caught)
             lib.PreviewPauseWord()
             frame = render_hardware(lib)
             _, _, word = assets.read_png(ROOT/'graphics/options/Encounters_Word.png')
@@ -473,10 +579,10 @@ def main():
         finally:
             if os.name == 'nt':
                 ctypes.windll.kernel32.FreeLibrary(ctypes.c_void_p(lib._handle))
-    print('PASS: real UI C code, 0..16 encounters, L/R wrap, pause navigation, repeated open/close, '
+    print('PASS: real UI C code, 0..16 catches/0..77 eggs, SELECT toggle, L/R wrap, pause navigation, repeated open/close, '
           'VRAM/palette/OAM restoration, capture flags, empty slots and bonus guard.')
     print('PASS: native 2x2 metatiles and BG/OBJ pixel comparison against source PNGs; '
-          'L/R raised 2px, real pause animation/label alignment, VBlank transfers without forced blank.')
+          'red/gold frames, egg portrait, SELECT guide, L/R raised 2px, pause label, VBlank without forced blank.')
     print('Rendered previews:', output)
 
 

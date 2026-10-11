@@ -6,8 +6,11 @@
 
 #define ENCOUNTERS_PER_PAGE 8
 #define ENCOUNTERS_CAPACITY (2 * WILD_MON_LOCATION_COUNT)
+#define ENCOUNTERS_EGG_CAPACITY 77
 
 u16 GetCurrentAreaCatchEncounters(u16 *species);
+u8 GetCurrentAreaCatchArrows(u16 species);
+u16 GetCurrentEggEncounters(u16 *species);
 bool8 Encounters_IsOpen(void);
 void Encounters_Open(void);
 void Encounters_Update(void);
