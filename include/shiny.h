@@ -54,6 +54,7 @@ bool8 Shiny_IsPartyMember(s16 index);
 void Shiny_PartyAdd(s16 size);
 void Shiny_PartyRemove(s16 index);
 void Shiny_RecordCaught(u16 species, bool8 shiny);
+/* World-space center of the displayed Pokemon, not its sprite origin. */
 void Shiny_Reveal(s16 x, s16 y);
 void Shiny_EndEncounter(void);
 const u16 *Shiny_SelectPalette(u16 species, u8 kind, u16 index, const u16 *normal);

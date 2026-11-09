@@ -268,7 +268,8 @@ void UpdateCatchEmMode(void)
         gCurrentPinballGame->catchLights[2] = 2;
         DrawCatchMonBoardSprite();
         gCurrentPinballGame->catchMonCollisionEnabled = TRUE;
-        Shiny_Reveal(96, 288);
+        // The 48x48 catch sprite starts at (96, 288); effects use its center.
+        Shiny_Reveal(120, 312);
         gCurrentPinballGame->boardSubState++;
         gCurrentPinballGame->bgmFadeTimer = 140;
         PlayCry_Normal(gSpeciesInfo[gCurrentPinballGame->currentSpecies].speciesIdRS, 0);
@@ -454,7 +455,7 @@ void UpdateJirachiBonus(void)
         gCurrentPinballGame->catchLights[2] = 2;
         gCurrentPinballGame->catchMonCollisionEnabled = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = TRUE;
-        Shiny_Reveal(96, 288);
+        Shiny_Reveal(120, 312);
         DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
         gCurrentPinballGame->modeAnimTimer = 40;
         gCurrentPinballGame->jirachiLogicX = 900;

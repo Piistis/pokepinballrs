@@ -90,8 +90,8 @@ void Shiny_UpdateEffects(void)
         }
         else if (gShinyRunState.species == SPECIES_JIRACHI)
         {
-            sShinyFx.x[star] = gCurrentPinballGame->jirachiDisplayX / 10 + 96;
-            sShinyFx.y[star] = gCurrentPinballGame->jirachiDisplayY / 10 + 288;
+            sShinyFx.x[star] = gCurrentPinballGame->jirachiDisplayX / 10 + 120;
+            sShinyFx.y[star] = gCurrentPinballGame->jirachiDisplayY / 10 + 312;
         }
     }
     if (sShinyFx.frame == 60)
