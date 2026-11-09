@@ -144,6 +144,7 @@ SECTIONS
         . = ALIGN(4); src/shiny.o(.rodata);
         . = ALIGN(4); src/pokedex_view.o(.rodata);
         . = ALIGN(4); src/encounters.o(.rodata);
+        . = ALIGN(4); src/all_board_mode_change_and_debug_menu.o(.rodata .rodata.*);
         . = ALIGN(4); src/save_storage.o(.rodata);
         . = ALIGN(4); data/sound_data_2.o(.rodata)
         . = ALIGN(4); src/data.o(.rodata)
