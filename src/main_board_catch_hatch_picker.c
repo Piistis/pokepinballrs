@@ -10,6 +10,7 @@
 #include "constants/areas.h"
 #include "constants/legendary_encounters.h"
 #include "encounters.h"
+#include "shiny.h"
 
 #define MANAPHY_EGG_STATE_MAGIC 0x4D414E42
 #define MANAPHY_EGG_REQUIRED_CAPTURES 5
@@ -330,6 +331,9 @@ static void AddEvolvablePartySpecies(u16 species)
 {
     s16 i;
 
+    NormalizeEvolvablePartySpeciesStorage();
+    Shiny_PartyAdd(gCurrentPinballGame->evolvablePartySize);
+
     if (gCurrentPinballGame->evolvablePartySize < MAX_EVOLVABLE_PARTY_SIZE)
     {
         SetEvolvablePartySpecies(gCurrentPinballGame->evolvablePartySize, species);
@@ -351,6 +355,7 @@ static void RemoveEvolvablePartySpecies(s16 index)
     if (gCurrentPinballGame->evolvablePartySize <= 0)
         return;
 
+    Shiny_PartyRemove(index);
     gCurrentPinballGame->evolvablePartySize--;
 
     for (i = index; i < gCurrentPinballGame->evolvablePartySize; i++)
@@ -971,12 +976,15 @@ static u16 GetEvolutionTargetForCurrentContext(u16 species)
 */
 void RegisterCaptureOrEvolution(s16 evolved)
 {
+    bool8 shiny = evolved ? Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex)
+                         : Shiny_IsCurrentSpecies(gCurrentPinballGame->currentSpecies);
     if (!evolved)
     {
         if (gMain.mainState != STATE_GAME_IDLE)
         {
             RegisterLegendaryCapture(gCurrentPinballGame->currentSpecies);
             SaveFile_SetPokedexFlags(gCurrentPinballGame->currentSpecies, SPECIES_CAUGHT);
+            Shiny_RecordCaught(gCurrentPinballGame->currentSpecies, shiny);
         }
 
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].evolutionMethod != 0)
@@ -993,7 +1001,10 @@ void RegisterCaptureOrEvolution(s16 evolved)
         {
             gCurrentPinballGame->currentSpecies = SPECIES_SHEDINJA;
             if (gMain.mainState != STATE_GAME_IDLE)
+            {
                 SaveFile_SetPokedexFlags(SPECIES_SHEDINJA, SPECIES_CAUGHT);
+                Shiny_RecordCaught(SPECIES_SHEDINJA, shiny);
+            }
 
             gCurrentPinballGame->currentSpecies = SPECIES_NINJASK;
         }
@@ -1002,8 +1013,12 @@ void RegisterCaptureOrEvolution(s16 evolved)
             gCurrentPinballGame->currentSpecies = GetEvolutionTargetForCurrentContext(gCurrentPinballGame->currentSpecies);
         }
 
+        Shiny_SetCurrentForm(gCurrentPinballGame->currentSpecies, shiny);
         if (gMain.mainState != STATE_GAME_IDLE)
+        {
             SaveFile_SetPokedexFlags(gCurrentPinballGame->currentSpecies, SPECIES_CAUGHT);
+            Shiny_RecordCaught(gCurrentPinballGame->currentSpecies, shiny);
+        }
 
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].evolutionMethod != 0)
         {

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "main.h"
 #include "gbplayer.h"
 #include "link.h"
@@ -297,7 +298,9 @@ void DefaultMainCallback(void)
         Encounters_VBlank();
         if (!Encounters_IsOpen())
             RenderManaphyEggPalette();
+        Shiny_RenderEffects();
         DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
+        Shiny_RestoreEffectOam();
         REG_DISPCNT = gMain.dispcntBackup;
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
         REG_BG0VOFS = gMain.bgOffsets[0].yOffset;

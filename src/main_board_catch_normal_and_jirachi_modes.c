@@ -1,6 +1,7 @@
 #include "global.h"
 #include "m4a.h"
 #include "main.h"
+#include "shiny.h"
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
@@ -134,6 +135,7 @@ void UpdateCatchEmMode(void)
         break;
     case CATCH_EM_SUBSTATE_SELECT_SPECIES:
         PickSpeciesForCatchEmMode();
+        Shiny_BeginEncounter(gCurrentPinballGame->currentSpecies, SHINY_ENCOUNTER_CATCH, TRUE);
         if (gMain.mainState != STATE_GAME_IDLE)
             SaveFile_SetPokedexFlags(gCurrentPinballGame->currentSpecies, 1);
 
@@ -266,6 +268,7 @@ void UpdateCatchEmMode(void)
         gCurrentPinballGame->catchLights[2] = 2;
         DrawCatchMonBoardSprite();
         gCurrentPinballGame->catchMonCollisionEnabled = TRUE;
+        Shiny_Reveal(96, 288);
         gCurrentPinballGame->boardSubState++;
         gCurrentPinballGame->bgmFadeTimer = 140;
         PlayCry_Normal(gSpeciesInfo[gCurrentPinballGame->currentSpecies].speciesIdRS, 0);
@@ -358,6 +361,7 @@ void UpdateJirachiBonus(void)
     {
     case JIRACHI_CATCH_SUBSTATE_LOAD_MON_SPRITE:
         gCurrentPinballGame->currentSpecies = SPECIES_JIRACHI;
+        Shiny_BeginEncounter(SPECIES_JIRACHI, SHINY_ENCOUNTER_CATCH, TRUE);
         LoadCatchSpriteGraphics();
         gCurrentPinballGame->boardSubState++;
         return;
@@ -450,6 +454,7 @@ void UpdateJirachiBonus(void)
         gCurrentPinballGame->catchLights[2] = 2;
         gCurrentPinballGame->catchMonCollisionEnabled = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = TRUE;
+        Shiny_Reveal(96, 288);
         DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
         gCurrentPinballGame->modeAnimTimer = 40;
         gCurrentPinballGame->jirachiLogicX = 900;
@@ -580,7 +585,8 @@ void LoadCatchSpriteGraphics(void)
     const u16 *basePal;
 
     catchIndex = gSpeciesInfo[gCurrentPinballGame->currentSpecies].catchIndex;
-    basePal = gCatchMonPaletteGroups[catchIndex / 5][catchIndex % 5];
+    basePal = Shiny_SelectPalette(gCurrentPinballGame->currentSpecies, SHINY_PALETTE_CATCH, catchIndex,
+                                 gCatchMonPaletteGroups[catchIndex / 5][catchIndex % 5]);
 
     for (i = 0; i < 3; i++)
     {
@@ -616,7 +622,8 @@ void LoadMonFieldSpriteGraphics(void)
     src0 = gMonHatchSpriteGroupGfx[eggIndex / 6][eggIndex % 6];
     src1 = &gMonHatchSpriteGroupPals[eggIndex / 6][eggIndex % 6];
     DmaCopy16(3, src0, gCatchSpriteFrameBuffer, 0x10E0);
-    DmaCopy16(3, src1, gCatchSpritePaletteBuffer, 0x20);
+    DmaCopy16(3, Shiny_SelectPalette(gCurrentPinballGame->currentSpecies, SHINY_PALETTE_HATCH, eggIndex,
+                                   (const u16 *)src1), gCatchSpritePaletteBuffer, 0x20);
 }
 
 void DrawCatchMonBoardSprite(void)

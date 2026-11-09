@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "functions.h"
 #include "m4a.h"
 #include "main.h"
@@ -1559,6 +1560,7 @@ void UpdateRubyEggHatchAnimation(void)
             if (gCurrentPinballGame->eggAnimFrameIndex == 19)
             {
                 PickSpeciesForEggMode();
+                Shiny_BeginEncounter(gCurrentPinballGame->currentSpecies, SHINY_ENCOUNTER_HATCH, TRUE);
                 if (gMain.mainState != STATE_GAME_IDLE)
                     SaveFile_SetPokedexFlags(gCurrentPinballGame->currentSpecies, 1);
             }
@@ -1852,6 +1854,7 @@ void UpdateEggMode(void)
     case EGG_HATCH_SUBSTATE_INIT:
         gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
         gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = TRUE;
+        Shiny_Reveal(gCurrentPinballGame->walkMonXPos / 10 + 12, gCurrentPinballGame->walkMonYPos / 10 + 14);
         gCurrentPinballGame->boardSubState++;
         break;
     case EGG_HATCH_SUBSTATE_SETUP_WANDERING:

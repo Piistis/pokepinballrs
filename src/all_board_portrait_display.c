@@ -1,5 +1,6 @@
 #include "global.h"
 #include "main.h"
+#include "shiny.h"
 #include "constants/board/center_screen_states.h"
 #include "constants/board/main_board.h"
 
@@ -28,6 +29,8 @@ static u16 GetPortraitGfxIndexForSpecies(u16 species)
 
 static s16 GetEvolutionTargetPokedexFlag(u16 species)
 {
+    if (Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex))
+        return Shiny_GetPokedexFlag(species);
     if (species >= NUM_SAVE_SPECIES && species < NUM_SPECIES)
         return gExtraPokedexFlags[species - NUM_SAVE_SPECIES];
 
@@ -82,7 +85,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
             0x300);
         DmaCopy16(
             3,
-            gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15],
+            Shiny_SelectPalette(portraitGfxIndex, SHINY_PALETTE_PORTRAIT, portraitGfxIndex,
+                                gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15]),
             OBJ_PLTT_SLOT(13),
             PLTT_SLOT_SIZE);
         DmaCopy16(3, gMonPortraitGroupPals[0][15], OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
@@ -107,7 +111,9 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
                 portraitGfxIndex = GetPortraitGfxIndexForSpecies(gCurrentPinballGame->evoTargetSpecies);
                 DmaCopy16(
                     3,
-                    gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15],
+                    Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex)
+                        ? Shiny_GetPalette(SHINY_PALETTE_PORTRAIT, portraitGfxIndex)
+                        : gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15],
                     OBJ_PLTT_SLOT(13),
                     PLTT_SLOT_SIZE);
             }
@@ -117,7 +123,9 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
             portraitGfxIndex = GetPortraitGfxIndexForSpecies(gCurrentPinballGame->currentSpecies);
             DmaCopy16(
                 3,
-                gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15],
+                Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex)
+                    ? Shiny_GetPalette(SHINY_PALETTE_PORTRAIT, portraitGfxIndex)
+                    : gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15],
                 OBJ_PLTT_SLOT(13),
                 PLTT_SLOT_SIZE);
         }

@@ -1,0 +1,7 @@
+#ifndef GUARD_CONSTANTS_SHINY_H
+#define GUARD_CONSTANTS_SHINY_H
+
+/* Test build only: also requires DEBUG_TOOLS_ENABLED. */
+#define DEBUG_SHINY_FORCE_ENCOUNTERS FALSE
+
+#endif

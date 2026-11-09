@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
@@ -627,6 +628,7 @@ void RunEvolutionCutscene(void)
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_SMALL_MIDDLE]->active = FALSE;
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_LIGHTNING]->active = FALSE;
             gCurrentPinballGame->currentSpecies = gCurrentPinballGame->postEvoSpecies;
+            Shiny_Reveal(96, 88);
             LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
             gCurrentPinballGame->activePortraitType = 17;
             DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
@@ -37,6 +38,9 @@ extern const u16 gGroudonFirePillarOamData[58][10][3];
 void GroudonBoardProcess_3A_3B120(void)
 {
     s16 i;
+
+    Shiny_BeginBonusEncounter(SPECIES_GROUDON);
+    Shiny_ApplyBonusPalettes();
 
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
@@ -812,6 +816,7 @@ void UpdateGroudonEntityLogic(void)
         if (gCurrentPinballGame->bossRoarTimer == 20)
         {
             PlayCry_Normal(gSpeciesInfo[SPECIES_GROUDON].speciesIdRS, 0);
+            Shiny_Reveal(gCurrentPinballGame->catchTargetX, gCurrentPinballGame->catchTargetY);
             gCurrentPinballGame->footstepShakeTimer = 70;
             gCurrentPinballGame->footstepShakePattern = 6;
         }

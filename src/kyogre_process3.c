@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
@@ -42,6 +43,9 @@ extern const u16 gKyogreMainBodyOamData[66][10][3];
 void KyogreBoardProcess_3A_383E4(void)
 {
     s16 i;
+
+    Shiny_BeginBonusEncounter(SPECIES_KYOGRE);
+    Shiny_ApplyBonusPalettes();
 
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
@@ -294,7 +298,7 @@ void UpdateKyogreEntityLogic(void)
         break;
     case KYOGRE_ENTITY_STATE_ENTRY:
         index = gKyogreRisingPaletteCycleIndices[(gCurrentPinballGame->kyogreWaveTimer % 280) / 14];
-        DmaCopy16(3, gKyogreWaterAnimFrame_Pals[index], OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
+        Shiny_CopyBonusAnimationPalette(15, gKyogreWaterAnimFrame_Pals[index], (u16 *)OBJ_PLTT_SLOT(15));
         gCurrentPinballGame->kyogreWaveTimer++;
         if (gKyogreAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][1] > gCurrentPinballGame->bossFrameTimer)
         {
@@ -311,7 +315,7 @@ void UpdateKyogreEntityLogic(void)
                 gCurrentPinballGame->bossNextAttackState = KYOGRE_ENTITY_STATE_SHOCKWAVE;
                 gCurrentPinballGame->bossMovementPhase = 0;
                 gCurrentPinballGame->bossRoarTimer = 60;
-                DmaCopy16(3, &gKyogreWaterAnimFrame_Pals[5], (void *)0x050003E0, 0x20);
+                Shiny_CopyBonusAnimationPalette(15, gKyogreWaterAnimFrame_Pals[5], (u16 *)OBJ_PLTT_SLOT(15));
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == 32)
@@ -666,7 +670,10 @@ void UpdateKyogreEntityLogic(void)
     {
         gCurrentPinballGame->bossRoarTimer--;
         if (gCurrentPinballGame->bossRoarTimer == 20)
+        {
             PlayCry_Normal(gSpeciesInfo[SPECIES_KYOGRE].speciesIdRS, 0);
+            Shiny_Reveal(gCurrentPinballGame->catchTargetX, gCurrentPinballGame->catchTargetY);
+        }
 
         if (gCurrentPinballGame->bossRoarTimer == 0)
             m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);

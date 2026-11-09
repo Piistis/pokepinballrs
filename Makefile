@@ -130,10 +130,15 @@ $(C_BUILDDIR)/encounters.o: src/data/encounters_assets.h
 
 SHINY_ART := $(wildcard graphics/mon_portraits/*_s.png graphics/mon_catch_sprites/*_s.png graphics/mon_hatch_sprites/*_s.png graphics/stage/kyogre/*_s.png graphics/stage/groudon/*_s.png graphics/stage/rayquaza/*_s.png)
 SHINY_BASE_ART := $(patsubst %_s.png,%.png,$(SHINY_ART))
-src/data/shiny_palettes.h: tools/scripts/generate_shiny_assets.py tools/scripts/generate_encounters_assets.py data/graphics/mon_portraits.inc data/graphics/mon_catch_sprites.inc data/graphics/mon_hatch_sprites.inc $(SHINY_ART) $(SHINY_BASE_ART) graphics/stage/kyogre/kyogre_stage_gfx.json graphics/stage/groudon/groudon_stage_gfx.json graphics/stage/rayquaza/rayquaza_stage_gfx.json
+src/data/shiny_palettes.h: tools/scripts/generate_shiny_assets.py tools/scripts/generate_encounters_assets.py data/graphics/mon_portraits.inc data/graphics/mon_catch_sprites.inc data/graphics/mon_hatch_sprites.inc $(SHINY_ART) $(SHINY_BASE_ART) graphics/stage/kyogre/kyogre_stage_gfx.json graphics/stage/groudon/groudon_stage_gfx.json graphics/stage/rayquaza/rayquaza_stage_gfx.json graphics/shiny/gold_stars.png data/shiny_emerald_sine.json
 	python3 tools/scripts/generate_shiny_assets.py
 
 $(C_BUILDDIR)/shiny.o: src/data/shiny_palettes.h
+
+src/data/pokedex_view_assets.h: src/data/shiny_palettes.h $(wildcard graphics/pokedex/generations/*.pal) graphics/pokedex/text_glyphs.png graphics/options/Encounters_Buttons.png
+	python3 tools/scripts/generate_shiny_assets.py
+
+$(C_BUILDDIR)/pokedex_view.o: src/data/pokedex_view_assets.h
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: rom

@@ -5119,3 +5119,4 @@ gDirectSound_086885EC:: @ 0x086885EC
 .include "sound/songs/se_highest_score_earned.s"
 .include "sound/songs/se_high_score_earned.s"
 .include "sound/songs/se_whiscash_earthquake.s"
+.include "sound/songs/se_shiny_emerald.s"

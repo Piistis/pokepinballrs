@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
@@ -86,6 +87,7 @@ void CleanupEvolutionModeState(void)
 
 void InitEvolutionMode(void)
 {
+    Shiny_SetCurrentForm(gCurrentPinballGame->currentSpecies, Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex));
     gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_SHUFFLE_EVO_ITEM_PLACEMENTS;
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;

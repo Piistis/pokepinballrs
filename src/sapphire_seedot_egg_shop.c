@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "functions.h"
 #include "m4a.h"
 #include "main.h"
@@ -114,6 +115,7 @@ void UpdateSapphireEggHatchAnimation(void)
             if (gCurrentPinballGame->eggAnimFrameIndex == 19)
             {
                 PickSpeciesForEggMode();
+                Shiny_BeginEncounter(gCurrentPinballGame->currentSpecies, SHINY_ENCOUNTER_HATCH, TRUE);
                 if (gMain.mainState != STATE_GAME_IDLE)
                     SaveFile_SetPokedexFlags(gCurrentPinballGame->currentSpecies, 1);
             }

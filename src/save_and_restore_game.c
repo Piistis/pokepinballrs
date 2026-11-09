@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "agb_sram.h"
 #include "save_storage.h"
 #include "constants/debug.h"
@@ -51,6 +52,8 @@ static u16 GetPortraitGfxIndexForSpecies(u16 species)
 
 static s16 GetEvolutionTargetPokedexFlag(u16 species)
 {
+    if (Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex))
+        return Shiny_GetPokedexFlag(species);
     if (species >= NUM_SAVE_SPECIES && species < NUM_SPECIES)
         return gExtraPokedexFlags[species - NUM_SAVE_SPECIES];
 
@@ -330,6 +333,7 @@ bool8 RestoreGameState(u16 arg0)
         gCurrentPinballGame->saveDataValid = FALSE;
         SaveFile_ClearGameState();
     }
+    Shiny_ApplyBonusPalettes();
     return TRUE;
 }
 
@@ -565,13 +569,17 @@ void RestoreMainFieldDynamicGraphics(void)
                 else
                 {
                     portraitGfxIndex = GetPortraitGfxIndexForSpecies(gCurrentPinballGame->evoTargetSpecies);
-                    DmaCopy16(3, gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
+                    DmaCopy16(3, Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex)
+                                  ? Shiny_GetPalette(SHINY_PALETTE_PORTRAIT, portraitGfxIndex)
+                                  : gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
                 }
             }
             else
             {
                 portraitGfxIndex = GetPortraitGfxIndexForSpecies(gCurrentPinballGame->currentSpecies);
-                DmaCopy16(3, gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
+                DmaCopy16(3, Shiny_IsPartyMember(gCurrentPinballGame->evolvingPartyIndex)
+                              ? Shiny_GetPalette(SHINY_PALETTE_PORTRAIT, portraitGfxIndex)
+                              : gMonPortraitGroupPals[portraitGfxIndex / 15][portraitGfxIndex % 15], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
             }
             if (useQuestionPortrait)
             {

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
@@ -33,6 +34,9 @@ void RayquazaBoardProcess_3A_3E79C(void)
     frame = gMain.systemFrameCount % 10;
     for (i = 0; i < frame; i++)
         Random();
+
+    Shiny_BeginBonusEncounter(SPECIES_RAYQUAZA);
+    Shiny_ApplyBonusPalettes();
 
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
@@ -695,7 +699,10 @@ void UpdateRayquazaEntityLogic(void)
     {
         gCurrentPinballGame->bossRoarTimer--;
         if (gCurrentPinballGame->bossRoarTimer == 20)
+        {
             PlayCry_Normal(gSpeciesInfo[SPECIES_RAYQUAZA].speciesIdRS, 0);
+            Shiny_Reveal(gCurrentPinballGame->catchTargetX, gCurrentPinballGame->catchTargetY);
+        }
 
         if (gCurrentPinballGame->bossRoarTimer == 0)
             m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
