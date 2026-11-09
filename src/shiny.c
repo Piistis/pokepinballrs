@@ -18,6 +18,10 @@ static EWRAM_DATA bool8 sDebugForceNextShiny = FALSE;
 
 extern struct SongHeader se_shiny_emerald;
 
+static const u8 sShinyObjectTileSizes[3][4][2] = {
+    {{1,1},{2,2},{4,4},{8,8}}, {{2,1},{4,1},{4,2},{8,4}}, {{1,2},{1,4},{2,4},{4,8}}
+};
+
 static EWRAM_DATA struct
 {
     struct OamData oam[10];
@@ -116,11 +120,27 @@ static void Shiny_RestoreEffectGraphics(void)
     sShinyFx.borrowed = FALSE;
 }
 
+static bool8 Shiny_IsOamVisible(const struct OamData *oam)
+{
+    s16 width, height, x, y;
+    if (oam->affineMode == ST_OAM_AFFINE_ERASE || oam->shape >= 3)
+        return FALSE;
+    width = sShinyObjectTileSizes[oam->shape][oam->size][0] * 8;
+    height = sShinyObjectTileSizes[oam->shape][oam->size][1] * 8;
+    if (oam->affineMode == ST_OAM_AFFINE_DOUBLE)
+    {
+        width *= 2;
+        height *= 2;
+    }
+    x = oam->x;
+    y = oam->y;
+    if (x >= 240) x -= 512;
+    if (y >= 160) y -= 256;
+    return x < 240 && y < 160 && x + width > 0 && y + height > 0;
+}
+
 void Shiny_RenderEffects(void)
 {
-    static const u8 dimensions[3][4][2] = {
-        {{1,1},{2,2},{4,4},{8,8}}, {{2,1},{4,1},{4,2},{8,4}}, {{1,2},{1,4},{2,4},{4,8}}
-    };
     u16 palettes = 0;
     s16 i, j, tiles, base, bank, group, star, age, x, y, id;
     u16 affine;
@@ -133,10 +153,10 @@ void Shiny_RenderEffects(void)
     for (i = 0; i < 128; i++)
     {
         oam = &gOamBuffer[i];
-        if (oam->affineMode == ST_OAM_AFFINE_ERASE || oam->shape >= 3)
+        if (!Shiny_IsOamVisible(oam))
             continue;
         palettes |= oam->bpp ? 0xFFFF : 1 << oam->paletteNum;
-        tiles = dimensions[oam->shape][oam->size][0] * dimensions[oam->shape][oam->size][1] * (oam->bpp ? 2 : 1);
+        tiles = sShinyObjectTileSizes[oam->shape][oam->size][0] * sShinyObjectTileSizes[oam->shape][oam->size][1] * (oam->bpp ? 2 : 1);
         for (j = oam->tileNum; j < oam->tileNum + tiles && j < 1024; j++)
             sShinyFx.usedTiles[j / 32] |= 1u << (j & 31);
     }
@@ -161,7 +181,8 @@ void Shiny_RenderEffects(void)
         {
             age = sShinyFx.frame - 60 - star * 4;
             if (age < 0 || (group == 0 ? age >= 21 : age < 4 || age >= 16)) continue;
-            while (id >= 0 && gOamBuffer[id].affineMode != ST_OAM_AFFINE_ERASE) id--;
+            // Native empty OAM entries are ordinary sprites parked off-screen.
+            while (id >= 0 && Shiny_IsOamVisible(&gOamBuffer[id])) id--;
             if (id < 0) return;
             x = sShinyFx.x[star] - gCurrentPinballGame->cameraXOffset;
             y = sShinyFx.y[star] - gCurrentPinballGame->cameraYOffset;
