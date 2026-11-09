@@ -5,6 +5,7 @@
 #include "main.h"
 #include "types.h"
 #include "variables.h"
+#include "shiny.h"
 #include "constants/areas.h"
 #include "constants/bg_music.h"
 #include "constants/characters.h"
@@ -2522,4 +2523,5 @@ void ResetPokedex(void)
 
     for (i = NUM_SAVE_SPECIES; i < NUM_SPECIES; i++)
         gExtraPokedexFlags[i - NUM_SAVE_SPECIES] = SPECIES_UNSEEN;
+    Shiny_ResetPokedex();
 }

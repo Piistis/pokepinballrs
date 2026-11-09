@@ -7,6 +7,10 @@ typedef char SaveDexSlotsCheck[SAVE_DEX_SLOT_A + SAVE_DEX_SLOT_SIZE <= SAVE_DEX_
 typedef char SaveDexGameSlotsCheck[SAVE_DEX_SLOT_B + SAVE_DEX_SLOT_SIZE <= SAVE_GAME_SLOT_A ? 1 : -1];
 typedef char SaveGameSlotsCheck[SAVE_GAME_SLOT_A + SAVE_GAME_SLOT_SIZE <= SAVE_GAME_SLOT_B ? 1 : -1];
 typedef char SaveSramBoundsCheck[SAVE_GAME_SLOT_B + SAVE_GAME_SLOT_SIZE <= 0x8000 ? 1 : -1];
+typedef char SaveShinySlotACheck[SAVE_GAME_SLOT_A + SAVE_GAME_SLOT_SIZE <= SAVE_SHINY_SLOT_A ? 1 : -1];
+typedef char SaveShinySlotBCheck[SAVE_GAME_SLOT_B + SAVE_GAME_SLOT_SIZE <= SAVE_SHINY_SLOT_B ? 1 : -1];
+typedef char SaveShinyBackupBoundsCheck[SAVE_SHINY_SLOT_B + SAVE_SHINY_SLOT_SIZE <= 0x8000 ? 1 : -1];
+typedef char SaveShinyPrimaryBoundsCheck[SAVE_SHINY_SLOT_A + SAVE_SHINY_SLOT_SIZE <= SAVE_GAME_SLOT_B ? 1 : -1];
 
 static u32 UpdateSaveCrc(u32 crc, const u8 *data, u16 size)
 {
@@ -91,6 +95,13 @@ static bool8 WriteSaveRecord(u32 offset, const struct SaveRecordHeader *header,
 bool8 SaveRecord_Write(u32 a, u32 b, u32 slotSize, u32 magic,
                       const void *prefix, u16 prefixSize, const void *data, u16 dataSize)
 {
+    return SaveRecord_WriteVersioned(a, b, slotSize, magic, SAVE_RECORD_VERSION,
+                                    prefix, prefixSize, data, dataSize);
+}
+
+bool8 SaveRecord_WriteVersioned(u32 a, u32 b, u32 slotSize, u32 magic, u16 version,
+                               const void *prefix, u16 prefixSize, const void *data, u16 dataSize)
+{
     struct SaveRecordHeader header;
     u32 current, target, crc;
 
@@ -99,11 +110,12 @@ bool8 SaveRecord_Write(u32 a, u32 b, u32 slotSize, u32 magic,
     current = SaveRecord_Find(a, b, slotSize, magic, &header);
     if (!current && SaveRecord_HasMarker(a, b, magic))
         return FALSE;
-    if (current && header.version != SAVE_RECORD_VERSION)
+    if (current && header.version != version
+     && !(magic == SAVE_GAME_MAGIC && header.version == SAVE_RECORD_VERSION && version == SAVE_GAME_SHINY_VERSION))
         return FALSE;
     header.sequence = current ? header.sequence + 1 : 1;
     header.magic = magic;
-    header.version = SAVE_RECORD_VERSION;
+    header.version = version;
     header.size = prefixSize + dataSize;
     crc = UpdateSaveCrc(0xFFFFFFFF, (const u8 *)&header, 12);
     crc = UpdateSaveCrc(crc, prefix, prefixSize);

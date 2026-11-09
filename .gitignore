@@ -58,3 +58,4 @@ __pycache__/
 !/tools/scripts/generate_encounters_assets.py
 !/tools/scripts/generate_graphics_rules.sh
 !/tools/scripts/objpalette.py
+!/tools/scripts/generate_shiny_assets.py

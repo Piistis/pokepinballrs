@@ -6,12 +6,15 @@
 #include "constants/bg_music.h"
 #include "constants/generations.h"
 #include "save_storage.h"
+#include "shiny.h"
 #include "constants/debug.h"
 #include <stddef.h>
 
 static bool16 LoadSaveDataFromSram(void);
 static void LoadExtraPokedexFlagsFromSram(void);
 static void SaveExtraPokedexFlagsToSram(void);
+static void LoadShinyPokedexFromSram(void);
+static void SaveShinyPokedexToSram(void);
 
 #define EXTRA_POKEDEX_FLAGS_COUNT (NUM_SPECIES - NUM_SAVE_SPECIES)
 #define EXTRA_POKEDEX_SAVE_MAGIC 0x58444550
@@ -38,6 +41,20 @@ struct SavedGameInfo
     u8 reserved;
 };
 
+struct SavedShinyGameInfo
+{
+    struct SavedGameInfo base;
+    struct ShinyRunState shiny;
+};
+
+struct SavedShinyDexInfo
+{
+    u16 speciesCount;
+    u16 bytes;
+};
+
+static EWRAM_DATA u8 sShinySaveBuffer[2 * SHINY_DEX_BYTES] = {0};
+
 typedef char SaveDexCapacityCheck[EXTRA_POKEDEX_FLAGS_COUNT <= SAVE_DEX_CAPACITY ? 1 : -1];
 typedef char SaveGameSizeCheck[sizeof(struct PinballGame) == SAVE_GAME_LAYOUT_SIZE ? 1 : -1];
 typedef char SaveGameInfoSizeCheck[sizeof(struct SavedGameInfo) == 8 ? 1 : -1];
@@ -45,6 +62,11 @@ typedef char SaveBaseSizeCheck[sizeof(struct SaveData) == 0x274 ? 1 : -1];
 typedef char SaveGameMusicCheck[offsetof(struct PinballGame, savedBgmSongHeader) == 0xF4C ? 1 : -1];
 typedef char SaveGameBallCheck[offsetof(struct PinballGame, ball) == 0x132C ? 1 : -1];
 typedef char SaveGameSpeciesCheck[offsetof(struct PinballGame, currentSpecies) == 0x598 ? 1 : -1];
+typedef char SaveShinyStateSizeCheck[sizeof(struct ShinyRunState) == 8 ? 1 : -1];
+typedef char SaveShinyCapacityCheck[4 + 2 * ((NUM_SAVE_SPECIES + SAVE_DEX_CAPACITY + 7) / 8)
+                                  <= SAVE_SHINY_SLOT_SIZE - sizeof(struct SaveRecordHeader) ? 1 : -1];
+typedef char SaveShinyGameCapacityCheck[sizeof(struct SavedShinyGameInfo) + sizeof(struct PinballGame)
+                                      <= SAVE_GAME_SLOT_SIZE - sizeof(struct SaveRecordHeader) ? 1 : -1];
 
 static bool8 IsSramBlank(void)
 {
@@ -66,6 +88,8 @@ void SaveFile_LoadGameData(void)
 {
     SetSramFastFunc();
     gMain.sramError = FALSE;
+    Shiny_ResetPokedex();
+    Shiny_ResetRunState();
     if (LoadSaveDataFromSram() == FALSE)
     {
         /* Do not turn an unrecognized/damaged existing save into a fresh one. */
@@ -87,6 +111,8 @@ void SaveFile_LoadGameData(void)
     {
         SetButtonConfigInputs(gMain_saveData.buttonConfigType);
         LoadExtraPokedexFlagsFromSram();
+        if (!gMain.sramError)
+            LoadShinyPokedexFromSram();
     }
 }
 
@@ -251,6 +277,66 @@ static void SaveExtraPokedexFlagsToSram(void)
         gMain.sramError = TRUE;
 }
 
+static void LoadShinyPokedexFromSram(void)
+{
+    struct SaveRecordHeader header;
+    struct SavedShinyDexInfo info;
+    u32 offset;
+    u16 i;
+    u8 mask;
+
+    Shiny_ResetPokedex();
+    offset = SaveRecord_Find(SAVE_SHINY_SLOT_A, SAVE_SHINY_SLOT_B, SAVE_SHINY_SLOT_SIZE, SAVE_SHINY_MAGIC, &header);
+    if (!offset)
+    {
+        if (SaveRecord_HasMarker(SAVE_SHINY_SLOT_A, SAVE_SHINY_SLOT_B, SAVE_SHINY_MAGIC))
+            gMain.sramError = TRUE;
+        return;
+    }
+    SaveRecord_Read(offset + sizeof(header), &info, sizeof(info));
+    if (header.version != SAVE_RECORD_VERSION || info.speciesCount < NUM_SAVE_SPECIES
+     || info.speciesCount > NUM_SPECIES || info.bytes != (info.speciesCount + 7) / 8
+     || header.size != sizeof(info) + 2 * info.bytes)
+    {
+        gMain.sramError = TRUE;
+        return;
+    }
+    SaveRecord_Read(offset + sizeof(header) + sizeof(info), gShinySeen, info.bytes);
+    SaveRecord_Read(offset + sizeof(header) + sizeof(info) + info.bytes, gShinyCaught, info.bytes);
+    for (i = 0; i < info.bytes; i++)
+    {
+        mask = i == info.bytes - 1 && (info.speciesCount & 7)
+             ? (1 << (info.speciesCount & 7)) - 1 : 255;
+        if ((gShinySeen[i] & ~mask) || (gShinyCaught[i] & ~gShinySeen[i]))
+        {
+            Shiny_ResetPokedex();
+            gMain.sramError = TRUE;
+            return;
+        }
+    }
+}
+
+static void SaveShinyPokedexToSram(void)
+{
+    struct SavedShinyDexInfo info;
+    if (gMain.sramError)
+        return;
+    info.speciesCount = NUM_SPECIES;
+    info.bytes = SHINY_DEX_BYTES;
+    memcpy(sShinySaveBuffer, gShinySeen, SHINY_DEX_BYTES);
+    memcpy(sShinySaveBuffer + SHINY_DEX_BYTES, gShinyCaught, SHINY_DEX_BYTES);
+    if (!SaveRecord_Write(SAVE_SHINY_SLOT_A, SAVE_SHINY_SLOT_B, SAVE_SHINY_SLOT_SIZE, SAVE_SHINY_MAGIC,
+                          &info, sizeof(info), sShinySaveBuffer, sizeof(sShinySaveBuffer)))
+        gMain.sramError = TRUE;
+}
+
+void SaveFile_SetShinyPokedexFlag(u16 species, u8 flag)
+{
+    if (gMain.sramError || !Shiny_SetPokedexFlag(species, flag))
+        return;
+    SaveShinyPokedexToSram();
+}
+
 void SaveFile_WriteToSram(void)
 {
     u32 checksum;
@@ -280,6 +366,7 @@ void SaveFile_WriteToSram(void)
         return;
     }
     SaveExtraPokedexFlagsToSram();
+    SaveShinyPokedexToSram();
 }
 
 void SaveFile_SetPokedexFlags(s16 species, u8 flag)
@@ -351,8 +438,8 @@ static u16 SavedBoardSong(u8 field)
 
 static bool8 IsSavedGameInfoCompatible(const struct SaveRecordHeader *header, const struct SavedGameInfo *info)
 {
-    return header->version == SAVE_RECORD_VERSION
-        && header->size == sizeof(*info) + sizeof(*gCurrentPinballGame)
+    return ((header->version == SAVE_RECORD_VERSION && header->size == sizeof(*info) + sizeof(*gCurrentPinballGame))
+         || (header->version == SAVE_GAME_SHINY_VERSION && header->size == sizeof(struct SavedShinyGameInfo) + sizeof(*gCurrentPinballGame)))
         && info->speciesCount >= NUM_SAVE_SPECIES && info->speciesCount <= NUM_SPECIES
         && info->ballIndex < 2 && info->cameraIndex < 2
         && info->generation <= GENERATION_RANDOM
@@ -362,6 +449,7 @@ static bool8 IsSavedGameInfoCompatible(const struct SaveRecordHeader *header, co
 bool8 SaveFile_WriteGameState(void)
 {
     struct SavedGameInfo info;
+    struct SavedShinyGameInfo extended;
     u16 song;
 
     if (gMain.sramError)
@@ -387,8 +475,10 @@ bool8 SaveFile_WriteGameState(void)
             info.song = SavedBoardSong(gCurrentPinballGame->savedField);
     }
     gCurrentPinballGame->saveDataValid = TRUE;
-    if (!SaveRecord_Write(SAVE_GAME_SLOT_A, SAVE_GAME_SLOT_B, SAVE_GAME_SLOT_SIZE, SAVE_GAME_MAGIC,
-                          &info, sizeof(info), gCurrentPinballGame, sizeof(*gCurrentPinballGame)))
+    extended.base = info;
+    extended.shiny = gShinyRunState;
+    if (!SaveRecord_WriteVersioned(SAVE_GAME_SLOT_A, SAVE_GAME_SLOT_B, SAVE_GAME_SLOT_SIZE, SAVE_GAME_MAGIC,
+                                   SAVE_GAME_SHINY_VERSION, &extended, sizeof(extended), gCurrentPinballGame, sizeof(*gCurrentPinballGame)))
     {
         gMain.sramError = TRUE;
         return FALSE;
@@ -408,16 +498,31 @@ bool8 SaveFile_ReadGameState(void)
     struct SavedGameInfo info;
     u32 offset;
     u16 oldCount;
+    u16 prefixSize;
+    struct ShinyRunState shiny;
+
+    Shiny_ResetRunState();
 
     offset = SaveRecord_Find(SAVE_GAME_SLOT_A, SAVE_GAME_SLOT_B, SAVE_GAME_SLOT_SIZE, SAVE_GAME_MAGIC, &header);
     if (offset)
     {
-        if (header.size == 0 && header.version == SAVE_RECORD_VERSION)
+        if (header.size == 0 && (header.version == SAVE_RECORD_VERSION || header.version == SAVE_GAME_SHINY_VERSION))
             return FALSE;
         SaveRecord_Read(offset + sizeof(header), &info, sizeof(info));
         if (!IsSavedGameInfoCompatible(&header, &info))
             return FALSE;
-        SaveRecord_Read(offset + sizeof(header) + sizeof(info), gCurrentPinballGame, sizeof(*gCurrentPinballGame));
+        prefixSize = sizeof(info);
+        if (header.version == SAVE_GAME_SHINY_VERSION)
+        {
+            SaveRecord_Read(offset + sizeof(header) + sizeof(info), &shiny, sizeof(shiny));
+            if (shiny.species > info.speciesCount || shiny.isShiny > TRUE || shiny.effectPlayed > TRUE
+             || shiny.kind > SHINY_ENCOUNTER_BONUS || shiny.reserved
+             || (shiny.kind == SHINY_ENCOUNTER_NONE && (shiny.isShiny || shiny.species != info.speciesCount))
+             || (shiny.kind != SHINY_ENCOUNTER_NONE && shiny.species >= info.speciesCount))
+                return FALSE;
+            prefixSize += sizeof(shiny);
+        }
+        SaveRecord_Read(offset + sizeof(header) + prefixSize, gCurrentPinballGame, sizeof(*gCurrentPinballGame));
         oldCount = info.speciesCount;
         gSelectedGeneration = info.generation;
     }
@@ -453,6 +558,11 @@ bool8 SaveFile_ReadGameState(void)
     gCurrentPinballGame->debugForcedCatchSpecies = SPECIES_NONE;
     gCurrentPinballGame->debugForcedEggSpecies = SPECIES_NONE;
     NormalizeEvolvablePartySpeciesStorage();
+    if (offset && header.version == SAVE_GAME_SHINY_VERSION)
+    {
+        shiny.species = RestoreSavedSpecies(shiny.species, oldCount);
+        gShinyRunState = shiny;
+    }
     return TRUE;
 }
 
@@ -463,8 +573,8 @@ void SaveFile_ClearGameState(void)
     if (gMain.sramError)
         return;
     /* A checksummed tombstone outranks older snapshots; deletion must not revive a backup. */
-    if (!SaveRecord_Write(SAVE_GAME_SLOT_A, SAVE_GAME_SLOT_B, SAVE_GAME_SLOT_SIZE, SAVE_GAME_MAGIC,
-                          NULL, 0, NULL, 0)
+    if (!SaveRecord_WriteVersioned(SAVE_GAME_SLOT_A, SAVE_GAME_SLOT_B, SAVE_GAME_SLOT_SIZE, SAVE_GAME_MAGIC,
+                                   SAVE_GAME_SHINY_VERSION, NULL, 0, NULL, 0)
      || WriteAndVerifySramFast((const u8 *)&invalid, (u8 *)(SRAM + 0x544), sizeof(invalid)))
         gMain.sramError = TRUE;
     gMain.hasSavedGame = FALSE;
@@ -481,7 +591,7 @@ void SaveFile_ReadSavedGamePresent(void)
     offset = SaveRecord_Find(SAVE_GAME_SLOT_A, SAVE_GAME_SLOT_B, SAVE_GAME_SLOT_SIZE, SAVE_GAME_MAGIC, &header);
     if (offset)
     {
-        if (header.size == 0 && header.version == SAVE_RECORD_VERSION)
+        if (header.size == 0 && (header.version == SAVE_RECORD_VERSION || header.version == SAVE_GAME_SHINY_VERSION))
             return;
         SaveRecord_Read(offset + sizeof(header), &info, sizeof(info));
         if (!IsSavedGameInfoCompatible(&header, &info))
@@ -489,7 +599,9 @@ void SaveFile_ReadSavedGamePresent(void)
             gMain.sramError = TRUE;
             return;
         }
-        SaveRecord_Read(offset + sizeof(header) + sizeof(info), &present, sizeof(present));
+        SaveRecord_Read(offset + sizeof(header)
+                        + (header.version == SAVE_GAME_SHINY_VERSION ? sizeof(struct SavedShinyGameInfo) : sizeof(info)),
+                        &present, sizeof(present));
         gMain.hasSavedGame = present == TRUE;
         return;
     }
@@ -517,5 +629,6 @@ void ResetSaveFile(void)
     SetButtonConfigInputs(BUTTON_CONFIG_RESET);
     SetDefaultHighScores();
     ResetPokedex();
+    Shiny_ResetRunState();
     gMain_saveData.buttonConfigType = BUTTON_CONFIG_TYPE_A;
 }

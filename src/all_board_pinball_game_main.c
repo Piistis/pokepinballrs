@@ -9,6 +9,7 @@
 #include "constants/species.h"
 #include "constants/board/ruby_states.h"
 #include "encounters.h"
+#include "shiny.h"
 
 extern struct PinballGame gPinballGameState;
 
@@ -167,6 +168,7 @@ void PinballGame_State0_49ED4(void)
 
     if (var0 == 1 && gMain.selectedField < MAIN_FIELD_COUNT)
     {
+        Shiny_ResetRunState();
         InitRandomWildMonLocationsForNewGame();
         InitLegendaryEncountersForNewGame();
     }
