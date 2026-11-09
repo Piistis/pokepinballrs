@@ -24,6 +24,8 @@ static EWRAM_DATA struct
     u16 ids[10];
     u16 tiles[96];
     u16 palette[16];
+    // The system stack has only 0x300 bytes above SoundMainRAM_Buffer.
+    u32 usedTiles[32];
     u16 tileBase, paletteBank, count;
     s16 x[5], y[5], frame;
     bool8 active, borrowed;
@@ -119,7 +121,6 @@ void Shiny_RenderEffects(void)
     static const u8 dimensions[3][4][2] = {
         {{1,1},{2,2},{4,4},{8,8}}, {{2,1},{4,1},{4,2},{8,4}}, {{1,2},{1,4},{2,4},{4,8}}
     };
-    u8 used[1024];
     u16 palettes = 0;
     s16 i, j, tiles, base, bank, group, star, age, x, y, id;
     u16 affine;
@@ -128,7 +129,7 @@ void Shiny_RenderEffects(void)
     if (!sShinyFx.active || gMain.mainState != STATE_GAME_MAIN || Encounters_IsOpen()
      || (gMain.modeChangeFlags & (MODE_CHANGE_PAUSE | MODE_CHANGE_DEBUG)) || sShinyFx.frame < 60)
         return;
-    memset(used, 0, sizeof(used));
+    memset(sShinyFx.usedTiles, 0, sizeof(sShinyFx.usedTiles));
     for (i = 0; i < 128; i++)
     {
         oam = &gOamBuffer[i];
@@ -136,12 +137,13 @@ void Shiny_RenderEffects(void)
             continue;
         palettes |= oam->bpp ? 0xFFFF : 1 << oam->paletteNum;
         tiles = dimensions[oam->shape][oam->size][0] * dimensions[oam->shape][oam->size][1] * (oam->bpp ? 2 : 1);
-        for (j = oam->tileNum; j < oam->tileNum + tiles && j < 1024; j++) used[j] = TRUE;
+        for (j = oam->tileNum; j < oam->tileNum + tiles && j < 1024; j++)
+            sShinyFx.usedTiles[j / 32] |= 1u << (j & 31);
     }
     for (bank = 15; bank >= 0 && (palettes & (1 << bank)); bank--);
     for (base = 1016; base >= 0; base -= 2)
     {
-        for (j = 0; j < 6 && !used[base + j]; j++);
+        for (j = 0; j < 6 && !(sShinyFx.usedTiles[(base + j) / 32] & (1u << ((base + j) & 31))); j++);
         if (j == 6) break;
     }
     if (base < 0 || bank < 0)
