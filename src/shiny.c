@@ -14,6 +14,7 @@ EWRAM_DATA u8 gShinyCaught[SHINY_DEX_BYTES] = {0};
 EWRAM_DATA struct ShinyRunState gShinyRunState = {0};
 static EWRAM_DATA Palette sShinyBossPalettesRam[3][16] = {0};
 static EWRAM_DATA Palette *sShinyBossOriginal[3] = {0};
+static EWRAM_DATA bool8 sDebugForceNextShiny = FALSE;
 
 extern struct SongHeader se_shiny_emerald;
 
@@ -195,6 +196,7 @@ void Shiny_ResetPokedex(void)
 void Shiny_ResetRunState(void)
 {
     Shiny_StopEffects();
+    sDebugForceNextShiny = FALSE;
     memset(&gShinyRunState, 0, sizeof(gShinyRunState));
     gShinyRunState.species = SPECIES_NONE;
 }
@@ -247,8 +249,31 @@ void Shiny_BeginEncounter(u16 species, u8 kind, bool8 eligible)
     denominator = Shiny_GetOddsDenominator(gCurrentPinballGame->caughtMonCount,
                                          Shiny_IsGenerationComplete(Shiny_GetGeneration(species)));
     gShinyRunState.isShiny = (Random() & (denominator - 1)) == 0;
+#if DEBUG_TOOLS_ENABLED
+    if (sDebugForceNextShiny && gMain.mainState == STATE_GAME_MAIN)
+    {
+        gShinyRunState.isShiny = TRUE;
+        sDebugForceNextShiny = FALSE;
+    }
+#endif
 #if DEBUG_TOOLS_ENABLED && DEBUG_SHINY_FORCE_ENCOUNTERS
     gShinyRunState.isShiny = TRUE;
+#endif
+}
+
+void Shiny_DebugSetNextForced(bool8 enabled)
+{
+#if DEBUG_TOOLS_ENABLED
+    sDebugForceNextShiny = enabled != FALSE;
+#endif
+}
+
+bool8 Shiny_DebugNextIsForced(void)
+{
+#if DEBUG_TOOLS_ENABLED
+    return sDebugForceNextShiny;
+#else
+    return FALSE;
 #endif
 }
 

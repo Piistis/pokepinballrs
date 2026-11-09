@@ -46,6 +46,8 @@ u8 Shiny_GetGeneration(u16 species);
 bool8 Shiny_IsGenerationComplete(u8 generation);
 void Shiny_BeginEncounter(u16 species, u8 kind, bool8 eligible);
 void Shiny_BeginBonusEncounter(u16 species);
+void Shiny_DebugSetNextForced(bool8 enabled);
+bool8 Shiny_DebugNextIsForced(void);
 void Shiny_SetCurrentForm(u16 species, bool8 shiny);
 bool8 Shiny_IsCurrentSpecies(u16 species);
 bool8 Shiny_IsPartyMember(s16 index);

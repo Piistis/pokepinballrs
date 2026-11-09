@@ -1,4 +1,5 @@
 #include "global.h"
+#include "shiny.h"
 #include "functions.h"
 #include "m4a.h"
 #include "main.h"
@@ -43,7 +44,8 @@ extern const s8 gBonusSummaryTextTemplates[][3][20];
 #define DEBUG_TOOL_MENU_SOUND_TEST 3
 #define DEBUG_TOOL_MENU_EGG_COUNTER 4
 #define DEBUG_TOOL_MENU_CAPTURE_COUNTER 5
-#define DEBUG_TOOL_MENU_COUNT 6
+#define DEBUG_TOOL_MENU_NEXT_SHINY 6
+#define DEBUG_TOOL_MENU_COUNT 7
 #define DEBUG_TOOL_TEXT_FIRST_ROW 26
 #define DEBUG_TOOL_TEXT_ALT_FIRST_ROW 60
 #define DEBUG_TOOL_TEXT_ROW_COUNT 2
@@ -66,6 +68,7 @@ static void DebugTools_RenderSoundTestOption(bool8 selected, s16 row);
 static void DebugTools_RenderEggCounterOption(s16 row);
 static void DebugTools_IncrementCaptureCounter(void);
 static void DebugTools_RenderCaptureCounterOption(s16 row);
+static void DebugTools_RenderNextShinyOption(s16 row);
 static void DebugTools_RenderPokemonName(u16 species, s16 row, bool8 selected);
 static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected);
 static void DebugTools_RenderMenuBackdrop(void);
@@ -262,6 +265,11 @@ static void DebugTools_RenderAndHandleInput(void)
             else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_CAPTURE_COUNTER)
             {
                 DebugTools_IncrementCaptureCounter();
+                m4aSongNumStart(SE_MENU_SELECT);
+            }
+            else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_NEXT_SHINY)
+            {
+                Shiny_DebugSetNextForced(!Shiny_DebugNextIsForced());
                 m4aSongNumStart(SE_MENU_SELECT);
             }
             else
@@ -538,6 +546,20 @@ static void DebugTools_RenderSoundName(s16 soundIndex, s16 row, bool8 selected)
     DebugTools_RenderTextRow(text, row);
 }
 
+static void DebugTools_RenderNextShinyOption(s16 row)
+{
+    u8 text[20];
+
+    DebugTools_ClearLineText(text, 20);
+    text[0] = '>';
+    memcpy(&text[2], "NEXT SHINY:", 11);
+    if (Shiny_DebugNextIsForced())
+        memcpy(&text[14], "ON", 2);
+    else
+        memcpy(&text[14], "OFF", 3);
+    DebugTools_RenderTextRow(text, row);
+}
+
 static void DebugTools_RenderMenuBackdrop(void)
 {
     DebugTools_ClearTextRows();
@@ -570,6 +592,8 @@ static void DebugTools_RenderMenuBackdrop(void)
             DebugTools_RenderEggCounterOption(1);
         else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_CAPTURE_COUNTER)
             DebugTools_RenderCaptureCounterOption(1);
+        else if (gMain.debugMenuCursorIndex == DEBUG_TOOL_MENU_NEXT_SHINY)
+            DebugTools_RenderNextShinyOption(1);
         else
             DebugTools_RenderSoundTestOption(TRUE, 1);
     }
