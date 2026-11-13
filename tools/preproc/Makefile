@@ -6,7 +6,7 @@ SRCS := asm_file.cpp c_file.cpp charmap.cpp preproc.cpp string_parser.cpp \
 	utf8.cpp
 
 HEADERS := asm_file.h c_file.h char_util.h charmap.h preproc.h string_parser.h \
-	utf8.h
+	utf8.h ../../include/constants/global.h
 
 .PHONY: clean all
 

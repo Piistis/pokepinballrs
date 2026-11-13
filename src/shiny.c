@@ -224,12 +224,15 @@ void Shiny_ResetRunState(void)
     gShinyRunState.species = SPECIES_NONE;
 }
 
+u16 Shiny_GetNationalNumber(u16 species)
+{
+    return species < ARRAY_COUNT(sShinyNationalNumbers) ? sShinyNationalNumbers[species] : 0;
+}
+
 u8 Shiny_GetGeneration(u16 species)
 {
-    u16 number;
-    if (species >= ARRAY_COUNT(sShinyNationalNumbers))
-        return 255;
-    number = sShinyNationalNumbers[species];
+    u16 number = Shiny_GetNationalNumber(species);
+    if (number == 0) return 255;
     if (number <= 151) return 0;
     if (number <= 251) return 1;
     if (number <= 386) return 2;

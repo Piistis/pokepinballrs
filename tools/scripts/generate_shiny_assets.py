@@ -12,16 +12,17 @@ ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / 'src/data/shiny_palettes.h'
 SOURCES = (
     ('Portrait', 'data/graphics/mon_portraits.inc'),
+    ('Portrait', 'data/graphics/mon_portraits_expansion_4bpp.inc'),
     ('Catch', 'data/graphics/mon_catch_sprites.inc'),
     ('Hatch', 'data/graphics/mon_hatch_sprites.inc'),
 )
 
 
 def source_groups():
-    groups = []
+    groups = {}
     for name, relative in SOURCES:
         paths = re.findall(r'\.incbin "([^"]+)\.4bpp"', (ROOT / relative).read_text())
-        groups.append((name, [ROOT / (path + '.png') for path in paths]))
+        groups.setdefault(name, []).extend(ROOT / (path + '.png') for path in paths)
     bonus = []
     for boss, sheets in (
         ('kyogre', ('body_first15', 'body_after15', 'surfacing_fx_frames')),
@@ -38,8 +39,8 @@ def source_groups():
                 name = segment['segfile']
                 if (boss in name or (boss == 'groudon' and re.search(r'head_|face_', name))):
                     bonus.append(folder / (name + '.png'))
-    groups.append(('Bonus', bonus))
-    return groups
+    groups['Bonus'] = bonus
+    return groups.items()
 
 
 def variant_path(path):

@@ -6,6 +6,7 @@
 #include "variables.h"
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
+#include "constants/content.h"
 #include "constants/debug.h"
 #include "constants/fields.h"
 #include "constants/species.h"
@@ -741,7 +742,7 @@ static bool8 DebugTools_IsSpeciesSelectableForCatch(u16 species)
 
 static bool8 DebugTools_IsSpeciesSelectableForHatch(u16 species)
 {
-    if (species >= SPECIES_NONE)
+    if (species >= SPECIES_NONE || Shiny_GetNationalNumber(species) > LAST_PLAYABLE_NATIONAL_DEX)
         return FALSE;
 
     return species == SPECIES_WURMPLE || gSpeciesInfo[species].eggIndex != 0;

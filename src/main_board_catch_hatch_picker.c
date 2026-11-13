@@ -3,6 +3,7 @@
 #include "main.h"
 #include "variables.h"
 #include "constants/ereader.h"
+#include "constants/content.h"
 #include "constants/fields.h"
 #include "constants/generations.h"
 #include "constants/species.h"
@@ -1055,6 +1056,7 @@ bool8 CanSpeciesAppearInCatchEmMode(u16 species)
 {
     /* Index zero is Treecko, not a usable fallback for egg/evolution-only species. */
     return species < NUM_SPECIES
+        && Shiny_GetNationalNumber(species) <= LAST_PLAYABLE_NATIONAL_DEX
         && (species == SPECIES_TREECKO || gSpeciesInfo[species].catchIndex != 0);
 }
 
@@ -1316,7 +1318,8 @@ static s16 GetEggEncounterCount(void)
 static u16 AppendEggEncounter(u16 *species, u16 count, u16 candidate)
 {
     s16 i;
-    if (candidate >= SPECIES_NONE || count >= ENCOUNTERS_EGG_CAPACITY)
+    if (candidate >= SPECIES_NONE || Shiny_GetNationalNumber(candidate) > LAST_PLAYABLE_NATIONAL_DEX
+     || count >= ENCOUNTERS_EGG_CAPACITY)
         return count;
     for (i = 0; i < count; i++)
         if (species[i] == candidate)
@@ -1353,7 +1356,8 @@ static s16 GetEggEncounterWeight(u16 species)
     s16 weight, evolutionWeight, j;
     u16 target = species;
 
-    if (species >= SPECIES_NONE || species == gCurrentPinballGame->lastEggSpecies)
+    if (species >= SPECIES_NONE || Shiny_GetNationalNumber(species) > LAST_PLAYABLE_NATIONAL_DEX
+     || species == gCurrentPinballGame->lastEggSpecies)
         return 0;
     if (species == SPECIES_ODDISH)
         return gCommonAndEggWeights[GetSavedPokedexFlag(GetEvolutionTargetForCurrentContext(SPECIES_GLOOM))];

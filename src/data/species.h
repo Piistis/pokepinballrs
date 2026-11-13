@@ -5003,4 +5003,5 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
+#include "species_expansion.h"
 };

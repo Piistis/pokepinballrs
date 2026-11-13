@@ -598,4 +598,4 @@ gMonPortraitsGroup33_Pals:: @ 0x0
 	.incbin "graphics/mon_portraits/722_rowlet_portrait.gbapal"
 	.incbin "graphics/mon_portraits/840_applin_portrait.gbapal"
 	.incbin "graphics/mon_portraits/909_fuecoco_portrait.gbapal"
-	.incbin "graphics/mon_portraits/silhouette.gbapal"
+	.include "data/graphics/mon_portraits_expansion_gbapal.inc"

@@ -43,6 +43,7 @@ const u16 *Shiny_GetPalette(u8 kind, u16 index);
 bool8 Shiny_IsPaletteReady(u8 kind, u16 index);
 void SaveFile_SetShinyPokedexFlag(u16 species, u8 flag);
 u8 Shiny_GetGeneration(u16 species);
+u16 Shiny_GetNationalNumber(u16 species);
 bool8 Shiny_IsGenerationComplete(u8 generation);
 void Shiny_BeginEncounter(u16 species, u8 kind, bool8 eligible);
 void Shiny_BeginBonusEncounter(u16 species);

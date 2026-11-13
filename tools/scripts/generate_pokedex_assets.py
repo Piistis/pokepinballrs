@@ -171,7 +171,8 @@ def compile_names():
         r'\{ "(.)", (0x[0-9A-F]+) \}',
         source.split('if (!fixedWidthEncoding)', 1)[1].split('else {', 1)[0])}
     width, _, font, _ = read_png(DEX / 'text_glyphs.png', indexed=True)
-    entries = (ROOT / 'data/pokedex_entries/dex.inc').read_text(encoding='utf-8')
+    entries = '\n'.join((ROOT / f'data/pokedex_entries/{name}.inc').read_text(encoding='utf-8')
+                        for name in ('dex', 'national_expansion'))
     names = re.findall(r'^\s*\.dexName "([^"]*)"', entries, re.M)
     tiles = bytearray()
     for name in names:
@@ -188,6 +189,16 @@ def compile_names():
             ink.update((cursor + x, y) for y in range(16) for x in range(advance)
                        if font[(top + y) * width + left + x] != 15)
             cursor += advance
+        if ink and max(x for x, _ in ink) > 62:
+            # Reduce inter-letter gaps first; keep the source glyphs intact.
+            used_columns = {x for x, _ in ink}
+            excess = max(used_columns) - 62
+            gaps = [x for x in range(min(used_columns), max(used_columns)) if x not in used_columns]
+            removed = gaps[:excess]
+            ink = {(x - sum(gap < x for gap in removed), y) for x, y in ink}
+            right = max(x for x, _ in ink)
+            if right > 62:
+                ink = {(1 + (x - 1) * 61 // (right - 1), y) for x, y in ink}
         assert all(0 < x < 63 and 0 < y < 15 for x, y in ink), f'{name}: name does not fit 64x16 with outline'
         pixels = [0] * (64 * 16)
         for x, y in ink:
@@ -222,6 +233,14 @@ def compile_bg_text():
         assert not any(pixels[row + offset:row + offset + 80]), 'Plain Dex digit slots must be empty'
         pixels[row + offset:row + offset + 80] = [0 if color == 15 else color for color in pixels[row:row + 80]]
     return bytes(pack_obj(pixels, w, h, 8, 8))
+
+
+def compile_portrait_palette(path):
+    _, _, indices, palette = read_png(path, indexed=True)
+    if max(indices) >= 16:
+        raise ValueError(f'{path}: portrait uses indices outside the 16-color palette')
+    colors = list(map(rgb555, palette[:16]))
+    return struct.pack('<16H', *(colors + [0] * (16 - len(colors))))
 
 
 def compile_prompts():
@@ -290,6 +309,8 @@ def main():
     binary = parser.add_mutually_exclusive_group()
     binary.add_argument('--names', type=Path, help='compile outlined species names to a 4bpp file')
     binary.add_argument('--bg-text', type=Path, help='compile the Dex text sheet to a 4bpp file')
+    binary.add_argument('--portrait-palette', type=Path, help='compile a portrait PNG to a 32-byte palette')
+    parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     if args.create_templates:
         create_templates()
@@ -298,6 +319,11 @@ def main():
         return
     if args.bg_text:
         args.bg_text.write_bytes(compile_bg_text())
+        return
+    if args.portrait_palette:
+        if not args.output:
+            parser.error('--portrait-palette requires --output')
+        args.output.write_bytes(compile_portrait_palette(args.portrait_palette))
         return
     output = generate()
     if args.check:

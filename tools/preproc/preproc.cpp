@@ -101,8 +101,8 @@ void PreprocAsmFile(std::string filename)
             break;
         }
         case Directive::DexName:{
-            unsigned short s[POKEMON_NAME_LENGTH];
-            int length = stack.top().ReadDexString(s, POKEMON_NAME_LENGTH, false, false);
+            unsigned short s[POKEDEX_NAME_LENGTH];
+            int length = stack.top().ReadDexString(s, POKEDEX_NAME_LENGTH, false, false);
             PrintAsmHalfwords(s, length);
             break;
         }

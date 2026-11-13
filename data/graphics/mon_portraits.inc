@@ -565,3 +565,4 @@ gMonPortraitsGroup33_Gfx:: @ 0x0
 	.incbin "graphics/mon_portraits/722_rowlet_portrait.4bpp"
 	.incbin "graphics/mon_portraits/840_applin_portrait.4bpp"
 	.incbin "graphics/mon_portraits/909_fuecoco_portrait.4bpp"
+	.include "data/graphics/mon_portraits_expansion_4bpp.inc"

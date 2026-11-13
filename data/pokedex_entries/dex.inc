@@ -2416,11 +2416,11 @@ dexEntry202::
     .2byte 1, 5, 2, 0xA, 2, 1, 1, 0xA, 0xA, 1, 4, 1
     .dexName "CHIKORITA"
     .dexCategory "LEAF"
-    .dexText "Bonus appearance on Ruby Field."
-    .dexText ""
-    .dexText ""
-    .dexText ""
-    .dexText ""
+    .dexText "It waves its leaf around to keep foes"
+    .dexText "at bay. However, a sweet fragrance"
+    .dexText "also wafts from the leaf, creating a"
+    .dexText "friendly atmosphere that becalms the"
+    .dexText "battlers."
     .dexText ""
 
     .align 2, 0
@@ -2428,11 +2428,11 @@ dexEntry203::
     .2byte 1, 5, 5, 0xA, 1, 0, 8, 0xA, 0xA, 1, 7, 4
     .dexName "CYNDAQUIL"
     .dexCategory "FIRE MOUSE"
-    .dexText "Bonus appearance on Ruby Field."
-    .dexText ""
-    .dexText ""
-    .dexText ""
-    .dexText ""
+    .dexText "It flares flames from its back to"
+    .dexText "protect itself. The fire burns"
+    .dexText "vigorously if the Pokémon is angry. When"
+    .dexText "it is tired, it sputters with incomplete"
+    .dexText "combustion."
     .dexText ""
 
     .align 2, 0
@@ -2440,11 +2440,11 @@ dexEntry204::
     .2byte 1, 5, 8, 0xA, 2, 0, 0, 0xA, 0xA, 2, 0, 9
     .dexName "TOTODILE"
     .dexCategory "BIG JAW"
-    .dexText "Bonus appearance on Ruby Field."
-    .dexText ""
-    .dexText ""
-    .dexText ""
-    .dexText ""
+    .dexText "Despite its small body, Totodile`s jaws"
+    .dexText "are very powerful. While it may think it"
+    .dexText "is just playfully nipping, its bite has"
+    .dexText "enough strength to cause serious"
+    .dexText "injury."
     .dexText ""
 
     .align 2, 0
@@ -2452,10 +2452,10 @@ dexEntry205::
     .2byte 1, 4, 2, 0xA, 5, 1, 1, 0xA, 1, 3, 0, 1
     .dexName "AERODACTYL"
     .dexCategory "FOSSIL"
-    .dexText "Bonus appearance on Ruby Field."
-    .dexText ""
-    .dexText ""
-    .dexText ""
+    .dexText "Aerodactyl is a Pokémon from the age"
+    .dexText "of dinosaurs. It was regenerated from"
+    .dexText "DNA extracted from amber. It is imagined"
+    .dexText "to have been the king of the skies."
     .dexText ""
     .dexText ""
 
@@ -5998,3 +5998,5 @@ dexEntry500::
     .dexText ""
     .dexText ""
     .dexText ""
+
+.include "data/pokedex_entries/national_expansion.inc"

@@ -115,14 +115,38 @@ struct PokedexEntry
 {
     /*0x00*/ u16 dexNum[DEX_NUM_DIGITS];
     /*0x06*/ u16 heightWeight[POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH];
-    /*0x18*/ s16 name[POKEMON_NAME_LENGTH];
-    /*0x2C*/ s16 category[POKEMON_CATEGORY_NAME_LENGTH];
+    s16 name[POKEDEX_NAME_LENGTH];
+    s16 category[POKEMON_CATEGORY_NAME_LENGTH];
     // The dex description has 2 pages with 3 lines each. Each line
     // is 42 characters long.
-    /*0x42*/ s16 description[2 * 3 * POKEMON_DEX_LINE_LENGTH];
-}; /* size=0x23C */
+    s16 description[2 * 3 * POKEMON_DEX_LINE_LENGTH];
+    u16 alignmentPadding;
+};
 
 extern const struct PokedexEntry gPokedexEntries[];
+
+static void PrintPokedexNationalNumber(s16 species, int x, int y, bool8 profile)
+{
+    u16 national = Shiny_GetNationalNumber(species);
+    int digit;
+    u16 glyph;
+    bool8 fourDigits = national >= 1000;
+
+    for (digit = 0; digit < 4; digit++)
+    {
+        glyph = CHAR_SPACE_FONT_1;
+        if (national != 0)
+        {
+            if (fourDigits && digit == 0)
+                glyph = national / 1000 + CHAR_0_FONT_1;
+            else if (digit < DEX_NUM_DIGITS + fourDigits)
+                glyph = gPokedexEntries[species].dexNum[digit - fourDigits] + CHAR_0_FONT_1;
+        }
+        if (profile && glyph <= CHAR_9_FONT_1)
+            glyph += DEX_PLAIN_DIGIT_OFFSET;
+        PrintString(glyph, profile ? 1 : 2, x + digit, y, 1, 2);
+    }
+}
 
 static const s16 gPokedexOrder[] = {
 #include "../data/pokedex_entries/pokedex_order.inc"
@@ -1747,30 +1771,12 @@ static void PrintSelectedMonDexNum(s16 species)
 {
     int i;
     int var0;
+    u16 feet;
     u16 var1;
     u16 var2;
 
-    if (species == SPECIES_JIRACHI)
-    {
-        if (GetPokedexFlag(SPECIES_JIRACHI) != SPECIES_UNSEEN)
-        {
-            PrintPokedexProfileNumber(CHAR_2_FONT_1, 5, 2, 2);
-            PrintPokedexProfileNumber(CHAR_0_FONT_1, 6, 2, 2);
-            PrintPokedexProfileNumber(CHAR_1_FONT_1, 7, 2, 2);
-        }
-        else
-        {
-            PrintString(CHAR_SPACE_FONT_1, 1, 5, 2, 1, 2);
-            PrintString(CHAR_SPACE_FONT_1, 1, 6, 2, 1, 2);
-            PrintString(CHAR_SPACE_FONT_1, 1, 7, 2, 1, 2);
-        }
-    }
-    else
-    {
-        // Dex number of the selected species
-        for (i = 0; i < DEX_NUM_DIGITS; i++)
-            PrintPokedexProfileNumber(gPokedexEntries[species].dexNum[i] + CHAR_0_FONT_1, i + 5, 2, 2);
-    }
+    PrintPokedexNationalNumber(species == SPECIES_JIRACHI && GetPokedexFlag(species) == SPECIES_UNSEEN
+                               ? SPECIES_NONE : species, 5, 2, TRUE);
 
     if (GetPokedexFlag(species) > SPECIES_UNSEEN)
     {
@@ -1811,7 +1817,9 @@ static void PrintSelectedMonDexNum(s16 species)
 
     if (GetPokedexFlag(species) == SPECIES_CAUGHT)
     {
-        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[0] + CHAR_0_FONT_1, 16, 6, 2);
+        feet = gPokedexEntries[species].heightWeight[0];
+        PrintPokedexProfileNumber(feet >= 10 ? feet / 10 + CHAR_0_FONT_1 : CHAR_SPACE_FONT_1, 15, 6, 2);
+        PrintPokedexProfileNumber(feet % 10 + CHAR_0_FONT_1, 16, 6, 2);
         PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[1] + CHAR_0_FONT_1, 17, 6, 2);
         PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[2] + CHAR_0_FONT_1, 19, 6, 2);
         PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[3] + CHAR_0_FONT_1, 20, 6, 2);
@@ -1820,6 +1828,7 @@ static void PrintSelectedMonDexNum(s16 species)
     }
     else
     {
+        PrintString(CHAR_SPACE_FONT_1, 1, 15, 6, 1, 2);
         PrintString(CHAR_DASH_FONT_1, 1, 16, 6, 1, 2);
         PrintString(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
         PrintString(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
@@ -1862,9 +1871,7 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
     {
         species = PokedexView_Species(listPosition + i);
 
-        for (j = 0; j < DEX_NUM_DIGITS; j++)
-            PrintString(species < NUM_SPECIES ? gPokedexEntries[species].dexNum[j] + 32 : CHAR_SPACE_FONT_1,
-                        2, j + 8, i * 2 + 10, 1, 2);
+        PrintPokedexNationalNumber(species, 8, i * 2 + 10, FALSE);
     }
 
     for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)

@@ -5,6 +5,7 @@
 #include "constants/species_rs.h"
 
 extern const u16 gSpeciesRSToCryId[];
+extern struct ToneData gExpansionCryTones[];
 
 static void PlayCryInternal(u16, s8, s8, u8, int);
 
@@ -57,6 +58,13 @@ static void PlayCryInternal(u16 speciesRS, s8 pan, s8 volume, u8 priority, int u
     SetPokemonCryRelease(release);
     SetPokemonCryChorus(0);
     SetPokemonCryPriority(priority);
+    if (speciesRS >= SPECIES_RS_EXPANSION_FIRST - 1
+     && speciesRS < SPECIES_RS_EXPANSION_FIRST - 1 + NUM_SPECIES - SPECIES_VICTINI)
+    {
+        SetPokemonCryTone(&gExpansionCryTones[speciesRS - (SPECIES_RS_EXPANSION_FIRST - 1)]);
+        return;
+    }
+
     var = SpeciesRSToCryId(speciesRS);
     index = var & 0x7F;
     table = var >> 7;

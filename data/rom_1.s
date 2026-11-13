@@ -105,6 +105,7 @@ gPokedexEntries:: @ 0x0805C8B4
 	.include "data/pokedex_entries/dex.inc"
 
 	.align 2, 0
+gPokedexEntriesEnd::
 gFieldSelectStateFuncs:: @ 0x080792C0
 	.4byte LoadFieldSelectGraphics
 	.4byte FieldSelect_State1_8C7C
@@ -2785,6 +2786,7 @@ gOptionsSprites_Gfx:: @ 0x0852B868
 .align 2
 gPokedexOutlinedNames::
 	.incbin "graphics/pokedex/outlined_names.4bpp"
+gPokedexOutlinedNamesEnd::
 	.if (. - gPokedexOutlinedNames) != NUM_SPECIES * 0x200
 	.error "Unexpected Pokedex name tile count"
 	.endif

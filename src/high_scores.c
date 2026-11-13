@@ -1,4 +1,6 @@
 #include "global.h"
+#include "constants/content.h"
+#include "shiny.h"
 #include "functions.h"
 #include "link.h"
 #include "main.h"
@@ -1880,7 +1882,8 @@ s8 CheckAllPokemonCaught(void)
 
     for(i = 0; i < NUM_SPECIES; i++)
     {
-        if(GetHighScorePokedexFlag(i) != SPECIES_CAUGHT)
+        if(Shiny_GetNationalNumber(i) <= LAST_PLAYABLE_NATIONAL_DEX
+         && GetHighScorePokedexFlag(i) != SPECIES_CAUGHT)
             return 0;
     }
     return 1;

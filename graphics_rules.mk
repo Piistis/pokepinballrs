@@ -15,3 +15,9 @@ graphics/options/sprites.4bpp: graphics/options/sprites.png
 
 graphics/pokedex/text_glyphs.4bpp: graphics/pokedex/text_glyphs.png
 	$(GFX) $< $@ -num_tiles 513
+
+graphics/mon_portraits/%_portrait.gbapal: graphics/mon_portraits/%_portrait.png tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py
+	python3 tools/scripts/generate_pokedex_assets.py --portrait-palette $< --output $@
+
+graphics/mon_portraits/%_portrait.4bpp: graphics/mon_portraits/%_portrait.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2

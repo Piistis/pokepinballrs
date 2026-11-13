@@ -767,6 +767,9 @@ gDexAnimationIx:: @ 0x086A61BC
     .2byte -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
     .2byte 215, 216, 217, 218, 219, 220, 221, 222, 223, 224
     .2byte 225, HATCH_DEX_ANIM_OFFSET + 44, 226, 227, 228, 184, 185, 186, 187, 188
+    .rept NUM_SPECIES - SPECIES_VICTINI
+    .2byte -1
+    .endr
 gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
@@ -818,6 +821,9 @@ gPokedexCatchAnimIndices:: @ 0x086A6356
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
     .2byte    0,    0,    0,    0,    0,    0,    0,    0,    0,    0
     .2byte    0,   -1,    0,    0,    0,    0,    0,    0,    0,    0
+    .rept NUM_SPECIES - SPECIES_VICTINI
+    .2byte -1
+    .endr
 gPokedexListNameVramOffsets:: @ 0x086A64F0
     .2byte 0x4E20, 0x5400, 0x5500, 0x5600, 0x5700
 
@@ -16581,6 +16587,7 @@ gMonPortraitGroupPals:: @ 0x086BB6A4
 	.4byte gMonPortraitsGroup31_Pals
 	.4byte gMonPortraitsGroup32_Pals
 	.4byte gMonPortraitsGroup33_Pals
+	.include "data/graphics/mon_portraits_expansion_pal_ptrs.inc"
 gMonHatchSpriteGroupGfx:: @ 0x086BB6DC
 	.4byte gMonHatchSpriteGroup0_Gfx
 	.4byte gMonHatchSpriteGroup1_Gfx
@@ -16673,6 +16680,7 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup31_Gfx
 	.4byte gMonPortraitsGroup32_Gfx
 	.4byte gMonPortraitsGroup33_Gfx
+	.include "data/graphics/mon_portraits_expansion_gfx_ptrs.inc"
 gOptionsSoundDigitSpriteSet:: @ 0x086BB770
 .2byte 1
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16, paletteNum=0x0

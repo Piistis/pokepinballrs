@@ -130,7 +130,7 @@ $(C_BUILDDIR)/encounters.o: src/data/encounters_assets.h
 
 SHINY_ART := $(wildcard graphics/mon_portraits/*_s.png graphics/mon_catch_sprites/*_s.png graphics/mon_hatch_sprites/*_s.png graphics/stage/kyogre/*_s.png graphics/stage/groudon/*_s.png graphics/stage/rayquaza/*_s.png)
 SHINY_BASE_ART := $(patsubst %_s.png,%.png,$(SHINY_ART))
-src/data/shiny_palettes.h: tools/scripts/generate_shiny_assets.py tools/scripts/generate_encounters_assets.py data/graphics/mon_portraits.inc data/graphics/mon_catch_sprites.inc data/graphics/mon_hatch_sprites.inc $(SHINY_ART) $(SHINY_BASE_ART) graphics/stage/kyogre/kyogre_stage_gfx.json graphics/stage/groudon/groudon_stage_gfx.json graphics/stage/rayquaza/rayquaza_stage_gfx.json graphics/shiny/gold_stars.png data/shiny_emerald_sine.json
+src/data/shiny_palettes.h: tools/scripts/generate_shiny_assets.py tools/scripts/generate_encounters_assets.py data/graphics/mon_portraits.inc data/graphics/mon_portraits_expansion_4bpp.inc data/graphics/mon_catch_sprites.inc data/graphics/mon_hatch_sprites.inc $(SHINY_ART) $(SHINY_BASE_ART) graphics/stage/kyogre/kyogre_stage_gfx.json graphics/stage/groudon/groudon_stage_gfx.json graphics/stage/rayquaza/rayquaza_stage_gfx.json graphics/shiny/gold_stars.png data/shiny_emerald_sine.json
 	python3 tools/scripts/generate_shiny_assets.py
 
 $(C_BUILDDIR)/shiny.o: src/data/shiny_palettes.h
@@ -139,7 +139,7 @@ DEX_BACKGROUNDS := $(foreach n,1 2 3 4 5 6 7 8 9,graphics/pokedex/generations/ge
 src/data/pokedex_view_assets.h: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py $(DEX_BACKGROUNDS) $(wildcard graphics/pokedex/generations/*.pal) graphics/pokedex/press_start_shiny.png graphics/pokedex/press_start_normal.png graphics/pokedex/bg.png graphics/options/Encounters_Buttons.png data/rom_1.s
 	python3 tools/scripts/generate_pokedex_assets.py
 
-graphics/pokedex/outlined_names.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/text_glyphs.png tools/preproc/asm_file.cpp data/pokedex_entries/dex.inc
+graphics/pokedex/outlined_names.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/text_glyphs.png tools/preproc/asm_file.cpp data/pokedex_entries/dex.inc data/pokedex_entries/national_expansion.inc
 	python3 tools/scripts/generate_pokedex_assets.py --names $@
 
 graphics/pokedex/bg_text.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/bg_text.png include/pokedex_view.h

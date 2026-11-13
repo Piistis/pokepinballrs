@@ -3677,6 +3677,8 @@ gDirectSound_Cry_522::
 gDirectSound_Cry_523::
 	.incbin "sound/direct_sound_samples/cries/cry_523_zebstrika.bin"
 
+	.include "data/pokedex_entries/national_expansion_cries.inc"
+
 	.align 2
 gDirectSound_08535870:: @ 0x08535870
 	.incbin "sound/direct_sound_samples/gDirectSound_08535870.bin"
