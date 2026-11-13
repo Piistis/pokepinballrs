@@ -232,6 +232,9 @@ def compile_bg_text():
         row = y * w
         assert not any(pixels[row + offset:row + offset + 80]), 'Plain Dex digit slots must be empty'
         pixels[row + offset:row + offset + 80] = [0 if color == 15 else color for color in pixels[row:row + 80]]
+    tile = int(re.search(r'^#define DEX_WEIGHT_DECIMAL_TILE (0x[\da-fA-F]+)$', header, re.M)[1], 16)
+    left, top = (tile % (w // 8)) * 8, (tile // (w // 8)) * 8
+    pixels[(top + 6) * w + left + 5] = 4
     return bytes(pack_obj(pixels, w, h, 8, 8))
 
 

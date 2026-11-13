@@ -18,6 +18,7 @@
 #define DEX_NUM_DIGITS      3
 #define SCROLL_WAIT_FRAMES  9
 #define ENTRIES_SHOWN_COUNT 5
+#define DEX_WEIGHT_UNITS_TILE 0x1AA
 
 
 #define DEX_TEXT_PAGES 2
@@ -1767,11 +1768,26 @@ static void PrintPokedexProfileNumber(u16 glyph, int x, int y, int height)
     PrintString(glyph, 1, x, y, 1, height);
 }
 
+static void PrintPokedexMeasurements(const struct PokedexEntry *entry, bool8 caught)
+{
+    int i;
+    static const u8 heightColumns[] = {16, 17, 19, 20};
+
+    for (i = 0; i < 4; i++)
+    {
+        PrintPokedexProfileNumber(caught ? entry->heightWeight[i] + CHAR_0_FONT_1 : CHAR_DASH_FONT_1,
+                                  heightColumns[i], 6, 2);
+        PrintPokedexProfileNumber(caught ? entry->heightWeight[i + 4] : CHAR_DASH_FONT_0, 16 + i, 8, 1);
+    }
+    PrintString(caught ? DEX_WEIGHT_DECIMAL_TILE : CHAR_DASH_FONT_0, 1, 20, 8, 1, 1);
+    PrintPokedexProfileNumber(caught ? entry->heightWeight[8] : CHAR_DASH_FONT_0, 21, 8, 1);
+    PrintString(DEX_WEIGHT_UNITS_TILE, 1, 22, 8, 2, 2);
+}
+
 static void PrintSelectedMonDexNum(s16 species)
 {
     int i;
     int var0;
-    u16 feet;
     u16 var1;
     u16 var2;
 
@@ -1815,27 +1831,7 @@ static void PrintSelectedMonDexNum(s16 species)
             CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004D00 + i * 0x20, 1, 2);
     }
 
-    if (GetPokedexFlag(species) == SPECIES_CAUGHT)
-    {
-        feet = gPokedexEntries[species].heightWeight[0];
-        PrintPokedexProfileNumber(feet >= 10 ? feet / 10 + CHAR_0_FONT_1 : CHAR_SPACE_FONT_1, 15, 6, 2);
-        PrintPokedexProfileNumber(feet % 10 + CHAR_0_FONT_1, 16, 6, 2);
-        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[1] + CHAR_0_FONT_1, 17, 6, 2);
-        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[2] + CHAR_0_FONT_1, 19, 6, 2);
-        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[3] + CHAR_0_FONT_1, 20, 6, 2);
-        for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
-            PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[4 + i], i + 16, 8, 1);
-    }
-    else
-    {
-        PrintString(CHAR_SPACE_FONT_1, 1, 15, 6, 1, 2);
-        PrintString(CHAR_DASH_FONT_1, 1, 16, 6, 1, 2);
-        PrintString(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
-        PrintString(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
-        PrintString(CHAR_DASH_FONT_1, 1, 20, 6, 1, 2);
-        for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
-            PrintString(CHAR_DASH_FONT_0, 1, i + 16, 8, 1, 1);
-    }
+    PrintPokedexMeasurements(&gPokedexEntries[species], GetPokedexFlag(species) == SPECIES_CAUGHT);
 }
 
 static void PrintSeenOwnedTotals(s16 seen, s16 owned)

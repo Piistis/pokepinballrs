@@ -2473,7 +2473,7 @@ dexEntry206::
 
     .align 2, 0
 dexEntry207::
-    .2byte 5, 2, 2, 0xA, 0, 0, 8, 0xA, 2, 9, 8, 0
+    .2byte 5, 2, 2, 10, 2, 0, 7, 10, 10, 6, 5, 7
     .dexName "BLITZLE"
     .dexCategory "ELECTRIFIED"
     .dexText "Its mane shines when it discharges"
@@ -4645,7 +4645,7 @@ dexEntry387::
 
     .align 2, 0
 dexEntry388::
-    .2byte 5, 2, 3, 0xA, 0, 1, 6, 0xA, 7, 9, 5, 0
+    .2byte 5, 2, 3, 10, 5, 0, 3, 10, 1, 7, 5, 3
     .dexName "ZEBSTRIKA"
     .dexCategory "THUNDERBOLT"
     .dexText "They have lightning-like movements. When"
@@ -4657,7 +4657,7 @@ dexEntry388::
 
     .align 2, 0
 dexEntry389::
-    .2byte 3, 8, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 2, 2
+    .2byte 3, 8, 7, 10, 1, 0, 4, 10, 10, 2, 2, 5
     .dexName "TURTWIG"
     .dexCategory "TINY LEAF"
     .dexText "Made from soil, the shell on its back"
@@ -4669,7 +4669,7 @@ dexEntry389::
 
     .align 2, 0
 dexEntry390::
-    .2byte 3, 8, 8, 0xA, 3, 0, 7, 0xA, 0xA, 2, 1, 4
+    .2byte 3, 8, 8, 10, 3, 0, 7, 10, 2, 1, 3, 8
     .dexName "GROTLE"
     .dexCategory "GROVE"
     .dexText "It lives along water in forests. In the"
@@ -4681,7 +4681,7 @@ dexEntry390::
 
     .align 2, 0
 dexEntry391::
-    .2byte 3, 8, 9, 0xA, 7, 0, 3, 0xA, 0xA, 6, 8, 3
+    .2byte 3, 8, 9, 10, 7, 0, 3, 10, 6, 8, 3, 4
     .dexName "TORTERRA"
     .dexCategory "CONTINENT"
     .dexText "Small Pokémon occasionally gather on its"
@@ -4693,7 +4693,7 @@ dexEntry391::
 
     .align 2, 0
 dexEntry392::
-    .2byte 3, 9, 0, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 1, 4
+    .2byte 3, 9, 0, 10, 1, 0, 8, 10, 10, 1, 3, 7
     .dexName "CHIMCHAR"
     .dexCategory "CHIMP"
     .dexText "It agilely scales sheer cliffs to live"
@@ -4705,7 +4705,7 @@ dexEntry392::
 
     .align 2, 0
 dexEntry393::
-    .2byte 3, 9, 1, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 4, 9
+    .2byte 3, 9, 1, 10, 2, 1, 1, 10, 10, 4, 8, 5
     .dexName "MONFERNO"
     .dexCategory "PLAYFUL"
     .dexText "To intimidate attackers, it stretches the"
@@ -4717,7 +4717,7 @@ dexEntry393::
 
     .align 2, 0
 dexEntry394::
-    .2byte 3, 9, 2, 0xA, 3, 1, 1, 0xA, 0xA, 1, 2, 1
+    .2byte 3, 9, 2, 10, 3, 1, 1, 10, 1, 2, 1, 3
     .dexName "INFERNAPE"
     .dexCategory "FLAME"
     .dexText "It uses a special kind of martial arts"
@@ -4729,7 +4729,7 @@ dexEntry394::
 
     .align 2, 0
 dexEntry395::
-    .2byte 3, 9, 3, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 1, 1
+    .2byte 3, 9, 3, 10, 1, 0, 4, 10, 10, 1, 1, 5
     .dexName "PIPLUP"
     .dexCategory "PENGUIN"
     .dexText "Because it is very proud, it hates"
@@ -4741,7 +4741,7 @@ dexEntry395::
 
     .align 2, 0
 dexEntry396::
-    .2byte 3, 9, 4, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 5, 1
+    .2byte 3, 9, 4, 10, 2, 0, 7, 10, 10, 5, 0, 7
     .dexName "PRINPLUP"
     .dexCategory "PENGUIN"
     .dexText "It lives alone, away from others."
@@ -4753,7 +4753,7 @@ dexEntry396::
 
     .align 2, 0
 dexEntry397::
-    .2byte 3, 9, 5, 0xA, 5, 0, 7, 0xA, 0xA, 1, 8, 6
+    .2byte 3, 9, 5, 10, 5, 0, 7, 10, 1, 8, 6, 3
     .dexName "EMPOLEON"
     .dexCategory "EMPEROR"
     .dexText "The three horns that extend from its beak"
@@ -4765,7 +4765,7 @@ dexEntry397::
 
     .align 2, 0
 dexEntry398::
-    .2byte 3, 9, 6, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 4
+    .2byte 3, 9, 6, 10, 1, 0, 0, 10, 10, 10, 4, 4
     .dexName "STARLY"
     .dexCategory "STARLING"
     .dexText "They flock in great numbers. Though small,"
@@ -4777,7 +4777,7 @@ dexEntry398::
 
     .align 2, 0
 dexEntry399::
-    .2byte 3, 9, 7, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 3, 4
+    .2byte 3, 9, 7, 10, 2, 0, 0, 10, 10, 3, 4, 2
     .dexName "STARAVIA"
     .dexCategory "STARLING"
     .dexText "It flies around forests and fields in"
@@ -4789,7 +4789,7 @@ dexEntry399::
 
     .align 2, 0
 dexEntry400::
-    .2byte 3, 9, 8, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 5, 5
+    .2byte 3, 9, 8, 10, 3, 1, 1, 10, 10, 5, 4, 9
     .dexName "STARAPTOR"
     .dexCategory "PREDATOR"
     .dexText "It has a savage nature. It will"
@@ -4801,7 +4801,7 @@ dexEntry400::
 
     .align 2, 0
 dexEntry401::
-    .2byte 3, 9, 9, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 4, 4
+    .2byte 3, 9, 9, 10, 1, 0, 8, 10, 10, 4, 4, 1
     .dexName "BIDOOF"
     .dexCategory "PLUMP MOUSE"
     .dexText "With nerves of steel, nothing can perturb"
@@ -4813,7 +4813,7 @@ dexEntry401::
 
     .align 2, 0
 dexEntry402::
-    .2byte 4, 0, 0, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 6, 9
+    .2byte 4, 0, 0, 10, 3, 0, 3, 10, 10, 6, 9, 4
     .dexName "BIBAREL"
     .dexCategory "BEAVER"
     .dexText "It makes its nest by damming streams with"
@@ -4825,7 +4825,7 @@ dexEntry402::
 
     .align 2, 0
 dexEntry403::
-    .2byte 4, 0, 1, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 5
+    .2byte 4, 0, 1, 10, 1, 0, 0, 10, 10, 10, 4, 9
     .dexName "KRICKETOT"
     .dexCategory "CRICKET"
     .dexText "It shakes its head back to front, causing"
@@ -4837,7 +4837,7 @@ dexEntry403::
 
     .align 2, 0
 dexEntry404::
-    .2byte 4, 0, 2, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 5, 6
+    .2byte 4, 0, 2, 10, 3, 0, 3, 10, 10, 5, 6, 2
     .dexName "KRICKETUNE"
     .dexCategory "CRICKET"
     .dexText "It crosses its knifelike arms in front of"
@@ -4849,7 +4849,7 @@ dexEntry404::
 
     .align 2, 0
 dexEntry405::
-    .2byte 4, 0, 3, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 2, 1
+    .2byte 4, 0, 3, 10, 1, 0, 8, 10, 10, 2, 0, 9
     .dexName "SHINX"
     .dexCategory "FLASH"
     .dexText "All of its fur dazzles if danger is"
@@ -4861,7 +4861,7 @@ dexEntry405::
 
     .align 2, 0
 dexEntry406::
-    .2byte 4, 0, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 7
+    .2byte 4, 0, 4, 10, 2, 1, 1, 10, 10, 6, 7, 2
     .dexName "LUXIO"
     .dexCategory "SPARK"
     .dexText "Its claws loose electricity with enough"
@@ -4873,7 +4873,7 @@ dexEntry406::
 
     .align 2, 0
 dexEntry407::
-    .2byte 4, 0, 5, 0xA, 4, 0, 7, 0xA, 0xA, 0xA, 9, 3
+    .2byte 4, 0, 5, 10, 4, 0, 7, 10, 10, 9, 2, 6
     .dexName "LUXRAY"
     .dexCategory "GLEAM EYES"
     .dexText "It has eyes that can see through anything."
@@ -4885,7 +4885,7 @@ dexEntry407::
 
     .align 2, 0
 dexEntry408::
-    .2byte 4, 0, 6, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 3
+    .2byte 4, 0, 6, 10, 0, 0, 8, 10, 10, 10, 2, 6
     .dexName "BUDEW"
     .dexCategory "BUD"
     .dexText "Over the winter, it closes its bud and"
@@ -4897,7 +4897,7 @@ dexEntry408::
 
     .align 2, 0
 dexEntry409::
-    .2byte 4, 0, 7, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 3, 2
+    .2byte 4, 0, 7, 10, 2, 1, 1, 10, 10, 3, 2, 0
     .dexName "ROSERADE"
     .dexCategory "BOUQUET"
     .dexText "It attracts prey with a sweet aroma, then"
@@ -4909,7 +4909,7 @@ dexEntry409::
 
     .align 2, 0
 dexEntry410::
-    .2byte 4, 0, 8, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 9
+    .2byte 4, 0, 8, 10, 2, 1, 1, 10, 10, 6, 9, 4
     .dexName "CRANIDOS"
     .dexCategory "HEAD BUTT"
     .dexText "It lived in jungles around 100 million"
@@ -4921,7 +4921,7 @@ dexEntry410::
 
     .align 2, 0
 dexEntry411::
-    .2byte 4, 0, 9, 0xA, 5, 0, 3, 0xA, 0xA, 2, 2, 6
+    .2byte 4, 0, 9, 10, 5, 0, 3, 10, 2, 2, 6, 0
     .dexName "RAMPARDOS"
     .dexCategory "HEAD BUTT"
     .dexText "Its powerful head butt has enough power to"
@@ -4933,7 +4933,7 @@ dexEntry411::
 
     .align 2, 0
 dexEntry412::
-    .2byte 4, 1, 0, 0xA, 1, 0, 8, 0xA, 0xA, 1, 2, 6
+    .2byte 4, 1, 0, 10, 1, 0, 8, 10, 1, 2, 5, 7
     .dexName "SHIELDON"
     .dexCategory "SHIELD"
     .dexText "A Pokémon that lived in jungles around 100"
@@ -4945,7 +4945,7 @@ dexEntry412::
 
     .align 2, 0
 dexEntry413::
-    .2byte 4, 1, 1, 0xA, 4, 0, 3, 0xA, 0xA, 3, 3, 0
+    .2byte 4, 1, 1, 10, 4, 0, 3, 10, 3, 2, 9, 6
     .dexName "BASTIODON"
     .dexCategory "SHIELD"
     .dexText "Any frontal attack is repulsed. It is a"
@@ -4957,7 +4957,7 @@ dexEntry413::
 
     .align 2, 0
 dexEntry414::
-    .2byte 4, 1, 2, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 7
+    .2byte 4, 1, 2, 10, 0, 0, 8, 10, 10, 10, 7, 5
     .dexName "BURMY"
     .dexCategory "BAGWORM"
     .dexText "To shelter itself from cold, wintry winds,"
@@ -4969,7 +4969,7 @@ dexEntry414::
 
     .align 2, 0
 dexEntry415::
-    .2byte 4, 1, 3, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 1, 4
+    .2byte 4, 1, 3, 10, 1, 0, 8, 10, 10, 1, 4, 3
     .dexName "WORMADAM"
     .dexCategory "BAGWORM"
     .dexText "When Burmy evolved, its cloak became a"
@@ -4981,7 +4981,7 @@ dexEntry415::
 
     .align 2, 0
 dexEntry416::
-    .2byte 4, 1, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 5, 1
+    .2byte 4, 1, 4, 10, 2, 1, 1, 10, 10, 5, 1, 4
     .dexName "MOTHIM"
     .dexCategory "MOTH"
     .dexText "It loves the honey of flowers and steals"
@@ -4993,7 +4993,7 @@ dexEntry416::
 
     .align 2, 0
 dexEntry417::
-    .2byte 4, 1, 5, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 1, 2
+    .2byte 4, 1, 5, 10, 1, 0, 0, 10, 10, 1, 2, 1
     .dexName "COMBEE"
     .dexCategory "TINY BEE"
     .dexText "A Pokémon formed by three others. It"
@@ -5005,7 +5005,7 @@ dexEntry417::
 
     .align 2, 0
 dexEntry418::
-    .2byte 4, 1, 6, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 8, 5
+    .2byte 4, 1, 6, 10, 3, 1, 1, 10, 10, 8, 4, 9
     .dexName "VESPIQUEN"
     .dexCategory "BEEHIVE"
     .dexText "Its abdomen is a honeycomb for grubs. It"
@@ -5017,7 +5017,7 @@ dexEntry418::
 
     .align 2, 0
 dexEntry419::
-    .2byte 4, 1, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 9
+    .2byte 4, 1, 7, 10, 1, 0, 4, 10, 10, 10, 8, 6
     .dexName "PACHIRISU"
     .dexCategory "ELESQUIRREL"
     .dexText "It makes fur balls that crackle with"
@@ -5029,7 +5029,7 @@ dexEntry419::
 
     .align 2, 0
 dexEntry420::
-    .2byte 4, 1, 8, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 6, 5
+    .2byte 4, 1, 8, 10, 2, 0, 4, 10, 10, 6, 5, 0
     .dexName "BUIZEL"
     .dexCategory "SEA WEASEL"
     .dexText "It has a flotation sac that is like an"
@@ -5041,7 +5041,7 @@ dexEntry420::
 
     .align 2, 0
 dexEntry421::
-    .2byte 4, 1, 9, 0xA, 3, 0, 7, 0xA, 0xA, 0xA, 7, 4
+    .2byte 4, 1, 9, 10, 3, 0, 7, 10, 10, 7, 3, 9
     .dexName "FLOATZEL"
     .dexCategory "SEA WEASEL"
     .dexText "It floats using its well-developed"
@@ -5053,7 +5053,7 @@ dexEntry421::
 
     .align 2, 0
 dexEntry422::
-    .2byte 4, 2, 0, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 7
+    .2byte 4, 2, 0, 10, 1, 0, 4, 10, 10, 10, 7, 3
     .dexName "CHERUBI"
     .dexCategory "CHERRY"
     .dexText "The small ball holds the nutrients needed"
@@ -5065,7 +5065,7 @@ dexEntry422::
 
     .align 2, 0
 dexEntry423::
-    .2byte 4, 2, 1, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 2, 1
+    .2byte 4, 2, 1, 10, 1, 0, 8, 10, 10, 2, 0, 5
     .dexName "CHERRIM"
     .dexCategory "BLOSSOM"
     .dexText "It blooms during times of strong sunlight."
@@ -5077,7 +5077,7 @@ dexEntry423::
 
     .align 2, 0
 dexEntry424::
-    .2byte 4, 2, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 1, 4
+    .2byte 4, 2, 2, 10, 1, 0, 0, 10, 10, 1, 3, 9
     .dexName "SHELLOS"
     .dexCategory "SEA SLUG"
     .dexText "Its colors and shapes differ from region"
@@ -5089,7 +5089,7 @@ dexEntry424::
 
     .align 2, 0
 dexEntry425::
-    .2byte 4, 2, 3, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 6
+    .2byte 4, 2, 3, 10, 2, 1, 1, 10, 10, 6, 5, 9
     .dexName "GASTRODON"
     .dexCategory "SEA SLUG"
     .dexText "It has a pliable body without any bones."
@@ -5101,7 +5101,7 @@ dexEntry425::
 
     .align 2, 0
 dexEntry426::
-    .2byte 4, 2, 4, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 4, 5
+    .2byte 4, 2, 4, 10, 3, 1, 1, 10, 10, 4, 4, 8
     .dexName "AMBIPOM"
     .dexCategory "LONG TAIL"
     .dexText "To eat, it deftly shucks nuts with its two"
@@ -5113,7 +5113,7 @@ dexEntry426::
 
     .align 2, 0
 dexEntry427::
-    .2byte 4, 2, 5, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 3
+    .2byte 4, 2, 5, 10, 1, 0, 4, 10, 10, 10, 2, 6
     .dexName "DRIFLOON"
     .dexCategory "BALLOON"
     .dexText "A Pokémon formed by the spirits of people"
@@ -5125,7 +5125,7 @@ dexEntry427::
 
     .align 2, 0
 dexEntry428::
-    .2byte 4, 2, 6, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 3, 3
+    .2byte 4, 2, 6, 10, 3, 1, 1, 10, 10, 3, 3, 1
     .dexName "DRIFBLIM"
     .dexCategory "BLIMP"
     .dexText "It`s drowzy in daytime, but flies off in"
@@ -5137,7 +5137,7 @@ dexEntry428::
 
     .align 2, 0
 dexEntry429::
-    .2byte 4, 2, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 1, 2
+    .2byte 4, 2, 7, 10, 1, 0, 4, 10, 10, 1, 2, 1
     .dexName "BUNEARY"
     .dexCategory "RABBIT"
     .dexText "It slams foes by sharply uncoiling its"
@@ -5149,7 +5149,7 @@ dexEntry429::
 
     .align 2, 0
 dexEntry430::
-    .2byte 4, 2, 8, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 7, 3
+    .2byte 4, 2, 8, 10, 3, 1, 1, 10, 10, 7, 3, 4
     .dexName "LOPUNNY"
     .dexCategory "RABBIT"
     .dexText "An extremely cautious Pokémon. It cloaks"
@@ -5161,7 +5161,7 @@ dexEntry430::
 
     .align 2, 0
 dexEntry431::
-    .2byte 4, 2, 9, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 1, 0
+    .2byte 4, 2, 9, 10, 2, 1, 1, 10, 10, 10, 9, 7
     .dexName "MISMAGIUS"
     .dexCategory "MAGICAL"
     .dexText "Its cries sound like incantations. Those"
@@ -5173,7 +5173,7 @@ dexEntry431::
 
     .align 2, 0
 dexEntry432::
-    .2byte 4, 3, 0, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 6, 0
+    .2byte 4, 3, 0, 10, 2, 1, 1, 10, 10, 6, 0, 2
     .dexName "HONCHKROW"
     .dexCategory "BIG BOSS"
     .dexText "Becoming active at night, it is known to"
@@ -5185,7 +5185,7 @@ dexEntry432::
 
     .align 2, 0
 dexEntry433::
-    .2byte 4, 3, 1, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 0xA, 9
+    .2byte 4, 3, 1, 10, 1, 0, 8, 10, 10, 10, 8, 6
     .dexName "GLAMEOW"
     .dexCategory "CATTY"
     .dexText "It claws if displeased and purrs when"
@@ -5197,7 +5197,7 @@ dexEntry433::
 
     .align 2, 0
 dexEntry434::
-    .2byte 4, 3, 2, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 9, 7
+    .2byte 4, 3, 2, 10, 3, 0, 3, 10, 10, 9, 6, 6
     .dexName "PURUGLY"
     .dexCategory "TIGER CAT"
     .dexText "It is a brazen brute that barges its way"
@@ -5209,7 +5209,7 @@ dexEntry434::
 
     .align 2, 0
 dexEntry435::
-    .2byte 4, 3, 3, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 1
+    .2byte 4, 3, 3, 10, 0, 0, 8, 10, 10, 10, 1, 3
     .dexName "CHINGLING"
     .dexCategory "BELL"
     .dexText "It emits cries by agitating an orb at the"
@@ -5221,7 +5221,7 @@ dexEntry435::
 
     .align 2, 0
 dexEntry436::
-    .2byte 4, 3, 4, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 4, 2
+    .2byte 4, 3, 4, 10, 1, 0, 4, 10, 10, 4, 2, 3
     .dexName "STUNKY"
     .dexCategory "SKUNK"
     .dexText "It protects itself by spraying a noxious"
@@ -5233,7 +5233,7 @@ dexEntry436::
 
     .align 2, 0
 dexEntry437::
-    .2byte 4, 3, 5, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 8, 4
+    .2byte 4, 3, 5, 10, 3, 0, 3, 10, 10, 8, 3, 8
     .dexName "SKUNTANK"
     .dexCategory "SKUNK"
     .dexText "It sprays a vile-smelling fluid from the"
@@ -5245,7 +5245,7 @@ dexEntry437::
 
     .align 2, 0
 dexEntry438::
-    .2byte 4, 3, 6, 0xA, 1, 0, 8, 0xA, 0xA, 1, 3, 3
+    .2byte 4, 3, 6, 10, 1, 0, 8, 10, 1, 3, 3, 4
     .dexName "BRONZOR"
     .dexCategory "BRONZE"
     .dexText "Implements shaped like it were discovered"
@@ -5257,7 +5257,7 @@ dexEntry438::
 
     .align 2, 0
 dexEntry439::
-    .2byte 4, 3, 7, 0xA, 4, 0, 3, 0xA, 0xA, 4, 1, 2
+    .2byte 4, 3, 7, 10, 4, 0, 3, 10, 4, 1, 2, 3
     .dexName "BRONZONG"
     .dexCategory "BRONZE BELL"
     .dexText "One caused a news sensation when it was"
@@ -5269,7 +5269,7 @@ dexEntry439::
 
     .align 2, 0
 dexEntry440::
-    .2byte 4, 3, 8, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 3, 3
+    .2byte 4, 3, 8, 10, 1, 0, 8, 10, 10, 3, 3, 1
     .dexName "BONSLY"
     .dexCategory "BONSAI"
     .dexText "It looks as if it is always crying. It is"
@@ -5281,7 +5281,7 @@ dexEntry440::
 
     .align 2, 0
 dexEntry441::
-    .2byte 4, 3, 9, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 2, 9
+    .2byte 4, 3, 9, 10, 2, 0, 0, 10, 10, 2, 8, 7
     .dexName "MIME JR."
     .dexCategory "MIME"
     .dexText "It habitually mimics foes. Once mimicked,"
@@ -5293,7 +5293,7 @@ dexEntry441::
 
     .align 2, 0
 dexEntry442::
-    .2byte 4, 4, 0, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 5, 4
+    .2byte 4, 4, 0, 10, 2, 0, 0, 10, 10, 5, 3, 8
     .dexName "HAPPINY"
     .dexCategory "PLAYHOUSE"
     .dexText "It loves round white things. It carries an"
@@ -5305,7 +5305,7 @@ dexEntry442::
 
     .align 2, 0
 dexEntry443::
-    .2byte 4, 4, 1, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 0xA, 4
+    .2byte 4, 4, 1, 10, 1, 0, 8, 10, 10, 10, 4, 2
     .dexName "CHATOT"
     .dexCategory "MUSIC NOTE"
     .dexText "It can learn and speak human words. If"
@@ -5317,7 +5317,7 @@ dexEntry443::
 
     .align 2, 0
 dexEntry444::
-    .2byte 4, 4, 2, 0xA, 3, 0, 3, 0xA, 0xA, 2, 3, 8
+    .2byte 4, 4, 2, 10, 3, 0, 3, 10, 2, 3, 8, 1
     .dexName "SPIRITOMB"
     .dexCategory "FORBIDDEN"
     .dexText "A Pokémon that was formed by 108 spirits."
@@ -5329,7 +5329,7 @@ dexEntry444::
 
     .align 2, 0
 dexEntry445::
-    .2byte 4, 4, 3, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 4, 5
+    .2byte 4, 4, 3, 10, 2, 0, 4, 10, 10, 4, 5, 2
     .dexName "GIBLE"
     .dexCategory "LAND SHARK"
     .dexText "It nests in small, horizontal holes in"
@@ -5341,7 +5341,7 @@ dexEntry445::
 
     .align 2, 0
 dexEntry446::
-    .2byte 4, 4, 4, 0xA, 4, 0, 7, 0xA, 0xA, 1, 2, 3
+    .2byte 4, 4, 4, 10, 4, 0, 7, 10, 1, 2, 3, 5
     .dexName "GABITE"
     .dexCategory "CAVE"
     .dexText "There is a long-held belief that medicine"
@@ -5353,7 +5353,7 @@ dexEntry446::
 
     .align 2, 0
 dexEntry447::
-    .2byte 4, 4, 5, 0xA, 6, 0, 3, 0xA, 0xA, 2, 0, 9
+    .2byte 4, 4, 5, 10, 6, 0, 3, 10, 2, 0, 9, 4
     .dexName "GARCHOMP"
     .dexCategory "MACH"
     .dexText "When it folds up its body and extends its"
@@ -5365,7 +5365,7 @@ dexEntry447::
 
     .align 2, 0
 dexEntry448::
-    .2byte 4, 4, 6, 0xA, 2, 0, 0, 0xA, 0xA, 2, 3, 1
+    .2byte 4, 4, 6, 10, 2, 0, 0, 10, 2, 3, 1, 5
     .dexName "MUNCHLAX"
     .dexCategory "BIG EATER"
     .dexText "It wolfs down its weight in food once a"
@@ -5377,7 +5377,7 @@ dexEntry448::
 
     .align 2, 0
 dexEntry449::
-    .2byte 4, 4, 7, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 4, 5
+    .2byte 4, 4, 7, 10, 2, 0, 4, 10, 10, 4, 4, 5
     .dexName "RIOLU"
     .dexCategory "EMANATION"
     .dexText "The aura that emanates from its body"
@@ -5389,7 +5389,7 @@ dexEntry449::
 
     .align 2, 0
 dexEntry450::
-    .2byte 4, 4, 8, 0xA, 3, 1, 1, 0xA, 0xA, 1, 1, 9
+    .2byte 4, 4, 8, 10, 3, 1, 1, 10, 1, 1, 9, 0
     .dexName "LUCARIO"
     .dexCategory "AURA"
     .dexText "It has the ability to sense the auras of"
@@ -5401,7 +5401,7 @@ dexEntry450::
 
     .align 2, 0
 dexEntry451::
-    .2byte 4, 4, 9, 0xA, 2, 0, 7, 0xA, 0xA, 1, 0, 9
+    .2byte 4, 4, 9, 10, 2, 0, 7, 10, 1, 0, 9, 1
     .dexName "HIPPOPOTAS"
     .dexCategory "HIPPO"
     .dexText "It lives in arid places. Instead of"
@@ -5413,7 +5413,7 @@ dexEntry451::
 
     .align 2, 0
 dexEntry452::
-    .2byte 4, 5, 0, 0xA, 6, 0, 7, 0xA, 0xA, 6, 6, 1
+    .2byte 4, 5, 0, 10, 6, 0, 7, 10, 6, 6, 1, 4
     .dexName "HIPPOWDON"
     .dexCategory "HEAVYWEIGHT"
     .dexText "It blasts internally stored sand from"
@@ -5425,7 +5425,7 @@ dexEntry452::
 
     .align 2, 0
 dexEntry453::
-    .2byte 4, 5, 1, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 2, 6
+    .2byte 4, 5, 1, 10, 2, 0, 7, 10, 10, 2, 6, 5
     .dexName "SKORUPI"
     .dexCategory "SCORPION"
     .dexText "It grips prey with its tail claws and"
@@ -5437,7 +5437,7 @@ dexEntry453::
 
     .align 2, 0
 dexEntry454::
-    .2byte 4, 5, 2, 0xA, 4, 0, 3, 0xA, 0xA, 1, 3, 6
+    .2byte 4, 5, 2, 10, 4, 0, 3, 10, 1, 3, 5, 6
     .dexName "DRAPION"
     .dexCategory "OGRE SCORPI"
     .dexText "It has the power in its clawed arms to"
@@ -5449,7 +5449,7 @@ dexEntry454::
 
     .align 2, 0
 dexEntry455::
-    .2byte 4, 5, 3, 0xA, 2, 0, 4, 0xA, 0xA, 0xA, 5, 1
+    .2byte 4, 5, 3, 10, 2, 0, 4, 10, 10, 5, 0, 7
     .dexName "CROAGUNK"
     .dexCategory "TOXIC MOUTH"
     .dexText "Its cheeks hold poison sacs. It tries to"
@@ -5461,7 +5461,7 @@ dexEntry455::
 
     .align 2, 0
 dexEntry456::
-    .2byte 4, 5, 4, 0xA, 4, 0, 3, 0xA, 0xA, 0xA, 9, 8
+    .2byte 4, 5, 4, 10, 4, 0, 3, 10, 10, 9, 7, 9
     .dexName "TOXICROAK"
     .dexCategory "TOXIC MOUTH"
     .dexText "Its knuckle claws secrete a toxin so vile"
@@ -5473,7 +5473,7 @@ dexEntry456::
 
     .align 2, 0
 dexEntry457::
-    .2byte 4, 5, 5, 0xA, 4, 0, 7, 0xA, 0xA, 0xA, 6, 0
+    .2byte 4, 5, 5, 10, 4, 0, 7, 10, 10, 5, 9, 5
     .dexName "CARNIVINE"
     .dexCategory "BUG CATCHER"
     .dexText "It attracts prey with its sweet- smelling"
@@ -5485,7 +5485,7 @@ dexEntry457::
 
     .align 2, 0
 dexEntry458::
-    .2byte 4, 5, 6, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 1, 5
+    .2byte 4, 5, 6, 10, 1, 0, 4, 10, 10, 1, 5, 4
     .dexName "FINNEON"
     .dexCategory "WING FISH"
     .dexText "After long exposure to sunlight, the"
@@ -5497,7 +5497,7 @@ dexEntry458::
 
     .align 2, 0
 dexEntry459::
-    .2byte 4, 5, 7, 0xA, 3, 1, 1, 0xA, 0xA, 0xA, 5, 3
+    .2byte 4, 5, 7, 10, 3, 1, 1, 10, 10, 5, 2, 9
     .dexName "LUMINEON"
     .dexCategory "NEON"
     .dexText "It lives on the deep-sea floor. It"
@@ -5509,7 +5509,7 @@ dexEntry459::
 
     .align 2, 0
 dexEntry460::
-    .2byte 4, 5, 8, 0xA, 3, 0, 3, 0xA, 0xA, 1, 4, 3
+    .2byte 4, 5, 8, 10, 3, 0, 3, 10, 1, 4, 3, 3
     .dexName "MANTYKE"
     .dexCategory "KITE"
     .dexText "A friendly Pokémon that captures the"
@@ -5521,7 +5521,7 @@ dexEntry460::
 
     .align 2, 0
 dexEntry461::
-    .2byte 4, 5, 9, 0xA, 3, 0, 3, 0xA, 0xA, 1, 1, 1
+    .2byte 4, 5, 9, 10, 3, 0, 3, 10, 1, 1, 1, 3
     .dexName "SNOVER"
     .dexCategory "FROST TREE"
     .dexText "It lives on snowy mountains. Having had"
@@ -5533,7 +5533,7 @@ dexEntry461::
 
     .align 2, 0
 dexEntry462::
-    .2byte 4, 6, 0, 0xA, 7, 0, 3, 0xA, 0xA, 2, 9, 9
+    .2byte 4, 6, 0, 10, 7, 0, 3, 10, 2, 9, 8, 7
     .dexName "ABOMASNOW"
     .dexCategory "FROST TREE"
     .dexText "It whips up blizzards in mountains that"
@@ -5545,7 +5545,7 @@ dexEntry462::
 
     .align 2, 0
 dexEntry463::
-    .2byte 4, 6, 1, 0xA, 3, 0, 7, 0xA, 0xA, 0xA, 7, 5
+    .2byte 4, 6, 1, 10, 3, 0, 7, 10, 10, 7, 5, 0
     .dexName "WEAVILE"
     .dexCategory "SHARP CLAW"
     .dexText "They live in cold regions, forming groups"
@@ -5557,7 +5557,7 @@ dexEntry463::
 
     .align 2, 0
 dexEntry464::
-    .2byte 4, 6, 2, 0xA, 3, 1, 1, 0xA, 0xA, 3, 9, 7
+    .2byte 4, 6, 2, 10, 3, 1, 1, 10, 3, 9, 6, 8
     .dexName "MAGNEZONE"
     .dexCategory "MAGNET AREA"
     .dexText "It evolved from exposure to a special"
@@ -5569,7 +5569,7 @@ dexEntry464::
 
     .align 2, 0
 dexEntry465::
-    .2byte 4, 6, 3, 0xA, 5, 0, 7, 0xA, 0xA, 3, 0, 9
+    .2byte 4, 6, 3, 10, 5, 0, 7, 10, 3, 0, 8, 6
     .dexName "LICKILICKY"
     .dexCategory "LICKING"
     .dexText "It wraps things with its extensible"
@@ -5581,7 +5581,7 @@ dexEntry465::
 
     .align 2, 0
 dexEntry466::
-    .2byte 4, 6, 4, 0xA, 7, 1, 0, 0xA, 0xA, 6, 2, 3
+    .2byte 4, 6, 4, 10, 7, 1, 0, 10, 6, 2, 3, 5
     .dexName "RHYPERIOR"
     .dexCategory "DRILL"
     .dexText "It puts rocks in holes in its palms and"
@@ -5593,7 +5593,7 @@ dexEntry466::
 
     .align 2, 0
 dexEntry467::
-    .2byte 4, 6, 5, 0xA, 6, 0, 7, 0xA, 0xA, 2, 8, 4
+    .2byte 4, 6, 5, 10, 6, 0, 7, 10, 2, 8, 3, 5
     .dexName "TANGROWTH"
     .dexCategory "VINE"
     .dexText "It ensnares prey by extending arms made of"
@@ -5605,7 +5605,7 @@ dexEntry467::
 
     .align 2, 0
 dexEntry468::
-    .2byte 4, 6, 6, 0xA, 5, 1, 1, 0xA, 0xA, 3, 0, 6
+    .2byte 4, 6, 6, 10, 5, 1, 1, 10, 3, 0, 5, 6
     .dexName "ELECTIVIRE"
     .dexCategory "THUNDERBOLT"
     .dexText "It pushes the tips of its two tails"
@@ -5617,7 +5617,7 @@ dexEntry468::
 
     .align 2, 0
 dexEntry469::
-    .2byte 4, 6, 7, 0xA, 5, 0, 3, 0xA, 0xA, 1, 5, 0
+    .2byte 4, 6, 7, 10, 5, 0, 3, 10, 1, 4, 9, 9
     .dexName "MAGMORTAR"
     .dexCategory "BLAST"
     .dexText "It blasts fireballs of over 3,600 degrees"
@@ -5629,7 +5629,7 @@ dexEntry469::
 
     .align 2, 0
 dexEntry470::
-    .2byte 4, 6, 8, 0xA, 4, 1, 1, 0xA, 0xA, 0xA, 8, 4
+    .2byte 4, 6, 8, 10, 4, 1, 1, 10, 10, 8, 3, 8
     .dexName "TOGEKISS"
     .dexCategory "JUBILEE"
     .dexText "It will never appear where there is"
@@ -5641,7 +5641,7 @@ dexEntry470::
 
     .align 2, 0
 dexEntry471::
-    .2byte 4, 6, 9, 0xA, 6, 0, 3, 0xA, 0xA, 1, 1, 4
+    .2byte 4, 6, 9, 10, 6, 0, 3, 10, 1, 1, 3, 5
     .dexName "YANMEGA"
     .dexCategory "OGRE DARNER"
     .dexText "By churning its wings, it creates shock"
@@ -5653,7 +5653,7 @@ dexEntry471::
 
     .align 2, 0
 dexEntry472::
-    .2byte 4, 7, 0, 0xA, 3, 0, 3, 0xA, 0xA, 0xA, 5, 6
+    .2byte 4, 7, 0, 10, 3, 0, 3, 10, 10, 5, 6, 2
     .dexName "LEAFEON"
     .dexCategory "VERDANT"
     .dexText "Just like a plant, it uses photosynthesis."
@@ -5665,7 +5665,7 @@ dexEntry472::
 
     .align 2, 0
 dexEntry473::
-    .2byte 4, 7, 1, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 5, 7
+    .2byte 4, 7, 1, 10, 2, 0, 7, 10, 10, 5, 7, 1
     .dexName "GLACEON"
     .dexCategory "FRESH SNOW"
     .dexText "As a protective technique, it can"
@@ -5677,7 +5677,7 @@ dexEntry473::
 
     .align 2, 0
 dexEntry474::
-    .2byte 4, 7, 2, 0xA, 6, 0, 7, 0xA, 0xA, 0xA, 9, 4
+    .2byte 4, 7, 2, 10, 6, 0, 7, 10, 10, 9, 3, 7
     .dexName "GLISCOR"
     .dexCategory "FANG SCORPI"
     .dexText "It observes prey while hanging inverted"
@@ -5689,7 +5689,7 @@ dexEntry474::
 
     .align 2, 0
 dexEntry475::
-    .2byte 4, 7, 3, 0xA, 8, 0, 2, 0xA, 0xA, 6, 4, 2
+    .2byte 4, 7, 3, 10, 8, 0, 2, 10, 6, 4, 1, 5
     .dexName "MAMOSWINE"
     .dexCategory "TWIN TUSK"
     .dexText "Its impressive tusks are made of ice. The"
@@ -5701,7 +5701,7 @@ dexEntry475::
 
     .align 2, 0
 dexEntry476::
-    .2byte 4, 7, 4, 0xA, 2, 1, 1, 0xA, 0xA, 0xA, 7, 5
+    .2byte 4, 7, 4, 10, 2, 1, 1, 10, 10, 7, 5, 0
     .dexName "PORYGON-Z"
     .dexCategory "VIRTUAL"
     .dexText "Additional software was installed to make"
@@ -5713,7 +5713,7 @@ dexEntry476::
 
     .align 2, 0
 dexEntry477::
-    .2byte 4, 7, 5, 0xA, 5, 0, 3, 0xA, 0xA, 1, 1, 5
+    .2byte 4, 7, 5, 10, 5, 0, 3, 10, 1, 1, 4, 6
     .dexName "GALLADE"
     .dexCategory "BLADE"
     .dexText "A master of courtesy and swordsmanship, it"
@@ -5725,7 +5725,7 @@ dexEntry477::
 
     .align 2, 0
 dexEntry478::
-    .2byte 4, 7, 6, 0xA, 4, 0, 7, 0xA, 0xA, 7, 5, 0
+    .2byte 4, 7, 6, 10, 4, 0, 7, 10, 7, 4, 9, 6
     .dexName "PROBOPASS"
     .dexCategory "COMPASS"
     .dexText "It exudes strong magnetism from all over."
@@ -5737,7 +5737,7 @@ dexEntry478::
 
     .align 2, 0
 dexEntry479::
-    .2byte 4, 7, 7, 0xA, 7, 0, 3, 0xA, 0xA, 2, 3, 5
+    .2byte 4, 7, 7, 10, 7, 0, 3, 10, 2, 3, 5, 0
     .dexName "DUSKNOIR"
     .dexCategory "GRIPPER"
     .dexText "The antenna on its head captures radio"
@@ -5749,7 +5749,7 @@ dexEntry479::
 
     .align 2, 0
 dexEntry480::
-    .2byte 4, 7, 8, 0xA, 4, 0, 3, 0xA, 0xA, 0xA, 5, 9
+    .2byte 4, 7, 8, 10, 4, 0, 3, 10, 10, 5, 8, 6
     .dexName "FROSLASS"
     .dexCategory "SNOW LAND"
     .dexText "It freezes foes with an icy breath nearly"
@@ -5761,7 +5761,7 @@ dexEntry480::
 
     .align 2, 0
 dexEntry481::
-    .2byte 4, 7, 9, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .2byte 4, 7, 9, 10, 1, 0, 0, 10, 10, 10, 10, 7
     .dexName "ROTOM"
     .dexCategory "PLASMA"
     .dexText "Its body is composed of plasma. It is"
@@ -5773,7 +5773,7 @@ dexEntry481::
 
     .align 2, 0
 dexEntry482::
-    .2byte 4, 8, 0, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .2byte 4, 8, 0, 10, 1, 0, 0, 10, 10, 10, 10, 7
     .dexName "UXIE"
     .dexCategory "KNOWLEDGE"
     .dexText "Known as the being of knowledge. It is"
@@ -5785,7 +5785,7 @@ dexEntry482::
 
     .align 2, 0
 dexEntry483::
-    .2byte 4, 8, 1, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .2byte 4, 8, 1, 10, 1, 0, 0, 10, 10, 10, 10, 7
     .dexName "MESPRIT"
     .dexCategory "EMOTION"
     .dexText "Known as the being of emotion. It taught"
@@ -5797,7 +5797,7 @@ dexEntry483::
 
     .align 2, 0
 dexEntry484::
-    .2byte 4, 8, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 1
+    .2byte 4, 8, 2, 10, 1, 0, 0, 10, 10, 10, 10, 7
     .dexName "AZELF"
     .dexCategory "WILLPOWER"
     .dexText "Known as the being of willpower. It"
@@ -5809,7 +5809,7 @@ dexEntry484::
 
     .align 2, 0
 dexEntry485::
-    .2byte 4, 8, 3, 1, 7, 0, 9, 0xA, 1, 5, 0, 6
+    .2byte 4, 8, 3, 1, 7, 0, 9, 1, 5, 0, 5, 8
     .dexName "DIALGA"
     .dexCategory "TEMPORAL"
     .dexText "It has the power to control time. It"
@@ -5821,7 +5821,7 @@ dexEntry485::
 
     .align 2, 0
 dexEntry486::
-    .2byte 4, 8, 4, 1, 3, 0, 9, 0xA, 0xA, 7, 4, 1
+    .2byte 4, 8, 4, 1, 3, 0, 9, 10, 7, 4, 0, 8
     .dexName "PALKIA"
     .dexCategory "SPATIAL"
     .dexText "It has the ability to distort space. It is"
@@ -5833,7 +5833,7 @@ dexEntry486::
 
     .align 2, 0
 dexEntry487::
-    .2byte 4, 8, 5, 0xA, 5, 0, 7, 0xA, 0xA, 9, 4, 8
+    .2byte 4, 8, 5, 10, 5, 0, 7, 10, 9, 4, 8, 0
     .dexName "HEATRAN"
     .dexCategory "LAVA DOME"
     .dexText "It dwells in volcanic caves. It digs in"
@@ -5845,7 +5845,7 @@ dexEntry487::
 
     .align 2, 0
 dexEntry488::
-    .2byte 4, 8, 6, 1, 2, 0, 2, 0xA, 0xA, 9, 2, 6
+    .2byte 4, 8, 6, 1, 2, 0, 2, 10, 9, 2, 5, 9
     .dexName "REGIGIGAS"
     .dexCategory "COLOSSAL"
     .dexText "There is an enduring legend that states"
@@ -5857,7 +5857,7 @@ dexEntry488::
 
     .align 2, 0
 dexEntry489::
-    .2byte 4, 8, 7, 1, 4, 0, 9, 0xA, 1, 6, 5, 3
+    .2byte 4, 8, 7, 1, 4, 0, 9, 1, 6, 5, 3, 5
     .dexName "GIRATINA"
     .dexCategory "RENEGADE"
     .dexText "A Pokémon that is said to live in a world"
@@ -5869,7 +5869,7 @@ dexEntry489::
 
     .align 2, 0
 dexEntry490::
-    .2byte 4, 8, 8, 0xA, 4, 1, 1, 0xA, 0xA, 1, 8, 9
+    .2byte 4, 8, 8, 10, 4, 1, 1, 10, 1, 8, 8, 7
     .dexName "CRESSELIA"
     .dexCategory "LUNAR"
     .dexText "Shiny particles are released from its"
@@ -5881,7 +5881,7 @@ dexEntry490::
 
     .align 2, 0
 dexEntry491::
-    .2byte 4, 8, 9, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 0xA, 7
+    .2byte 4, 8, 9, 10, 1, 0, 4, 10, 10, 10, 6, 8
     .dexName "PHIONE"
     .dexCategory "SEA DRIFTER"
     .dexText "A Pokémon that lives in warm seas. It"
@@ -5893,7 +5893,7 @@ dexEntry491::
 
     .align 2, 0
 dexEntry492::
-    .2byte 4, 9, 0, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 3
+    .2byte 4, 9, 0, 10, 1, 0, 0, 10, 10, 10, 3, 1
     .dexName "MANAPHY"
     .dexCategory "SEAFARING"
     .dexText "Born on a cold seafloor, it will swim"
@@ -5905,7 +5905,7 @@ dexEntry492::
 
     .align 2, 0
 dexEntry493::
-    .2byte 4, 9, 1, 0xA, 4, 1, 1, 0xA, 0xA, 1, 1, 1
+    .2byte 4, 9, 1, 10, 4, 1, 1, 10, 1, 1, 1, 3
     .dexName "DARKRAI"
     .dexCategory "PITCH-BLACK"
     .dexText "It can lull people to sleep and make them"
@@ -5917,7 +5917,7 @@ dexEntry493::
 
     .align 2, 0
 dexEntry494::
-    .2byte 4, 9, 2, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 5
+    .2byte 4, 9, 2, 10, 0, 0, 8, 10, 10, 10, 4, 6
     .dexName "SHAYMIN"
     .dexCategory "GRATITUDE"
     .dexText "It lives in flower patches and avoids"
@@ -5929,7 +5929,7 @@ dexEntry494::
 
     .align 2, 0
 dexEntry495::
-    .2byte 4, 9, 3, 1, 0, 0, 6, 0xA, 0xA, 7, 0, 5
+    .2byte 4, 9, 3, 1, 0, 0, 6, 10, 7, 0, 5, 5
     .dexName "ARCEUS"
     .dexCategory "ALPHA"
     .dexText "It is described in mythology as the"
@@ -5941,7 +5941,7 @@ dexEntry495::
 
     .align 2, 0
 dexEntry496::
-    .2byte 6, 1, 0, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 4, 0
+    .2byte 6, 1, 0, 10, 2, 0, 0, 10, 10, 3, 9, 7
     .dexName "AXEW"
     .dexCategory "TUSK"
     .dexText "They use their tusks to crush the berries"
@@ -5953,7 +5953,7 @@ dexEntry496::
 
     .align 2, 0
 dexEntry497::
-    .2byte 6, 9, 8, 0xA, 4, 0, 3, 0xA, 0xA, 0xA, 5, 6
+    .2byte 6, 9, 8, 10, 4, 0, 3, 10, 10, 5, 5, 6
     .dexName "AMAURA"
     .dexCategory "TUNDRA"
     .dexText "This ancient Pokémon was restored from"
@@ -5965,7 +5965,7 @@ dexEntry497::
 
     .align 2, 0
 dexEntry498::
-    .2byte 7, 2, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 0xA, 3
+    .2byte 7, 2, 2, 10, 1, 0, 0, 10, 10, 10, 3, 3
     .dexName "ROWLET"
     .dexCategory "GRASS QUILL"
     .dexText "This wary Pokémon uses photosynthesis to"
@@ -5977,7 +5977,7 @@ dexEntry498::
 
     .align 2, 0
 dexEntry499::
-    .2byte 8, 4, 0, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 0xA, 1
+    .2byte 8, 4, 0, 10, 0, 0, 8, 10, 10, 10, 1, 1
     .dexName "APPLIN"
     .dexCategory "APPLE CORE"
     .dexText "It spends its entire life inside an apple."
@@ -5989,7 +5989,7 @@ dexEntry499::
 
     .align 2, 0
 dexEntry500::
-    .2byte 9, 0, 9, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 2, 2
+    .2byte 9, 0, 9, 10, 1, 0, 4, 10, 10, 2, 1, 6
     .dexName "FUECOCO"
     .dexCategory "FIRE CROC"
     .dexText "It lies on warm rocks and uses the heat"

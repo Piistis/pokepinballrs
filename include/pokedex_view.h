@@ -4,6 +4,7 @@
 #define DEX_WINDOW_EMPTY_TILE (0x1800 / 32)
 #define DEX_NAME_PALETTE 4
 #define DEX_PLAIN_DIGIT_OFFSET 16
+#define DEX_WEIGHT_DECIMAL_TILE 0x1C9
 
 void PokedexView_Init(u16 total);
 bool8 PokedexView_IsInitialized(void);
