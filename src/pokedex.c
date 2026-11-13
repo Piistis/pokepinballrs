@@ -176,24 +176,21 @@ void LoadPokedexGraphics(void)
     REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_FORCED_BLANK | DISPCNT_OBJ_ON;
     REG_BG1CNT = BGCNT_PRIORITY(1) | BGCNT_CHARBASE(1) | BGCNT_16COLOR | BGCNT_SCREENBASE(0) | BGCNT_TXT256x256;
     REG_DISPCNT |= DISPCNT_BG1_ON;
-    REG_BG2CNT = BGCNT_PRIORITY(2) | BGCNT_CHARBASE(3) | BGCNT_16COLOR | BGCNT_SCREENBASE(1) | BGCNT_TXT256x256;
+    REG_BG2CNT = BGCNT_PRIORITY(2) | BGCNT_CHARBASE(0) | BGCNT_16COLOR | BGCNT_SCREENBASE(1) | BGCNT_TXT256x256;
     REG_DISPCNT |= DISPCNT_BG2_ON;
-    REG_BG3CNT = BGCNT_PRIORITY(3) | BGCNT_CHARBASE(3) | BGCNT_16COLOR | BGCNT_SCREENBASE(2) | BGCNT_TXT256x256;
+    REG_BG3CNT = BGCNT_PRIORITY(3) | BGCNT_CHARBASE(0) | BGCNT_256COLOR | BGCNT_SCREENBASE(2) | BGCNT_TXT256x256;
     REG_DISPCNT |= DISPCNT_BG3_ON;
 
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gPokedexBgText_Gfx, (void *)BG_CHAR_ADDR(1), 0x4400);
-    DmaCopy16(3, gPokedexBg_Gfx, (void *)BG_CHAR_ADDR(3), 0x1400);
-    DmaCopy16(3, gPokedexBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gPokedexBg1_Tilemap, gBG0TilemapBuffer, BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexVramBuffer, BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexBg3_Tilemap, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
+    DmaFill16(3, DEX_WINDOW_EMPTY_TILE, gPokedexVramBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx, (void *)OBJ_VRAM0, 0x6C20);
 
     InitPokedexState();
-    PokedexView_ApplyTheme();
+    PokedexView_LoadGraphics();
     PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
     PrintSelectedMonDexNum(gPokedexSelectedMon);
     PrintDexNumbersFromListPosition(gPokedexListPosition);
@@ -202,16 +199,13 @@ void LoadPokedexGraphics(void)
     LoadMonAnimationSprite(gPokedexSelectedMon);
     CheckMonHasAnimation(gPokedexSelectedMon);
 
-    gPokedexVramBuffer[0x134] = 0x59;
-
     DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexVramBuffer, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
 
+    gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
     RenderPokedexSprites();
     EnableVBlankInterrupts();
     FadeInScreen();
-
-    gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 
     m4aSongNumStart(MUS_POKEDEX);
 }
@@ -278,7 +272,7 @@ void InitPokedexState(void)
 static void Pokedex_ChangeView(bool8 toggleShiny, s16 direction)
 {
     if (toggleShiny) PokedexView_ToggleShiny();
-    else PokedexView_MoveGeneration(direction);
+    else if (!PokedexView_MoveGeneration(direction)) return;
     gPokedexListPosition = gPokedexCursorOffset = 0;
     gPokedexListEntryCount = PokedexView_Count();
     gPokedexScrollWaitFrames = 0;
@@ -288,7 +282,6 @@ static void Pokedex_ChangeView(bool8 toggleShiny, s16 direction)
     gPokedexShowCatchHatch[0] = gPokedexShowCatchHatch[1] = FALSE;
     UpdateSelectedMonFromListPosition();
     PokedexView_UpdateTotals();
-    PokedexView_ApplyTheme();
     PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
     RefreshPokedexListDisplay();
     m4aSongNumStart(SE_MENU_MOVE);
@@ -421,11 +414,6 @@ void Pokedex_HandleListInput(void)
             m4aSongNumStart(SE_MENU_CANCEL);
             gMain.subState = POKEDEX_STATE_RETURN_TO_TITLE;
         }
-        else if (JOY_NEW(START_BUTTON))
-        {
-            Pokedex_ChangeView(TRUE, 0);
-        }
-
         Pokedex_CheckDeleteKeyComboPressed();
     }
 
@@ -453,15 +441,12 @@ void Pokedex_InfoWindowSlideIn(void)
 {
     int i;
 
-    for (i = 0; i < 0x20; i++)
-    {
-        gBG0TilemapBuffer[0x20*(gPokedexInfoWindowSlideStep + 10) + i] = gDexInfoWindowEmptyTextRowTiles[i];
-        gPokedexVramBuffer[0x20*(gPokedexInfoWindowSlideStep + 9) + i] = gDexInfoWindowMiddleRowTiles[i];
-        gPokedexVramBuffer[0x20*(gPokedexInfoWindowSlideStep + 10) + i] = gDexInfoWindowBottomRowTiles[i];
-    }
+    i = (gPokedexInfoWindowSlideStep + 10) * 32;
+    DmaCopy16(3, gDexInfoWindowEmptyTextRowTiles, gBG0TilemapBuffer + i, 64);
+    PokedexView_SetWindowRow(gPokedexVramBuffer + i - 32, FALSE);
+    PokedexView_SetWindowRow(gPokedexVramBuffer + i, TRUE);
 
     gPokedexInfoWindowSlideStep++;
-    gPokedexVramBuffer[0x134] = 0x59;
     DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexVramBuffer, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
 
@@ -623,11 +608,9 @@ void Pokedex_InfoWindowSlideOut(void)
 {
     s32 i;
 
-    for (i = 0; i < 0x20; i++)
-    {
-        gPokedexVramBuffer[0x20 * (0x11 - gPokedexInfoWindowSlideStep) + i] = gDexInfoWindowBottomRowTiles[i];
-        gPokedexVramBuffer[0x20 * (0x12 - gPokedexInfoWindowSlideStep) + i] = gDexInfoWindowEmptyRowTiles[i];
-    }
+    i = (0x11 - gPokedexInfoWindowSlideStep) * 32;
+    PokedexView_SetWindowRow(gPokedexVramBuffer + i, TRUE);
+    DmaFill16(3, DEX_WINDOW_EMPTY_TILE, gPokedexVramBuffer + i + 32, 64);
 
     if (gPokedexInfoWindowSlideStep < 8)
     {
@@ -638,7 +621,8 @@ void Pokedex_InfoWindowSlideOut(void)
     }
     gPokedexInfoWindowSlideStep++;
 
-    gPokedexVramBuffer[0x134] = 0x59;
+    if (gPokedexInfoWindowSlideStep > 8)
+        DmaFill16(3, DEX_WINDOW_EMPTY_TILE, gPokedexVramBuffer + 9 * 32, 64);
     DmaCopy16(3, gPokedexVramBuffer, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
     DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 
@@ -1113,6 +1097,7 @@ void RefreshMonPreviewSprite(void)
 void RenderPokedexSprites(void)
 {
     int i;
+    s16 objectCount;
     struct SpriteGroup *group0;
     struct SpriteGroup *group1;
     struct SpriteGroup *group2;
@@ -1148,7 +1133,7 @@ void RenderPokedexSprites(void)
     group7->active = FALSE;
     group8->active = gPokedexShowCompletionBadge;
     group9->active = gPokedexShowPageIndicator;
-    LoadSpriteSets(gPokedexSpriteSets, 29, group0);
+    objectCount = LoadSpriteSets(gPokedexSpriteSets, 29, group0);
 
     group0->baseX = 20 + gPokedexCursorBlinkOffset;
     group0->baseY = 84 + gPokedexCursorOffset * 16;
@@ -1279,19 +1264,6 @@ void RenderPokedexSprites(void)
         }
     }
 
-    if (group7->active == TRUE)
-    {
-        group7->baseX = 158;
-        group7->baseY = 148;
-        spriteSet = gPokedexSpriteSets[22 + gPokedexButtonPromptFrame];
-        for (i = 0; i < spriteSet->count; i++)
-        {
-            groupOam = &group7->oam[i];
-            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group7->baseX;
-            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group7->baseY;
-        }
-    }
-
     if (group8->active == TRUE)
     {
         group8->baseX = 168;
@@ -1324,7 +1296,8 @@ void RenderPokedexSprites(void)
     group5->active = FALSE;
     group6->active = FALSE;
     group7->active = FALSE;
-    PokedexView_Draw(gMain.subState == POKEDEX_STATE_HANDLE_LIST_INPUT || gMain.subState == POKEDEX_STATE_2);
+    if (!gPokedexShowPopupWindow && (gMain.subState == POKEDEX_STATE_HANDLE_LIST_INPUT || gMain.subState == POKEDEX_STATE_2))
+        PokedexView_Draw(objectCount, gPokedexButtonPromptFrame);
     group9->active = FALSE;
 }
 
@@ -1875,12 +1848,15 @@ static void PrintSelectedMonDexNum(s16 species)
             var0 += var2;
         }
 
+        PokedexView_OutlineName(gTempGfxBuffer);
+        SetStringPalette(13, 2, 8, 2, DEX_NAME_PALETTE);
         CopyBgTilesRect(gTempGfxBuffer, (void *)0x06004C00, 8, 2);
         DmaFill16(3, 0, gTempGfxBuffer, 0x800);
         var0 = 0;
     }
     else
     {
+        SetStringPalette(13, 2, 8, 2, 1);
         for (i = 0; i < 10; i++)
             CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004C00 + i * 0x20, 1, 2);
     }
@@ -1995,12 +1971,15 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
                 var0 += var2;
             }
 
+            PokedexView_OutlineName(gTempGfxBuffer);
+            SetStringPalette(12, 10 + i * 2, 8, 2, DEX_NAME_PALETTE);
             CopyBgTilesRect(gTempGfxBuffer, (void *)0x06000000 + gPokedexListNameVramOffsets[i], 8, 2);
             DmaFill16(3, 0, gTempGfxBuffer, 0x800);
             var0 = 0;
         }
         else
         {
+            SetStringPalette(12, 10 + i * 2, 8, 2, 2);
             for (j = 0; j < 7; j++)
                 CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06000000 + gPokedexListNameVramOffsets[i] + j * 0x20, 1, 2);
 

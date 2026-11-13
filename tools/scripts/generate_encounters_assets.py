@@ -11,12 +11,16 @@ ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / 'src/data/encounters_assets.h'
 
 
-def read_png(path, indexed=False):
+def read_png(path, indexed=False, alpha=False):
     data = path.read_bytes()
     assert data[:8] == b'\x89PNG\r\n\x1a\n'
     w, h, depth, mode, compression, filtering, interlace = struct.unpack('>IIBBBBB', data[16:29])
-    assert depth in (4, 8) and mode in (0, 3) and compression == filtering == interlace == 0, path
+    channels = {0: 1, 2: 3, 3: 1, 6: 4}.get(mode, 0)
+    assert channels and compression == filtering == interlace == 0, f'{path}: use a non-interlaced PNG'
+    assert depth in ((1, 2, 4, 8) if channels == 1 else (8,)), path
+    assert not indexed or channels == 1, path
     pos, compressed, palette = 8, b'', []
+    transparency = b''
     if mode == 0:
         palette = [(v * 255 // ((1 << depth) - 1),) * 3 for v in range(1 << depth)]
     while pos < len(data):
@@ -26,24 +30,42 @@ def read_png(path, indexed=False):
             compressed += chunk
         if kind == b'PLTE':
             palette = [tuple(chunk[i:i + 3]) for i in range(0, size, 3)]
+        if kind == b'tRNS':
+            transparency = chunk
         pos += size + 12
     raw = zlib.decompress(compressed)
-    stride = (w * depth + 7) // 8
+    stride = (w * depth * channels + 7) // 8
     assert len(raw) == h * (stride + 1)
     previous, pixels = [0] * stride, []
     for y in range(h):
         kind = raw[y * (stride + 1)]
         row = list(raw[y * (stride + 1) + 1:(y + 1) * (stride + 1)])
         for x in range(stride):
-            a, b, c = row[x - 1] if x else 0, previous[x], previous[x - 1] if x else 0
+            a, b, c = row[x - channels] if x >= channels else 0, previous[x], previous[x - channels] if x >= channels else 0
             p = a + b - c
             paeth = min((a, b, c), key=lambda v: abs(p - v))
             row[x] = (row[x] + (0, a, b, (a + b) // 2, paeth)[kind]) & 255
-        indices = row if depth == 8 else [v for byte in row for v in (byte >> 4, byte & 15)][:w]
+        indices = row if depth == 8 else [
+            (byte >> shift) & ((1 << depth) - 1)
+            for byte in row for shift in range(8 - depth, -1, -depth)
+        ][:w]
         pixels.extend(indices)
         previous = row
     if indexed:
         return w, h, pixels, palette
+    if channels > 1:
+        if mode == 6 and alpha:
+            assert all(a in (0, 255) for a in pixels[3::4]), f'{path}: use fully opaque or transparent pixels'
+        key = struct.unpack('>3H', transparency) if mode == 2 and transparency else None
+        colors = [tuple(pixels[i:i + 3]) for i in range(0, len(pixels), channels)]
+        if alpha:
+            colors = [None if (mode == 6 and not pixels[i * 4 + 3]) or color == key else color
+                      for i, color in enumerate(colors)]
+        return w, h, colors
+    if alpha and mode == 3 and transparency:
+        assert all(a in (0, 255) for a in transparency), f'{path}: use fully opaque or transparent pixels'
+        return w, h, [None if index < len(transparency) and not transparency[index] else palette[index]
+                      for index in pixels]
     return w, h, [palette[index] for index in pixels]
 
 

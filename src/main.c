@@ -5,6 +5,7 @@
 #include "link.h"
 #include "m4a.h"
 #include "encounters.h"
+#include "pokedex_view.h"
 
 static void InitGame(void);
 static void InitMainState(void);
@@ -295,6 +296,8 @@ void DefaultMainCallback(void)
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {
         VBlankIntrWait();
+        if (gMain.mainState == STATE_POKEDEX)
+            PokedexView_VBlank();
         Encounters_VBlank();
         if (!Encounters_IsOpen())
             RenderManaphyEggPalette();

@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 import shutil
 
-from generate_encounters_assets import read_png, pack_obj, header_font
+from generate_encounters_assets import read_png, pack_obj
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / 'src/data/shiny_palettes.h'
@@ -158,36 +158,6 @@ def generate(create_templates=False):
     return '\n'.join(lines) + '\n', created, counts, ready_count
 
 
-def dex_assets():
-    lines = ['/* Generated editable generation palettes and native Dex controls. */',
-             'static const u16 sDexGenerationPalettes[9][256] = {']
-    for gen in range(1, 10):
-        data = (ROOT / f'graphics/pokedex/generations/gen{gen}.pal').read_text().splitlines()
-        assert data[:3] == ['JASC-PAL', '0100', '256']
-        colors = [tuple(map(int, row.split())) for row in data[3:]]
-        assert len(colors) == 256 and all(len(c) == 3 and all(0 <= v <= 255 for v in c) for c in colors)
-        palette = [(r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10) for r,g,b in colors]
-        lines.append('    {' + ', '.join(map(str, palette)) + '},')
-    lines.append('};')
-    font, widths = header_font()
-    lines.append('static const u16 sDexControlFont[] = {' + ', '.join(map(str, font)) + '};')
-    lines.append('static const u8 sDexControlWidths[] = {' + ', '.join(map(str, widths)) + '};')
-    colors = [(0,255,0), (0,0,0), (255,255,255)]
-    w,h,pixels = read_png(ROOT / 'graphics/options/Encounters_Buttons.png')
-    assert (w,h) == (16,32)
-    indices = []
-    for color in pixels:
-        if color not in colors: colors.append(color)
-        indices.append(colors.index(color))
-    assert len(colors) <= 16
-    colors += [(0,0,0)] * (16-len(colors))
-    palette = [(r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10) for r,g,b in colors]
-    lines.append('static const u16 sDexControlPalette[16] = {' + ', '.join(map(str, palette)) + '};')
-    tiles = pack_obj(indices, 16, 32, 16, 16)
-    lines.append('static const u16 sDexControlButtons[] = {' + ', '.join(str(tiles[i] | tiles[i+1] << 8) for i in range(0,len(tiles),2)) + '};')
-    return '\n'.join(lines)+'\n'
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--create-templates', action='store_true')
@@ -199,12 +169,6 @@ def main():
             raise SystemExit('Regenerate shiny palettes')
     elif not OUTPUT.exists() or OUTPUT.read_text() != output:
         OUTPUT.write_text(output, encoding='ascii')
-    dex = ROOT / 'src/data/pokedex_view_assets.h'
-    ui = dex_assets()
-    if args.check:
-        assert dex.exists() and dex.read_text() == ui, 'Regenerate Dex view assets'
-    elif not dex.exists() or dex.read_text() != ui:
-        dex.write_text(ui, encoding='ascii')
     print(f'Shiny palettes: {counts}; {ready} recolored; {len(created)} templates created.')
     print(f'ROM palette bytes: {sum(counts.values()) * 32}; duplicated sprite tile bytes: 0.')
 
