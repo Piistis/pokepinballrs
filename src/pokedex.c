@@ -44,7 +44,10 @@ enum PokedexStates
 #define SHOW_IX_CATCH_SPRITE 0
 #define SHOW_IX_HATCH_SPRITE 1
 
-void RefreshPokedexListDisplay(void);
+static void RefreshPokedexListDisplay(void);
+static void RefreshPokedexListRows(void);
+static void RefreshPokedexSelection(void);
+static void Pokedex_HandleListScroll(void);
 static void PokedexListScrollUp(void);
 static void PokedexListScrollDown(void);
 static void PokedexListScrollUpFast(void);
@@ -196,7 +199,6 @@ void LoadPokedexGraphics(void)
     PrintDexNumbersFromListPosition(gPokedexListPosition);
     PrintCaughtBallFromListPosition(gPokedexListPosition);
     LoadMonPortrait(gPokedexSelectedMon);
-    LoadMonAnimationSprite(gPokedexSelectedMon);
     CheckMonHasAnimation(gPokedexSelectedMon);
 
     DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
@@ -289,6 +291,11 @@ static void Pokedex_ChangeView(bool8 toggleShiny, s16 direction)
 
 void Pokedex_HandleListInput(void)
 {
+    s16 previousPosition = gPokedexListPosition;
+    s16 previousSpecies = gPokedexSelectedMon;
+    bool8 preview = JOY_HELD(SELECT_BUTTON) != 0;
+    bool8 wasAnimated = gPokedexShowCatchHatch[SHOW_IX_CATCH_SPRITE] || gPokedexShowCatchHatch[SHOW_IX_HATCH_SPRITE];
+
     if (Pokedex_CheckDebugCompleteComboPressed())
         return;
 
@@ -300,88 +307,22 @@ void Pokedex_HandleListInput(void)
         return;
     }
 
-    if (JOY_HELD(SELECT_BUTTON))
+    Pokedex_HandleListScroll();
+    if (gPokedexListPosition != previousPosition)
+        RefreshPokedexListRows();
+    if (gPokedexSelectedMon != previousSpecies)
+        RefreshPokedexSelection();
+
+    if (preview)
     {
         gPokedexShowButtonPrompt = FALSE;
-
-        if (JOY_HELD(DPAD_UP))
-        {
-            PokedexListScrollUp();
-            UpdateMonSpriteVisibility();
-            RefreshMonPreviewSprite();
-            gMain.subState = POKEDEX_STATE_2;
-        }
-        else if (JOY_HELD(DPAD_DOWN))
-        {
-            PokedexListScrollDown();
-            UpdateMonSpriteVisibility();
-            RefreshMonPreviewSprite();
-            gMain.subState = POKEDEX_STATE_2;
-        }
-        else if (JOY_HELD(DPAD_LEFT))
-        {
-            PokedexListScrollUpFast();
-            UpdateMonSpriteVisibility();
-            RefreshMonPreviewSprite();
-            gMain.subState = POKEDEX_STATE_2;
-        }
-        else if (JOY_HELD(DPAD_RIGHT))
-        {
-            PokedexListScrollDownFast();
-            UpdateMonSpriteVisibility();
-            RefreshMonPreviewSprite();
-            gMain.subState = POKEDEX_STATE_2;
-        }
-        else
-        {
-            gPokedexScrollActive = FALSE;
-            UpdateMonSpriteVisibility();
-        }
-
-        if (JOY_NEW(A_BUTTON))
-        {
-            gPokedexDetailFrameCount = 0;
-
-            if (GetPokedexFlag(gPokedexSelectedMon) >= 2)
-            {
-                gPokedexShowButtonPrompt = FALSE;
-                DmaCopy16(3, 0x6000280, (void *)gPokedexInfoWindowBackupTiles, 0x200);
-                gMain.subState = POKEDEX_STATE_3;
-            }
-            else
-            {
-                m4aSongNumStart(SE_FAILURE);
-            }
-        }
+        UpdateMonSpriteVisibility();
+        if (!gPokedexShowPortrait && (!wasAnimated || gPokedexSelectedMon != previousSpecies))
+            LoadMonAnimationSprite(gPokedexSelectedMon);
     }
     else
     {
         gPokedexShowButtonPrompt = TRUE;
-
-        if (JOY_HELD(DPAD_UP))
-        {
-            PokedexListScrollUp();
-            RefreshPokedexListDisplay();
-        }
-        else if (JOY_HELD(DPAD_DOWN))
-        {
-            PokedexListScrollDown();
-            RefreshPokedexListDisplay();
-        }
-        else if (JOY_HELD(DPAD_LEFT))
-        {
-            PokedexListScrollUpFast();
-            RefreshPokedexListDisplay();
-        }
-        else if (JOY_HELD(DPAD_RIGHT))
-        {
-            PokedexListScrollDownFast();
-            RefreshPokedexListDisplay();
-        }
-        else
-        {
-            gPokedexScrollActive = FALSE;
-        }
 
         if (CheckMonHasAnimation(gPokedexSelectedMon) == TRUE)
             gPokedexShowAnimSprite = TRUE;
@@ -393,35 +334,50 @@ void Pokedex_HandleListInput(void)
         gPokedexShowCatchHatch[SHOW_IX_HATCH_SPRITE] = FALSE;
         gPokedexSpriteAnimTimer = 0;
         gPokedexSpriteAnimFrame = 0;
-
-        if (JOY_NEW(A_BUTTON))
-        {
-            gPokedexDetailFrameCount = 0;
-
-            if (GetPokedexFlag(gPokedexSelectedMon) >= SPECIES_SHARED)
-            {
-                gPokedexShowButtonPrompt = FALSE;
-                DmaCopy16(3, 0x6000280, (void *)gPokedexInfoWindowBackupTiles, 0x200);
-                gMain.subState = POKEDEX_STATE_3;
-            }
-            else
-            {
-                m4aSongNumStart(SE_FAILURE);
-            }
-        }
-        else if (JOY_NEW(B_BUTTON))
-        {
-            m4aSongNumStart(SE_MENU_CANCEL);
-            gMain.subState = POKEDEX_STATE_RETURN_TO_TITLE;
-        }
-        Pokedex_CheckDeleteKeyComboPressed();
     }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        gPokedexDetailFrameCount = 0;
+        if (GetPokedexFlag(gPokedexSelectedMon) >= SPECIES_SHARED)
+        {
+            gPokedexShowButtonPrompt = FALSE;
+            DmaCopy16(3, gBG0TilemapBuffer + 10 * 32, gPokedexInfoWindowBackupTiles, 0x200);
+            gMain.subState = POKEDEX_STATE_3;
+        }
+        else
+        {
+            m4aSongNumStart(SE_FAILURE);
+        }
+    }
+    else if (!preview && JOY_NEW(B_BUTTON))
+    {
+        m4aSongNumStart(SE_MENU_CANCEL);
+        gMain.subState = POKEDEX_STATE_RETURN_TO_TITLE;
+    }
+    if (!preview)
+        Pokedex_CheckDeleteKeyComboPressed();
 
     if (gPokedexScrollWaitFrames > 0)
         gPokedexScrollWaitFrames--;
 
     RenderPokedexSprites();
-    DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    if (gPokedexSelectedMon != previousSpecies || gPokedexListPosition != previousPosition)
+        DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+}
+
+static void Pokedex_HandleListScroll(void)
+{
+    if (JOY_HELD(DPAD_UP))
+        PokedexListScrollUp();
+    else if (JOY_HELD(DPAD_DOWN))
+        PokedexListScrollDown();
+    else if (JOY_HELD(DPAD_LEFT))
+        PokedexListScrollUpFast();
+    else if (JOY_HELD(DPAD_RIGHT))
+        PokedexListScrollDownFast();
+    else
+        gPokedexScrollActive = FALSE;
 }
 
 void Pokedex_PostScrollRefresh(void)
@@ -472,6 +428,7 @@ void Pokedex_InfoWindowSlideIn(void)
 
 void Pokedex_DetailViewInput(void)
 {
+    bool8 wasAnimated = gPokedexShowCatchHatch[SHOW_IX_CATCH_SPRITE] || gPokedexShowCatchHatch[SHOW_IX_HATCH_SPRITE];
 
     if (Pokedex_CheckDebugCompleteComboPressed())
         return;
@@ -549,43 +506,9 @@ void Pokedex_DetailViewInput(void)
 
     if (JOY_HELD(SELECT_BUTTON))
     {
-        if (GetPokedexFlag(gPokedexSelectedMon) == SPECIES_CAUGHT
-         && gDexAnimationIx[gPokedexSelectedMon] != -1)
-        {
-            if (gDexAnimationIx[gPokedexSelectedMon] == -1)
-            {
-                gPokedexShowAnimSprite = FALSE;
-                gPokedexShowPortrait = TRUE;
-                gPokedexShowCatchHatch[SHOW_IX_CATCH_SPRITE] = FALSE;
-                gPokedexShowCatchHatch[SHOW_IX_HATCH_SPRITE] = FALSE;
-                gPokedexSpriteAnimTimer = 0;
-                gPokedexSpriteAnimFrame = 0;
-            }
-            else
-            {
-                if (gDexAnimationIx[gPokedexSelectedMon] < HATCH_DEX_ANIM_OFFSET)
-                {
-                    gPokedexShowAnimSprite = FALSE;
-                    gPokedexShowPortrait = FALSE;
-                    gPokedexShowCatchHatch[SHOW_IX_CATCH_SPRITE] = TRUE;
-                    gPokedexShowCatchHatch[SHOW_IX_HATCH_SPRITE] = FALSE;
-                }
-                else
-                {
-                    gPokedexShowAnimSprite = FALSE;
-                    gPokedexShowPortrait = FALSE;
-                    gPokedexShowCatchHatch[SHOW_IX_CATCH_SPRITE] = FALSE;
-                    gPokedexShowCatchHatch[SHOW_IX_HATCH_SPRITE] = TRUE;
-                }
-            }
-        }
-        else
-        {
-            gPokedexShowAnimSprite = FALSE;
-            gPokedexShowPortrait = TRUE;
-            gPokedexShowCatchHatch[SHOW_IX_CATCH_SPRITE] = FALSE;
-            gPokedexShowCatchHatch[SHOW_IX_HATCH_SPRITE] = FALSE;
-        }
+        UpdateMonSpriteVisibility();
+        if (!gPokedexShowPortrait && !wasAnimated)
+            LoadMonAnimationSprite(gPokedexSelectedMon);
     }
     else
     {
@@ -1016,9 +939,11 @@ static void CompletePokedexForDebug(void)
     gPokedexShowButtonPrompt = TRUE;
     gPokedexShowAnimSprite = TRUE;
     gPokedexDescriptionPage = 0;
+    PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
     RefreshPokedexListDisplay();
     UpdateMonSpriteVisibility();
     RefreshMonPreviewSprite();
+    DmaCopy16(3, gBG0TilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     m4aSongNumStart(SE_MENU_SELECT);
 }
 
@@ -1074,16 +999,25 @@ u8 GetSelectedMonSpriteType(void)
     return 0;
 }
 
-void RefreshPokedexListDisplay(void)
+static void RefreshPokedexListRows(void)
 {
     PrintDexNumbersFromListPosition(gPokedexListPosition);
     PrintCaughtBallFromListPosition(gPokedexListPosition);
+}
+
+static void RefreshPokedexSelection(void)
+{
     PrintSelectedMonDexNum(gPokedexSelectedMon);
     LoadMonPortrait(gPokedexSelectedMon);
-    LoadMonAnimationSprite(gPokedexSelectedMon);
-    CheckMonHasAnimation(gPokedexSelectedMon);
     gPokedexAnimatedIconTimer = 0;
     gPokedexAnimatedIconFrame = 0;
+}
+
+static void RefreshPokedexListDisplay(void)
+{
+    RefreshPokedexListRows();
+    RefreshPokedexSelection();
+    CheckMonHasAnimation(gPokedexSelectedMon);
 }
 
 void RefreshMonPreviewSprite(void)
@@ -1809,8 +1743,6 @@ static void PrintSelectedMonDexNum(s16 species)
     u16 var1;
     u16 var2;
 
-    DmaFill16(3, 0, gTempGfxBuffer, 0x800);
-    var0 = 0;
     if (species == SPECIES_JIRACHI)
     {
         if (GetPokedexFlag(SPECIES_JIRACHI) != SPECIES_UNSEEN)
@@ -1835,24 +1767,8 @@ static void PrintSelectedMonDexNum(s16 species)
 
     if (GetPokedexFlag(species) > SPECIES_UNSEEN)
     {
-        for (i = 0; i < POKEMON_NAME_LENGTH; i++)
-        {
-            var1 = gPokedexEntries[species].name[i] & ~0xF;
-            var2 = gPokedexEntries[species].name[i] & 0xF;
-            if (var2 == 0)
-                var2 = 4;
-
-            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gGlyphUpperRowBuffer, 0x20);
-            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1 + 0x400], gGlyphLowerRowBuffer, 0x20);
-            BlitGlyphToTileBuffer(var2, var0, 0);
-            var0 += var2;
-        }
-
-        PokedexView_OutlineName(gTempGfxBuffer);
         SetStringPalette(13, 2, 8, 2, DEX_NAME_PALETTE);
-        CopyBgTilesRect(gTempGfxBuffer, (void *)0x06004C00, 8, 2);
-        DmaFill16(3, 0, gTempGfxBuffer, 0x800);
-        var0 = 0;
+        PokedexView_CopyName(species, (void *)0x06004C00);
     }
     else
     {
@@ -1863,6 +1779,8 @@ static void PrintSelectedMonDexNum(s16 species)
 
     if (GetPokedexFlag(species) == SPECIES_SEEN || GetPokedexFlag(species) > SPECIES_SHARED)
     {
+        DmaFill16(3, 0, gTempGfxBuffer, 0x800);
+        var0 = 0;
         for (i = 0; i < POKEMON_CATEGORY_NAME_LENGTH; i++)
         {
             var1 = gPokedexEntries[species].category[i] & ~0xF;
@@ -1877,7 +1795,6 @@ static void PrintSelectedMonDexNum(s16 species)
         }
 
         CopyBgTilesRect(gTempGfxBuffer, (void *)0x06004D00, 9, 2);
-        DmaFill16(3, 0, gTempGfxBuffer, 0x800);
     }
     else
     {
@@ -1932,13 +1849,8 @@ static void PrintSeenOwnedTotals(s16 seen, s16 owned)
 void PrintDexNumbersFromListPosition(s16 listPosition)
 {
     int i, j;
-    int var0;
-    u16 var1;
-    u16 var2;
     s16 species;
 
-    DmaFill16(3, 0, gTempGfxBuffer, 0x800);
-    var0 = 0;
     for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
         species = PokedexView_Species(listPosition + i);
@@ -1954,28 +1866,8 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
 
         if (GetPokedexFlag(species) > SPECIES_UNSEEN)
         {
-			//This manually builds the tiles needed, for kerning reasons.
-			//First 3 bytes point to a tile glyph pair (with an upper and lower half) and
-			//the 4th byte is the width needed for that glyph, with the 'space between' included.
-			//The 'space' character is 4 px wide.
-            for (j = 0; j < POKEMON_NAME_LENGTH; j++)
-            {
-                var1 = gPokedexEntries[species].name[j] & ~0xF;
-                var2 = gPokedexEntries[species].name[j] & 0xF;
-                if (var2 == 0)
-                    var2 = 4;
-
-                DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gGlyphUpperRowBuffer, 0x20);
-                DmaCopy16(3, &gPokedexTextGlyphs_Gfx[0x400 + var1], gGlyphLowerRowBuffer, 0x20);
-                BlitGlyphToTileBuffer(var2, var0, 0);
-                var0 += var2;
-            }
-
-            PokedexView_OutlineName(gTempGfxBuffer);
             SetStringPalette(12, 10 + i * 2, 8, 2, DEX_NAME_PALETTE);
-            CopyBgTilesRect(gTempGfxBuffer, (void *)0x06000000 + gPokedexListNameVramOffsets[i], 8, 2);
-            DmaFill16(3, 0, gTempGfxBuffer, 0x800);
-            var0 = 0;
+            PokedexView_CopyName(species, (void *)(VRAM + gPokedexListNameVramOffsets[i]));
         }
         else
         {

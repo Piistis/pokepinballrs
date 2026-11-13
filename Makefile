@@ -78,7 +78,7 @@ infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst 
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
-ifeq (,$(filter-out all compare,$(MAKECMDGOALS)))
+ifeq (,$(filter-out all compare rom,$(MAKECMDGOALS)))
 $(call infoshell, $(HOST_VARS) $(MAKE) tools)
 else
 NODEP := 1
@@ -136,10 +136,17 @@ src/data/shiny_palettes.h: tools/scripts/generate_shiny_assets.py tools/scripts/
 $(C_BUILDDIR)/shiny.o: src/data/shiny_palettes.h
 
 DEX_BACKGROUNDS := $(foreach n,1 2 3 4 5 6 7 8 9,graphics/pokedex/generations/gen$(n).png)
-src/data/pokedex_view_assets.h: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py $(DEX_BACKGROUNDS) $(wildcard graphics/pokedex/generations/*.pal) graphics/pokedex/press_start_shiny.png graphics/pokedex/press_start_normal.png graphics/pokedex/bg.png graphics/pokedex/text_glyphs.png graphics/options/Encounters_Buttons.png tools/preproc/asm_file.cpp data/rom_1.s
+src/data/pokedex_view_assets.h: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py $(DEX_BACKGROUNDS) $(wildcard graphics/pokedex/generations/*.pal) graphics/pokedex/press_start_shiny.png graphics/pokedex/press_start_normal.png graphics/pokedex/bg.png graphics/options/Encounters_Buttons.png data/rom_1.s
 	python3 tools/scripts/generate_pokedex_assets.py
 
+graphics/pokedex/outlined_names.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/text_glyphs.png tools/preproc/asm_file.cpp data/pokedex_entries/dex.inc
+	python3 tools/scripts/generate_pokedex_assets.py --names $@
+
+graphics/pokedex/bg_text.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/bg_text.png
+	python3 tools/scripts/generate_pokedex_assets.py --bg-text $@
+
 $(C_BUILDDIR)/pokedex_view.o: src/data/pokedex_view_assets.h
+$(DATA_ASM_BUILDDIR)/rom_1.o: graphics/pokedex/bg_text.4bpp graphics/pokedex/outlined_names.4bpp
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: rom

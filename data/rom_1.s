@@ -2783,3 +2783,8 @@ gOptionsSprites_Gfx:: @ 0x0852B868
 	.incbin "graphics/options/sprites.4bpp"
 
 .align 2
+gPokedexOutlinedNames::
+	.incbin "graphics/pokedex/outlined_names.4bpp"
+	.if (. - gPokedexOutlinedNames) != NUM_SPECIES * 0x200
+	.error "Unexpected Pokedex name tile count"
+	.endif

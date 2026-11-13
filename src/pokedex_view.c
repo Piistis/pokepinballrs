@@ -12,15 +12,15 @@ struct DexTheme
 #include "data/pokedex_view_assets.h"
 
 #define DEX_GENERATION_COUNT ARRAY_COUNT(sDexThemes)
-#define DEX_LABEL_TILE 0x3C0
-#define DEX_BUTTON_TILE (DEX_LABEL_TILE + 8)
+#define DEX_BUTTON_TILE 0x3C0
 #define DEX_PROMPT_TILE (DEX_BUTTON_TILE + 8)
+
+extern const u8 gPokedexOutlinedNames[NUM_SPECIES][0x200];
 
 static EWRAM_DATA struct
 {
     u16 species[NUM_SPECIES];
     u16 starts[DEX_GENERATION_COUNT], counts[DEX_GENERATION_COUNT];
-    u32 nameMask[18][10];
     u8 generation, loadedGeneration;
     bool8 shiny, initialized;
 } sDexView = {0};
@@ -109,8 +109,6 @@ void PokedexView_VBlank(void)
     if (!previous || theme->map != previous->map)
         DmaCopy32(3, theme->map, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
     DmaCopy32(3, theme->palette, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy32(3, sDexControlLabels + sDexView.generation * 128,
-              (void *)(OBJ_VRAM0 + DEX_LABEL_TILE * 32), 256);
     sDexView.loadedGeneration = sDexView.generation;
 }
 
@@ -129,40 +127,11 @@ void PokedexView_SetWindowRow(u16 *row, bool8 bottom)
     DmaCopy16(3, bottom ? sDexWindowBottomRow : sDexWindowMiddleRow, row, sizeof(sDexWindowMiddleRow));
 }
 
-void PokedexView_OutlineName(u16 *tiles)
+void PokedexView_CopyName(u16 species, void *destination)
 {
-    int x, y;
-    u32 pixel, mask, left, right, ink;
-    const u32 *above, *here, *below;
-    u16 *src;
-    // One bit per 4bpp pixel; use the original ink mask for every neighbor.
-    for (y = 0; y < 16; y++)
-    {
-        src = tiles + (y / 8) * 0x200 + (y % 8) * 2;
-        for (x = 0; x < 8; x++, src += 16)
-        {
-            pixel = src[0] | ((u32)src[1] << 16);
-            sDexView.nameMask[y + 1][x + 1] = (pixel | (pixel >> 1) | (pixel >> 2) | (pixel >> 3)) & 0x11111111;
-        }
-    }
-    for (y = 0; y < 16; y++)
-    {
-        src = tiles + (y / 8) * 0x200 + (y % 8) * 2;
-        above = sDexView.nameMask[y];
-        here = sDexView.nameMask[y + 1];
-        below = sDexView.nameMask[y + 2];
-        for (x = 1; x <= 8; x++, src += 16)
-        {
-            mask = above[x] | here[x] | below[x];
-            left = above[x - 1] | here[x - 1] | below[x - 1];
-            right = above[x + 1] | here[x + 1] | below[x + 1];
-            ink = here[x];
-            mask |= (mask << 4) | (mask >> 4) | (left >> 28) | (right << 28);
-            pixel = ink | ((mask & ~ink) << 1);
-            src[0] = pixel;
-            src[1] = pixel >> 16;
-        }
-    }
+    const u8 *tiles = gPokedexOutlinedNames[species];
+    DmaCopy16(3, tiles, destination, 0x100);
+    DmaCopy16(3, tiles + 0x100, (u8 *)destination + 0x400, 0x100);
 }
 
 void PokedexView_UpdateTotals(void)
@@ -198,10 +167,9 @@ void PokedexView_Draw(s16 firstObject, u8 promptFrame)
 {
     struct OamData *oam;
     u16 prompt = DEX_PROMPT_TILE + (sDexView.shiny * 2 + (promptFrame & 1)) * 9;
-    if (firstObject > 128 - 6)
+    if (firstObject > 128 - 5)
         return;
     oam = &gOamBuffer[firstObject];
-    DrawDexObject(oam++, 32, 0, DEX_LABEL_TILE, 15, ST_OAM_H_RECTANGLE, ST_OAM_SIZE_2);
     DrawDexObject(oam++, 8, 62, DEX_BUTTON_TILE + 4, 15, ST_OAM_SQUARE, ST_OAM_SIZE_1);
     DrawDexObject(oam++, 216, 62, DEX_BUTTON_TILE, 15, ST_OAM_SQUARE, ST_OAM_SIZE_1);
     DrawDexObject(oam++, 158, 148, prompt, 14, ST_OAM_H_RECTANGLE, ST_OAM_SIZE_1);

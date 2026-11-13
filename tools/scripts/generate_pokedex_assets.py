@@ -1,11 +1,12 @@
 """Assemble editable Dex PNGs and compile them into native GBA BG/OBJ assets."""
 
 import argparse
+from pathlib import Path
 import re
 import struct
 import zlib
 
-from generate_encounters_assets import ROOT, header_font, pack_obj, read_png
+from generate_encounters_assets import ROOT, pack_obj, read_png
 
 DEX = ROOT / 'graphics/pokedex'
 OUTPUT = ROOT / 'src/data/pokedex_view_assets.h'
@@ -147,7 +148,7 @@ def compile_window():
 
 
 def controls():
-    palette = [0, 0, 0x7fff]
+    palette = [0]
     w, h, colors = read_png(ROOT / 'graphics/options/Encounters_Buttons.png', alpha=True)
     assert (w, h) == (16, 32)
     buttons = []
@@ -160,27 +161,58 @@ def controls():
                 palette.append(native)
             buttons.append(palette.index(native, 1))
     assert len(palette) <= 16
-    font, widths = header_font()
-    labels = []
-    for gen in GENERATIONS:
-        label = f'Gen {gen}'
-        cursor = (32 - sum(widths[ord(c) - 32] for c in label)) // 2
-        points = []
-        for char in label:
-            glyph = ord(char) - 32
-            points.extend((cursor + x, y) for y in range(16) for x in range(8)
-                          if font[glyph * 16 + y] & (1 << x))
-            cursor += widths[glyph]
-        pixels = [0] * (32 * 16)
-        for x, y in points:
+    return palette + [0] * (16 - len(palette)), pack_obj(buttons, 16, 32, 16, 16)
+
+
+def compile_names():
+    # Use the same glyph offsets and advances as the assembler's .dexName.
+    source = (ROOT / 'tools/preproc/asm_file.cpp').read_text(encoding='utf-8')
+    encoding = {c: int(value, 16) for c, value in re.findall(
+        r'\{ "(.)", (0x[0-9A-F]+) \}',
+        source.split('if (!fixedWidthEncoding)', 1)[1].split('else {', 1)[0])}
+    width, _, font, _ = read_png(DEX / 'text_glyphs.png', indexed=True)
+    entries = (ROOT / 'data/pokedex_entries/dex.inc').read_text(encoding='utf-8')
+    names = re.findall(r'^\s*\.dexName "([^"]*)"', entries, re.M)
+    tiles = bytearray()
+    for name in names:
+        cursor = 1  # Leave space for the outline before the first glyph.
+        ink = set()
+        for char in name:
+            if char == ' ':
+                cursor += 4
+                continue
+            glyph = encoding[char]
+            advance = glyph & 15
+            tile = (glyph & ~15) // 32
+            left, top = tile % (width // 8) * 8, tile // (width // 8) * 8
+            ink.update((cursor + x, y) for y in range(16) for x in range(advance)
+                       if font[(top + y) * width + left + x] != 15)
+            cursor += advance
+        assert all(0 < x < 63 and 0 < y < 15 for x, y in ink), f'{name}: name does not fit 64x16 with outline'
+        pixels = [0] * (64 * 16)
+        for x, y in ink:
             for dy in (-1, 0, 1):
                 for dx in (-1, 0, 1):
-                    if 0 <= x + dx < 32 and 0 <= y + dy < 16:
-                        pixels[(y + dy) * 32 + x + dx] = 1
-        for x, y in points:
-            pixels[y * 32 + x] = 2
-        labels.append(pack_obj(pixels, 32, 16, 32, 16))
-    return palette + [0] * (16 - len(palette)), pack_obj(buttons, 16, 32, 16, 16), labels
+                    pixels[(y + dy) * 64 + x + dx] = 2
+        for x, y in ink:
+            pixels[y * 64 + x] = 1
+        tiles.extend(pack_obj(pixels, 64, 16, 8, 8))
+    return tiles
+
+
+def compile_bg_text():
+    w, h, pixels, _ = read_png(DEX / 'bg_text.png', indexed=True)
+    assert (w, h) == (256, 136)
+    pixels = [color & 15 for color in pixels]
+    # The edited small digits use row 8 for their bottom border. Fit them
+    # in their 8x8 tiles so that row does not appear above the tall digits.
+    for x in range(0, 80, 8):
+        if any(pixels[8 * w + x:8 * w + x + 8]):
+            assert not any(pixels[x:x + 8]), 'Small Dex digit exceeds its 8x8 tile'
+            for y in range(8):
+                pixels[y * w + x:y * w + x + 8] = pixels[(y + 1) * w + x:(y + 1) * w + x + 8]
+            pixels[8 * w + x:8 * w + x + 8] = [0] * 8
+    return bytes(pack_obj(pixels, w, h, 8, 8))
 
 
 def compile_prompts():
@@ -233,10 +265,9 @@ def generate():
     tile_array('sDexWindowTiles', tiles)
     array('sDexWindowMiddleRow', rows[0])
     array('sDexWindowBottomRow', rows[1])
-    palette, buttons, labels = controls()
+    palette, buttons = controls()
     array('sDexControlPalette', palette)
     tile_array('sDexControlButtons', buttons)
-    tile_array('sDexControlLabels', sum(labels, []))
     palette, prompts = compile_prompts()
     array('sDexPromptPalette', palette)
     tile_array('sDexPromptTiles', prompts)
@@ -247,9 +278,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--create-templates', action='store_true', help='assemble missing editable PNGs')
     parser.add_argument('--check', action='store_true', help='verify generated C data is current')
+    binary = parser.add_mutually_exclusive_group()
+    binary.add_argument('--names', type=Path, help='compile outlined species names to a 4bpp file')
+    binary.add_argument('--bg-text', type=Path, help='compile the Dex text sheet to a 4bpp file')
     args = parser.parse_args()
     if args.create_templates:
         create_templates()
+    if args.names:
+        args.names.write_bytes(compile_names())
+        return
+    if args.bg_text:
+        args.bg_text.write_bytes(compile_bg_text())
+        return
     output = generate()
     if args.check:
         assert OUTPUT.read_text() == output, 'Regenerate Pokedex view assets'

@@ -15,7 +15,7 @@ void PokedexView_LoadGraphics(void);
 void PokedexView_VBlank(void);
 void PokedexView_Draw(s16 firstObject, u8 promptFrame);
 void PokedexView_SetWindowRow(u16 *row, bool8 bottom);
-void PokedexView_OutlineName(u16 *tiles);
+void PokedexView_CopyName(u16 species, void *destination);
 void PokedexView_UpdateTotals(void);
 
 #endif
