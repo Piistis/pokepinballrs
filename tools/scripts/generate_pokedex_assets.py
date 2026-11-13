@@ -212,6 +212,15 @@ def compile_bg_text():
             for y in range(8):
                 pixels[y * w + x:y * w + x + 8] = pixels[(y + 1) * w + x:(y + 1) * w + x + 8]
             pixels[8 * w + x:8 * w + x + 8] = [0] * 8
+    # Keep the outlined digits for the list and counters. Put plain copies
+    # in the unused columns of the same rows for the gray profile text.
+    header = (ROOT / 'include/pokedex_view.h').read_text()
+    offset = int(re.search(r'^#define DEX_PLAIN_DIGIT_OFFSET (\d+)$', header, re.M)[1]) * 8
+    assert 80 <= offset <= w - 80
+    for y in range(24):
+        row = y * w
+        assert not any(pixels[row + offset:row + offset + 80]), 'Plain Dex digit slots must be empty'
+        pixels[row + offset:row + offset + 80] = [0 if color == 15 else color for color in pixels[row:row + 80]]
     return bytes(pack_obj(pixels, w, h, 8, 8))
 
 

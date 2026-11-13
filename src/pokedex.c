@@ -1736,6 +1736,13 @@ static int ClientReceivePokedexFlags(void)
     return 0;
 }
 
+static void PrintPokedexProfileNumber(u16 glyph, int x, int y, int height)
+{
+    if (glyph <= CHAR_9_FONT_0 || (glyph >= CHAR_0_FONT_1 && glyph <= CHAR_9_FONT_1))
+        glyph += DEX_PLAIN_DIGIT_OFFSET;
+    PrintString(glyph, 1, x, y, 1, height);
+}
+
 static void PrintSelectedMonDexNum(s16 species)
 {
     int i;
@@ -1747,9 +1754,9 @@ static void PrintSelectedMonDexNum(s16 species)
     {
         if (GetPokedexFlag(SPECIES_JIRACHI) != SPECIES_UNSEEN)
         {
-            PrintString(CHAR_2_FONT_1, 1, 5, 2, 1, 2);
-            PrintString(CHAR_0_FONT_1, 1, 6, 2, 1, 2);
-            PrintString(CHAR_1_FONT_1, 1, 7, 2, 1, 2);
+            PrintPokedexProfileNumber(CHAR_2_FONT_1, 5, 2, 2);
+            PrintPokedexProfileNumber(CHAR_0_FONT_1, 6, 2, 2);
+            PrintPokedexProfileNumber(CHAR_1_FONT_1, 7, 2, 2);
         }
         else
         {
@@ -1762,7 +1769,7 @@ static void PrintSelectedMonDexNum(s16 species)
     {
         // Dex number of the selected species
         for (i = 0; i < DEX_NUM_DIGITS; i++)
-            PrintString(gPokedexEntries[species].dexNum[i] + 32, 1, i + 5, 2, 1, 2);
+            PrintPokedexProfileNumber(gPokedexEntries[species].dexNum[i] + CHAR_0_FONT_1, i + 5, 2, 2);
     }
 
     if (GetPokedexFlag(species) > SPECIES_UNSEEN)
@@ -1804,12 +1811,12 @@ static void PrintSelectedMonDexNum(s16 species)
 
     if (GetPokedexFlag(species) == SPECIES_CAUGHT)
     {
-        PrintString(gPokedexEntries[species].heightWeight[0] + 32, 1, 16, 6, 1, 2);
-        PrintString(gPokedexEntries[species].heightWeight[1] + 32, 1, 17, 6, 1, 2);
-        PrintString(gPokedexEntries[species].heightWeight[2] + 32, 1, 19, 6, 1, 2);
-        PrintString(gPokedexEntries[species].heightWeight[3] + 32, 1, 20, 6, 1, 2);
+        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[0] + CHAR_0_FONT_1, 16, 6, 2);
+        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[1] + CHAR_0_FONT_1, 17, 6, 2);
+        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[2] + CHAR_0_FONT_1, 19, 6, 2);
+        PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[3] + CHAR_0_FONT_1, 20, 6, 2);
         for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
-            PrintString(gPokedexEntries[species].heightWeight[4 + i], 1, i + 16, 8, 1, 1);
+            PrintPokedexProfileNumber(gPokedexEntries[species].heightWeight[4 + i], i + 16, 8, 1);
     }
     else
     {

@@ -142,7 +142,7 @@ src/data/pokedex_view_assets.h: tools/scripts/generate_pokedex_assets.py tools/s
 graphics/pokedex/outlined_names.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/text_glyphs.png tools/preproc/asm_file.cpp data/pokedex_entries/dex.inc
 	python3 tools/scripts/generate_pokedex_assets.py --names $@
 
-graphics/pokedex/bg_text.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/bg_text.png
+graphics/pokedex/bg_text.4bpp: tools/scripts/generate_pokedex_assets.py tools/scripts/generate_encounters_assets.py graphics/pokedex/bg_text.png include/pokedex_view.h
 	python3 tools/scripts/generate_pokedex_assets.py --bg-text $@
 
 $(C_BUILDDIR)/pokedex_view.o: src/data/pokedex_view_assets.h
