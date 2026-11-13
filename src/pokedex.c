@@ -1781,6 +1781,7 @@ static void PrintPokedexMeasurements(const struct PokedexEntry *entry, bool8 cau
     }
     PrintString(caught ? DEX_WEIGHT_DECIMAL_TILE : CHAR_DASH_FONT_0, 1, 20, 8, 1, 1);
     PrintPokedexProfileNumber(caught ? entry->heightWeight[8] : CHAR_DASH_FONT_0, 21, 8, 1);
+    PrintString(CHAR_SPACE_FONT_1, 1, 21, 9, 1, 1);
     PrintString(DEX_WEIGHT_UNITS_TILE, 1, 22, 8, 2, 2);
 }
 

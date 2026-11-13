@@ -146,6 +146,7 @@ graphics/pokedex/bg_text.4bpp: tools/scripts/generate_pokedex_assets.py tools/sc
 	python3 tools/scripts/generate_pokedex_assets.py --bg-text $@
 
 $(C_BUILDDIR)/pokedex_view.o: src/data/pokedex_view_assets.h
+$(C_BUILDDIR)/data.o: src/data/species_expansion.h
 $(DATA_ASM_BUILDDIR)/rom_1.o: graphics/pokedex/bg_text.4bpp graphics/pokedex/outlined_names.4bpp
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
