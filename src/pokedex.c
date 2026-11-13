@@ -1797,13 +1797,13 @@ static void PrintSelectedMonDexNum(s16 species)
 
     if (GetPokedexFlag(species) > SPECIES_UNSEEN)
     {
-        SetStringPalette(13, 2, 8, 2, DEX_NAME_PALETTE);
+        SetStringPalette(14, 2, 8, 2, DEX_NAME_PALETTE);
         PokedexView_CopyName(species, (void *)0x06004C00);
     }
     else
     {
-        SetStringPalette(13, 2, 8, 2, 1);
-        for (i = 0; i < 10; i++)
+        SetStringPalette(14, 2, 8, 2, 1);
+        for (i = 0; i < 8; i++)
             CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004C00 + i * 0x20, 1, 2);
     }
 
