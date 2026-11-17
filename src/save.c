@@ -421,6 +421,9 @@ void SaveFile_DebugCompletePokedex(void)
     for (i = NUM_SAVE_SPECIES; i < NUM_SPECIES; i++)
         gExtraPokedexFlags[i - NUM_SAVE_SPECIES] = SPECIES_CAUGHT;
 
+    for (i = 0; i < NUM_SPECIES; i++)
+        Shiny_SetPokedexFlag(i, SPECIES_CAUGHT);
+
     SaveFile_WriteToSram();
     SaveFile_ReadSavedGamePresent();
 #endif

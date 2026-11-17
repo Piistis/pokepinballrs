@@ -298,9 +298,14 @@ void InitPokedexState(void)
 
 static void Pokedex_ChangeView(bool8 toggleShiny, s16 direction)
 {
-    if (toggleShiny) PokedexView_ToggleShiny();
-    else if (!PokedexView_MoveGeneration(direction)) return;
-    gPokedexListPosition = gPokedexCursorOffset = 0;
+    if (toggleShiny)
+        PokedexView_ToggleShiny();
+    else
+    {
+        if (!PokedexView_MoveGeneration(direction))
+            return;
+        gPokedexListPosition = gPokedexCursorOffset = 0;
+    }
     gPokedexListEntryCount = PokedexView_Count();
     gPokedexScrollWaitFrames = 0;
     gPokedexScrollActive = FALSE;
@@ -948,14 +953,6 @@ static bool8 Pokedex_CheckDebugCompleteComboPressed(void)
 static void CompletePokedexForDebug(void)
 {
     SaveFile_DebugCompletePokedex();
-    if (PokedexView_IsShiny())
-    {
-#if DEBUG_TOOLS_ENABLED
-        s16 species;
-        for (species = 0; species < NUM_SPECIES; species++)
-            SaveFile_SetShinyPokedexFlag(species, SPECIES_CAUGHT);
-#endif
-    }
     LoadPokedexFlagsFromSave();
     PokedexView_UpdateTotals();
 
